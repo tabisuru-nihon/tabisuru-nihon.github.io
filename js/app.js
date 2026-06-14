@@ -1,4 +1,4 @@
-/* ===================================================
+﻿/* ===================================================
    旅する日本図鑑 — メインアプリケーション
 =================================================== */
 
@@ -665,11 +665,11 @@ window.renderPrefecturePage = function() {
   const ogTitle = document.querySelector('meta[property="og:title"]');
   if (ogTitle) ogTitle.setAttribute('content', `${d.name} 旅行ガイド | 旅する日本図鑑`);
   const ogUrl = document.querySelector('meta[property="og:url"]');
-  if (ogUrl) ogUrl.setAttribute('content', `https://katsuyukijyoukou-byte.github.io/tabisuru-nihon/templates/prefecture.html?id=${id}`);
+  if (ogUrl) ogUrl.setAttribute('content', `https://tabisuru-nihon.github.io/templates/prefecture.html?id=${id}`);
   // canonical
   let canonicalEl = document.querySelector('link[rel="canonical"]');
   if (!canonicalEl) { canonicalEl = document.createElement('link'); canonicalEl.rel = 'canonical'; document.head.appendChild(canonicalEl); }
-  canonicalEl.href = `https://katsuyukijyoukou-byte.github.io/tabisuru-nihon/templates/prefecture.html?id=${id}`;
+  canonicalEl.href = `https://tabisuru-nihon.github.io/templates/prefecture.html?id=${id}`;
 
   // heroの背景グラデーション + 代表写真
   const hero = document.querySelector('.pref-hero');
@@ -1204,7 +1204,7 @@ window.renderOnsenPage = function() {
   document.title = `${d.name} 温泉ガイド | 旅する日本図鑑`;
   let onsenCanonical = document.querySelector('link[rel="canonical"]');
   if (!onsenCanonical) { onsenCanonical = document.createElement('link'); onsenCanonical.rel = 'canonical'; document.head.appendChild(onsenCanonical); }
-  onsenCanonical.href = `https://katsuyukijyoukou-byte.github.io/tabisuru-nihon/templates/onsen.html?id=${id}`;
+  onsenCanonical.href = `https://tabisuru-nihon.github.io/templates/onsen.html?id=${id}`;
   const onsenOgUrl = document.querySelector('meta[property="og:url"]');
   if (onsenOgUrl) onsenOgUrl.setAttribute('content', onsenCanonical.href);
 
@@ -1304,7 +1304,7 @@ window.renderMonthlyPage = function() {
   document.title = `${month}月の国内旅行おすすめ | 旅する日本図鑑`;
   let monthCanonical = document.querySelector('link[rel="canonical"]');
   if (!monthCanonical) { monthCanonical = document.createElement('link'); monthCanonical.rel = 'canonical'; document.head.appendChild(monthCanonical); }
-  monthCanonical.href = `https://katsuyukijyoukou-byte.github.io/tabisuru-nihon/templates/monthly-detail.html?month=${month}`;
+  monthCanonical.href = `https://tabisuru-nihon.github.io/templates/monthly-detail.html?month=${month}`;
   const monthOgUrl = document.querySelector('meta[property="og:url"]');
   if (monthOgUrl) monthOgUrl.setAttribute('content', monthCanonical.href);
 
