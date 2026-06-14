@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>旅する日本図鑑 — あなたにぴったりの旅を、ノアが提案します</title>
+  <meta name="description" content="行き先が決まっていない人のための国内旅行コンシェルジュ。47都道府県の旅行情報・季節・予算から、旅ノアがあなたにぴったりの旅先を提案します。">
+  <meta name="keywords" content="国内旅行,旅行提案,47都道府県,温泉,旅行コンシェルジュ,旅ノア">
+  <meta property="og:title" content="旅する日本図鑑 — あなたにぴったりの旅を、ノアが提案します">
+  <meta property="og:description" content="行き先が決まっていない人のための国内旅行コンシェルジュ。47都道府県の観光情報と旅行提案。">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "旅する日本図鑑",
+    "description": "行き先が決まっていない人のための国内旅行コンシェルジュ。47都道府県の旅行情報から旅ノアがぴったりの旅先を提案します。",
+    "inLanguage": "ja",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://tabisuru-nihon.example.com/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">
+        <div class="logo-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#0c1b35"/>
+          </svg>
+        </div>
+        <div class="logo-text-wrap">
+          <span class="logo-name">旅する日本図鑑</span>
+          <span class="logo-en">TABISURU NIHON ZUKAN</span>
+        </div>
+      </a>
+      <nav class="header-nav">
+        <a href="pages/prefectures.html" class="nav-link">都道府県</a>
+        <a href="pages/onsen.html" class="nav-link">温泉地</a>
+        <a href="pages/monthly.html" class="nav-link">月別おすすめ</a>
+        <a href="pages/purpose.html" class="nav-link">目的で探す</a>
+        <a href="pages/specialties.html" class="nav-link">グルメ</a>
+        <a href="pages/booking.html" class="nav-link nav-cta">予約サイト比較</a>
+      </nav>
+      <button class="hamburger" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== FULL-SCREEN HERO ===== -->
+<section class="fullhero" id="top">
+
+  <!-- 背景スライダー -->
+  <div class="fh-bg" id="fh-bg">
+
+    <div class="fh-slide is-active" data-place="広島 · 宮島">
+      <img src="images/japan/hiroshima/hiroshima-miyajima-torii-01.jpg"
+           alt="宮島・厳島神社の大鳥居と夕日（広島県）"
+           fetchpriority="high" decoding="async">
+    </div>
+
+    <div class="fh-slide" data-place="北海道 · 美瑛">
+      <img src="images/japan/hokkaido/hokkaido-biei-flower-field-01.jpg"
+           alt="北海道・美瑛のカラフルな花畑"
+           loading="lazy" decoding="async">
+    </div>
+
+    <div class="fh-slide" data-place="京都 · 伏見稲荷">
+      <img src="images/japan/kyoto/kyoto-fushimi-inari-01.jpg"
+           alt="京都・伏見稲荷大社の千本鳥居"
+           loading="lazy" decoding="async">
+    </div>
+
+    <div class="fh-slide" data-place="石川 · 金沢">
+      <img src="images/japan/ishikawa/ishikawa-kanazawa-01.jpg"
+           alt="金沢・兼六園の石灯籠と池（石川県）"
+           loading="lazy" decoding="async">
+    </div>
+
+    <div class="fh-slide" data-place="群馬 · 草津温泉">
+      <img src="images/japan/gunma/gunma-kusatsu-yunohata-01.jpg"
+           alt="草津温泉の湯畑と湯けむり（群馬県）"
+           loading="lazy" decoding="async">
+    </div>
+
+  </div><!-- /.fh-bg -->
+
+  <!-- グラデーションオーバーレイ -->
+  <div class="fh-overlay" aria-hidden="true"></div>
+
+  <!-- コンテンツ -->
+  <div class="fh-inner">
+
+    <!-- 中央：コピー＋CTA -->
+    <div class="fh-body">
+      <p class="fh-eyebrow">47都道府県 · 国内旅行コンシェルジュ</p>
+      <h1 class="fh-maintitle">旅する日本図鑑</h1>
+      <p class="fh-copy">まだ知らない日本に、会いに行こう。</p>
+      <p class="fh-desc">温泉、絶景、食べ歩き、歴史ある町並み。<br>47都道府県の旅の魅力を、地域と写真から探せます。</p>
+      <div class="fh-cta">
+        <a href="#map-section" class="fh-btn primary">🗾 地域から旅先を探す</a>
+        <a href="pages/prefectures.html" class="fh-btn secondary">都道府県一覧を見る</a>
+        <a href="#chat-section" class="fh-btn ghost">💬 旅ノアに相談する</a>
+      </div>
+    </div>
+
+    <!-- 下部バー：スポット名 / ドット / スクロール -->
+    <div class="fh-bottom">
+      <div class="fh-place" aria-live="polite" aria-atomic="true">
+        <span aria-hidden="true">📍</span>
+        <span id="fh-place-name">広島 · 宮島</span>
+      </div>
+      <div class="fh-dots" id="fh-dots" role="tablist" aria-label="スライド選択"></div>
+      <div class="fh-scroll" aria-hidden="true">
+        <span class="fh-scroll-label">SCROLL</span>
+        <div class="fh-scroll-bar"></div>
+      </div>
+    </div>
+
+  </div><!-- /.fh-inner -->
+
+</section><!-- /.fullhero -->
+
+<!-- ===== よく聞かれる質問ピル ===== -->
+<section class="questions-section">
+  <div class="container">
+    <p class="questions-title">💬 こんな質問をしてみてください</p>
+    <div class="questions-grid">
+      <button class="question-pill" data-q="北海道のおすすめを教えて">🦀 北海道のおすすめ</button>
+      <button class="question-pill" data-q="京都で2泊するならどこ？">⛩️ 京都2泊のおすすめ</button>
+      <button class="question-pill" data-q="沖縄で海以外のおすすめは？">🌺 沖縄で海以外のおすすめ</button>
+      <button class="question-pill" data-q="6月に国内旅行するならどこ？">☔ 6月のおすすめは？</button>
+      <button class="question-pill" data-q="カップル旅行のおすすめを教えて">💑 カップル旅行おすすめ</button>
+      <button class="question-pill" data-q="子連れで行きやすい県は？">👨‍👩‍👧 子連れ旅行おすすめ</button>
+      <button class="question-pill" data-q="一人旅でおすすめの場所は？">🎒 一人旅おすすめ</button>
+      <button class="question-pill" data-q="写真映えするスポットに行きたい">📸 写真映えスポット</button>
+      <button class="question-pill" data-q="神社仏閣めぐりをしたい">⛩️ 神社仏閣めぐり</button>
+      <button class="question-pill" data-q="温泉と海鮮を両方楽しみたい">♨️ 温泉＋海鮮旅行</button>
+      <button class="question-pill" data-q="大阪発で1泊2日のおすすめは？">🚅 大阪発1泊2日</button>
+      <button class="question-pill" data-q="11月に紅葉を見に行くならどこ？">🍁 11月紅葉おすすめ</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 旅先を探す（キーワード＋地域アコーディオン） ===== -->
+<section class="section explore-section" id="map-section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">🗾 EXPLORE</div>
+      <h2 class="section-title">旅先を探す</h2>
+      <p class="section-desc">キーワードで絞り込むか、地域から都道府県を選んで旅先を見つけてください。</p>
+    </div>
+
+    <div class="explore-layout fade-in">
+
+      <!-- 左：キーワード検索 -->
+      <div class="explore-col explore-search-col">
+        <div class="explore-card">
+          <h3 class="explore-card-title">🔍 キーワードから探す</h3>
+          <div class="esearch-form">
+            <input type="text" class="esearch-input" id="keyword-search-input"
+                   placeholder="温泉地名・都道府県名・観光地名など" autocomplete="off">
+            <button class="esearch-btn" id="keyword-search-btn">検索</button>
+          </div>
+          <div class="esearch-chips">
+            <button class="esearch-chip" data-kw="温泉">♨️ 温泉</button>
+            <button class="esearch-chip" data-kw="絶景">🏔️ 絶景</button>
+            <button class="esearch-chip" data-kw="一人旅">🎒 一人旅</button>
+            <button class="esearch-chip" data-kw="家族旅行">👨‍👩‍👧 家族旅行</button>
+            <button class="esearch-chip" data-kw="グルメ">🍣 グルメ</button>
+            <button class="esearch-chip" data-kw="紅葉">🍁 紅葉</button>
+            <button class="esearch-chip" data-kw="女子旅">👭 女子旅</button>
+            <button class="esearch-chip" data-kw="歴史・城">⛩️ 歴史・城</button>
+            <button class="esearch-chip" data-kw="海・ビーチ">🌊 海・ビーチ</button>
+            <button class="esearch-chip" data-kw="夏休み">☀️ 夏休み</button>
+          </div>
+          <a href="pages/prefectures.html" class="explore-all-link">47都道府県一覧を見る →</a>
+        </div>
+      </div>
+
+      <!-- 右：地域から探す -->
+      <div class="explore-col explore-region-col">
+        <div class="explore-card">
+          <h3 class="explore-card-title">🗾 地域から探す</h3>
+          <p class="explore-region-hint">全国の地域から、行きたいエリアを選んでください。<br>気になる地域を開くと、都道府県から探せます。</p>
+          <div class="region-accordion" id="region-accordion"></div>
+          <a href="pages/prefectures.html" class="explore-all-link" style="margin-top:12px">都道府県一覧をすべて見る →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== 注目の旅先 ===== -->
+<section class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">📸 FEATURED</div>
+      <h2 class="section-title">注目の旅先</h2>
+      <p class="section-desc">写真で見る、日本の絶景・観光地 18選。気になる県をクリックして詳細を確認。</p>
+    </div>
+    <div class="dest-grid fade-in">
+
+      <!-- 広島 -->
+      <div class="dest-card" onclick="location.href='templates/prefecture.html?id=hiroshima'" style="cursor:pointer">
+        <div class="dest-thumb">
+          <img src="images/japan/hiroshima/hiroshima-miyajima-torii-01.jpg"
+               alt="広島県宮島の厳島神社大鳥居"
+               loading="lazy" width="400" height="300">
+        </div>
+        <div class="dest-body">
+          <div class="dest-region">中国地方</div>
+          <div class="dest-name">広島</div>
+          <p class="dest-desc">世界遺産・厳島神社の大鳥居が海に浮かぶ絶景。歴史と自然が共存する旅先。</p>
+          <a href="templates/prefecture.html?id=hiroshima" class="btn btn-sm btn-ghost">詳細を見る →</a>
+        </div>
+      </div>
+
+      <!-- 京都 -->
+      <div class="dest-card" onclick="location.href='templates/prefecture.html?id=kyoto'" style="cursor:pointer">
+        <div class="dest-thumb">
+          <img src="images/japan/kyoto/kyoto-fushimi-inari-01.jpg"
+               alt="京都の伏見稲荷大社の千本鳥居トンネル"
+               loading="lazy" width="400" height="300">
+        </div>
+        <div class="dest-body">
+          <div class="dest-region">近畿地方</div>
+          <div class="dest-name">京都</div>
+          <p class="dest-desc">伏見稲荷・嵐山・祇園。日本の伝統文化と美しい社寺が集まる古都。</p>
+          <a href="templates/prefecture.html?id=kyoto" class="btn btn-sm btn-ghost">詳細を見る →</a>
+        </div>
+      </div>
+
+      <!-- 東京 -->
+      <div class="dest-card" onclick="location.href='templates/prefecture.html?id=tokyo'" style="cursor:pointer">
+        <div class="dest-thumb">
+          <img src="images/japan/tokyo/tokyo-asakusa-sensoji-01.jpg"
+               alt="東京浅草の浅草寺と参拝者"
+               loading="lazy" width="400" height="300">
+        </div>
+        <div class="dest-body">
+          <div class="dest-region">関東地方</div>
+          <div class="dest-name">東京</div>
+          <p class="dest-desc">浅草・渋谷・新宿。下町の情緒と最先端が共存する日本の首都。</p>
+          <a href="templates/prefecture.html?id=tokyo" class="btn btn-sm btn-ghost">詳細を見る →</a>
+        </div>
+      </div>
+
+      <!-- 北海道 -->
+      <div class="dest-card" onclick="location.href='templates/prefecture.html?id=hokkaido'" style="cursor:pointer">
+        <div class="dest-thumb">
+          <img src="images/japan/hokkaido/hokkaido-biei-flower-field-01.jpg"
+               alt="北海道美瑛の丘と花畑の絶景"
+               loading="lazy" width="400" height="300">
+        </div>
+        <div class="dest-body">
+          <div class="dest-region">北海道</div>
+          <div class="dest-name">北海道</div>
+          <p class="dest-desc">大自然と絶品グルメ。ラベンダー畑・知床・流氷と四季それぞれの顔を持つ大地。</p>
+          <a href="templates/prefecture.html?id=hokkaido" class="btn btn-sm btn-ghost">詳細を見る →</a>
+        </div>
+      </div>
+
+      <!-- 沖縄 -->
+      <div class="dest-card" onclick="location.href='templates/prefecture.html?id=okinawa'" style="cursor:pointer">
+        <div class="dest-thumb">
+          <img src="images/japan/okinawa/okinawa-sea-coast-02.jpg"
+               alt="沖縄の青い海と緑豊かな海岸"
+               loading="lazy" width="400" height="300">
+        </div>
+        <div class="dest-body">
+          <div class="dest-region">九州・沖縄</div>
+          <div class="dest-name">沖縄</div>
+          <p class="dest-desc">日本最南端の楽園。エメラルドグリーンの海・首里城・独自の食文化。</p>
+          <a href="templates/prefecture.html?id=okinawa" class="btn btn-sm btn-ghost">詳細を見る →</a>
+        </div>
+      </div>
+
+      <!-- 大阪 -->
+      <div class="dest-card" onclick="location.href='templates/prefecture.html?id=osaka'" style="cursor:pointer">
+        <div class="dest-thumb">
+          <img src="images/japan/osaka/osaka-dotonbori-01.jpg"
+               alt="大阪・道頓堀の夜景とグリコ看板"
+               loading="lazy" width="400" height="300">
+        </div>
+        <div class="dest-body">
+          <div class="dest-region">近畿</div>
+          <div class="dest-name">大阪</div>
+          <p class="dest-desc">食い倒れの街。道頓堀・黒門市場・たこ焼き・大阪城と絶品グルメが待つ。</p>
+          <a href="templates/prefecture.html?id=osaka" class="btn btn-sm btn-ghost">詳細を見る →</a>
+        </div>
+      </div>
+
+      <!-- 奈良 -->
+      <div class="dest-card" onclick="location.href='templates/prefecture.html?id=nara'" style="cursor:pointer">
+        <div class="dest-thumb">
+          <img src="images/japan/nara/nara-deer-01.jpg"
+               alt="奈良公園の鹿と観光客"
+               loading="lazy" width="400" height="300">
+        </div>
+        <div class="dest-body">
+          <div class="dest-region">近畿</div>
+          <div class="dest-name">奈良</div>
+          <p class="dest-desc">世界遺産と野生の鹿が共存する古都。東大寺・春日大社・吉野山の桜が有名。</p>
+          <a href="templates/prefecture.html?id=nara" class="btn btn-sm btn-ghost">詳細を見る →</a>
+        </div>
+      </div>
+
+      <!-- 兵庫 -->
+      <div class="dest-card" onclick="location.href='templates/prefecture.html?id=hyogo'" style="cursor:pointer">
+        <div class="dest-thumb">
+          <img src="images/japan/hyogo/hyogo-himeji-01.jpg"
+               alt="白鷺城・姫路城の優美な姿"
+               loading="lazy" width="400" height="300">
+        </div>
+        <div class="dest-body">
+          <div class="dest-region">近畿</div>
+          <div class="dest-name">兵庫</div>
+          <p class="dest-desc">世界遺産・姫路城から有馬温泉・神戸の洋館まで多彩な魅力が揃う。</p>
+          <a href="templates/prefecture.html?id=hyogo" class="btn btn-sm btn-ghost">詳細を見る →</a>
+        </div>
+      </div>
+
+      <!-- 長野 -->
+      <div class="dest-card" onclick="location.href='templates/prefecture.html?id=nagano'" style="cursor:pointer">
+        <div class="dest-thumb">
+          <img src="images/japan/nagano/nagano-kamikochi-01.jpg"
+               alt="上高地の清流と山岳景観"
+               loading="lazy" width="400" height="300">
+        </div>
+        <div class="dest-body">
+          <div class="dest-region">中部</div>
+          <div class="dest-name">長野</div>
+          <p class="dest-desc">日本アルプスと高原。上高地・松本城・善光寺・野沢温泉が一度に楽しめる。</p>
+          <a href="templates/prefecture.html?id=nagano" class="btn btn-sm btn-ghost">詳細を見る →</a>
+        </div>
+      </div>
+
+      <!-- 神奈川 -->
+      <div class="dest-card" onclick="location.href='templates/prefecture.html?id=kanagawa'" style="cursor:pointer">
+        <div class="dest-thumb">
+          <img src="images/japan/kanagawa/kanagawa-kamakura-01.jpg"
+               alt="鎌倉の大仏"
+               loading="lazy" width="400" height="300">
+        </div>
+        <div class="dest-body">
+          <div class="dest-region">関東</div>
+          <div class="dest-name">神奈川</div>
+          <p class="dest-desc">鎌倉大仏・横浜中華街・箱根温泉と富士山眺望。東京から日帰りも可能な万能県。</p>
+          <a href="templates/prefecture.html?id=kanagawa" class="btn btn-sm btn-ghost">詳細を見る →</a>
+        </div>
+      </div>
+
+      <!-- 石川 -->
+      <div class="dest-card" onclick="location.href='templates/prefecture.html?id=ishikawa'" style="cursor:pointer">
+        <div class="dest-thumb">
+          <img src="images/japan/ishikawa/ishikawa-kanazawa-01.jpg"
+               alt="石川県金沢の兼六園"
+               loading="lazy" width="400" height="300">
+        </div>
+        <div class="dest-body">
+          <div class="dest-region">中部</div>
+          <div class="dest-name">石川（金沢）</div>
+          <p class="dest-desc">「西の京都」金沢。兼六園・ひがし茶屋街・近江町市場で海鮮グルメと伝統文化を堪能。</p>
+          <a href="templates/prefecture.html?id=ishikawa" class="btn btn-sm btn-ghost">詳細を見る →</a>
+        </div>
+      </div>
+
+      <!-- 福岡 -->
+      <div class="dest-card" onclick="location.href='templates/prefecture.html?id=fukuoka'" style="cursor:pointer">
+        <div class="dest-thumb">
+          <img src="images/japan/fukuoka/fukuoka-city-01.jpg"
+               alt="福岡市の博多の街並み"
+               loading="lazy" width="400" height="300">
+        </div>
+        <div class="dest-body">
+          <div class="dest-region">九州</div>
+          <div class="dest-name">福岡</div>
+          <p class="dest-desc">博多ラーメン・もつ鍋・屋台文化。九州の玄関口として大自然へのアクセスも抜群。</p>
+          <a href="templates/prefecture.html?id=fukuoka" class="btn btn-sm btn-ghost">詳細を見る →</a>
+        </div>
+      </div>
+
+      <!-- 長崎 -->
+      <div class="dest-card" onclick="location.href='templates/prefecture.html?id=nagasaki'" style="cursor:pointer">
+        <div class="dest-thumb">
+          <img src="images/japan/nagasaki/nagasaki-harbor-01.jpg"
+               alt="長崎港とグラバー園の夜景"
+               loading="lazy" width="400" height="300">
+        </div>
+        <div class="dest-body">
+          <div class="dest-region">九州</div>
+          <div class="dest-name">長崎</div>
+          <p class="dest-desc">異国情緒あふれる港街。グラバー園・ハウステンボス・軍艦島と日本三大夜景。</p>
+          <a href="templates/prefecture.html?id=nagasaki" class="btn btn-sm btn-ghost">詳細を見る →</a>
+        </div>
+      </div>
+
+      <!-- 岐阜 -->
+      <div class="dest-card" onclick="location.href='templates/prefecture.html?id=gifu'" style="cursor:pointer">
+        <div class="dest-thumb">
+          <img src="images/japan/gifu/gifu-shirakawago-01.jpg"
+               alt="岐阜県白川郷の合掌造り集落"
+               loading="lazy" width="400" height="300">
+        </div>
+        <div class="dest-body">
+          <div class="dest-region">中部</div>
+          <div class="dest-name">岐阜（白川郷）</div>
+          <p class="dest-desc">世界遺産・合掌造り集落の白川郷。冬の雪景色は圧巻。下呂温泉も有名な秘境感漂う県。</p>
+          <a href="templates/prefecture.html?id=gifu" class="btn btn-sm btn-ghost">詳細を見る →</a>
+        </div>
+      </div>
+
+      <!-- 山形 -->
+      <div class="dest-card" onclick="location.href='templates/prefecture.html?id=yamagata'" style="cursor:pointer">
+        <div class="dest-thumb">
+          <img src="images/japan/yamagata/yamagata-ginzan-01.jpg"
+               alt="山形県銀山温泉の大正ロマン漂う温泉街"
+               loading="lazy" width="400" height="300">
+        </div>
+        <div class="dest-body">
+          <div class="dest-region">東北</div>
+          <div class="dest-name">山形（銀山温泉）</div>
+          <p class="dest-desc">大正ロマン漂う銀山温泉・蔵王の樹氷・さくらんぼ。東北屈指の温泉と自然が揃う。</p>
+          <a href="templates/prefecture.html?id=yamagata" class="btn btn-sm btn-ghost">詳細を見る →</a>
+        </div>
+      </div>
+
+      <!-- 栃木 -->
+      <div class="dest-card" onclick="location.href='templates/prefecture.html?id=tochigi'" style="cursor:pointer">
+        <div class="dest-thumb">
+          <img src="images/japan/tochigi/tochigi-nikko-01.jpg"
+               alt="栃木県日光東照宮"
+               loading="lazy" width="400" height="300">
+        </div>
+        <div class="dest-body">
+          <div class="dest-region">関東</div>
+          <div class="dest-name">栃木（日光）</div>
+          <p class="dest-desc">世界遺産・日光東照宮と華厳の滝。那須高原・鬼怒川温泉と関東からのアクセスも快適。</p>
+          <a href="templates/prefecture.html?id=tochigi" class="btn btn-sm btn-ghost">詳細を見る →</a>
+        </div>
+      </div>
+
+      <!-- 山梨 -->
+      <div class="dest-card" onclick="location.href='templates/prefecture.html?id=yamanashi'" style="cursor:pointer">
+        <div class="dest-thumb">
+          <img src="images/japan/yamanashi/yamanashi-fuji-kawaguchi-01.jpg"
+               alt="山梨県河口湖と富士山"
+               loading="lazy" width="400" height="300">
+        </div>
+        <div class="dest-body">
+          <div class="dest-region">中部</div>
+          <div class="dest-name">山梨（富士五湖）</div>
+          <p class="dest-desc">河口湖から眺める富士山は日本一の絶景。ほうとう・富士サファリパーク・温泉も充実。</p>
+          <a href="templates/prefecture.html?id=yamanashi" class="btn btn-sm btn-ghost">詳細を見る →</a>
+        </div>
+      </div>
+
+      <!-- 宮城 -->
+      <div class="dest-card" onclick="location.href='templates/prefecture.html?id=miyagi'" style="cursor:pointer">
+        <div class="dest-thumb">
+          <img src="images/japan/miyagi/miyagi-matsushima-01.jpg"
+               alt="宮城県松島の松林と島々"
+               loading="lazy" width="400" height="300">
+        </div>
+        <div class="dest-body">
+          <div class="dest-region">東北</div>
+          <div class="dest-name">宮城（松島）</div>
+          <p class="dest-desc">日本三景・松島と牛タン・ずんだ餅。仙台を拠点に温泉・海産物が充実する東北の中心地。</p>
+          <a href="templates/prefecture.html?id=miyagi" class="btn btn-sm btn-ghost">詳細を見る →</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="text-center" style="margin-top:28px">
+      <a href="pages/prefectures.html" class="btn btn-ghost">47都道府県をすべて見る →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 温泉地から探す ===== -->
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">♨️ ONSEN</div>
+      <h2 class="section-title">温泉地から探す</h2>
+      <p class="section-desc">「なぜ有名か」「誰に向いているか」を解説。似た温泉地の比較も。</p>
+    </div>
+    <div class="onsen-grid fade-in" id="onsen-grid"></div>
+    <div class="text-center" style="margin-top:28px">
+      <a href="pages/onsen.html" class="btn btn-ghost">すべての温泉地を見る →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 月別おすすめ ===== -->
+<section class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">📅 MONTHLY</div>
+      <h2 class="section-title">時期から旅先を選ぶ</h2>
+      <p class="section-desc">梅雨・夏・紅葉・冬休み…季節ごとのベスト旅先を提案します。</p>
+    </div>
+    <div class="monthly-grid fade-in" id="monthly-grid"></div>
+  </div>
+</section>
+
+<!-- ===== 目的から探す ===== -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">🎯 PURPOSE</div>
+      <h2 class="section-title">目的・タイプから探す</h2>
+      <p class="section-desc">「記念日旅行」「一人旅」「歴史旅」「花の名所」など11種類の目的別に最適な旅先を提案。</p>
+    </div>
+    <div class="purpose-grid fade-in" id="purpose-grid"></div>
+  </div>
+</section>
+
+<!-- ===== 名産品・ご当地グルメ ===== -->
+<section class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">🍜 GOURMET</div>
+      <h2 class="section-title">名産品・ご当地グルメ</h2>
+      <p class="section-desc">北海道の海鮮から鹿児島の黒豚まで。旅行前に知っておきたい25品のご当地グルメを旅ノアが解説。</p>
+    </div>
+    <div id="gourmet-preview" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-bottom:28px"></div>
+    <div style="text-align:center">
+      <a href="pages/specialties.html" class="btn btn-primary">全25品を見る →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ノアとチャット（下部） ===== -->
+<section class="section chat-section" id="chat-section">
+  <div class="container">
+    <div class="chat-section-inner">
+      <div class="chat-intro fade-in">
+        <div class="section-label" style="color:var(--gold-light)">🗾 CHAT WITH NOA</div>
+        <h2 class="chat-intro-title"><em>旅ノア</em>に<br>相談してみよう</h2>
+        <p class="chat-intro-desc">「行き先が決まっていない」「予算とエリアだけ決まっている」…そんな時こそ旅ノアの出番。具体的な提案をお返しします。</p>
+        <div class="noa-char-frame-dark" style="margin:20px 0">
+          <img src="images/character/base/noa-main-black-gold.png"
+               alt="旅ノア"
+               style="width:180px;height:auto;display:block;filter:drop-shadow(0 6px 20px rgba(200,150,10,0.4))">
+        </div>
+        <div class="chat-example-list">
+          <div class="chat-example-item">「11月に関西で紅葉を見たい」</div>
+          <div class="chat-example-item">「草津と箱根、どっちが良い？」</div>
+          <div class="chat-example-item">「夫婦の結婚記念日旅行を考えたい」</div>
+          <div class="chat-example-item">「海鮮と温泉を両方楽しみたい」</div>
+        </div>
+      </div>
+      <div class="chat-widget fade-in">
+        <div class="chat-widget-header">
+          <div class="hero-chat-avatar" style="overflow:hidden;border-radius:50%">
+            <img src="images/character/base/noa-purple-kimono-wink.png" alt="旅ノア" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block">
+          </div>
+          <div class="hero-chat-info">
+            <div class="hero-chat-name">旅ノア</div>
+            <div class="hero-chat-status"><span class="online-dot"></span>相談受付中</div>
+          </div>
+        </div>
+        <div class="hero-chat-messages" id="chat2-messages" style="min-height:180px"></div>
+        <div class="hero-chat-input">
+          <div class="chat-input-row">
+            <input type="text" id="chat2-input" placeholder="旅の悩みを話しかけてみよう">
+            <button class="btn-send" id="chat2-send">送信</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 旅のおすすめグッズ ===== -->
+<section class="section section-alt goods-section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">🎒 TRAVEL GOODS</div>
+      <h2 class="section-title">旅が快適になるグッズ</h2>
+      <p class="section-desc">旅ノアが厳選。荷造りから現地まで、旅をグレードアップするアイテムを紹介します。</p>
+    </div>
+    <div class="goods-tabs fade-in">
+      <button class="goods-tab active" data-tab="basics">旅の必需品</button>
+      <button class="goods-tab" data-tab="summer">夏旅グッズ</button>
+      <button class="goods-tab" data-tab="winter">冬旅グッズ</button>
+      <button class="goods-tab" data-tab="hike">登山・散策</button>
+      <button class="goods-tab" data-tab="photo">旅カメラ</button>
+    </div>
+
+    <div class="goods-grid fade-in" id="goods-basics">
+      <div class="goods-card">
+        <div class="goods-icon">🧳</div>
+        <div class="goods-body">
+          <div class="goods-cat">荷物</div>
+          <div class="goods-name">軽量スーツケース（機内持ち込みサイズ）</div>
+          <p class="goods-desc">国内旅行の1〜2泊なら機内持ち込みサイズが最強。荷物受け取り不要でスムーズ。</p>
+          <div class="goods-point">✅ 移動時間が大幅に短縮</div>
+        </div>
+      </div>
+      <div class="goods-card">
+        <div class="goods-icon">🔌</div>
+        <div class="goods-body">
+          <div class="goods-cat">充電</div>
+          <div class="goods-name">モバイルバッテリー（20000mAh）</div>
+          <p class="goods-desc">スマホのナビ・写真撮影で電池を消耗する旅行では大容量が安心。</p>
+          <div class="goods-point">✅ 旅行中の電池切れゼロに</div>
+        </div>
+      </div>
+      <div class="goods-card">
+        <div class="goods-icon">👟</div>
+        <div class="goods-body">
+          <div class="goods-cat">靴</div>
+          <div class="goods-name">歩きやすいスニーカー</div>
+          <p class="goods-desc">旅行では1日1万歩以上歩くことも。クッション性の高いインソール付きが◎。</p>
+          <div class="goods-point">✅ 足の疲れが全然違う</div>
+        </div>
+      </div>
+      <div class="goods-card">
+        <div class="goods-icon">💊</div>
+        <div class="goods-body">
+          <div class="goods-cat">健康</div>
+          <div class="goods-name">常備薬・エマージェンシーセット</div>
+          <p class="goods-desc">胃薬・頭痛薬・絆創膏を小さいポーチにまとめて持ち歩くと安心。</p>
+          <div class="goods-point">✅ もしもの時の安心感</div>
+        </div>
+      </div>
+      <div class="goods-card">
+        <div class="goods-icon">🎒</div>
+        <div class="goods-body">
+          <div class="goods-cat">バッグ</div>
+          <div class="goods-name">折りたたみデイパック</div>
+          <p class="goods-desc">お土産が増えた時や現地散策に便利。軽量でコンパクトに収納できるものを。</p>
+          <div class="goods-point">✅ お土産袋代わりにも</div>
+        </div>
+      </div>
+      <div class="goods-card">
+        <div class="goods-icon">📱</div>
+        <div class="goods-body">
+          <div class="goods-cat">電子機器</div>
+          <div class="goods-name">ポータブルWi-Fiルーター</div>
+          <p class="goods-desc">グループ旅行や長期旅行に。複数台でシェアできてデータ無制限なら安心。</p>
+          <div class="goods-point">✅ グループ旅行の必需品</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="goods-grid fade-in hidden" id="goods-summer">
+      <div class="goods-card">
+        <div class="goods-icon">🌞</div>
+        <div class="goods-body">
+          <div class="goods-cat">日焼け対策</div>
+          <div class="goods-name">日焼け止め（SPF50+ PA++++）</div>
+          <p class="goods-desc">海・山・観光地での日差しはとにかく強い。塗り直し用のスティックタイプも便利。</p>
+          <div class="goods-point">✅ 旅行後の肌ケアが楽に</div>
+        </div>
+      </div>
+      <div class="goods-card">
+        <div class="goods-icon">🧴</div>
+        <div class="goods-body">
+          <div class="goods-cat">日焼け対策</div>
+          <div class="goods-name">UVカット帽子・ネックカバー</div>
+          <p class="goods-desc">帽子と合わせれば真夏の炎天下でも快適。UPF50+のUVカット素材がおすすめ。</p>
+          <div class="goods-point">✅ 頭皮・首の日焼け防止</div>
+        </div>
+      </div>
+      <div class="goods-card">
+        <div class="goods-icon">🏖️</div>
+        <div class="goods-body">
+          <div class="goods-cat">海・水辺</div>
+          <div class="goods-name">ウォーターシューズ</div>
+          <p class="goods-desc">沖縄・離島の岩場・シュノーケルに必須。マリンブーツとも呼ばれる。</p>
+          <div class="goods-point">✅ 岩場でのケガ予防に</div>
+        </div>
+      </div>
+      <div class="goods-card">
+        <div class="goods-icon">❄️</div>
+        <div class="goods-body">
+          <div class="goods-cat">暑さ対策</div>
+          <div class="goods-name">携帯扇風機・ネッククーラー</div>
+          <p class="goods-desc">夏の観光地は屋外で長時間歩くことも。USB充電式の首掛け扇風機が人気。</p>
+          <div class="goods-point">✅ 夏旅の新定番グッズ</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="goods-grid fade-in hidden" id="goods-winter">
+      <div class="goods-card">
+        <div class="goods-icon">🧥</div>
+        <div class="goods-body">
+          <div class="goods-cat">防寒</div>
+          <div class="goods-name">軽量ダウンジャケット</div>
+          <p class="goods-desc">コンパクトに収納できる軽量ダウンは冬旅の必需品。東北・北海道では必携。</p>
+          <div class="goods-point">✅ 重くならずに暖かく</div>
+        </div>
+      </div>
+      <div class="goods-card">
+        <div class="goods-icon">♨️</div>
+        <div class="goods-body">
+          <div class="goods-cat">温泉</div>
+          <div class="goods-name">温泉小物セット（桶・ゆかた・湯上がりタオル）</div>
+          <p class="goods-desc">温泉旅館では浴衣と大判タオルがあると快適。外湯めぐり用の手提げ桶も便利。</p>
+          <div class="goods-point">✅ 温泉旅の本格度アップ</div>
+        </div>
+      </div>
+      <div class="goods-card">
+        <div class="goods-icon">🧤</div>
+        <div class="goods-body">
+          <div class="goods-cat">防寒小物</div>
+          <div class="goods-name">防風手袋・ネックウォーマー</div>
+          <p class="goods-desc">北海道・東北・山岳地帯では素手・首元の防寒が重要。フリース素材がおすすめ。</p>
+          <div class="goods-point">✅ 指先・首の冷え対策に</div>
+        </div>
+      </div>
+      <div class="goods-card">
+        <div class="goods-icon">⛷️</div>
+        <div class="goods-body">
+          <div class="goods-cat">スキー</div>
+          <div class="goods-name">ゴーグル・ネックゲイター</div>
+          <p class="goods-desc">スキー・スノボには目と顔の防寒が必須。レンタルよりマイ装備で快適さが全然違う。</p>
+          <div class="goods-point">✅ スキー旅行の快適性アップ</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="goods-grid fade-in hidden" id="goods-hike">
+      <div class="goods-card">
+        <div class="goods-icon">🥾</div>
+        <div class="goods-body">
+          <div class="goods-cat">登山靴</div>
+          <div class="goods-name">ローカット・ミドルカットトレッキングシューズ</div>
+          <p class="goods-desc">日帰り登山・森林ウォークにはローカット、本格的な山道にはミドルカットが安全。</p>
+          <div class="goods-point">✅ 足首の保護と安定感</div>
+        </div>
+      </div>
+      <div class="goods-card">
+        <div class="goods-icon">🗺️</div>
+        <div class="goods-body">
+          <div class="goods-cat">ナビ</div>
+          <div class="goods-name">登山用GPSアプリ（YAMAP・ヤマレコ）</div>
+          <p class="goods-desc">山では電波が届かない場所も多い。オフライン対応の登山地図アプリが必須。</p>
+          <div class="goods-point">✅ 遭難リスクを大幅低減</div>
+        </div>
+      </div>
+      <div class="goods-card">
+        <div class="goods-icon">🎽</div>
+        <div class="goods-body">
+          <div class="goods-cat">ウェア</div>
+          <div class="goods-name">速乾性ウェア（レイヤリング対応）</div>
+          <p class="goods-desc">山は気温変化が大きい。速乾インナー＋フリース＋レインウェアの3層が基本。</p>
+          <div class="goods-point">✅ 汗冷えを防いで快適に</div>
+        </div>
+      </div>
+      <div class="goods-card">
+        <div class="goods-icon">💧</div>
+        <div class="goods-body">
+          <div class="goods-cat">水・補給</div>
+          <div class="goods-name">ハイドレーションパック（水分補給バッグ）</div>
+          <p class="goods-desc">ザックに取り付けるチューブ付き水袋。歩きながら水分補給できて便利。</p>
+          <div class="goods-point">✅ こまめな水分補給を実現</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="goods-grid fade-in hidden" id="goods-photo">
+      <div class="goods-card">
+        <div class="goods-icon">📸</div>
+        <div class="goods-body">
+          <div class="goods-cat">カメラ</div>
+          <div class="goods-name">ミラーレス一眼カメラ（ソニー・富士フイルム等）</div>
+          <p class="goods-desc">スマホより段違いの写真クオリティ。旅の思い出を美しく残したいなら投資する価値あり。</p>
+          <div class="goods-point">✅ 旅写真が一生の宝に</div>
+        </div>
+      </div>
+      <div class="goods-card">
+        <div class="goods-icon">🔭</div>
+        <div class="goods-body">
+          <div class="goods-cat">レンズ</div>
+          <div class="goods-name">広角レンズ（16〜35mm）</div>
+          <p class="goods-desc">風景・建築物・集合写真に最適。旅行には広角1本あれば大体カバーできる。</p>
+          <div class="goods-point">✅ 広大な景色を1枚に収める</div>
+        </div>
+      </div>
+      <div class="goods-card">
+        <div class="goods-icon">🤳</div>
+        <div class="goods-body">
+          <div class="goods-cat">撮影補助</div>
+          <div class="goods-name">軽量三脚・ミニ三脚</div>
+          <p class="goods-desc">夜景・星空・自撮りに必須。卓上サイズの小型三脚ならカバンに入れて持ち運べる。</p>
+          <div class="goods-point">✅ 夜景撮影のクオリティが激変</div>
+        </div>
+      </div>
+      <div class="goods-card">
+        <div class="goods-icon">🎥</div>
+        <div class="goods-body">
+          <div class="goods-cat">動画</div>
+          <div class="goods-name">アクションカメラ（GoPro等）</div>
+          <p class="goods-desc">海・山・スキーなどアクティブな旅に。防水・広角・手ぶれ補正が揃う小型カメラ。</p>
+          <div class="goods-point">✅ 動く瞬間を鮮明に記録</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="goods-disclaimer">※当サイトはアフィリエイト広告を含みます。各商品の最新価格・在庫はリンク先でご確認ください。</p>
+  </div>
+</section>
+
+<!-- ===== 予約サイト ===== -->
+<section class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">🏨 BOOKING</div>
+      <h2 class="section-title">予約サイトの選び方</h2>
+      <p class="section-desc">楽天・一休・じゃらん・JTB・Relux。旅行タイプ別にどれを使うべきか解説します。</p>
+    </div>
+    <div class="booking-grid fade-in" id="booking-grid"></div>
+    <div class="text-center" style="margin-top:28px">
+      <a href="pages/booking.html" class="btn btn-ghost">詳細な比較・選び方ガイドを見る →</a>
+    </div>
+  </div>
+</section>
+
+<!-- トップへ戻るボタン -->
+<button class="back-to-top" id="back-to-top" aria-label="ページトップへ戻る">↑</button>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a href="index.html" class="site-logo">
+          <div class="logo-icon-wrap" style="width:34px;height:34px">
+            <svg viewBox="0 0 24 24" fill="none" style="width:18px;height:18px">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#0c1b35"/>
+            </svg>
+          </div>
+          <div class="logo-text-wrap">
+            <span class="logo-name" style="font-size:0.95rem">旅する日本図鑑</span>
+          </div>
+        </a>
+        <p class="footer-brand-desc">「どこへ行こう？」に答える、提案型の国内旅行ガイド。旅ノアが季節・予算・目的に合わせた旅先を提案します。</p>
+      </div>
+      <div class="footer-col">
+        <h4>旅先を探す</h4>
+        <ul>
+          <li><a href="pages/prefectures.html">都道府県から探す</a></li>
+          <li><a href="pages/onsen.html">温泉地一覧</a></li>
+          <li><a href="pages/monthly.html">月別おすすめ</a></li>
+          <li><a href="pages/purpose.html">目的から探す</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>旅の準備</h4>
+        <ul>
+          <li><a href="pages/booking.html">予約サイト比較</a></li>
+          <li><a href="pages/specialties.html">名産品・グルメ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>人気ページ</h4>
+        <ul>
+          <li><a href="templates/prefecture.html?id=kyoto">京都旅行ガイド</a></li>
+          <li><a href="templates/onsen.html?id=kusatsu">草津温泉とは</a></li>
+          <li><a href="templates/onsen.html?id=nyuto">乳頭温泉郷とは</a></li>
+          <li><a href="templates/onsen.html?id=kurokawa">黒川温泉とは</a></li>
+          <li><a href="templates/monthly-detail.html?month=4">4月（花見）の旅行先</a></li>
+          <li><a href="templates/monthly-detail.html?month=10">10月（紅葉）の旅行先</a></li>
+          <li><a href="pages/purpose.html?id=outdoor">登山・アウトドア旅行</a></li>
+          <li><a href="pages/purpose.html?id=history">歴史・文化旅行</a></li>
+          <li><a href="pages/purpose.html?id=flowers">花の名所めぐり</a></li>
+          <li><a href="pages/specialties.html">名産品・グルメ25品</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 旅する日本図鑑</span>
+      <span>本サイトはアフィリエイト広告を含む場合があります</span>
+    </div>
+  </div>
+</footer>
+
+<script src="data/prefectures.js"></script>
+<script src="data/onsens.js"></script>
+<script src="data/monthly.js"></script>
+<script src="data/purposes.js"></script>
+<script src="data/booking.js"></script>
+<script src="data/specialties.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<script src="data/japan-geo.js"></script>
+<script src="js/chat.js"></script>
+<script src="js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  // ===== フルヒーロースライダー =====
+  (function initFullHero() {
+    const slides   = Array.from(document.querySelectorAll('.fh-slide'));
+    const dotsWrap = document.getElementById('fh-dots');
+    const placeEl  = document.getElementById('fh-place-name');
+    const header   = document.querySelector('.site-header');
+    const fhBg     = document.getElementById('fh-bg');
+    if (!slides.length) return;
+
+    const reduced  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const INTERVAL = 6000;
+    const KB_ANIMS = ['fhkb-in', 'fhkb-pan-r', 'fhkb-pan-l', 'fhkb-slow'];
+    let   current  = 0;
+    let   timer    = null;
+
+    // ドット生成
+    if (dotsWrap) {
+      slides.forEach((slide, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'fh-dot' + (i === 0 ? ' is-active' : '');
+        btn.setAttribute('aria-label', slide.dataset.place || `スライド ${i + 1}`);
+        btn.setAttribute('role', 'tab');
+        btn.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+        btn.addEventListener('click', () => { goTo(i); resetTimer(); });
+        dotsWrap.appendChild(btn);
+      });
+    }
+
+    function goTo(n) {
+      slides[current].classList.remove('is-active');
+      if (dotsWrap) {
+        dotsWrap.children[current].classList.remove('is-active');
+        dotsWrap.children[current].setAttribute('aria-selected', 'false');
+      }
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('is-active');
+      if (dotsWrap) {
+        dotsWrap.children[current].classList.add('is-active');
+        dotsWrap.children[current].setAttribute('aria-selected', 'true');
+      }
+      if (placeEl) placeEl.textContent = slides[current].dataset.place || '';
+      // Ken Burns アニメリセット
+      if (!reduced) {
+        const img = slides[current].querySelector('img');
+        if (img) {
+          const anim = KB_ANIMS[current % KB_ANIMS.length];
+          img.style.animation = 'none';
+          void img.offsetWidth;
+          img.style.animation = `${anim} 10s ease-in-out forwards`;
+        }
+      }
+    }
+
+    function resetTimer() {
+      clearTimeout(timer);
+      if (reduced) return;
+      timer = setTimeout(function loop() {
+        goTo(current + 1);
+        timer = setTimeout(loop, INTERVAL);
+      }, INTERVAL);
+    }
+
+    resetTimer();
+
+    // ヘッダー透明→不透明
+    if (header) {
+      const heroEl = document.getElementById('top');
+      function onScroll() {
+        const threshold = heroEl ? heroEl.offsetHeight * 0.12 : 80;
+        header.classList.toggle('is-scrolled', window.scrollY > threshold);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+
+    // デスクトップのみパララックス
+    if (fhBg && !reduced) {
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (ticking) return;
+        requestAnimationFrame(() => {
+          if (window.innerWidth >= 1024) {
+            fhBg.style.transform = `translateY(${window.scrollY * 0.28}px)`;
+          } else {
+            fhBg.style.transform = '';
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }, { passive: true });
+    }
+  })();
+
+  // 温泉グリッド
+  const onsenGrid = document.getElementById('onsen-grid');
+  if (onsenGrid && window.ONSENS_DATA) {
+    const ONSEN_IMGS = {
+      noboribetsu: 'images/japan/hokkaido/hokkaido-noboribetsu-jigokudani-01.jpg',
+      kusatsu:     'images/japan/gunma/gunma-kusatsu-yunohata-01.jpg',
+      hakone:      'images/japan/kanagawa/kanagawa-hakone-yumoto-01.jpg',
+      atami:       'images/japan/shizuoka/shizuoka-atami-onsen-01.jpg',
+      arima:       'images/japan/hyogo/hyogo-arima-kinsenkawa-01.jpg',
+      kinosaki:    'images/japan/hyogo/hyogo-kinosaki-01.jpg',
+      shirahama:   'images/japan/wakayama/wakayama-shirahama-beach-01.jpg',
+      dogo:        'images/japan/ehime/ehime-dogo-honkan-01.jpg',
+    };
+    onsenGrid.innerHTML = Object.values(ONSENS_DATA).slice(0, 8).map(o => {
+      const img = ONSEN_IMGS[o.id];
+      return `<div class="onsen-card" data-id="${o.id}">
+        ${img
+          ? `<div class="onsen-thumb" style="padding:0;display:block"><img src="${img}" alt="${o.name}温泉の風景" style="width:100%;height:110px;object-fit:cover;display:block" loading="lazy"></div>`
+          : `<div class="onsen-thumb" style="background:linear-gradient(135deg,${o.color||'#0c1b35'}22,${o.color||'#0c1b35'}44)">${o.emoji}</div>`
+        }
+        <div class="onsen-body">
+          <div class="onsen-name">${o.name}</div>
+          <div class="onsen-pref">${o.prefecture}</div>
+          <div class="onsen-why">${o.tagline}</div>
+          <div class="onsen-suits">${(o.suits?.perfect||[]).slice(0,3).map(s=>`<span class="suit-tag">${s}</span>`).join('')}</div>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  // 月グリッド
+  const monthGrid = document.getElementById('monthly-grid');
+  if (monthGrid) {
+    const nowMonth = new Date().getMonth() + 1;
+    const mn = ['','1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+    const MONTH_IMGS = [null,
+      'images/japan/hokkaido/hokkaido-noboribetsu-01.jpg',        // 1月・冬の温泉
+      'images/japan/yamagata/yamagata-zao-02.jpg',                // 2月・樹氷
+      'images/japan/ibaraki/ibaraki-kairakuen-02.jpg',            // 3月・梅
+      'images/japan/aomori/aomori-hirosaki-02.jpg',               // 4月・桜
+      'images/japan/nagano/nagano-kamikochi-01.jpg',              // 5月・新緑
+      'images/japan/ibaraki/ibaraki-nemophila-02.jpg',            // 6月・花
+      'images/japan/hokkaido/hokkaido-biei-flower-field-01.jpg',  // 7月・ラベンダー
+      'images/japan/okinawa/okinawa-sea-coast-02.jpg',            // 8月・海
+      'images/japan/miyagi/miyagi-matsushima-01.jpg',             // 9月・松島
+      'images/japan/kyoto/kyoto-arashiyama-01.jpg',               // 10月・紅葉
+      'images/japan/kyoto/kyoto-kinkakuji-01.jpg',                // 11月・秋の古都
+      'images/japan/tokyo/tokyo-shibuya-night-04.jpg',            // 12月・夜景
+    ];
+    monthGrid.innerHTML = Array.from({length:12},(_,i)=>{
+      const m = i+1;
+      const data = window.MONTHLY_DATA && MONTHLY_DATA[m];
+      const isCur = m === nowMonth;
+      const img = MONTH_IMGS[m];
+      return `<div class="month-card${data?' has-data':''}${isCur?' current-month':''}" data-month="${m}" style="padding:0;overflow:hidden;${img?'background:none;border-color:transparent':''}">
+        ${img ? `<div style="position:relative">
+          <img src="${img}" alt="${mn[m]}" style="width:100%;height:90px;object-fit:cover;display:block" loading="lazy">
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(12,27,53,0.2),rgba(12,27,53,0.6))"></div>
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+            <div class="month-num" style="color:white;text-shadow:0 2px 4px rgba(0,0,0,0.5)">${m}</div>
+            <div class="month-name-ja" style="color:rgba(255,255,255,0.9)">${mn[m]}</div>
+          </div>
+          ${isCur ? '<div class="current-badge">今月</div>' : ''}
+        </div>
+        <div style="padding:8px 12px;text-align:center">
+          ${data?`<div class="month-theme">${data.theme||''}</div><div class="month-picks-count">▶ おすすめ${data.picks?.length||0}選</div>`:''}
+        </div>`
+        : `<div style="padding:20px 16px;text-align:center">
+          ${isCur ? '<div class="current-badge">今月</div>' : ''}
+          <div class="month-num">${m}</div>
+          <div class="month-name-ja">${mn[m]}</div>
+          ${data?`<div class="month-theme">${data.theme||''}</div><div class="month-picks-count">▶ おすすめ${data.picks?.length||0}選</div>`:''}
+        </div>`}
+      </div>`;
+    }).join('');
+  }
+
+  // 目的グリッド
+  const purposeGrid = document.getElementById('purpose-grid');
+  if (purposeGrid && window.PURPOSES_DATA) {
+    const PURPOSE_CARD_IMGS = {
+      anniversary: 'images/character/scene/noa-scene-ryokan-dinner.png',
+      onsen:       'images/character/scene/noa-scene-onsen-winter.png',
+      gourmet:     'images/character/scene/noa-scene-ryokan-dinner.png',
+      family:      'images/character/scene/noa-scene-hanami.png',
+      couple:      'images/character/scene/noa-scene-nightview.png',
+      solo:        'images/character/scene/noa-scene-shrine-pray.png',
+      rain:        'images/character/scene/noa-scene-temple-pray.png',
+      outdoor:     'images/character/scene/noa-scene-fuji-hike.png',
+      scenery:     'images/character/scene/noa-scene-fuji-hike.png',
+      history:     'images/character/scene/noa-scene-shrine-welcome.png',
+      flowers:     'images/character/scene/noa-scene-hanami.png',
+    };
+    purposeGrid.innerHTML = PURPOSES_DATA.map(p => {
+      const img = PURPOSE_CARD_IMGS[p.id];
+      return `<div class="purpose-card" data-id="${p.id}" style="padding:0;overflow:hidden">
+        ${img ? `<div style="height:110px;overflow:hidden;border-radius:var(--radius-lg) var(--radius-lg) 0 0"><img src="${img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block" loading="lazy"></div>` : ''}
+        <div style="padding:16px 14px 18px">
+          <div class="purpose-emoji" style="font-size:1.5rem;margin-bottom:6px">${p.emoji}</div>
+          <div class="purpose-name">${p.name}</div>
+          <div class="purpose-desc">${p.desc}</div>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  // グルメプレビュー（6件表示）
+  const gourmetPreview = document.getElementById('gourmet-preview');
+  if (gourmetPreview && window.SPECIALTIES_DATA) {
+    const GOURMET_PREF_IMGS = {
+      hokkaido:  'images/japan/hokkaido/hokkaido-shiretoko-01.jpg',
+      kyoto:     'images/japan/kyoto/kyoto-kinkakuji-01.jpg',
+      osaka:     'images/japan/osaka/osaka-dotonbori-01.jpg',
+      hyogo:     'images/japan/hyogo/hyogo-kobe-port-02.jpg',
+      hiroshima: 'images/japan/hiroshima/hiroshima-miyajima-torii-01.jpg',
+      oita:      'images/japan/oita/oita-beppu-01.jpg',
+      okinawa:   'images/japan/okinawa/okinawa-sea-coast-02.jpg',
+      kagawa:    'images/japan/kagawa/kagawa-ritsurin-01.jpg',
+      fukuoka:   'images/japan/fukuoka/fukuoka-city-01.jpg',
+      miyagi:    'images/japan/miyagi/miyagi-matsushima-01.jpg',
+      nagasaki:  'images/japan/nagasaki/nagasaki-harbor-01.jpg',
+      ishikawa:  'images/japan/ishikawa/ishikawa-kanazawa-01.jpg',
+    };
+    const featured = SPECIALTIES_DATA.slice(0, 6);
+    gourmetPreview.innerHTML = featured.map(s => {
+      const img = GOURMET_PREF_IMGS[s.prefId];
+      return `<a href="pages/specialties.html" style="text-decoration:none">
+        <div class="content-block fade-in" style="margin:0;padding:0;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:transform 0.2s">
+          ${img
+            ? `<div style="height:130px;overflow:hidden;position:relative">
+                <img src="${img}" alt="${s.prefecture}" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy">
+                <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(12,27,53,0.75),rgba(12,27,53,0.1))"></div>
+                <div style="position:absolute;bottom:10px;left:12px;display:flex;align-items:center;gap:8px">
+                  <span style="font-size:1.6rem;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.5))">${s.emoji}</span>
+                  <div>
+                    <div style="font-size:0.62rem;color:rgba(255,255,255,0.7)">${s.prefecture}</div>
+                    <div style="font-size:0.92rem;font-weight:800;color:white;text-shadow:0 1px 3px rgba(0,0,0,0.4)">${s.name}</div>
+                  </div>
+                </div>
+              </div>`
+            : `<div style="background:linear-gradient(135deg,var(--navy),#1a3060);padding:14px 16px 12px;color:white">
+                <div style="display:flex;align-items:center;gap:8px">
+                  <span style="font-size:1.4rem">${s.emoji}</span>
+                  <div>
+                    <div style="font-size:0.68rem;color:rgba(255,255,255,0.5)">${s.prefecture}</div>
+                    <div style="font-size:0.9rem;font-weight:800">${s.name}</div>
+                  </div>
+                </div>
+              </div>`
+          }
+          <div style="padding:10px 14px;font-size:0.78rem;color:var(--text-light);line-height:1.6">${s.tagline}</div>
+        </div>
+      </a>`;
+    }).join('');
+  }
+
+  // 予約グリッド
+  const bookingGrid = document.getElementById('booking-grid');
+  if (bookingGrid && window.BOOKING_DATA) {
+    bookingGrid.innerHTML = BOOKING_DATA.map(b=>`
+      <div class="booking-card">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+          <div class="booking-logo">${b.logo}</div>
+          <div>
+            <div class="booking-name">${b.name}</div>
+            <div class="booking-tagline">${b.tagline}</div>
+          </div>
+        </div>
+        <div class="booking-bestfor">${(b.bestFor||[]).slice(0,3).map(t=>`<span class="bestfor-tag">${t}</span>`).join('')}</div>
+        ${(b.features||[]).slice(0,3).map(f=>`<div class="booking-feature">${f}</div>`).join('')}
+        <a href="${b.url}" target="_blank" rel="noopener noreferrer" class="booking-cta-btn">
+          ${b.name}で宿を探す <span style="font-size:0.9em">→</span>
+        </a>
+      </div>`).join('');
+  }
+
+  // 2つ目チャット
+  if (window.NoaChat) {
+    NoaChat.init({
+      messagesEl: document.getElementById('chat2-messages'),
+      inputEl: document.getElementById('chat2-input'),
+      sendBtnEl: document.getElementById('chat2-send'),
+      rootPath: '',
+      initialMessages: [
+        { role: 'noa', text: '旅ノアです！なんでも聞いてください😊\n\n「草津vs箱根どっちがいい？」「子連れで行けるおすすめは？」など、旅の悩みを気軽に相談してみて！' }
+      ],
+    });
+  }
+
+  // トップへ戻るボタン
+  const backTop = document.getElementById('back-to-top');
+  if (backTop) {
+    window.addEventListener('scroll', () => {
+      backTop.classList.toggle('visible', window.scrollY > 400);
+    });
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+});
+</script>
+</body>
+</html>

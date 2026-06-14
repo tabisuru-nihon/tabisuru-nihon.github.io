@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>目的から旅先を探す | 旅する日本図鑑</title>
+  <meta name="description" content="記念日・温泉・グルメ・家族旅行・一人旅・カップル旅行など旅の目的から旅先を探せます。旅ノアがあなたにぴったりの場所を提案。">
+  <meta property="og:title" content="目的から旅先を探す | 旅する日本図鑑">
+  <meta property="og:description" content="記念日・温泉・グルメ・家族旅行・一人旅など旅の目的から旅先を探せます。旅ノアがぴったりの場所を提案。">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../index.html" class="site-logo">
+        <div class="logo-icon-wrap"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#0c1b35"/></svg></div>
+        <div class="logo-text-wrap"><span class="logo-name">旅する日本図鑑</span></div>
+      </a>
+      <nav class="header-nav">
+        <a href="prefectures.html" class="nav-link">都道府県</a>
+        <a href="onsen.html" class="nav-link">温泉地</a>
+        <a href="monthly.html" class="nav-link">月別</a>
+        <a href="purpose.html" class="nav-link" style="color:white">目的</a>
+        <a href="specialties.html" class="nav-link">グルメ</a>
+        <a href="booking.html" class="nav-link nav-cta">予約</a>
+      </nav>
+      <button class="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div style="display:flex;align-items:flex-end;gap:24px;flex-wrap:wrap">
+      <div style="flex:1;min-width:200px">
+        <div class="breadcrumb" style="margin-bottom:16px">
+          <a href="../index.html" style="color:rgba(255,255,255,0.6)">TOP</a>
+          <span class="breadcrumb-sep" style="color:rgba(255,255,255,0.3)">›</span>
+          <span id="breadcrumb-current" style="color:white">目的から探す</span>
+        </div>
+        <h1 class="page-hero-title" id="page-title">🎯 目的・タイプから旅先を探す</h1>
+        <p class="page-hero-desc" id="page-desc">旅の目的に合わせて最適な場所を提案します。</p>
+      </div>
+      <div style="flex-shrink:0" id="purpose-hero-img-wrap">
+        <img src="../images/character/base/noa-white-navy-smile.png" alt="旅ノア"
+             style="width:min(160px,30vw);height:auto;display:block;filter:drop-shadow(0 6px 20px rgba(0,0,0,0.3))">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 一覧モード -->
+<div id="list-mode" style="padding:56px 0">
+  <div class="container">
+
+    <!-- ノアのメッセージ -->
+    <div style="background:linear-gradient(135deg,#f0f6ff,#e8f4e8);border:2px solid #aad4ff;border-radius:var(--radius-lg);padding:24px;margin-bottom:36px;display:flex;gap:16px;align-items:flex-start">
+      <div style="flex-shrink:0;background:radial-gradient(ellipse 90% 70% at 50% 90%,rgba(200,150,10,0.18) 0%,transparent 75%);border-radius:var(--radius);padding:6px 4px 0">
+        <img src="../images/character/base/noa-white-navy-smile.png"
+             alt="旅ノア"
+             style="width:72px;height:auto;display:block;filter:drop-shadow(0 3px 10px rgba(12,27,53,0.2))">
+      </div>
+      <div>
+        <div style="font-size:0.82rem;font-weight:700;color:var(--navy);margin-bottom:6px">旅ノアより</div>
+        <p style="font-size:0.88rem;color:var(--navy);line-height:1.75">
+          旅の「目的」が決まれば、行き先はおのずと絞れます。<br>
+          記念日・家族旅行・一人旅など、あなたの旅のスタイルに合ったページを選んでみてください。チャットでも相談できますよ。
+        </p>
+      </div>
+    </div>
+
+    <div class="purpose-grid" id="purpose-grid"></div>
+  </div>
+</div>
+
+<!-- 詳細モード -->
+<div id="detail-mode" style="display:none;padding:56px 0">
+  <div class="container">
+    <div class="pref-body-grid">
+      <div class="pref-main">
+
+        <div class="content-block fade-in">
+          <h2 class="block-title"><div class="block-icon icon-blue">✍️</div>こんな旅行に向いています</h2>
+          <p id="purpose-intro" style="font-size:0.92rem;line-height:1.8;color:var(--text-light)"></p>
+        </div>
+
+        <div class="content-block fade-in">
+          <h2 class="block-title"><div class="block-icon icon-orange">📍</div>おすすめの旅先</h2>
+          <div class="purpose-detail-grid" id="purpose-picks"></div>
+        </div>
+
+        <div class="content-block fade-in">
+          <h2 class="block-title"><div class="block-icon icon-green">💡</div>旅のアドバイス</h2>
+          <p id="purpose-advice" style="font-size:0.9rem;line-height:1.8;color:var(--text-light)"></p>
+        </div>
+
+      </div>
+
+      <aside class="pref-sidebar">
+        <div class="sidebar-card noa-sidebar">
+          <h3>🗾 旅ノアより</h3>
+          <div class="noa-char-frame">
+            <img src="../images/character/base/noa-white-navy-smile.png"
+                 alt="旅ノア"
+                 class="noa-sidebar-img" style="margin:0">
+          </div>
+          <p id="purpose-booking" style="font-size:0.82rem;color:var(--navy);line-height:1.7;text-align:center"></p>
+        </div>
+        <div class="sidebar-card">
+          <h3>🎯 他の目的を見る</h3>
+          <div id="other-purposes" style="display:flex;flex-direction:column;gap:6px"></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<button class="back-to-top" id="back-to-top" aria-label="ページトップへ戻る">↑</button>
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-wrap:wrap;gap:16px;padding:20px 0 10px;border-bottom:1px solid rgba(255,255,255,0.08)">
+      <a href="../pages/prefectures.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">都道府県</a>
+      <a href="../pages/onsen.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">温泉地</a>
+      <a href="../pages/monthly.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">月別</a>
+      <a href="../pages/purpose.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">目的</a>
+      <a href="../pages/specialties.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">名産品・グルメ</a>
+      <a href="../pages/booking.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">予約</a>
+    </div>
+    <div class="footer-bottom" style="padding:24px 0">
+      <a href="../index.html" style="color:rgba(255,255,255,0.5)">← トップへ戻る</a>
+      <span style="color:rgba(255,255,255,0.3)">© 2026 旅する日本図鑑</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../data/purposes.js"></script>
+<script src="../js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const backTop = document.getElementById('back-to-top');
+  if (backTop) {
+    window.addEventListener('scroll', () => { backTop.classList.toggle('visible', window.scrollY > 400); });
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+  if (!window.PURPOSES_DATA) return;
+
+  const id = new URLSearchParams(location.search).get('id');
+
+  if (id) {
+    // 詳細モード
+    const d = PURPOSES_DATA.find(p => p.id === id);
+    if (d) {
+      document.getElementById('list-mode').style.display = 'none';
+      document.getElementById('detail-mode').style.display = '';
+      document.title = `${d.name} 旅行おすすめ | 旅する日本図鑑`;
+      document.getElementById('page-title').textContent = `${d.emoji} ${d.name}`;
+      document.getElementById('page-desc').textContent = d.desc;
+      document.getElementById('breadcrumb-current').textContent = d.name;
+
+      // 目的別サイドバー画像（base画像）
+      const PURPOSE_SIDEBAR_IMGS = {
+        anniversary: '../images/character/base/noa-black-kimono-rose.png',
+        onsen:       '../images/character/base/noa-snow-kimono-updo.png',
+        gourmet:     '../images/character/base/noa-black-kimono-laugh.png',
+        family:      '../images/character/base/noa-hakama-smile.png',
+        couple:      '../images/character/base/noa-purple-kimono-wink.png',
+        solo:        '../images/character/base/noa-navy-kimono-shy.png',
+        rain:        '../images/character/base/noa-white-kimono-think.png',
+        outdoor:     '../images/character/base/noa-white-kimono-excited.png',
+        scenery:     '../images/character/base/noa-purple-kimono-wave.png',
+        history:     '../images/character/base/noa-hakama-smile.png',
+        flowers:     '../images/character/base/noa-white-navy-smile.png',
+      };
+      const sidebarImg = document.querySelector('.noa-sidebar .noa-sidebar-img');
+      const sidebarSrc = PURPOSE_SIDEBAR_IMGS[id];
+      if (sidebarImg && sidebarSrc) sidebarImg.src = sidebarSrc;
+
+      // 目的別ヒーロー画像
+      const PURPOSE_IMGS = {
+        anniversary: '../images/character/scene/noa-scene-ryokan-dinner.png',
+        onsen:       '../images/character/scene/noa-scene-onsen-winter.png',
+        gourmet:     '../images/character/scene/noa-scene-ryokan-dinner.png',
+        family:      '../images/character/scene/noa-scene-hanami.png',
+        couple:      '../images/character/scene/noa-scene-nightview.png',
+        solo:        '../images/character/scene/noa-scene-shrine-pray.png',
+        rain:        '../images/character/scene/noa-scene-temple-pray.png',
+        outdoor:     '../images/character/scene/noa-scene-fuji-hike.png',
+        scenery:     '../images/character/scene/noa-scene-fuji-hike.png',
+        history:     '../images/character/scene/noa-scene-shrine-welcome.png',
+        flowers:     '../images/character/scene/noa-scene-hanami.png',
+      };
+      const heroImgWrap = document.getElementById('purpose-hero-img-wrap');
+      if (heroImgWrap) {
+        const heroImg = heroImgWrap.querySelector('img');
+        const src = PURPOSE_IMGS[id];
+        if (src && heroImg) {
+          heroImg.src = src;
+          heroImg.style.borderRadius = '12px';
+          heroImg.style.boxShadow = '0 8px 28px rgba(0,0,0,0.3)';
+          heroImg.style.filter = '';
+        }
+      }
+      document.getElementById('purpose-intro').textContent = d.intro || '';
+      document.getElementById('purpose-advice').textContent = d.advice || '';
+      document.getElementById('purpose-booking').textContent = d.booking || '';
+
+      const picksEl = document.getElementById('purpose-picks');
+      if (d.picks) {
+        picksEl.innerHTML = d.picks.map(p => `
+          <div class="purpose-pick-card">
+            <div style="font-size:0.9rem;font-weight:800;color:var(--navy);margin-bottom:4px">${p.name}</div>
+            <div class="pick-stars">${typeof p.stars === 'number' ? '★'.repeat(p.stars)+'☆'.repeat(5-p.stars) : (p.stars || '★★★★★')}</div>
+            <div style="font-size:0.8rem;color:var(--text-light);margin-top:6px;line-height:1.6">${p.reason||''}</div>
+          </div>`).join('');
+      }
+
+      const othersEl = document.getElementById('other-purposes');
+      othersEl.innerHTML = PURPOSES_DATA.filter(p => p.id !== id).map(p => `
+        <a href="purpose.html?id=${p.id}" style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;background:var(--section-alt);color:var(--navy);font-size:0.82rem">
+          <span>${p.emoji}</span><span>${p.name}</span>
+        </a>`).join('');
+    }
+  } else {
+    // 一覧モード
+    const PURPOSE_CARD_IMGS = {
+      anniversary: '../images/character/scene/noa-scene-ryokan-dinner.png',
+      onsen:       '../images/character/scene/noa-scene-onsen-winter.png',
+      gourmet:     '../images/character/scene/noa-scene-ryokan-dinner.png',
+      family:      '../images/character/scene/noa-scene-hanami.png',
+      couple:      '../images/character/scene/noa-scene-nightview.png',
+      solo:        '../images/character/scene/noa-scene-shrine-pray.png',
+      rain:        '../images/character/scene/noa-scene-temple-pray.png',
+      outdoor:     '../images/character/scene/noa-scene-fuji-hike.png',
+      scenery:     '../images/character/scene/noa-scene-fuji-hike.png',
+      history:     '../images/character/scene/noa-scene-shrine-welcome.png',
+      flowers:     '../images/character/scene/noa-scene-hanami.png',
+    };
+    const grid = document.getElementById('purpose-grid');
+    grid.innerHTML = PURPOSES_DATA.map(p => {
+      const img = PURPOSE_CARD_IMGS[p.id];
+      return `<div class="purpose-card" onclick="location.href='purpose.html?id=${p.id}'" style="cursor:pointer;padding:0;overflow:hidden">
+        ${img ? `<div style="height:110px;overflow:hidden;border-radius:var(--radius-lg) var(--radius-lg) 0 0"><img src="${img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block" loading="lazy"></div>` : ''}
+        <div style="padding:16px 14px 18px">
+          <div class="purpose-emoji" style="font-size:1.5rem;margin-bottom:6px">${p.emoji}</div>
+          <div class="purpose-name">${p.name}</div>
+          <div class="purpose-desc">${p.desc}</div>
+        </div>
+      </div>`;
+    }).join('');
+  }
+});
+</script>
+</body>
+</html>

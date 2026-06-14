@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>月別旅行おすすめ | 旅する日本図鑑</title>
+  <meta name="description" content="その月ならではの旅先・お出かけスポットを旅ノアが詳しく解説。天気・おすすめ場所・旅のアドバイスを掲載。">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../index.html" class="site-logo">
+        <div class="logo-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#0c1b35"/></svg>
+        </div>
+        <div class="logo-text-wrap"><span class="logo-name">旅する日本図鑑</span></div>
+      </a>
+      <nav class="header-nav">
+        <a href="../pages/prefectures.html" class="nav-link">都道府県</a>
+        <a href="../pages/onsen.html" class="nav-link">温泉地</a>
+        <a href="../pages/monthly.html" class="nav-link">月別</a>
+        <a href="../pages/purpose.html" class="nav-link">目的</a>
+        <a href="../pages/specialties.html" class="nav-link">グルメ</a>
+        <a href="../pages/booking.html" class="nav-link nav-cta">予約</a>
+      </nav>
+      <button class="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero" style="background:linear-gradient(135deg,#0c1b35,#1a3060)">
+  <div class="container">
+    <div style="display:flex;align-items:flex-end;gap:28px;flex-wrap:wrap">
+      <div style="flex:1;min-width:200px">
+        <div class="pref-breadcrumb">
+          <a href="../index.html">TOP</a>
+          <span class="pref-breadcrumb-sep">›</span>
+          <a href="../pages/monthly.html">月別おすすめ</a>
+          <span class="pref-breadcrumb-sep">›</span>
+          <span id="month-num">—月</span>
+        </div>
+        <h1 class="page-hero-title" id="month-heading">—月の旅行おすすめ</h1>
+        <p class="page-hero-desc" id="month-theme"></p>
+      </div>
+      <div id="month-hero-img-wrap" style="flex-shrink:0;display:none">
+        <img id="month-hero-img" src="" alt="旅ノア"
+             style="width:min(180px,36vw);height:auto;display:block;border-radius:var(--radius-lg);box-shadow:0 12px 40px rgba(0,0,0,0.4)">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="padding:56px 0">
+  <div class="container">
+    <div class="pref-body-grid">
+
+      <div class="pref-main">
+
+        <!-- 天候・概況 -->
+        <div class="content-block fade-in">
+          <h2 class="block-title"><div class="block-icon icon-blue">🌤️</div>この時期の特徴</h2>
+          <p id="month-weather" style="font-size:0.92rem;line-height:1.8;color:var(--text-light);margin-bottom:18px"></p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div>
+              <div style="font-size:0.8rem;font-weight:700;color:var(--teal);margin-bottom:8px">この月に旅行する利点</div>
+              <ul id="month-pros" style="padding-left:0"></ul>
+            </div>
+            <div>
+              <div style="font-size:0.8rem;font-weight:700;color:var(--vermillion);margin-bottom:8px">注意点・デメリット</div>
+              <ul id="month-cons" style="padding-left:0"></ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- おすすめスポット -->
+        <div class="content-block fade-in">
+          <h2 class="block-title"><div class="block-icon icon-orange">📍</div>この月におすすめの場所</h2>
+          <div class="monthly-pick-grid" id="month-picks"></div>
+        </div>
+
+        <!-- ノアのTip -->
+        <div class="content-block fade-in" style="background:linear-gradient(135deg,#f0f6ff,#e8f4e8);border:2px solid #aad4ff">
+          <h2 class="block-title"><div class="block-icon icon-teal" style="overflow:hidden;padding:0"><img src="../images/character/base/noa-main-black-gold.png" alt="旅ノア" style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:50%"></div>旅ノアのワンポイントアドバイス</h2>
+          <p id="month-tip" style="font-size:0.9rem;line-height:1.8;color:var(--navy)"></p>
+        </div>
+
+      </div>
+
+      <aside class="pref-sidebar">
+        <div class="sidebar-card noa-sidebar">
+          <h3>🗾 旅ノアより</h3>
+          <div class="noa-char-frame">
+            <img id="monthly-sidebar-img" src="../images/character/base/noa-main-black-gold.png" alt="旅ノア" class="noa-sidebar-img" style="margin:0">
+          </div>
+          <p id="month-name-sidebar" style="font-size:0.82rem;color:var(--navy);line-height:1.7;text-align:center">読み込み中...</p>
+        </div>
+        <div class="sidebar-card">
+          <h3>📅 他の月を見る</h3>
+          <div id="other-months" style="display:flex;flex-direction:column;gap:4px"></div>
+        </div>
+        <div class="sidebar-card">
+          <h3>🎯 目的から探す</h3>
+          <a href="../pages/purpose.html" class="btn btn-ghost btn-sm" style="width:100%;justify-content:center">目的別おすすめを見る →</a>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<button class="back-to-top" id="back-to-top" aria-label="ページトップへ戻る">↑</button>
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-wrap:wrap;gap:16px;padding:20px 0 10px;border-bottom:1px solid rgba(255,255,255,0.08)">
+      <a href="../pages/prefectures.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">都道府県</a>
+      <a href="../pages/onsen.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">温泉地</a>
+      <a href="../pages/monthly.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">月別</a>
+      <a href="../pages/purpose.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">目的</a>
+      <a href="../pages/specialties.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">名産品・グルメ</a>
+      <a href="../pages/booking.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">予約</a>
+    </div>
+    <div class="footer-bottom" style="padding:24px 0">
+      <a href="../pages/monthly.html" style="color:rgba(255,255,255,0.5)">← 月別一覧へ</a>
+      <span style="color:rgba(255,255,255,0.3)">© 2026 旅する日本図鑑</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../data/monthly.js"></script>
+<script src="../js/chat.js"></script>
+<script src="../js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const backTop = document.getElementById('back-to-top');
+  if (backTop) {
+    window.addEventListener('scroll', () => { backTop.classList.toggle('visible', window.scrollY > 400); });
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+
+  renderMonthlyPage();
+
+  // 月別ヒーロー画像
+  const MONTH_HERO_IMGS = {
+    3: '../images/character/scene/noa-scene-hanami.png',
+    4: '../images/character/scene/noa-scene-hanami.png',
+    5: '../images/character/scene/noa-scene-hanami.png',
+    6: '../images/character/scene/noa-scene-hydrangea.png',
+    7: '../images/character/scene/noa-summer-beach.png',
+    8: '../images/character/scene/noa-summer-beach.png',
+    9: '../images/character/scene/noa-scene-casual-summer.png',
+    10: '../images/character/scene/noa-scene-nara-deer.png',
+    11: '../images/character/scene/noa-scene-shrine-pray.png',
+    12: '../images/character/scene/noa-scene-onsen-winter.png',
+    1: '../images/character/scene/noa-scene-onsen-winter.png',
+    2: '../images/character/scene/noa-scene-onsen-winter.png',
+  };
+
+  // サイドバー月別キャラ画像
+  const MONTH_SIDEBAR_IMGS = {
+    1: '../images/character/base/noa-snow-kimono-long.png',
+    2: '../images/character/base/noa-snow-kimono-long.png',
+    3: '../images/character/base/noa-white-formal-lotus.png',
+    4: '../images/character/base/noa-hakama-smile.png',
+    5: '../images/character/base/noa-white-kimono-excited.png',
+    6: '../images/character/base/noa-china-dress-wink.png',
+    7: '../images/character/base/noa-white-navy-lotus.png',
+    8: '../images/character/base/noa-china-dress-wink.png',
+    9: '../images/character/base/noa-purple-kimono-wave.png',
+    10: '../images/character/base/noa-black-kimono-camellia.png',
+    11: '../images/character/base/noa-black-kimono-pensive.png',
+    12: '../images/character/base/noa-snow-kimono-updo.png',
+  };
+
+  // h1更新
+  const m = getPageParam('month');
+  if (m) {
+    document.getElementById('month-heading').textContent = `${m}月の旅行おすすめ`;
+    document.getElementById('month-num').textContent = `${m}月`;
+    const imgSrc = MONTH_HERO_IMGS[parseInt(m)];
+    if (imgSrc) {
+      const wrap = document.getElementById('month-hero-img-wrap');
+      const img  = document.getElementById('month-hero-img');
+      img.src = imgSrc;
+      wrap.style.display = '';
+    }
+    const sidebarImg = document.getElementById('monthly-sidebar-img');
+    const sidebarSrc = MONTH_SIDEBAR_IMGS[parseInt(m)];
+    if (sidebarImg && sidebarSrc) sidebarImg.src = sidebarSrc;
+
+    // サイドバーメッセージ
+    const data = window.MONTHLY_DATA && MONTHLY_DATA[parseInt(m)];
+    const sidebarMsg = document.getElementById('month-name-sidebar');
+    if (sidebarMsg && data) {
+      sidebarMsg.textContent = data.tip || `${m}月の旅行をお楽しみください！`;
+    }
+  }
+
+  // 他の月リンク
+  const othersEl = document.getElementById('other-months');
+  if (othersEl && window.MONTHLY_DATA) {
+    othersEl.innerHTML = Object.keys(MONTHLY_DATA).map(mo => `
+      <a href="monthly-detail.html?month=${mo}" style="display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:8px;background:${mo==m?'var(--gold-pale)':'var(--section-alt)'};color:var(--navy);font-size:0.85rem;font-weight:${mo==m?'700':'500'}">
+        <span>${mo}月</span>
+        <span style="font-size:0.72rem;color:var(--text-muted)">${MONTHLY_DATA[mo].theme||''}</span>
+      </a>`).join('');
+  }
+});
+</script>
+</body>
+</html>

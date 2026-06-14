@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>月別おすすめ旅行先 | 旅する日本図鑑</title>
+  <meta name="description" content="1月〜12月の旅行おすすめをまとめて紹介。桜・紅葉・海水浴・スキー・温泉…季節ごとに最適な旅先を旅ノアが解説します。">
+  <meta property="og:title" content="月別おすすめ旅行先 | 旅する日本図鑑">
+  <meta property="og:description" content="1月〜12月の旅行おすすめをまとめて紹介。桜・紅葉・海水浴・スキーなど季節ごとに最適な旅先を旅ノアが解説。">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../index.html" class="site-logo">
+        <div class="logo-icon-wrap"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#0c1b35"/></svg></div>
+        <div class="logo-text-wrap"><span class="logo-name">旅する日本図鑑</span></div>
+      </a>
+      <nav class="header-nav">
+        <a href="prefectures.html" class="nav-link">都道府県</a>
+        <a href="onsen.html" class="nav-link">温泉地</a>
+        <a href="monthly.html" class="nav-link" style="color:white">月別</a>
+        <a href="purpose.html" class="nav-link">目的</a>
+        <a href="specialties.html" class="nav-link">グルメ</a>
+        <a href="booking.html" class="nav-link nav-cta">予約</a>
+      </nav>
+      <button class="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div style="display:flex;align-items:flex-end;gap:24px;flex-wrap:wrap">
+      <div style="flex:1;min-width:200px">
+        <div class="breadcrumb" style="margin-bottom:16px">
+          <a href="../index.html" style="color:rgba(255,255,255,0.6)">TOP</a>
+          <span class="breadcrumb-sep" style="color:rgba(255,255,255,0.3)">›</span>
+          <span style="color:white">月別おすすめ</span>
+        </div>
+        <h1 class="page-hero-title">📅 時期から旅先を選ぶ</h1>
+        <p class="page-hero-desc">梅雨・夏休み・紅葉・年末年始…季節ごとに最適な旅行先が変わります。</p>
+      </div>
+      <div style="flex-shrink:0">
+        <img src="../images/character/scene/noa-scene-hanami.png" alt="旅ノア"
+             style="width:min(160px,30vw);height:auto;display:block;border-radius:12px;box-shadow:0 8px 28px rgba(0,0,0,0.3)">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 季節別ノアシーン -->
+<div style="padding:32px 0 0">
+  <div class="container">
+    <div class="season-noa-strip" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px">
+      <a href="../templates/monthly-detail.html?month=4" style="text-decoration:none">
+        <div style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:3/4;background:var(--bg-alt);cursor:pointer;transition:transform 0.2s" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform=''">
+          <img src="../images/character/scene/noa-scene-hanami.png" alt="春・花見" style="width:100%;height:100%;object-fit:cover;display:block">
+          <div style="position:absolute;bottom:0;left:0;right:0;padding:10px;background:linear-gradient(transparent,rgba(0,0,0,0.72));color:white;font-size:0.8rem;font-weight:700">🌸 春（3〜5月）</div>
+        </div>
+      </a>
+      <a href="../templates/monthly-detail.html?month=7" style="text-decoration:none">
+        <div style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:3/4;background:var(--bg-alt);cursor:pointer;transition:transform 0.2s" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform=''">
+          <img src="../images/character/scene/noa-summer-beach.png" alt="夏・ビーチ" style="width:100%;height:100%;object-fit:cover;display:block">
+          <div style="position:absolute;bottom:0;left:0;right:0;padding:10px;background:linear-gradient(transparent,rgba(0,0,0,0.72));color:white;font-size:0.8rem;font-weight:700">🌊 夏（6〜8月）</div>
+        </div>
+      </a>
+      <a href="../templates/monthly-detail.html?month=11" style="text-decoration:none">
+        <div style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:3/4;background:var(--bg-alt);cursor:pointer;transition:transform 0.2s" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform=''">
+          <img src="../images/character/scene/noa-scene-nara-deer.png" alt="秋・紅葉" style="width:100%;height:100%;object-fit:cover;display:block">
+          <div style="position:absolute;bottom:0;left:0;right:0;padding:10px;background:linear-gradient(transparent,rgba(0,0,0,0.72));color:white;font-size:0.8rem;font-weight:700">🍁 秋（9〜11月）</div>
+        </div>
+      </a>
+      <a href="../templates/monthly-detail.html?month=12" style="text-decoration:none">
+        <div style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:3/4;background:var(--bg-alt);cursor:pointer;transition:transform 0.2s" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform=''">
+          <img src="../images/character/scene/noa-scene-onsen-winter.png" alt="冬・温泉" style="width:100%;height:100%;object-fit:cover;display:block">
+          <div style="position:absolute;bottom:0;left:0;right:0;padding:10px;background:linear-gradient(transparent,rgba(0,0,0,0.72));color:white;font-size:0.8rem;font-weight:700">❄️ 冬（12〜2月）</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div style="padding:0 0 56px">
+  <div class="container">
+
+    <!-- 今月のピックアップ -->
+    <div id="current-month-banner" style="display:none;background:linear-gradient(135deg,#fff8e8,#fffbf0);border:2px solid var(--gold);border-radius:var(--radius-lg);padding:18px 24px;margin-bottom:28px"></div>
+
+    <div class="monthly-grid" id="monthly-grid"></div>
+  </div>
+</div>
+
+<button class="back-to-top" id="back-to-top" aria-label="ページトップへ戻る">↑</button>
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-wrap:wrap;gap:16px;padding:20px 0 10px;border-bottom:1px solid rgba(255,255,255,0.08)">
+      <a href="../pages/prefectures.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">都道府県</a>
+      <a href="../pages/onsen.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">温泉地</a>
+      <a href="../pages/monthly.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">月別</a>
+      <a href="../pages/purpose.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">目的</a>
+      <a href="../pages/specialties.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">名産品・グルメ</a>
+      <a href="../pages/booking.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">予約</a>
+    </div>
+    <div class="footer-bottom" style="padding:24px 0">
+      <a href="../index.html" style="color:rgba(255,255,255,0.5)">← トップへ戻る</a>
+      <span style="color:rgba(255,255,255,0.3)">© 2026 旅する日本図鑑</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../data/monthly.js"></script>
+<script src="../js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const backTop = document.getElementById('back-to-top');
+  if (backTop) {
+    window.addEventListener('scroll', () => { backTop.classList.toggle('visible', window.scrollY > 400); });
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+
+  const now = new Date().getMonth() + 1; // 1-12
+
+  const MONTH_BANNER_IMGS = {
+    1:'../images/character/base/noa-snow-kimono-long.png',
+    2:'../images/character/base/noa-snow-kimono-long.png',
+    3:'../images/character/base/noa-white-formal-lotus.png',
+    4:'../images/character/base/noa-hakama-smile.png',
+    5:'../images/character/base/noa-white-kimono-excited.png',
+    6:'../images/character/base/noa-china-dress-wink.png',
+    7:'../images/character/base/noa-white-navy-lotus.png',
+    8:'../images/character/base/noa-china-dress-wink.png',
+    9:'../images/character/base/noa-purple-kimono-wave.png',
+    10:'../images/character/base/noa-black-kimono-camellia.png',
+    11:'../images/character/base/noa-black-kimono-pensive.png',
+    12:'../images/character/base/noa-snow-kimono-updo.png',
+  };
+
+  // 今月のピックアップバナー
+  if (window.MONTHLY_DATA && MONTHLY_DATA[now]) {
+    const cur = MONTHLY_DATA[now];
+    const bannerEl = document.getElementById('current-month-banner');
+    if (bannerEl) {
+      bannerEl.style.display = '';
+      const bannerImg = MONTH_BANNER_IMGS[now];
+      bannerEl.innerHTML = `
+        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+          ${bannerImg ? `<img src="${bannerImg}" alt="旅ノア" style="width:56px;height:auto;flex-shrink:0;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.15))">` : ''}
+          <div style="flex:1">
+            <div style="font-size:0.78rem;font-weight:700;color:var(--gold);margin-bottom:2px">🗓 今月のおすすめ</div>
+            <div style="font-size:1.05rem;font-weight:800;color:var(--navy)">${now}月 — ${cur.theme||''}</div>
+            ${cur.picks && cur.picks.length ? `<div style="font-size:0.82rem;color:var(--text-light);margin-top:4px">注目スポット：${cur.picks.slice(0,3).map(p=>p.name).join('・')}</div>` : ''}
+          </div>
+          <a href="../templates/monthly-detail.html?month=${now}" class="btn btn-sm" style="white-space:nowrap">詳しく見る →</a>
+        </div>`;
+    }
+  }
+
+  const grid = document.getElementById('monthly-grid');
+  if (!grid) return;
+  const mn = ['','1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+  grid.innerHTML = Array.from({length:12},(_,i) => {
+    const m = i + 1;
+    const data = window.MONTHLY_DATA && MONTHLY_DATA[m];
+    const isCurrent = m === now;
+    const cls = 'month-card' + (data ? ' has-data' : '') + (isCurrent ? ' current-month' : '');
+    const onclick = data ? `onclick="location.href='../templates/monthly-detail.html?month=${m}'"` : '';
+    return `<div class="${cls}" style="cursor:${data?'pointer':'default'}" ${onclick}>
+      ${isCurrent ? '<div class="current-badge">今月</div>' : ''}
+      <div class="month-num">${m}</div>
+      <div class="month-name-ja">${mn[m]}</div>
+      ${data ? `<div class="month-theme">${data.theme||''}</div><div class="month-picks-count">▶ おすすめ${data.picks?.length||0}選</div>` : '<div class="month-theme" style="font-size:0.7rem;color:var(--text-muted)">準備中</div>'}
+    </div>`;
+  }).join('');
+});
+</script>
+</body>
+</html>

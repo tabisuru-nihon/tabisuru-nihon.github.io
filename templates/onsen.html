@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>温泉地ガイド | 旅する日本図鑑</title>
+  <meta name="description" content="温泉地の詳細ガイド。泉質・アクセス・おすすめ旅館・旬のシーズンを旅ノアが解説。草津・別府・有馬・城崎など15か所対応。">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../index.html" class="site-logo">
+        <div class="logo-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#0c1b35"/></svg>
+        </div>
+        <div class="logo-text-wrap"><span class="logo-name">旅する日本図鑑</span></div>
+      </a>
+      <nav class="header-nav">
+        <a href="../pages/prefectures.html" class="nav-link">都道府県</a>
+        <a href="../pages/onsen.html" class="nav-link">温泉地</a>
+        <a href="../pages/monthly.html" class="nav-link">月別</a>
+        <a href="../pages/purpose.html" class="nav-link">目的</a>
+        <a href="../pages/specialties.html" class="nav-link">グルメ</a>
+        <a href="../pages/booking.html" class="nav-link nav-cta">予約</a>
+      </nav>
+      <button class="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ヒーロー -->
+<section class="onsen-hero" style="background:linear-gradient(135deg,#0c1b35,#1a3060)">
+  <div class="container">
+    <div style="display:flex;align-items:flex-end;gap:28px;flex-wrap:wrap">
+      <div style="flex:1;min-width:220px">
+        <div class="pref-breadcrumb">
+          <a href="../index.html">TOP</a>
+          <span class="pref-breadcrumb-sep">›</span>
+          <a href="../pages/onsen.html">温泉地一覧</a>
+          <span class="pref-breadcrumb-sep">›</span>
+          <span id="onsen-pref">—</span>
+        </div>
+        <div id="onsen-pref-area" style="font-size:0.8rem;color:rgba(255,255,255,0.6);margin-bottom:6px"></div>
+        <h1 class="pref-name" id="onsen-name" style="font-size:clamp(2rem,5vw,3.5rem)">読み込み中...</h1>
+        <p class="pref-tagline" id="onsen-tagline"></p>
+        <div id="onsen-springs" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px"></div>
+      </div>
+      <div id="onsen-hero-img-wrap" style="flex-shrink:0;display:none">
+        <img id="onsen-hero-img" src="" alt="旅ノア"
+             style="width:min(200px,38vw);height:auto;display:block;border-radius:var(--radius-lg);box-shadow:0 12px 40px rgba(0,0,0,0.4)">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pref-body">
+  <div class="container">
+    <div class="pref-body-grid">
+
+      <div class="pref-main">
+
+        <!-- なぜ有名？ -->
+        <div class="content-block fade-in">
+          <h2 class="block-title"><div class="block-icon icon-blue">🌡️</div>なぜ有名なの？</h2>
+          <p id="onsen-why" style="font-size:0.92rem;line-height:1.8;color:var(--text-light)"></p>
+        </div>
+
+        <!-- 見どころ・施設 -->
+        <div class="content-block fade-in" id="features-block" style="display:none">
+          <h2 class="block-title"><div class="block-icon icon-orange">📍</div>見どころ・主な施設</h2>
+          <div class="highlights-grid" id="onsen-features"></div>
+        </div>
+
+        <!-- 向いている人 -->
+        <div class="content-block fade-in">
+          <h2 class="block-title"><div class="block-icon icon-green">✅</div>こんな人に向いている</h2>
+          <div class="suits-grid" id="onsen-suits"></div>
+        </div>
+
+        <!-- 近隣スポット -->
+        <div class="content-block fade-in" id="nearby-block" style="display:none">
+          <h2 class="block-title"><div class="block-icon icon-orange">📍</div>近くのおすすめスポット</h2>
+          <div id="onsen-nearby" style="display:flex;flex-direction:column;gap:8px"></div>
+        </div>
+
+        <!-- 比較 -->
+        <div class="content-block fade-in" id="comparison-block" style="display:none">
+          <h2 class="block-title"><div class="block-icon icon-purple">⚖️</div>似た温泉地との違い</h2>
+          <div class="onsen-comparison-grid" id="onsen-comparison"></div>
+        </div>
+
+        <!-- ベストシーズン -->
+        <div class="content-block fade-in" id="season-block" style="display:none">
+          <h2 class="block-title"><div class="block-icon icon-pink">🗓️</div>季節ごとの楽しみ方</h2>
+          <div class="season-grid" id="onsen-season"></div>
+        </div>
+
+        <!-- グルメ -->
+        <div class="content-block fade-in" id="gourmet-block" style="display:none">
+          <h2 class="block-title"><div class="block-icon icon-gold">🍽️</div>周辺グルメ・名物</h2>
+          <div class="food-grid" id="onsen-gourmet"></div>
+        </div>
+
+      </div>
+
+      <aside class="pref-sidebar">
+        <div class="sidebar-card noa-sidebar">
+          <h3>🗾 旅ノアより</h3>
+          <div class="noa-char-frame">
+            <img src="../images/character/base/noa-snow-kimono-updo.png" alt="旅ノア" class="noa-sidebar-img" style="margin:0">
+          </div>
+          <p id="noa-comment">読み込み中...</p>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>📊 基本情報</h3>
+          <div class="access-list" id="onsen-info"></div>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>🏨 おすすめ予約方法</h3>
+          <div id="onsen-booking"></div>
+          <a href="../pages/booking.html" class="btn btn-sm btn-ghost" style="width:100%;justify-content:center;margin-top:12px">予約サイト比較 →</a>
+        </div>
+
+        <div class="sidebar-card" id="related-onsen-sidebar" style="display:none">
+          <h3>♨️ 同じ地域の温泉</h3>
+          <div id="related-onsens" style="display:flex;flex-direction:column;gap:6px"></div>
+          <a href="../pages/onsen.html" class="btn btn-sm btn-ghost" style="width:100%;justify-content:center;margin-top:12px">温泉地一覧 →</a>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<button class="back-to-top" id="back-to-top" aria-label="ページトップへ戻る">↑</button>
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-wrap:wrap;gap:16px;padding:20px 0 10px;border-bottom:1px solid rgba(255,255,255,0.08)">
+      <a href="../pages/prefectures.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">都道府県</a>
+      <a href="../pages/onsen.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">温泉地</a>
+      <a href="../pages/monthly.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">月別</a>
+      <a href="../pages/purpose.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">目的</a>
+      <a href="../pages/specialties.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">名産品・グルメ</a>
+      <a href="../pages/booking.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">予約</a>
+    </div>
+    <div class="footer-bottom" style="padding:24px 0">
+      <a href="../pages/onsen.html" style="color:rgba(255,255,255,0.5)">← 温泉地一覧へ</a>
+      <span style="color:rgba(255,255,255,0.3)">© 2026 旅する日本図鑑</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../data/onsens.js"></script>
+<script src="../js/chat.js"></script>
+<script src="../js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const backTop = document.getElementById('back-to-top');
+  if (backTop) {
+    window.addEventListener('scroll', () => { backTop.classList.toggle('visible', window.scrollY > 400); });
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+
+  renderOnsenPage();
+
+  // 温泉別ヒーロー画像
+  const ONSEN_HERO_IMGS = {
+    noboribetsu: '../images/character/scene/noa-scene-onsen-winter.png',
+    kusatsu:     '../images/character/scene/noa-scene-onsen-winter.png',
+    arima:       '../images/character/scene/noa-scene-ryokan-dinner.png',
+    kinosaki:    '../images/character/scene/noa-scene-summer-yukata.png',
+    yufuin:      '../images/character/scene/noa-scene-shrine-pray.png',
+    hakone:      '../images/character/scene/noa-scene-fuji-hike.png',
+    beppu:       '../images/character/scene/noa-scene-onsen-winter.png',
+    nyuto:       '../images/character/scene/noa-scene-onsen-winter.png',
+    kurokawa:    '../images/character/scene/noa-scene-nara-deer.png',
+    gero:        '../images/character/scene/noa-scene-ryokan-dinner.png',
+    zao:         '../images/character/scene/noa-scene-fuji-hike.png',
+    jozankei:    '../images/character/scene/noa-scene-hydrangea.png',
+  };
+
+  const id = getPageParam('id');
+  if (!id || !window.ONSENS_DATA) return;
+  const d = ONSENS_DATA[id];
+  if (!d) return;
+
+  // ヒーロー画像
+  const heroImgSrc = ONSEN_HERO_IMGS[id];
+  if (heroImgSrc) {
+    const wrap = document.getElementById('onsen-hero-img-wrap');
+    const img  = document.getElementById('onsen-hero-img');
+    if (wrap && img) { img.src = heroImgSrc; wrap.style.display = ''; }
+  }
+
+  // 近隣スポット
+  if (d.nearby && d.nearby.length) {
+    document.getElementById('nearby-block').style.display = '';
+    document.getElementById('onsen-nearby').innerHTML = d.nearby.map(n =>
+      `<div style="padding:8px;background:var(--section-alt);border-radius:8px;font-size:0.82rem;color:var(--text-light)">📍 ${n}</div>`
+    ).join('');
+  }
+
+  // 比較
+  if (d.comparison && Object.keys(d.comparison).length) {
+    document.getElementById('comparison-block').style.display = '';
+  }
+
+  // グルメ
+  // ベストシーズン
+  if (d.bestSeason && typeof d.bestSeason === 'object') {
+    const seasonLabels = { spring: '🌸 春', summer: '🌊 夏', autumn: '🍁 秋', winter: '❄️ 冬' };
+    const seasonEl = document.getElementById('onsen-season');
+    const seasonBlock = document.getElementById('season-block');
+    if (seasonEl && seasonBlock) {
+      seasonEl.innerHTML = Object.entries(d.bestSeason).map(([k, v]) =>
+        `<div class="season-card"><div class="season-name">${seasonLabels[k] || k}</div><div class="season-text">${v}</div></div>`
+      ).join('');
+      seasonBlock.style.display = '';
+    }
+  }
+
+  if (d.gourmet && d.gourmet.length) {
+    document.getElementById('gourmet-block').style.display = '';
+    document.getElementById('onsen-gourmet').innerHTML = d.gourmet.map(g => {
+      const name = typeof g === 'string' ? g : (g.name || g);
+      const emoji = typeof g === 'string' ? '🍽' : (g.emoji || '🍽');
+      const desc = typeof g === 'string' ? '' : (g.desc || '');
+      return `<div class="food-card"><div class="food-emoji">${emoji}</div><div class="food-name">${name}</div><div class="food-desc">${desc}</div></div>`;
+    }).join('');
+  }
+
+  // 基本情報
+  const infoEl = document.getElementById('onsen-info');
+  if (infoEl) {
+    const rows = [
+      ['所在地', d.prefecture + (d.area ? ' ' + d.area : '')],
+      ['旅館タイプ', d.hotelType || '—'],
+    ];
+    infoEl.innerHTML = rows.map(([l,v]) =>
+      `<div class="access-item"><span class="access-label">${l}</span><span>${v}</span></div>`
+    ).join('');
+  }
+
+  // 予約
+  const bookEl = document.getElementById('onsen-booking');
+  if (bookEl && d.booking) {
+    bookEl.innerHTML = `<p style="font-size:0.82rem;margin-bottom:6px">おすすめ：<strong>${(d.booking.recommended||[]).join('・')}</strong></p>
+      <p style="font-size:0.78rem;color:var(--text-light)">${d.booking.tip||''}</p>`;
+  }
+
+  // 同じ地域の温泉
+  if (d.region && window.ONSENS_DATA) {
+    const related = Object.values(ONSENS_DATA).filter(o => o.region === d.region && o.id !== id);
+    if (related.length) {
+      document.getElementById('related-onsen-sidebar').style.display = '';
+      document.getElementById('related-onsens').innerHTML = related.map(o =>
+        `<a href="onsen.html?id=${o.id}" style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;background:var(--section-alt);color:var(--navy);font-size:0.82rem">
+          <span>${o.emoji}</span><span>${o.name}</span>
+        </a>`
+      ).join('');
+    }
+  }
+});
+</script>
+</body>
+</html>

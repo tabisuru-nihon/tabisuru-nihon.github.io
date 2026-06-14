@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>名産品・ご当地グルメ | 旅する日本図鑑</title>
+  <meta name="description" content="北海道の海鮮・大阪のたこ焼き・京都の懐石・讃岐うどんなど、日本各地の名産品・ご当地グルメを旅ノアが詳しく解説。旅先のグルメ選びに。">
+  <meta property="og:title" content="名産品・ご当地グルメ | 旅する日本図鑑">
+  <meta property="og:description" content="北海道の海鮮・京都の懐石・讃岐うどん・博多ラーメンなど25品。日本各地の名物グルメを旅ノアが詳しく解説。">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../index.html" class="site-logo">
+        <div class="logo-icon-wrap"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#0c1b35"/></svg></div>
+        <div class="logo-text-wrap"><span class="logo-name">旅する日本図鑑</span></div>
+      </a>
+      <nav class="header-nav">
+        <a href="prefectures.html" class="nav-link">都道府県</a>
+        <a href="onsen.html" class="nav-link">温泉地</a>
+        <a href="monthly.html" class="nav-link">月別</a>
+        <a href="purpose.html" class="nav-link">目的</a>
+        <a href="specialties.html" class="nav-link" style="color:white">グルメ</a>
+        <a href="booking.html" class="nav-link nav-cta">予約</a>
+      </nav>
+      <button class="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div style="display:flex;align-items:flex-end;gap:24px;flex-wrap:wrap">
+      <div style="flex:1;min-width:200px">
+        <div class="breadcrumb" style="margin-bottom:16px">
+          <a href="../index.html" style="color:rgba(255,255,255,0.6)">TOP</a>
+          <span class="breadcrumb-sep" style="color:rgba(255,255,255,0.3)">›</span>
+          <span style="color:white">名産品・グルメ</span>
+        </div>
+        <h1 class="page-hero-title">🍜 名産品・ご当地グルメ</h1>
+        <p class="page-hero-desc">北海道の海鮮から鹿児島の黒豚・宮崎チキン南蛮まで全25品。旅行前に知っておきたい日本各地の名物グルメを旅ノアが解説します。</p>
+      </div>
+      <div style="flex-shrink:0">
+        <img src="../images/character/base/noa-black-kimono-laugh.png" alt="旅ノア"
+             style="width:min(160px,30vw);height:auto;display:block;filter:drop-shadow(0 6px 20px rgba(0,0,0,0.3))">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="padding:56px 0">
+  <div class="container">
+
+    <!-- ノアのメッセージ -->
+    <div style="background:linear-gradient(135deg,#f0f6ff,#e8f4e8);border:2px solid #aad4ff;border-radius:var(--radius-lg);padding:24px;margin-bottom:36px;display:flex;gap:16px;align-items:flex-start">
+      <div style="flex-shrink:0;background:radial-gradient(ellipse 90% 70% at 50% 90%,rgba(200,150,10,0.18) 0%,transparent 75%);border-radius:var(--radius);padding:6px 4px 0">
+        <img src="../images/character/base/noa-black-kimono-laugh.png" alt="旅ノア"
+             style="width:72px;height:auto;display:block;filter:drop-shadow(0 3px 10px rgba(12,27,53,0.2))">
+      </div>
+      <div>
+        <div style="font-size:0.82rem;font-weight:700;color:var(--navy);margin-bottom:6px">旅ノアより</div>
+        <p style="font-size:0.88rem;color:var(--navy);line-height:1.75">
+          「その場所でしか食べられないもの」を知っていると、旅がグッと豊かになります。<br>
+          価格帯・旬・おすすめスポットまでまとめました。カテゴリで絞り込んでみてください。
+        </p>
+      </div>
+    </div>
+
+    <!-- カテゴリフィルター -->
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px" id="cat-filter-btns">
+      <button class="region-btn active" data-cat="">すべて</button>
+      <button class="region-btn" data-cat="seafood">🦞 海鮮・魚介</button>
+      <button class="region-btn" data-cat="cuisine">🍱 郷土料理</button>
+      <button class="region-btn" data-cat="street">🍢 B級グルメ</button>
+      <button class="region-btn" data-cat="meat">🥩 肉料理</button>
+      <button class="region-btn" data-cat="sweets">🍡 スイーツ</button>
+    </div>
+
+    <div id="specialty-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px"></div>
+
+  </div>
+</div>
+
+<button class="back-to-top" id="back-to-top" aria-label="ページトップへ戻る">↑</button>
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-wrap:wrap;gap:16px;padding:20px 0 10px;border-bottom:1px solid rgba(255,255,255,0.08)">
+      <a href="../pages/prefectures.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">都道府県</a>
+      <a href="../pages/onsen.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">温泉地</a>
+      <a href="../pages/monthly.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">月別</a>
+      <a href="../pages/purpose.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">目的</a>
+      <a href="../pages/specialties.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">名産品・グルメ</a>
+      <a href="../pages/booking.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">予約</a>
+    </div>
+    <div class="footer-bottom" style="padding:24px 0">
+      <a href="../index.html" style="color:rgba(255,255,255,0.5)">← トップへ戻る</a>
+      <span style="color:rgba(255,255,255,0.3)">© 2026 旅する日本図鑑</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../data/specialties.js"></script>
+<script src="../js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const backTop = document.getElementById('back-to-top');
+  if (backTop) {
+    window.addEventListener('scroll', () => { backTop.classList.toggle('visible', window.scrollY > 400); });
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+
+  if (!window.SPECIALTIES_DATA) return;
+  const grid = document.getElementById('specialty-grid');
+
+  // 都道府県ID逆引きマップ（prefecture名 → id）
+  const PREF_ID_MAP = {
+    '北海道':'hokkaido','青森県':'aomori','岩手県':'iwate','宮城県':'miyagi','秋田県':'akita',
+    '山形県':'yamagata','福島県':'fukushima','茨城県':'ibaraki','栃木県':'tochigi','群馬県':'gunma',
+    '埼玉県':'saitama','千葉県':'chiba','東京都':'tokyo','神奈川県':'kanagawa','新潟県':'niigata',
+    '富山県':'toyama','石川県':'ishikawa','福井県':'fukui','山梨県':'yamanashi','長野県':'nagano',
+    '岐阜県':'gifu','静岡県':'shizuoka','愛知県':'aichi','三重県':'mie','滋賀県':'shiga',
+    '京都府':'kyoto','大阪府':'osaka','兵庫県':'hyogo','奈良県':'nara','和歌山県':'wakayama',
+    '鳥取県':'tottori','島根県':'shimane','岡山県':'okayama','広島県':'hiroshima','山口県':'yamaguchi',
+    '徳島県':'tokushima','香川県':'kagawa','愛媛県':'ehime','高知県':'kochi','福岡県':'fukuoka',
+    '佐賀県':'saga','長崎県':'nagasaki','熊本県':'kumamoto','大分県':'oita','宮崎県':'miyazaki',
+    '鹿児島県':'kagoshima','沖縄県':'okinawa',
+  };
+
+  function renderCards(cat) {
+    const list = cat ? SPECIALTIES_DATA.filter(s => s.category === cat) : SPECIALTIES_DATA;
+    grid.innerHTML = list.map(s => {
+      const prefId = PREF_ID_MAP[s.prefecture];
+      const prefLink = prefId ? `<a href="../templates/prefecture.html?id=${prefId}" style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:var(--gold-pale);border:1px solid var(--gold);color:var(--navy);font-size:0.74rem;font-weight:700;text-decoration:none;margin-top:4px">${s.prefecture}のページへ →</a>` : '';
+      return `
+      <div class="content-block fade-in" style="margin:0;padding:0;overflow:hidden;border-radius:var(--radius-lg);display:flex;flex-direction:column">
+        <div style="background:linear-gradient(135deg,var(--navy),#1a3060);padding:16px 18px 14px;color:white">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+            <span style="font-size:1.6rem">${s.emoji}</span>
+            <div>
+              <div style="font-size:0.72rem;color:rgba(255,255,255,0.55);font-weight:600">${s.prefecture}</div>
+              <div style="font-size:1rem;font-weight:800">${s.name}</div>
+            </div>
+          </div>
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.7);margin-top:2px">${s.tagline}</div>
+        </div>
+        <div style="padding:14px 18px;flex:1;display:flex;flex-direction:column;gap:10px">
+          <p style="font-size:0.83rem;line-height:1.7;color:var(--text-light);margin:0">${s.overview}</p>
+          <div style="font-size:0.78rem;color:var(--text-muted)">
+            <span style="font-weight:700;color:var(--navy)">おすすめスポット：</span>${(s.bestSpots||[]).slice(0,2).join('・')}
+          </div>
+          ${s.bestSeason ? `<div style="font-size:0.78rem;color:var(--text-muted)"><span style="font-weight:700;color:var(--navy)">旬：</span>${s.bestSeason}</div>` : ''}
+          <div style="font-size:0.78rem;color:var(--text-muted)"><span style="font-weight:700;color:var(--navy)">目安価格：</span>${s.price||'—'}</div>
+          <div style="margin-top:auto;padding-top:8px;border-top:1px solid var(--border-light)">
+            <div style="font-size:0.72rem;font-weight:700;color:var(--teal);margin-bottom:4px">旅ノアより</div>
+            <p style="font-size:0.79rem;color:var(--navy);line-height:1.6;margin:0">${s.noaComment||''}</p>
+          </div>
+          ${prefLink}
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  renderCards('');
+
+  document.querySelectorAll('#cat-filter-btns .region-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#cat-filter-btns .region-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderCards(btn.dataset.cat);
+    });
+  });
+});
+</script>
+</body>
+</html>

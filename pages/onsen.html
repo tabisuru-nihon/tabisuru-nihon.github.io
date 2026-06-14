@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>温泉地一覧 | 旅する日本図鑑</title>
+  <meta name="description" content="草津・有馬・別府・箱根・城崎など15か所の温泉地を徹底解説。泉質・アクセス・おすすめシーズンを旅ノアが詳しく紹介。地域別フィルターで絞り込めます。">
+  <meta property="og:title" content="温泉地一覧 | 旅する日本図鑑">
+  <meta property="og:description" content="草津・有馬・別府・箱根・城崎など15か所の名湯を徹底解説。旅ノアが泉質・アクセス・おすすめシーズンをご紹介。">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../index.html" class="site-logo">
+        <div class="logo-icon-wrap"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#0c1b35"/></svg></div>
+        <div class="logo-text-wrap"><span class="logo-name">旅する日本図鑑</span></div>
+      </a>
+      <nav class="header-nav">
+        <a href="prefectures.html" class="nav-link">都道府県</a>
+        <a href="onsen.html" class="nav-link" style="color:white">温泉地</a>
+        <a href="monthly.html" class="nav-link">月別</a>
+        <a href="purpose.html" class="nav-link">目的</a>
+        <a href="specialties.html" class="nav-link">グルメ</a>
+        <a href="booking.html" class="nav-link nav-cta">予約</a>
+      </nav>
+      <button class="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div style="display:flex;align-items:flex-end;gap:24px;flex-wrap:wrap">
+      <div style="flex:1;min-width:200px">
+        <div class="breadcrumb" style="margin-bottom:16px">
+          <a href="../index.html" style="color:rgba(255,255,255,0.6)">TOP</a>
+          <span class="breadcrumb-sep" style="color:rgba(255,255,255,0.3)">›</span>
+          <span style="color:white">温泉地一覧</span>
+        </div>
+        <h1 class="page-hero-title">♨️ 温泉地から探す</h1>
+        <p class="page-hero-desc">「なぜ有名なのか」「誰に向いているか」を詳しく解説。15か所の温泉地を地域別に絞り込めます。</p>
+      </div>
+      <div style="flex-shrink:0">
+        <img src="../images/character/base/noa-snow-kimono-updo.png" alt="旅ノア"
+             style="width:min(160px,30vw);height:auto;display:block;filter:drop-shadow(0 6px 20px rgba(0,0,0,0.3))">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="padding:56px 0">
+  <div class="container">
+
+    <!-- ノアの提案メッセージ -->
+    <div style="background:linear-gradient(135deg,#f0f6ff,#e8f4e8);border:2px solid #aad4ff;border-radius:var(--radius-lg);padding:24px;margin-bottom:36px;display:flex;gap:16px;align-items:flex-start">
+      <div style="flex-shrink:0;background:radial-gradient(ellipse 90% 70% at 50% 90%,rgba(200,150,10,0.18) 0%,transparent 75%);border-radius:var(--radius);padding:6px 4px 0">
+        <img src="../images/character/base/noa-snow-kimono-updo.png"
+             alt="旅ノア"
+             style="width:72px;height:auto;display:block;filter:drop-shadow(0 3px 10px rgba(12,27,53,0.2))">
+      </div>
+      <div>
+        <div style="font-size:0.82rem;font-weight:700;color:var(--navy);margin-bottom:6px">旅ノアより</div>
+        <p style="font-size:0.88rem;color:var(--navy);line-height:1.75">
+          温泉地選びで迷ったら「<strong>目的</strong>」から考えると選びやすいです。<br>
+          泉質を楽しみたい → 草津・別府　温泉街を歩きたい → 城崎・湯布院　都市から近い → 有馬・箱根
+        </p>
+      </div>
+    </div>
+
+    <!-- 地域フィルター -->
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px" id="onsen-filter-btns">
+      <button class="region-btn active" data-region="all">すべて</button>
+      <button class="region-btn" data-region="北海道">北海道</button>
+      <button class="region-btn" data-region="東北">東北</button>
+      <button class="region-btn" data-region="関東">関東</button>
+      <button class="region-btn" data-region="中部">中部</button>
+      <button class="region-btn" data-region="関西">関西</button>
+      <button class="region-btn" data-region="四国">四国</button>
+      <button class="region-btn" data-region="九州">九州</button>
+    </div>
+
+    <div class="onsen-grid" id="onsen-grid"></div>
+
+  </div>
+</div>
+
+<button class="back-to-top" id="back-to-top" aria-label="ページトップへ戻る">↑</button>
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-wrap:wrap;gap:16px;padding:20px 0 10px;border-bottom:1px solid rgba(255,255,255,0.08)">
+      <a href="../pages/prefectures.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">都道府県</a>
+      <a href="../pages/onsen.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">温泉地</a>
+      <a href="../pages/monthly.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">月別</a>
+      <a href="../pages/purpose.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">目的</a>
+      <a href="../pages/specialties.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">名産品・グルメ</a>
+      <a href="../pages/booking.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">予約</a>
+    </div>
+    <div class="footer-bottom" style="padding:24px 0">
+      <a href="../index.html" style="color:rgba(255,255,255,0.5)">← トップへ戻る</a>
+      <span style="color:rgba(255,255,255,0.3)">© 2026 旅する日本図鑑</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../data/onsens.js"></script>
+<script src="../js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const backTop = document.getElementById('back-to-top');
+  if (backTop) {
+    window.addEventListener('scroll', () => { backTop.classList.toggle('visible', window.scrollY > 400); });
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+
+  const grid = document.getElementById('onsen-grid');
+  const onsens = window.ONSENS_DATA ? Object.values(ONSENS_DATA) : [];
+
+  function renderOnsens(region) {
+    const list = region === 'all' ? onsens : onsens.filter(o => o.region === region);
+    grid.innerHTML = list.map(o => `
+      <div class="onsen-card" style="cursor:pointer" onclick="location.href='../templates/onsen.html?id=${o.id}'">
+        <div class="onsen-thumb" style="background:linear-gradient(135deg,${o.color||'#0c1b35'}22,${o.color||'#0c1b35'}44)">${o.emoji}</div>
+        <div class="onsen-body">
+          <div class="onsen-name">${o.name}</div>
+          <div class="onsen-pref">${o.prefecture}</div>
+          <div class="onsen-why">${o.tagline}</div>
+          <div class="onsen-suits">${(o.suits?.perfect||[]).slice(0,3).map(s=>`<span class="suit-tag">${s}</span>`).join('')}</div>
+        </div>
+      </div>`).join('');
+  }
+
+  if (grid && onsens.length) {
+    renderOnsens('all');
+    document.querySelectorAll('#onsen-filter-btns .region-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#onsen-filter-btns .region-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderOnsens(btn.dataset.region);
+      });
+    });
+  }
+});
+</script>
+</body>
+</html>
