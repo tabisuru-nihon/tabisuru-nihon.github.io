@@ -164,28 +164,37 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('detail-mode').style.display = '';
       document.title = `${d.name} 旅行おすすめ | 旅する日本図鑑`;
       document.getElementById('page-title').textContent = `${d.emoji} ${d.name}`;
-      document.getElementById('page-desc').textContent = d.desc;
+      document.getElementById('page-desc').textContent = d.desc || '';
       document.getElementById('breadcrumb-current').textContent = d.name;
 
-      // 目的別サイドバー画像（base画像）
+      // 目的別サイドバー画像
       const PURPOSE_SIDEBAR_IMGS = {
-        anniversary: '../images/character/base/noa-black-kimono-rose.png',
-        onsen:       '../images/character/base/noa-snow-kimono-updo.png',
-        gourmet:     '../images/character/base/noa-black-kimono-laugh.png',
-        family:      '../images/character/base/noa-hakama-smile.png',
-        couple:      '../images/character/base/noa-purple-kimono-wink.png',
-        solo:        '../images/character/base/noa-navy-kimono-shy.png',
-        rain:        '../images/character/base/noa-white-kimono-think.png',
-        outdoor:     '../images/character/base/noa-white-kimono-excited.png',
-        scenery:     '../images/character/base/noa-purple-kimono-wave.png',
-        history:     '../images/character/base/noa-hakama-smile.png',
-        flowers:     '../images/character/base/noa-white-navy-smile.png',
+        anniversary:    '../images/character/base/noa-black-kimono-rose.png',
+        onsen:          '../images/character/base/noa-snow-kimono-updo.png',
+        gourmet:        '../images/character/base/noa-black-kimono-laugh.png',
+        family:         '../images/character/base/noa-hakama-smile.png',
+        couple:         '../images/character/base/noa-purple-kimono-wink.png',
+        solo:           '../images/character/base/noa-navy-kimono-shy.png',
+        rain:           '../images/character/base/noa-white-kimono-think.png',
+        outdoor:        '../images/character/base/noa-white-kimono-excited.png',
+        scenery:        '../images/character/base/noa-purple-kimono-wave.png',
+        history:        '../images/character/base/noa-hakama-smile.png',
+        flowers:        '../images/character/base/noa-white-navy-smile.png',
+        fujoshi:        '../images/character/base/noa-china-dress-wink.png',
+        sansedai:       '../images/character/base/noa-hakama-smile.png',
+        couple_married: '../images/character/base/noa-black-kimono-rose.png',
+        scenery_photo:  '../images/character/base/noa-purple-kimono-wave.png',
+        relax:          '../images/character/base/noa-white-kimono-think.png',
+        active:         '../images/character/base/noa-white-kimono-excited.png',
+        budget:         '../images/character/base/noa-white-navy-smile.png',
+        photo_trip:     '../images/character/base/noa-purple-kimono-wave.png',
+        senior:         '../images/character/base/noa-snow-kimono-long.png',
       };
       const sidebarImg = document.querySelector('.noa-sidebar .noa-sidebar-img');
-      const sidebarSrc = PURPOSE_SIDEBAR_IMGS[id];
-      if (sidebarImg && sidebarSrc) sidebarImg.src = sidebarSrc;
+      const sidebarSrc = PURPOSE_SIDEBAR_IMGS[id] || '../images/character/base/noa-white-navy-smile.png';
+      if (sidebarImg) sidebarImg.src = sidebarSrc;
 
-      // 目的別ヒーロー画像（実写真）
+      // 目的別ヒーロー画像
       const PURPOSE_IMGS = {
         anniversary:    '../images/japan/kyoto/kyoto-arashiyama-01.jpg',
         onsen:          '../images/japan/gunma/gunma-kusatsu-yunohata-01.jpg',
@@ -205,6 +214,8 @@ document.addEventListener('DOMContentLoaded', () => {
         relax:          '../images/japan/kumamoto/kumamoto-aso-02.jpg',
         active:         '../images/japan/hokkaido/hokkaido-shiretoko-01.jpg',
         budget:         '../images/japan/kanagawa/kanagawa-kamakura-01.jpg',
+        photo_trip:     '../images/japan/yamagata/yamagata-ginzan-01.jpg',
+        senior:         '../images/japan/hyogo/hyogo-arima-kinsenkawa-01.jpg',
       };
       const heroImgWrap = document.getElementById('purpose-hero-img-wrap');
       if (heroImgWrap) {
@@ -217,25 +228,78 @@ document.addEventListener('DOMContentLoaded', () => {
           heroImg.style.filter = '';
         }
       }
-      document.getElementById('purpose-intro').textContent = d.intro || '';
-      document.getElementById('purpose-advice').textContent = d.advice || '';
-      document.getElementById('purpose-booking').textContent = d.booking || '';
 
-      const picksEl = document.getElementById('purpose-picks');
-      if (d.picks) {
-        picksEl.innerHTML = d.picks.map(p => `
-          <div class="purpose-pick-card">
-            <div style="font-size:0.9rem;font-weight:800;color:var(--navy);margin-bottom:4px">${p.name}</div>
-            <div class="pick-stars">${typeof p.stars === 'number' ? '★'.repeat(p.stars)+'☆'.repeat(5-p.stars) : (p.stars || '★★★★★')}</div>
-            <div style="font-size:0.8rem;color:var(--text-light);margin-top:6px;line-height:1.6">${p.reason||''}</div>
-          </div>`).join('');
+      // テキストコンテンツを設定（空の場合はブロックを非表示）
+      const introText = d.intro || d.desc || '';
+      const introEl = document.getElementById('purpose-intro');
+      const introBlock = introEl && introEl.closest('.content-block');
+      if (introText) {
+        introEl.textContent = introText;
+      } else if (introBlock) {
+        introBlock.style.display = 'none';
       }
 
+      const adviceText = d.advice || '';
+      const adviceEl = document.getElementById('purpose-advice');
+      const adviceBlock = adviceEl && adviceEl.closest('.content-block');
+      if (adviceText) {
+        adviceEl.textContent = adviceText;
+      } else if (adviceBlock) {
+        adviceBlock.style.display = 'none';
+      }
+
+      const bookingText = d.booking || '';
+      document.getElementById('purpose-booking').textContent = bookingText;
+
+      // おすすめ旅先ピックス
+      const picksEl = document.getElementById('purpose-picks');
+      const picksBlock = picksEl && picksEl.closest('.content-block');
+      if (d.picks && d.picks.length) {
+        picksEl.innerHTML = d.picks.map(p => {
+          if (typeof p === 'string') {
+            return `<div class="purpose-pick-card">
+              <div style="font-size:0.9rem;font-weight:800;color:var(--navy)">${p}</div>
+            </div>`;
+          }
+          const name = p.name || '';
+          const stars = p.stars || '★★★★★';
+          const reason = p.reason || '';
+          return `<div class="purpose-pick-card">
+            <div style="font-size:0.9rem;font-weight:800;color:var(--navy);margin-bottom:4px">${name}</div>
+            <div class="pick-stars">${typeof stars === 'number' ? '★'.repeat(stars)+'☆'.repeat(5-stars) : stars}</div>
+            ${reason ? `<div style="font-size:0.8rem;color:var(--text-light);margin-top:6px;line-height:1.6">${reason}</div>` : ''}
+          </div>`;
+        }).join('');
+      } else if (picksBlock) {
+        picksBlock.style.display = 'none';
+      }
+
+      // 他の目的
       const othersEl = document.getElementById('other-purposes');
-      othersEl.innerHTML = PURPOSES_DATA.filter(p => p.id !== id).map(p => `
-        <a href="purpose.html?id=${p.id}" style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;background:var(--section-alt);color:var(--navy);font-size:0.82rem">
-          <span>${p.emoji}</span><span>${p.name}</span>
-        </a>`).join('');
+      if (othersEl) {
+        othersEl.innerHTML = PURPOSES_DATA.filter(p => p.id !== id).map(p => `
+          <a href="purpose.html?id=${p.id}" style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;background:var(--section-alt);color:var(--navy);font-size:0.82rem;text-decoration:none">
+            <span>${p.emoji}</span><span>${p.name}</span>
+          </a>`).join('');
+      }
+
+      // おすすめ季節タグを追加
+      if (d.season) {
+        const heroDesc = document.getElementById('page-desc');
+        if (heroDesc) {
+          heroDesc.innerHTML = `${d.desc || ''} <span style="display:inline-block;padding:2px 10px;border-radius:20px;background:rgba(212,170,60,0.2);color:var(--gold-light);font-size:0.8rem;font-weight:700;margin-left:8px">📅 ${d.season}</span>`;
+        }
+      }
+
+    } else {
+      // IDが見つからない場合
+      document.getElementById('list-mode').innerHTML = `
+        <div class="container" style="padding:60px 0;text-align:center">
+          <div style="font-size:3rem;margin-bottom:16px">🔍</div>
+          <div style="font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:12px">目的が見つかりませんでした</div>
+          <p style="color:var(--text-light);margin-bottom:24px">お探しの目的は見つかりませんでした。目的一覧からお選びください。</p>
+          <a href="purpose.html" class="btn btn-primary">目的一覧へ戻る →</a>
+        </div>`;
     }
   } else {
     // 一覧モード

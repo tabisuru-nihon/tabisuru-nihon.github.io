@@ -195,6 +195,22 @@ document.addEventListener('DOMContentLoaded', () => {
     'コート・手袋・マフラーそろそろ出番',
   ];
 
+  // 月別おすすめ温泉地
+  const MONTH_ONSEN = [null,
+    '草津・蔵王・乳頭温泉',    // 1月
+    '銀山温泉・蔵王・野沢温泉', // 2月
+    '箱根・熱海・城崎温泉',    // 3月
+    '草津・有馬・湯布院',      // 4月
+    '奥入瀬・上山温泉',       // 5月
+    '別府・白浜・城崎温泉',    // 6月
+    '黒川温泉・指宿・湯布院',  // 7月
+    '登別・洞爺・北海道温泉',  // 8月
+    '草津・箱根・奥飛騨',      // 9月
+    '有馬・草津・城崎温泉',    // 10月
+    '箱根・湯布院・黒川温泉',  // 11月
+    '草津・登別・銀山温泉',    // 12月
+  ];
+
   const grid = document.getElementById('monthly-grid');
   if (!grid) return;
   const mn = ['','1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
@@ -203,29 +219,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = window.MONTHLY_DATA && MONTHLY_DATA[m];
     const isCurrent = m === now;
     const img = MONTH_IMGS[m];
-    const topPicks = (data?.picks || []).slice(0,3).map(p => p.name.replace(/（.*?）/,'')).join('・');
-    const caution = data?.cons?.[0] || '';
+    const topPicks = (data?.picks || []).slice(0,3).map(p => (p.name||p).replace(/（.*?）/,'')).join('・');
     const clothing = MONTH_CLOTHING[m] || '';
+    const onsen = MONTH_ONSEN[m] || '';
     return `<div class="month-card${data?' has-data':''}${isCurrent?' current-month':''}"
-      style="cursor:${data?'pointer':'default'};padding:0;overflow:hidden;border-radius:var(--radius-lg);display:flex;flex-direction:column"
-      ${data ? `onclick="location.href='../templates/monthly-detail.html?month=${m}'"` : ''}>
+      style="cursor:pointer;padding:0;overflow:hidden;border-radius:var(--radius-lg);display:flex;flex-direction:column"
+      onclick="location.href='../templates/monthly-detail.html?month=${m}'">
       <div style="position:relative;height:100px;overflow:hidden;flex-shrink:0">
         ${img ? `<img src="${img}" alt="${mn[m]}" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy">
-        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(12,27,53,0.3),rgba(12,27,53,0.7))"></div>` : `<div style="height:100%;background:linear-gradient(135deg,#0c1b35,#1a3060)"></div>`}
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(12,27,53,0.25),rgba(12,27,53,0.72))"></div>` : `<div style="height:100%;background:linear-gradient(135deg,#0c1b35,#1a3060)"></div>`}
         <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
           <div class="month-num" style="color:white;text-shadow:0 2px 6px rgba(0,0,0,0.5)">${m}</div>
           <div class="month-name-ja" style="color:rgba(255,255,255,0.9)">${mn[m]}</div>
         </div>
         ${isCurrent ? '<div class="current-badge">今月</div>' : ''}
       </div>
-      <div style="padding:10px 12px;flex:1;display:flex;flex-direction:column;gap:5px">
+      <div style="padding:10px 12px;flex:1;display:flex;flex-direction:column;gap:4px">
         ${data ? `
           <div style="font-size:0.72rem;color:var(--navy);font-weight:700;line-height:1.4">${data.theme||''}</div>
-          ${topPicks ? `<div style="font-size:0.7rem;color:var(--text-light)">📍 ${topPicks}</div>` : ''}
-          ${clothing ? `<div style="font-size:0.68rem;color:var(--teal)">👗 ${clothing}</div>` : ''}
-          ${caution ? `<div style="font-size:0.67rem;color:#e67e22">⚠️ ${caution}</div>` : ''}
+          ${topPicks ? `<div style="font-size:0.69rem;color:var(--text-light)">📍 ${topPicks}</div>` : ''}
+          ${onsen ? `<div style="font-size:0.67rem;color:var(--teal)">♨️ ${onsen}</div>` : ''}
+          ${clothing ? `<div style="font-size:0.66rem;color:#7c9;background:rgba(100,200,100,0.08);border-radius:4px;padding:2px 6px;display:inline-block">👗 ${clothing}</div>` : ''}
           <div style="margin-top:auto;padding-top:4px;font-size:0.72rem;color:var(--teal);font-weight:700">詳しく見る →</div>
-        ` : '<div style="font-size:0.7rem;color:var(--text-muted)">準備中</div>'}
+        ` : `
+          <div style="font-size:0.7rem;color:var(--navy);font-weight:700">この月の旅行情報</div>
+          ${onsen ? `<div style="font-size:0.67rem;color:var(--teal)">♨️ ${onsen}</div>` : ''}
+          ${clothing ? `<div style="font-size:0.66rem;color:var(--text-light)">👗 ${clothing}</div>` : ''}
+          <div style="margin-top:auto;padding-top:4px;font-size:0.72rem;color:var(--teal);font-weight:700">詳しく見る →</div>
+        `}
       </div>
     </div>`;
   }).join('');

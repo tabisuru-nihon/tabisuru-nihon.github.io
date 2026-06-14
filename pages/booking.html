@@ -157,7 +157,7 @@
               <td style="padding:10px;text-align:center;color:#22a; font-weight:700">◎</td>
               <td style="padding:10px;text-align:center">○</td>
             </tr>
-            <tr>
+            <tr style="border-bottom:1px solid var(--border)">
               <td style="padding:12px 14px;font-weight:700;color:var(--navy);white-space:nowrap">✈️ Agoda</td>
               <td style="padding:10px;text-align:center;color:var(--text-muted)">△</td>
               <td style="padding:10px;text-align:center;color:var(--text-muted)">△</td>
@@ -167,6 +167,28 @@
               <td style="padding:10px;text-align:center;color:var(--text-muted)">△</td>
               <td style="padding:10px;text-align:center;color:#22a; font-weight:700">◎</td>
               <td style="padding:10px;text-align:center;color:var(--text-muted)">△</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);background:var(--section-alt)">
+              <td style="padding:12px 14px;font-weight:700;color:var(--navy);white-space:nowrap">📕 るるぶトラベル</td>
+              <td style="padding:10px;text-align:center;color:#22a;font-weight:700">◎</td>
+              <td style="padding:10px;text-align:center">○</td>
+              <td style="padding:10px;text-align:center">○</td>
+              <td style="padding:10px;text-align:center">○</td>
+              <td style="padding:10px;text-align:center;color:#22a;font-weight:700">◎</td>
+              <td style="padding:10px;text-align:center;font-size:0.72rem">△</td>
+              <td style="padding:10px;text-align:center;color:var(--text-muted)">△</td>
+              <td style="padding:10px;text-align:center;color:#22a;font-weight:700">◎</td>
+            </tr>
+            <tr>
+              <td style="padding:12px 14px;font-weight:700;color:var(--navy);white-space:nowrap">🟡 近畿日本ツーリスト</td>
+              <td style="padding:10px;text-align:center;color:#22a;font-weight:700">◎</td>
+              <td style="padding:10px;text-align:center;color:#22a;font-weight:700">◎</td>
+              <td style="padding:10px;text-align:center">○</td>
+              <td style="padding:10px;text-align:center;color:var(--text-muted)">△</td>
+              <td style="padding:10px;text-align:center;color:#22a;font-weight:700">◎</td>
+              <td style="padding:10px;text-align:center;font-size:0.72rem">△</td>
+              <td style="padding:10px;text-align:center;color:var(--text-muted)">△</td>
+              <td style="padding:10px;text-align:center;color:#22a;font-weight:700">◎</td>
             </tr>
           </tbody>
         </table>
@@ -249,18 +271,30 @@ document.addEventListener('DOMContentLoaded', () => {
   // 各サイト詳細
   const grid = document.getElementById('booking-grid');
   if (grid && window.BOOKING_DATA) {
+    const compatColor = { '◎': '#22a', '○': '#2a8', '△': '#c74' };
     grid.innerHTML = BOOKING_DATA.map(b => `
       <div class="booking-card">
-        <div class="booking-logo">${b.logo}</div>
-        <div class="booking-name">${b.name}</div>
-        <div class="booking-tagline">${b.tagline}</div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+          <div class="booking-logo">${b.logo}</div>
+          <div>
+            <div class="booking-name">${b.name}</div>
+            <div class="booking-tagline">${b.tagline}</div>
+          </div>
+        </div>
+        ${b.compat ? `<div style="display:flex;gap:8px;margin:10px 0;flex-wrap:wrap">
+          ${[['温泉旅行', b.compat.onsen],['高級宿', b.compat.luxury],['家族旅行', b.compat.family]].map(([label,v])=>`
+            <div style="display:flex;align-items:center;gap:4px;background:var(--section-alt);border-radius:6px;padding:4px 10px">
+              <span style="font-size:0.68rem;color:var(--text-muted)">${label}</span>
+              <span style="font-size:0.88rem;font-weight:800;color:${compatColor[v]||'#888'}">${v||'—'}</span>
+            </div>`).join('')}
+        </div>` : ''}
         <div class="booking-bestfor">${(b.bestFor||[]).map(t=>`<span class="bestfor-tag">${t}</span>`).join('')}</div>
         <div style="margin:14px 0">${(b.features||[]).map(f=>`<div class="booking-feature">${f}</div>`).join('')}</div>
         <div style="background:var(--gold-pale);border-radius:8px;padding:10px;margin-bottom:14px">
           <div style="font-size:0.72rem;font-weight:700;color:var(--gold);margin-bottom:4px">💡 お得に使うコツ</div>
           ${(b.tips||[]).map(t=>`<div style="font-size:0.78rem;color:var(--navy);line-height:1.6">・${t}</div>`).join('')}
         </div>
-        <a href="${b.url}" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="width:100%;justify-content:center">${b.name}で検索する →</a>
+        <a href="${b.url}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" style="width:100%;justify-content:center">${b.name}で検索する →</a>
       </div>`).join('');
   }
 });
