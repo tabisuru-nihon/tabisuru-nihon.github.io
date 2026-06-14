@@ -1194,6 +1194,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // チャット例文ボタン → chat2-input に自動入力
+  document.querySelectorAll('.chat-example-item').forEach(item => {
+    item.style.cursor = 'pointer';
+    item.addEventListener('click', () => {
+      const text = item.textContent.trim().replace(/^「|」$/g, '');
+      const input = document.getElementById('chat2-input');
+      const send = document.getElementById('chat2-send');
+      if (input && text) {
+        input.value = text;
+        input.focus();
+        document.getElementById('chat-section')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => send?.click(), 500);
+      }
+    });
+  });
+
   // トップへ戻るボタン
   const backTop = document.getElementById('back-to-top');
   if (backTop) {

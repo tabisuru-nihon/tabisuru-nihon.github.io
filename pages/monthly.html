@@ -166,6 +166,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  const MONTH_IMGS = [null,
+    '../images/japan/hokkaido/hokkaido-noboribetsu-01.jpg',
+    '../images/japan/yamagata/yamagata-zao-02.jpg',
+    '../images/japan/ibaraki/ibaraki-kairakuen-02.jpg',
+    '../images/japan/aomori/aomori-hirosaki-02.jpg',
+    '../images/japan/nagano/nagano-kamikochi-01.jpg',
+    '../images/japan/ibaraki/ibaraki-nemophila-02.jpg',
+    '../images/japan/hokkaido/hokkaido-biei-flower-field-01.jpg',
+    '../images/japan/okinawa/okinawa-sea-coast-02.jpg',
+    '../images/japan/miyagi/miyagi-matsushima-01.jpg',
+    '../images/japan/kyoto/kyoto-arashiyama-01.jpg',
+    '../images/japan/kyoto/kyoto-kinkakuji-01.jpg',
+    '../images/japan/tokyo/tokyo-shibuya-night-04.jpg',
+  ];
+  const MONTH_CLOTHING = [null,
+    '厚手コート・手袋・マフラー必須',
+    '防寒完全装備。スキーウェア推奨',
+    '厚めのアウター。花粉対策も',
+    '軽いアウター・カーディガン',
+    '薄手ジャケット1枚・日焼け止め',
+    '折りたたみ傘必須・蒸し暑対策',
+    '半袖・帽子・日焼け止め・虫除け',
+    '半袖・熱中症対策・冷却グッズ',
+    '薄手ジャケット・重ね着推奨',
+    '軽いアウター・紅葉スポットは山間部は寒い',
+    '厚いアウター・山間部は要防寒',
+    'コート・手袋・マフラーそろそろ出番',
+  ];
+
   const grid = document.getElementById('monthly-grid');
   if (!grid) return;
   const mn = ['','1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
@@ -173,13 +202,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const m = i + 1;
     const data = window.MONTHLY_DATA && MONTHLY_DATA[m];
     const isCurrent = m === now;
-    const cls = 'month-card' + (data ? ' has-data' : '') + (isCurrent ? ' current-month' : '');
-    const onclick = data ? `onclick="location.href='../templates/monthly-detail.html?month=${m}'"` : '';
-    return `<div class="${cls}" style="cursor:${data?'pointer':'default'}" ${onclick}>
-      ${isCurrent ? '<div class="current-badge">今月</div>' : ''}
-      <div class="month-num">${m}</div>
-      <div class="month-name-ja">${mn[m]}</div>
-      ${data ? `<div class="month-theme">${data.theme||''}</div><div class="month-picks-count">▶ おすすめ${data.picks?.length||0}選</div>` : '<div class="month-theme" style="font-size:0.7rem;color:var(--text-muted)">準備中</div>'}
+    const img = MONTH_IMGS[m];
+    const topPicks = (data?.picks || []).slice(0,3).map(p => p.name.replace(/（.*?）/,'')).join('・');
+    const caution = data?.cons?.[0] || '';
+    const clothing = MONTH_CLOTHING[m] || '';
+    return `<div class="month-card${data?' has-data':''}${isCurrent?' current-month':''}"
+      style="cursor:${data?'pointer':'default'};padding:0;overflow:hidden;border-radius:var(--radius-lg);display:flex;flex-direction:column"
+      ${data ? `onclick="location.href='../templates/monthly-detail.html?month=${m}'"` : ''}>
+      <div style="position:relative;height:100px;overflow:hidden;flex-shrink:0">
+        ${img ? `<img src="${img}" alt="${mn[m]}" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy">
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(12,27,53,0.3),rgba(12,27,53,0.7))"></div>` : `<div style="height:100%;background:linear-gradient(135deg,#0c1b35,#1a3060)"></div>`}
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+          <div class="month-num" style="color:white;text-shadow:0 2px 6px rgba(0,0,0,0.5)">${m}</div>
+          <div class="month-name-ja" style="color:rgba(255,255,255,0.9)">${mn[m]}</div>
+        </div>
+        ${isCurrent ? '<div class="current-badge">今月</div>' : ''}
+      </div>
+      <div style="padding:10px 12px;flex:1;display:flex;flex-direction:column;gap:5px">
+        ${data ? `
+          <div style="font-size:0.72rem;color:var(--navy);font-weight:700;line-height:1.4">${data.theme||''}</div>
+          ${topPicks ? `<div style="font-size:0.7rem;color:var(--text-light)">📍 ${topPicks}</div>` : ''}
+          ${clothing ? `<div style="font-size:0.68rem;color:var(--teal)">👗 ${clothing}</div>` : ''}
+          ${caution ? `<div style="font-size:0.67rem;color:#e67e22">⚠️ ${caution}</div>` : ''}
+          <div style="margin-top:auto;padding-top:4px;font-size:0.72rem;color:var(--teal);font-weight:700">詳しく見る →</div>
+        ` : '<div style="font-size:0.7rem;color:var(--text-muted)">準備中</div>'}
+      </div>
     </div>`;
   }).join('');
 });
