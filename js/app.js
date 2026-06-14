@@ -664,6 +664,10 @@ window.renderPrefecturePage = function() {
   if (metaDesc) metaDesc.setAttribute('content', `${d.name}の旅行情報。${d.tagline}。おすすめスポット・グルメ・温泉・モデルコースを紹介。`);
   const ogTitle = document.querySelector('meta[property="og:title"]');
   if (ogTitle) ogTitle.setAttribute('content', `${d.name} 旅行ガイド | 旅する日本図鑑`);
+  // canonical
+  let canonicalEl = document.querySelector('link[rel="canonical"]');
+  if (!canonicalEl) { canonicalEl = document.createElement('link'); canonicalEl.rel = 'canonical'; document.head.appendChild(canonicalEl); }
+  canonicalEl.href = `https://katsuyukijyoukou-byte.github.io/tabisuru-nihon/templates/prefecture.html?id=${id}`;
 
   // heroの背景グラデーション + 代表写真
   const hero = document.querySelector('.pref-hero');
@@ -1196,6 +1200,9 @@ window.renderOnsenPage = function() {
   if (!d) return;
 
   document.title = `${d.name} 温泉ガイド | 旅する日本図鑑`;
+  let onsenCanonical = document.querySelector('link[rel="canonical"]');
+  if (!onsenCanonical) { onsenCanonical = document.createElement('link'); onsenCanonical.rel = 'canonical'; document.head.appendChild(onsenCanonical); }
+  onsenCanonical.href = `https://katsuyukijyoukou-byte.github.io/tabisuru-nihon/templates/onsen.html?id=${id}`;
 
   const hero = document.querySelector('.onsen-hero');
   if (hero) hero.style.background = `linear-gradient(135deg, ${d.color || '#0c1b35'}, #1a3060)`;
@@ -1263,6 +1270,9 @@ window.renderMonthlyPage = function() {
   if (!d) return;
 
   document.title = `${month}月の国内旅行おすすめ | 旅する日本図鑑`;
+  let monthCanonical = document.querySelector('link[rel="canonical"]');
+  if (!monthCanonical) { monthCanonical = document.createElement('link'); monthCanonical.rel = 'canonical'; document.head.appendChild(monthCanonical); }
+  monthCanonical.href = `https://katsuyukijyoukou-byte.github.io/tabisuru-nihon/templates/monthly-detail.html?month=${month}`;
 
   setEl('#month-num', `${month}月`);
   setEl('#month-name', d.name);
