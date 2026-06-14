@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -8,6 +8,10 @@
   <meta property="og:title" content="都道府県一覧 | 旅する日本図鑑">
   <meta property="og:description" content="47都道府県すべてを網羅。観光スポット・グルメ・季節・モデルコースを旅ノアが詳しく解説。地図から旅先を選べます。">
   <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://katsuyukijyoukou-byte.github.io/tabisuru-nihon/images/japan/hiroshima/hiroshima-miyajima-torii-01.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -55,21 +59,6 @@
 <div style="padding:48px 0 64px">
   <div class="container">
 
-    <!-- 日本地図 -->
-    <div class="japan-map-wrap" style="margin-bottom:40px">
-      <div class="japan-map" id="japan-map"></div>
-      <div class="map-legend">
-        <div class="map-legend-item"><div class="map-legend-dot" style="background:#dbeafe;border-color:#93c5fd"></div>北海道</div>
-        <div class="map-legend-item"><div class="map-legend-dot" style="background:#dcfce7;border-color:#86efac"></div>東北</div>
-        <div class="map-legend-item"><div class="map-legend-dot" style="background:#fef9c3;border-color:#fde047"></div>関東</div>
-        <div class="map-legend-item"><div class="map-legend-dot" style="background:#fff7ed;border-color:#fdba74"></div>中部</div>
-        <div class="map-legend-item"><div class="map-legend-dot" style="background:#fce7f3;border-color:#f9a8d4"></div>近畿</div>
-        <div class="map-legend-item"><div class="map-legend-dot" style="background:#ede9fe;border-color:#c4b5fd"></div>中国</div>
-        <div class="map-legend-item"><div class="map-legend-dot" style="background:#ccfbf1;border-color:#5eead4"></div>四国</div>
-        <div class="map-legend-item"><div class="map-legend-dot" style="background:#fee2e2;border-color:#fca5a5"></div>九州・沖縄</div>
-      </div>
-    </div>
-
     <!-- セクションタイトル + フィルター -->
     <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px">
       <h2 style="font-size:1rem;font-weight:700;color:var(--navy)">一覧から選ぶ <span style="font-size:0.78rem;color:var(--text-muted);font-weight:400">（47都道府県）</span></h2>
@@ -113,17 +102,16 @@
       <a href="../pages/purpose.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">目的</a>
       <a href="../pages/specialties.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">名産品・グルメ</a>
       <a href="../pages/booking.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">予約</a>
-    </div>
+      <a href="privacy.html" style="color:rgba(255,255,255,0.45);font-size:0.8rem">プライバシーポリシー</a></div>
     <div class="footer-bottom" style="padding:24px 0">
       <a href="../index.html" style="color:rgba(255,255,255,0.5)">← トップへ戻る</a>
       <span style="color:rgba(255,255,255,0.3)">© 2026 旅する日本図鑑</span>
+      <p style="font-size:0.72rem;color:rgba(255,255,255,0.35);margin-top:12px;line-height:1.6">当サイトは楽天アフィリエイト・Amazonアソシエイト等のアフィリエイトプログラムに参加しています。記事内のリンクから購入・予約された場合、サイト運営者に報酬が発生することがあります。</p>
     </div>
   </div>
 </footer>
 
 <script src="../data/prefectures.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
-<script src="../data/japan-geo.js"></script>
 <script src="../js/app.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {

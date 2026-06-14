@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://katsuyukijyoukou-byte.github.io/tabisuru-nihon/sitemap.xml
