@@ -664,6 +664,8 @@ window.renderPrefecturePage = function() {
   if (metaDesc) metaDesc.setAttribute('content', `${d.name}の旅行情報。${d.tagline}。おすすめスポット・グルメ・温泉・モデルコースを紹介。`);
   const ogTitle = document.querySelector('meta[property="og:title"]');
   if (ogTitle) ogTitle.setAttribute('content', `${d.name} 旅行ガイド | 旅する日本図鑑`);
+  const ogUrl = document.querySelector('meta[property="og:url"]');
+  if (ogUrl) ogUrl.setAttribute('content', `https://katsuyukijyoukou-byte.github.io/tabisuru-nihon/templates/prefecture.html?id=${id}`);
   // canonical
   let canonicalEl = document.querySelector('link[rel="canonical"]');
   if (!canonicalEl) { canonicalEl = document.createElement('link'); canonicalEl.rel = 'canonical'; document.head.appendChild(canonicalEl); }
@@ -1203,6 +1205,8 @@ window.renderOnsenPage = function() {
   let onsenCanonical = document.querySelector('link[rel="canonical"]');
   if (!onsenCanonical) { onsenCanonical = document.createElement('link'); onsenCanonical.rel = 'canonical'; document.head.appendChild(onsenCanonical); }
   onsenCanonical.href = `https://katsuyukijyoukou-byte.github.io/tabisuru-nihon/templates/onsen.html?id=${id}`;
+  const onsenOgUrl = document.querySelector('meta[property="og:url"]');
+  if (onsenOgUrl) onsenOgUrl.setAttribute('content', onsenCanonical.href);
 
   const hero = document.querySelector('.onsen-hero');
   if (hero) hero.style.background = `linear-gradient(135deg, ${d.color || '#0c1b35'}, #1a3060)`;
@@ -1273,6 +1277,8 @@ window.renderMonthlyPage = function() {
   let monthCanonical = document.querySelector('link[rel="canonical"]');
   if (!monthCanonical) { monthCanonical = document.createElement('link'); monthCanonical.rel = 'canonical'; document.head.appendChild(monthCanonical); }
   monthCanonical.href = `https://katsuyukijyoukou-byte.github.io/tabisuru-nihon/templates/monthly-detail.html?month=${month}`;
+  const monthOgUrl = document.querySelector('meta[property="og:url"]');
+  if (monthOgUrl) monthOgUrl.setAttribute('content', monthCanonical.href);
 
   setEl('#month-num', `${month}月`);
   setEl('#month-name', d.name);
