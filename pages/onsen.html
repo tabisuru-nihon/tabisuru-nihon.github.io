@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="canonical" href="https://tabisuru-nihon.github.io/pages/onsen.html">
   <title>温泉地一覧 | 旅する日本図鑑</title>
-  <meta name="description" content="草津・有馬・別府・箱根・城崎など15か所の温泉地を徹底解説。泉質・アクセス・おすすめシーズンを旅ノアが詳しく紹介。地域別フィルターで絞り込めます。">
+  <meta name="description" content="草津・有馬・別府・箱根・城崎・銀山・指宿など30か所の温泉地を徹底解説。泉質・アクセス・おすすめシーズンを旅ノアが詳しく紹介。地域別フィルターで絞り込めます。">
   <meta property="og:title" content="温泉地一覧 | 旅する日本図鑑">
   <meta property="og:description" content="草津・有馬・別府・箱根・城崎など15か所の名湯を徹底解説。旅ノアが泉質・アクセス・おすすめシーズンをご紹介。">
   <meta property="og:type" content="website">
@@ -48,7 +48,7 @@
           <span style="color:white">温泉地一覧</span>
         </div>
         <h1 class="page-hero-title">♨️ 温泉地から探す</h1>
-        <p class="page-hero-desc">「なぜ有名なのか」「誰に向いているか」を詳しく解説。15か所の温泉地を地域別に絞り込めます。</p>
+        <p class="page-hero-desc">「なぜ有名なのか」「誰に向いているか」を詳しく解説。30か所の温泉地を地域別に絞り込めます。</p>
       </div>
       <div style="flex-shrink:0">
         <img src="../images/character/base/noa-snow-kimono-updo.png" alt="旅ノア"
@@ -85,6 +85,8 @@
       <button class="region-btn" data-region="関東">関東</button>
       <button class="region-btn" data-region="中部">中部</button>
       <button class="region-btn" data-region="関西">関西</button>
+      <button class="region-btn" data-region="近畿">近畿</button>
+      <button class="region-btn" data-region="中国">中国</button>
       <button class="region-btn" data-region="四国">四国</button>
       <button class="region-btn" data-region="九州">九州</button>
     </div>
@@ -146,6 +148,16 @@ document.addEventListener('DOMContentLoaded', () => {
     ikaho:       '../images/japan/gunma/gunma-kusatsu-yunohata-01.jpg',
     kinugawa:    '../images/japan/tochigi/tochigi-nikko-01.jpg',
     wakura:      '../images/japan/ishikawa/ishikawa-kanazawa-01.jpg',
+    ibusuki:     '../images/japan/kagoshima/kagoshima-nature-01.jpg',
+    tamatsukuri: '../images/japan/shimane/shimane-izumo-01.jpg',
+    yudanaka:    '../images/japan/nagano/nagano-kamikochi-01.jpg',
+    okuhida:     '../images/japan/gifu/gifu-shirakawago-01.jpg',
+    shima:       '../images/japan/gunma/gunma-kusatsu-01.jpg',
+    yugawara:    '../images/japan/kanagawa/kanagawa-hakone-yumoto-01.jpg',
+    yamashiro:   '../images/japan/ishikawa/ishikawa-kanazawa-01.jpg',
+    tsukioka:    '../images/japan/niigata/niigata-landscape-01.jpg',
+    sukayu:      '../images/japan/aomori/aomori-oirase-01.jpg',
+    akiu:        '../images/japan/miyagi/miyagi-matsushima-01.jpg',
   };
 
   function renderOnsens(region) {

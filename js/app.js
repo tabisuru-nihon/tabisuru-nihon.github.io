@@ -1228,6 +1228,16 @@ window.renderOnsenPage = function() {
     ikaho:       'images/japan/gunma/gunma-kusatsu-yunohata-01.jpg',
     kinugawa:    'images/japan/tochigi/tochigi-nikko-01.jpg',
     wakura:      'images/japan/ishikawa/ishikawa-kanazawa-01.jpg',
+    ibusuki:     'images/japan/kagoshima/kagoshima-nature-01.jpg',
+    tamatsukuri: 'images/japan/shimane/shimane-izumo-01.jpg',
+    yudanaka:    'images/japan/nagano/nagano-kamikochi-01.jpg',
+    okuhida:     'images/japan/gifu/gifu-shirakawago-01.jpg',
+    shima:       'images/japan/gunma/gunma-kusatsu-01.jpg',
+    yugawara:    'images/japan/kanagawa/kanagawa-hakone-yumoto-01.jpg',
+    yamashiro:   'images/japan/ishikawa/ishikawa-kanazawa-01.jpg',
+    tsukioka:    'images/japan/niigata/niigata-landscape-01.jpg',
+    sukayu:      'images/japan/aomori/aomori-oirase-01.jpg',
+    akiu:        'images/japan/miyagi/miyagi-matsushima-01.jpg',
   };
   const heroImg = ONSEN_HERO_IMGS[id];
   const hero = document.querySelector('.onsen-hero');
