@@ -695,13 +695,13 @@ window.renderPrefecturePage = function() {
       niigata: '../images/japan/niigata/niigata-landscape-01.jpg',
       toyama: '../images/japan/toyama/toyama-tateyama-02.jpg',
       ishikawa: '../images/japan/ishikawa/ishikawa-kanazawa-01.jpg',
-      fukui: '../images/japan/fukui/fukui-tojinbo-01.jpg',
+      fukui: '../images/japan/fukui/fukui-nature-02.jpg',
       yamanashi: '../images/japan/yamanashi/yamanashi-fuji-kawaguchi-01.jpg',
       nagano: '../images/japan/nagano/nagano-kamikochi-01.jpg',
       gifu: '../images/japan/gifu/gifu-shirakawago-01.jpg',
       shizuoka: '../images/japan/shizuoka/shizuoka-fuji-01.jpg',
       aichi: '../images/japan/aichi/aichi-nagoya-castle-01.jpg',
-      mie: '../images/japan/mie/mie-ise-coast-01.jpg',
+      mie: '../images/japan/mie/mie-kumano-02.jpg',
       shiga: '../images/japan/shiga/shiga-lake-01.jpg',
       kyoto: '../images/japan/kyoto/kyoto-fushimi-inari-01.jpg',
       osaka: '../images/japan/osaka/osaka-dotonbori-01.jpg',
@@ -715,7 +715,7 @@ window.renderPrefecturePage = function() {
       yamaguchi: '../images/japan/yamaguchi/yamaguchi-coast-01.jpg',
       tokushima: '../images/japan/tokushima/tokushima-awa-02.jpg',
       kagawa: '../images/japan/kagawa/kagawa-chichibugahama-01.jpg',
-      ehime: '../images/japan/ehime/ehime-dogo-01.jpg',
+      ehime: '../images/japan/ehime/ehime-dogo-honkan-01.jpg',
       kochi: '../images/japan/kochi/kochi-katsurahama-01.jpg',
       fukuoka: '../images/japan/fukuoka/fukuoka-city-01.jpg',
       saga: '../images/japan/saga/saga-castle-01.jpg',
@@ -988,6 +988,16 @@ window.renderPrefecturePage = function() {
         </div>
       </div>`;
     }).join('');
+  }
+
+  // 向かない人
+  const notIdealEl = document.querySelector('#pref-not-ideal');
+  const notIdealCard = document.querySelector('#not-ideal-card');
+  if (notIdealEl && notIdealCard && d.notIdealFor && d.notIdealFor.length) {
+    notIdealCard.style.display = '';
+    notIdealEl.innerHTML = d.notIdealFor.map(s =>
+      `<div style="padding:7px 10px;background:var(--section-alt);border-radius:8px;font-size:0.8rem;color:var(--text-light)">⚠️ ${s.reason||s}</div>`
+    ).join('');
   }
 
   // ハイライト

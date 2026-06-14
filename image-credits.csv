@@ -1,0 +1,78 @@
+page,card_or_section,image_file,content,matches_subject,status,confirmed_date,notes
+pages/prefectures.html,hokkaido,hokkaido-biei-flower-field-01.jpg,美瑛の花畑（北海道）,yes,exact,2026-06-15,北海道代表イメージとして適切
+pages/prefectures.html,aomori,aomori-oirase-01.jpg,奥入瀬渓流（青森）,yes,exact,2026-06-15,青森の代表的景観
+pages/prefectures.html,iwate,iwate-nature-01.jpg,岩手の自然風景,yes,related,2026-06-15,具体的な観光地名は不明だが岩手の自然として適切
+pages/prefectures.html,miyagi,miyagi-matsushima-01.jpg,松島（宮城）,yes,exact,2026-06-15,松島は宮城の代表観光地
+pages/prefectures.html,akita,akita-tazawako-01.jpg,田沢湖（秋田）,yes,exact,2026-06-15,田沢湖は秋田の代表景観
+pages/prefectures.html,yamagata,yamagata-ginzan-01.jpg,銀山温泉（山形）,yes,exact,2026-06-15,銀山温泉は山形の代表観光地
+pages/prefectures.html,fukushima,fukushima-goshikinuma-01.jpg,五色沼（福島）,yes,exact,2026-06-15,五色沼は福島の代表景観
+pages/prefectures.html,ibaraki,ibaraki-kairakuen-02.jpg,偕楽園（茨城）,yes,exact,2026-06-15,偕楽園は茨城の代表観光地
+pages/prefectures.html,tochigi,tochigi-nikko-01.jpg,日光（栃木）,yes,exact,2026-06-15,日光は栃木の代表観光地
+pages/prefectures.html,gunma,gunma-kusatsu-01.jpg,草津温泉（群馬）,yes,exact,2026-06-15,草津温泉は群馬の代表温泉地
+pages/prefectures.html,saitama,saitama-kawagoe-01.jpg,川越（埼玉）,yes,exact,2026-06-15,川越は埼玉の代表観光地
+pages/prefectures.html,chiba,chiba-seaside-01.jpg,千葉の海岸,yes,related,2026-06-15,千葉の海岸として適切
+pages/prefectures.html,tokyo,tokyo-asakusa-sensoji-01.jpg,浅草寺（東京）,yes,exact,2026-06-15,浅草寺は東京の代表観光地
+pages/prefectures.html,kanagawa,kanagawa-kamakura-01.jpg,鎌倉（神奈川）,yes,exact,2026-06-15,鎌倉は神奈川の代表観光地
+pages/prefectures.html,niigata,niigata-landscape-01.jpg,新潟の風景,yes,related,2026-06-15,具体的な場所は不明だが新潟の風景として適切
+pages/prefectures.html,toyama,toyama-tateyama-02.jpg,立山（富山）,yes,exact,2026-06-15,立山は富山の代表景観
+pages/prefectures.html,ishikawa,ishikawa-kanazawa-01.jpg,金沢（石川）,yes,exact,2026-06-15,金沢は石川の代表観光地
+pages/prefectures.html,fukui,fukui-nature-02.jpg,福井の自然風景,yes,related,2026-06-15,ng-fixedから修正済み。fukui-tojinbo-01が不適切だったため変更
+pages/prefectures.html,yamanashi,yamanashi-fuji-kawaguchi-01.jpg,富士・河口湖（山梨）,yes,exact,2026-06-15,河口湖は山梨の代表景観
+pages/prefectures.html,nagano,nagano-kamikochi-01.jpg,上高地（長野）,yes,exact,2026-06-15,上高地は長野の代表景観
+pages/prefectures.html,gifu,gifu-shirakawago-01.jpg,白川郷（岐阜）,yes,exact,2026-06-15,白川郷は岐阜の代表観光地
+pages/prefectures.html,shizuoka,shizuoka-fuji-01.jpg,富士山（静岡側）,yes,exact,2026-06-15,富士山は静岡の代表景観
+pages/prefectures.html,aichi,aichi-nagoya-castle-01.jpg,名古屋城（愛知）,yes,exact,2026-06-15,名古屋城は愛知の代表観光地
+pages/prefectures.html,mie,mie-kumano-02.jpg,熊野（三重）,yes,exact,2026-06-15,ng-fixedから修正済み。mie-ise-coast-01が不適切だったため変更
+pages/prefectures.html,shiga,shiga-lake-01.jpg,琵琶湖（滋賀）,yes,exact,2026-06-15,琵琶湖は滋賀の代表景観
+pages/prefectures.html,kyoto,kyoto-fushimi-inari-01.jpg,伏見稲荷（京都）,yes,exact,2026-06-15,伏見稲荷は京都の代表観光地
+pages/prefectures.html,osaka,osaka-dotonbori-01.jpg,道頓堀（大阪）,yes,exact,2026-06-15,道頓堀は大阪の代表景観
+pages/prefectures.html,hyogo,hyogo-himeji-01.jpg,姫路城（兵庫）,yes,exact,2026-06-15,姫路城は兵庫の代表観光地
+pages/prefectures.html,nara,nara-deer-01.jpg,奈良の鹿・奈良公園,yes,exact,2026-06-15,奈良の鹿は奈良の象徴
+pages/prefectures.html,wakayama,wakayama-nachi-01.jpg,那智（和歌山）,yes,exact,2026-06-15,那智は和歌山の代表観光地
+pages/prefectures.html,tottori,tottori-sanddune-02.jpg,鳥取砂丘（鳥取）,yes,exact,2026-06-15,鳥取砂丘は鳥取の代表景観
+pages/prefectures.html,shimane,shimane-izumo-01.jpg,出雲大社（島根）,yes,exact,2026-06-15,出雲大社は島根の代表観光地
+pages/prefectures.html,okayama,okayama-kurashiki-01.jpg,倉敷（岡山）,yes,exact,2026-06-15,倉敷は岡山の代表観光地
+pages/prefectures.html,hiroshima,hiroshima-miyajima-torii-01.jpg,宮島・鳥居（広島）,yes,exact,2026-06-15,厳島神社は広島の代表観光地
+pages/prefectures.html,yamaguchi,yamaguchi-coast-01.jpg,山口の海岸,yes,related,2026-06-15,具体的な場所は不明だが山口の海岸として適切
+pages/prefectures.html,tokushima,tokushima-awa-02.jpg,阿波（徳島）,yes,exact,2026-06-15,阿波踊りの舞台として適切
+pages/prefectures.html,kagawa,kagawa-chichibugahama-01.jpg,父母ヶ浜（香川）,yes,exact,2026-06-15,父母ヶ浜は香川の有名撮影スポット
+pages/prefectures.html,ehime,ehime-dogo-honkan-01.jpg,道後温泉本館（愛媛）,yes,exact,2026-06-15,ng-fixedから修正済み。ehime-dogo-01が不適切だったため変更
+pages/prefectures.html,kochi,kochi-katsurahama-01.jpg,桂浜（高知）,yes,exact,2026-06-15,桂浜は高知の代表景観
+pages/prefectures.html,fukuoka,fukuoka-city-01.jpg,福岡市街,yes,exact,2026-06-15,福岡市街は福岡の代表景観
+pages/prefectures.html,saga,saga-castle-01.jpg,佐賀城（佐賀）,yes,exact,2026-06-15,佐賀城は佐賀の代表観光地
+pages/prefectures.html,nagasaki,nagasaki-harbor-01.jpg,長崎港（長崎）,yes,exact,2026-06-15,長崎港は長崎の代表景観
+pages/prefectures.html,kumamoto,kumamoto-castle-01.jpg,熊本城（熊本）,yes,exact,2026-06-15,熊本城は熊本の代表観光地
+pages/prefectures.html,miyazaki,miyazaki-coast-01.jpg,宮崎の海岸,yes,related,2026-06-15,宮崎の海岸として適切
+pages/prefectures.html,kagoshima,kagoshima-nature-01.jpg,鹿児島の自然,yes,related,2026-06-15,具体的な場所は不明だが鹿児島の自然として適切
+pages/prefectures.html,oita,oita-beppu-01.jpg,別府温泉（大分）,yes,exact,2026-06-15,別府温泉は大分の代表温泉地
+pages/prefectures.html,okinawa,okinawa-sea-coast-02.jpg,沖縄の海,yes,exact,2026-06-15,沖縄の美しい海として適切
+pages/onsen.html,noboribetsu,hokkaido-noboribetsu-jigokudani-01.jpg,登別地獄谷,yes,exact,2026-06-15,登別温泉の代表景観
+pages/onsen.html,kusatsu,gunma-kusatsu-yunohata-01.jpg,草津温泉湯畑,yes,exact,2026-06-15,湯畑は草津の象徴
+pages/onsen.html,hakone,kanagawa-hakone-yumoto-01.jpg,箱根湯本,yes,exact,2026-06-15,箱根湯本は箱根の玄関口
+pages/onsen.html,atami,shizuoka-atami-onsen-01.jpg,熱海温泉,yes,exact,2026-06-15,熱海の温泉街として適切
+pages/onsen.html,arima,hyogo-arima-kinsenkawa-01.jpg,有馬温泉金泉川,yes,exact,2026-06-15,有馬温泉の金泉川として適切
+pages/onsen.html,kinosaki,hyogo-kinosaki-01.jpg,城崎温泉,yes,exact,2026-06-15,城崎温泉の街並みとして適切
+pages/onsen.html,shirahama,wakayama-shirahama-beach-01.jpg,白浜ビーチ,yes,exact,2026-06-15,白浜の白砂ビーチとして適切
+pages/onsen.html,dogo,ehime-dogo-honkan-01.jpg,道後温泉本館,yes,exact,2026-06-15,道後温泉本館として適切
+pages/onsen.html,beppu,oita-beppu-01.jpg,別府温泉,yes,exact,2026-06-15,別府温泉として適切
+pages/onsen.html,nyuto,akita-nyutou-onsen-01.jpg,乳頭温泉,yes,exact,2026-06-15,乳頭温泉として適切
+pages/onsen.html,zao,yamagata-zao-02.jpg,蔵王,yes,exact,2026-06-15,蔵王温泉の景観として適切
+pages/onsen.html,ginzan,yamagata-ginzan-01.jpg,銀山温泉,yes,exact,2026-06-15,銀山温泉の温泉街として適切
+pages/onsen.html,sukayu,aomori-oirase-01.jpg,奥入瀬渓流（青森）,yes,related,2026-06-15,酸ヶ湯は奥入瀬と同エリア（十和田湖周辺）
+pages/onsen.html,tsukioka,niigata-landscape-01.jpg,新潟の風景,yes,related,2026-06-15,月岡温泉専用写真なし。新潟の一般景観として代替
+pages/onsen.html,yufuin,(no image),—,yes,placeholder,2026-06-15,由布院専用写真なし。グラデーション表示
+pages/onsen.html,kurokawa,(no image),—,yes,placeholder,2026-06-15,黒川温泉専用写真なし。グラデーション表示
+pages/onsen.html,gero,(no image),—,yes,placeholder,2026-06-15,下呂温泉専用写真なし。グラデーション表示
+pages/onsen.html,jozankei,(no image),—,yes,placeholder,2026-06-15,定山渓専用写真なし。グラデーション表示
+pages/onsen.html,ikaho,(no image),—,yes,placeholder,2026-06-15,伊香保専用写真なし。グラデーション表示
+pages/onsen.html,kinugawa,(no image),—,yes,placeholder,2026-06-15,鬼怒川専用写真なし。グラデーション表示
+pages/onsen.html,wakura,(no image),—,yes,placeholder,2026-06-15,和倉温泉専用写真なし。グラデーション表示
+pages/onsen.html,ibusuki,(no image),—,yes,placeholder,2026-06-15,指宿温泉専用写真なし。グラデーション表示
+pages/onsen.html,tamatsukuri,(no image),—,yes,placeholder,2026-06-15,玉造温泉専用写真なし。グラデーション表示
+pages/onsen.html,yudanaka,(no image),—,yes,placeholder,2026-06-15,湯田中温泉専用写真なし。グラデーション表示
+pages/onsen.html,okuhida,(no image),—,yes,placeholder,2026-06-15,奥飛騨温泉郷専用写真なし。グラデーション表示
+pages/onsen.html,shima,(no image),—,yes,placeholder,2026-06-15,四万温泉専用写真なし。グラデーション表示
+pages/onsen.html,yugawara,(no image),—,yes,placeholder,2026-06-15,湯河原温泉専用写真なし。グラデーション表示
+pages/onsen.html,yamashiro,(no image),—,yes,placeholder,2026-06-15,山代温泉専用写真なし。グラデーション表示
+pages/onsen.html,akiu,(no image),—,yes,placeholder,2026-06-15,秋保温泉専用写真なし。グラデーション表示
+pages/onsen.html,yamanaka,(no image),—,yes,placeholder,2026-06-15,山中温泉専用写真なし。グラデーション表示

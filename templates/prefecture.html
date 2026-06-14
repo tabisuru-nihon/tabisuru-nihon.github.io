@@ -55,7 +55,7 @@
       <div class="pref-hero-content" style="display:flex;align-items:flex-end;gap:32px;flex-wrap:wrap">
         <div style="flex:1;min-width:220px">
           <div class="pref-label" id="pref-label">地域 › 県名</div>
-          <h1 class="pref-name" id="pref-name">読み込み中...</h1>
+          <h1 class="pref-name" id="pref-name"></h1>
           <p class="pref-tagline" id="pref-tagline"></p>
           <div class="pref-best-for" id="pref-best-for"></div>
         </div>
@@ -166,6 +166,11 @@
           <div class="souvenirs-list" id="pref-souvenirs"></div>
         </div>
 
+        <!-- 情報の注意書き -->
+        <div style="margin-top:32px;padding:14px 18px;background:var(--section-alt);border-radius:var(--radius);border-left:3px solid var(--border)">
+          <p style="font-size:0.72rem;color:var(--text-muted);line-height:1.7;margin:0">掲載内容は作成時点の情報をもとにしています。観光スポットの営業時間・料金・交通情報・イベント開催状況は変更される場合があります。旅行前に公式サイト等で最新情報をご確認ください。</p>
+        </div>
+
       </div><!-- /pref-main -->
 
       <!-- サイドバー -->
@@ -179,7 +184,7 @@
                  alt="旅ノア"
                  class="noa-sidebar-img" style="margin:0">
           </div>
-          <p id="noa-comment">読み込み中...</p>
+          <p id="noa-comment"></p>
         </div>
 
         <!-- アクセス -->
@@ -193,6 +198,12 @@
           <h3>🏨 おすすめ予約方法</h3>
           <div id="pref-booking"></div>
           <a href="../pages/booking.html" class="btn btn-sm btn-ghost" style="width:100%;justify-content:center;margin-top:12px">予約サイト比較を見る →</a>
+        </div>
+
+        <!-- 向かない人 -->
+        <div class="sidebar-card" id="not-ideal-card" style="display:none">
+          <h3>⚠️ こんな旅行者には向かない場合も</h3>
+          <div id="pref-not-ideal" style="display:flex;flex-direction:column;gap:6px"></div>
         </div>
 
         <!-- 関連温泉 -->

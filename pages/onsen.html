@@ -145,6 +145,39 @@ document.addEventListener('DOMContentLoaded', () => {
     tsukioka:    '../images/japan/niigata/niigata-landscape-01.jpg',
   };
 
+  const ONSEN_TAGS = {
+    noboribetsu: ['北海道','スケール大','家族向き','カニグルメ'],
+    kusatsu:     ['群馬','湯畑体験','温泉街','1人旅OK','写真映え'],
+    hakone:      ['神奈川','首都圏近い','富士山','美術館','電車OK'],
+    atami:       ['静岡','東京近い','電車OK','海ビュー'],
+    arima:       ['兵庫','関西近い','金泉','高級感','記念日'],
+    kinosaki:    ['兵庫','外湯めぐり','浴衣散歩','写真映え','電車OK'],
+    shirahama:   ['和歌山','白砂ビーチ','家族向き'],
+    dogo:        ['愛媛','日本最古','街並み','電車OK','写真映え'],
+    beppu:       ['大分','地獄めぐり','泉質豊富','コスパ良','電車OK'],
+    yufuin:      ['大分','絶景','高品質宿','カップル','写真映え'],
+    nyuto:       ['秋田','秘湯','露天風呂','湯めぐり手形'],
+    kurokawa:    ['熊本','入湯手形','渓谷美','大人向き'],
+    gero:        ['岐阜','名古屋近い','電車OK','飛騨牛'],
+    zao:         ['山形','スキー場隣接','樹氷','冬おすすめ'],
+    jozankei:    ['北海道','札幌近い','紅葉','温泉街'],
+    ginzan:      ['山形','大正ロマン','雪景色','写真映え','冬おすすめ'],
+    ikaho:       ['群馬','石段街','温泉まんじゅう','東京近め'],
+    kinugawa:    ['栃木','日光近い','渓谷','家族向き'],
+    wakura:      ['石川','能登半島','海の温泉','高級旅館'],
+    ibusuki:     ['鹿児島','砂蒸し温泉','指宿体験','独特'],
+    tamatsukuri: ['島根','出雲観光','美肌の湯','歴史'],
+    yudanaka:    ['長野','スノーモンキー','長野市近め','温泉街'],
+    okuhida:     ['岐阜','北アルプス','秘湯感','自然'],
+    shima:       ['群馬','渓谷','秘境感','コスパ良'],
+    yugawara:    ['神奈川','東京近い','静か','電車OK'],
+    yamashiro:   ['石川','金沢近い','山代漆器','大人向き'],
+    tsukioka:    ['新潟','新発田近い','こしひかり','アクセス良'],
+    sukayu:      ['青森','酸ヶ湯','混浴大浴場','秘湯感'],
+    akiu:        ['宮城','仙台近い','奥州三名湯','電車OK'],
+    yamanaka:    ['石川','鶴仙渓','芭蕉','温泉街散策','大人向き'],
+  };
+
   function renderOnsens(region) {
     const list = region === 'all' ? onsens : onsens.filter(o => o.region === region);
     if (!list.length) {
@@ -166,7 +199,10 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="onsen-name">${o.name}</div>
           <div class="onsen-pref">${o.prefecture}</div>
           <div class="onsen-why" style="font-size:0.78rem;line-height:1.5;color:var(--text-light);margin:6px 0">${o.tagline}</div>
-          <div class="onsen-suits">${(o.suits?.perfect||[]).slice(0,3).map(s=>`<span class="suit-tag">${s}</span>`).join('')}</div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;margin:6px 0 0">
+            ${(ONSEN_TAGS[o.id]||[]).map(t=>`<span style="font-size:0.67rem;padding:2px 7px;border-radius:999px;background:rgba(12,27,53,0.07);color:var(--navy);font-weight:600">${t}</span>`).join('')}
+          </div>
+          <div class="onsen-suits">${(o.suits?.perfect||[]).slice(0,2).map(s=>`<span class="suit-tag">${s}</span>`).join('')}</div>
           <div style="margin-top:auto;padding-top:8px;font-size:0.75rem;color:var(--teal);font-weight:700">詳しく見る →</div>
         </div>
       </div>`;

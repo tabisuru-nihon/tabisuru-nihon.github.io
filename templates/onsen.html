@@ -52,7 +52,7 @@
           <span id="onsen-pref">—</span>
         </div>
         <div id="onsen-pref-area" style="font-size:0.8rem;color:rgba(255,255,255,0.6);margin-bottom:6px"></div>
-        <h1 class="pref-name" id="onsen-name" style="font-size:clamp(2rem,5vw,3.5rem)">読み込み中...</h1>
+        <h1 class="pref-name" id="onsen-name" style="font-size:clamp(2rem,5vw,3.5rem)"></h1>
         <p class="pref-tagline" id="onsen-tagline"></p>
         <div id="onsen-springs" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px"></div>
       </div>
@@ -94,6 +94,13 @@
           <div id="onsen-nearby" style="display:flex;flex-direction:column;gap:8px"></div>
         </div>
 
+        <!-- 旅行タイプ別評価 -->
+        <div class="content-block fade-in" id="ratings-block" style="display:none">
+          <h2 class="block-title"><div class="block-icon icon-purple">📊</div>旅行タイプ別おすすめ度</h2>
+          <div id="onsen-ratings-table" style="overflow-x:auto"></div>
+          <p style="font-size:0.72rem;color:var(--text-muted);margin-top:8px">※評価は旅ノアの独自基準によるものです。個人差があります。</p>
+        </div>
+
         <!-- 比較 -->
         <div class="content-block fade-in" id="comparison-block" style="display:none">
           <h2 class="block-title"><div class="block-icon icon-purple">⚖️</div>似た温泉地との違い</h2>
@@ -112,6 +119,17 @@
           <div class="food-grid" id="onsen-gourmet"></div>
         </div>
 
+        <!-- 失敗しない選び方 -->
+        <div class="content-block fade-in" id="tips-block" style="display:none">
+          <h2 class="block-title"><div class="block-icon icon-teal">💡</div>失敗しない宿選びのポイント</h2>
+          <div id="onsen-tips" style="display:flex;flex-direction:column;gap:10px"></div>
+        </div>
+
+        <!-- 情報の注意書き -->
+        <div style="margin-top:32px;padding:14px 18px;background:var(--section-alt);border-radius:var(--radius);border-left:3px solid var(--border)">
+          <p style="font-size:0.72rem;color:var(--text-muted);line-height:1.7;margin:0">掲載内容は作成時点の情報をもとにしています。営業時間・料金・交通情報・イベント開催状況は変更される場合があります。旅行前に公式サイト等で最新情報をご確認ください。</p>
+        </div>
+
       </div>
 
       <aside class="pref-sidebar">
@@ -120,7 +138,7 @@
           <div class="noa-char-frame">
             <img src="../images/character/base/noa-snow-kimono-updo.png" alt="旅ノア" class="noa-sidebar-img" style="margin:0">
           </div>
-          <p id="noa-comment">読み込み中...</p>
+          <p id="noa-comment"></p>
         </div>
 
         <div class="sidebar-card">
@@ -193,6 +211,42 @@ document.addEventListener('DOMContentLoaded', () => {
     jozankei:    '../images/character/scene/noa-scene-hydrangea.png',
   };
 
+  // 旅行タイプ別評価データ（主要温泉地）
+  const ONSEN_RATINGS = {
+    noboribetsu: { access:'★★★★☆', atmosphere:'★★★★★', photo:'★★★★☆', family:'★★★★★', couple:'★★★☆☆', solo:'★★★☆☆', luxury:'★★★☆☆', value:'★★★★☆', carfree:'★★★★☆', crowd:'★★★☆☆' },
+    kusatsu:     { access:'★★★☆☆', atmosphere:'★★★★★', photo:'★★★★★', family:'★★★★☆', couple:'★★★★☆', solo:'★★★★★', luxury:'★★★☆☆', value:'★★★★☆', carfree:'★★★☆☆', crowd:'★★★★☆' },
+    hakone:      { access:'★★★★★', atmosphere:'★★★★☆', photo:'★★★★★', family:'★★★★☆', couple:'★★★★★', solo:'★★★★☆', luxury:'★★★★☆', value:'★★★☆☆', carfree:'★★★★☆', crowd:'★★★☆☆' },
+    atami:       { access:'★★★★★', atmosphere:'★★★★☆', photo:'★★★★☆', family:'★★★☆☆', couple:'★★★★☆', solo:'★★★★☆', luxury:'★★★☆☆', value:'★★★★☆', carfree:'★★★★★', crowd:'★★★☆☆' },
+    arima:       { access:'★★★★★', atmosphere:'★★★★★', photo:'★★★★☆', family:'★★★☆☆', couple:'★★★★★', solo:'★★★☆☆', luxury:'★★★★★', value:'★★★☆☆', carfree:'★★★★☆', crowd:'★★★☆☆' },
+    kinosaki:    { access:'★★★★☆', atmosphere:'★★★★★', photo:'★★★★★', family:'★★★★☆', couple:'★★★★★', solo:'★★★★☆', luxury:'★★★★☆', value:'★★★★☆', carfree:'★★★★★', crowd:'★★★☆☆' },
+    shirahama:   { access:'★★★☆☆', atmosphere:'★★★★☆', photo:'★★★★☆', family:'★★★★★', couple:'★★★★☆', solo:'★★★☆☆', luxury:'★★★☆☆', value:'★★★★☆', carfree:'★★☆☆☆', crowd:'★★★☆☆' },
+    dogo:        { access:'★★★★★', atmosphere:'★★★★★', photo:'★★★★★', family:'★★★★☆', couple:'★★★★☆', solo:'★★★★★', luxury:'★★★☆☆', value:'★★★★☆', carfree:'★★★★★', crowd:'★★★☆☆' },
+    beppu:       { access:'★★★★☆', atmosphere:'★★★★☆', photo:'★★★★★', family:'★★★★☆', couple:'★★★☆☆', solo:'★★★★★', luxury:'★★★☆☆', value:'★★★★★', carfree:'★★★★☆', crowd:'★★★☆☆' },
+    yufuin:      { access:'★★★★☆', atmosphere:'★★★★★', photo:'★★★★★', family:'★★★☆☆', couple:'★★★★★', solo:'★★★★☆', luxury:'★★★★☆', value:'★★★☆☆', carfree:'★★★★☆', crowd:'★★★☆☆' },
+    nyuto:       { access:'★★★☆☆', atmosphere:'★★★★★', photo:'★★★★★', family:'★★★☆☆', couple:'★★★★★', solo:'★★★★★', luxury:'★★★☆☆', value:'★★★★☆', carfree:'★★☆☆☆', crowd:'★★★★★' },
+    kurokawa:    { access:'★★☆☆☆', atmosphere:'★★★★★', photo:'★★★★★', family:'★★★☆☆', couple:'★★★★★', solo:'★★★★☆', luxury:'★★★★☆', value:'★★★★☆', carfree:'★★☆☆☆', crowd:'★★★★★' },
+    gero:        { access:'★★★★★', atmosphere:'★★★★☆', photo:'★★★☆☆', family:'★★★★☆', couple:'★★★★☆', solo:'★★★★☆', luxury:'★★★☆☆', value:'★★★★☆', carfree:'★★★★★', crowd:'★★★☆☆' },
+    zao:         { access:'★★★★☆', atmosphere:'★★★★☆', photo:'★★★★★', family:'★★★★☆', couple:'★★★★☆', solo:'★★★★☆', luxury:'★★★☆☆', value:'★★★★☆', carfree:'★★★☆☆', crowd:'★★★☆☆' },
+    jozankei:    { access:'★★★★★', atmosphere:'★★★★☆', photo:'★★★★☆', family:'★★★★☆', couple:'★★★★☆', solo:'★★★☆☆', luxury:'★★★☆☆', value:'★★★★☆', carfree:'★★★☆☆', crowd:'★★★☆☆' },
+    ginzan:      { access:'★★★★☆', atmosphere:'★★★★★', photo:'★★★★★', family:'★★★★☆', couple:'★★★★★', solo:'★★★★★', luxury:'★★★☆☆', value:'★★★★☆', carfree:'★★★★☆', crowd:'★★★☆☆' },
+  };
+
+  // 失敗しない選び方のポイント
+  const ONSEN_TIPS = {
+    noboribetsu: ['宿は登別温泉街に宿泊するのが基本。洞爺湖や支笏湖と組み合わせると1泊2日で充実','カニ料理プランは事前予約が必須。シーズン（冬）は直前では埋まりやすい','地獄谷は宿を早めにチェックアウトし、観光客が少ない朝イチで見るのがおすすめ'],
+    kusatsu:     ['湯畑周辺の宿は便利だが混雑する。少し外れた宿でも温泉の質は変わらない','「時間湯」（有料体験）は事前に体験時間を確認して日程を組むと充実','草津は標高1100mのため夏でも涼しく・冬は積雪。服装の準備が必要'],
+    hakone:      ['箱根は「どのエリアに泊まるか」が重要。仙石原・強羅・湯本それぞれ雰囲気が異なる','富士山の眺望は天気次第。富士山の見える方角の部屋を指定するのがポイント','箱根フリーパスを使うと電車・ロープウェイ・船がお得にまとめて乗れる'],
+    atami:       ['駅から宿まで坂道が多い。荷物が多い場合はタクシーを使うと良い','週末・連休は混雑しやすいので平日がおすすめ。平日価格は大きく下がることが多い','海が見える客室を希望する場合は必ず事前に確認してから予約を'],
+    arima:       ['有馬は宿の予約が特に重要。人気旅館は土日は1〜2ヶ月前に埋まることがある','金泉・銀泉が両方楽しめる宿を選ぶと満足度が高い','宿の近くに日帰り温泉もあるので、チェックイン前後に楽しめる'],
+    kinosaki:    ['外湯7か所はすべて入湯できる「外湯めぐり券」が旅館に宿泊すると無料でもらえる','浴衣での外湯めぐりは城崎の最大の楽しみ。浴衣は宿でレンタル可能','冬のカニ料理（松葉ガニ）シーズン（11月〜3月）は料金が高いが、最高の体験ができる'],
+    dogo:        ['道後温泉本館は改修中のため、椿の湯など他の施設も活用しよう','松山市内の観光（松山城・坊ちゃん電車）と組み合わせると充実','しまなみ海道サイクリングとのセット旅行も人気。レンタカーがあると便利'],
+    beppu:       ['別府は温泉の種類（8種）が豊富。「地獄めぐり」は6か所を半日で回れる','大分空港から別府は路線バスで約1時間。レンタカーは不要','由布院とセット旅行にすると大分旅行がより充実する'],
+    nyuto:       ['乳頭温泉は秘湯なので道路が細い。特に冬は積雪があるためスタッドレスタイヤ必須','「湯めぐり帳」（複数の宿の温泉に入れるパス）がおすすめ。各宿ごとに泉質が異なる','田沢湖・角館と組み合わせると秋田観光として完璧なコースになる'],
+    kurokawa:    ['黒川は車でのアクセスが前提。公共交通は大変不便','「入湯手形」（3か所の露天風呂に入れる木札）は絶対購入するべき独特体験','温泉街は夜になると静かで雰囲気が抜群。夕食後の散歩がおすすめ'],
+    ginzan:      ['銀山温泉は温泉街が非常にコンパクト。ほとんどの宿が大正ロマン風の建物','ガス灯が灯る夜の温泉街の雪景色が有名。冬の訪問を強くおすすめ','宿の数が少ないため人気の時期は数ヶ月前から予約が必要'],
+    gero:        ['名古屋・高山からのアクセスが非常に便利（特急で1時間程度）','飛騨牛の料理プランが充実している旅館が多い。予算は上がるが価値が高い','白川郷・高山と組み合わせると「飛騨3日間」の定番コースが完成'],
+  };
+
   const id = getPageParam('id');
   if (!id || !window.ONSENS_DATA) return;
   const d = ONSENS_DATA[id];
@@ -241,6 +295,48 @@ document.addEventListener('DOMContentLoaded', () => {
       const desc = typeof g === 'string' ? '' : (g.desc || '');
       return `<div class="food-card"><div class="food-emoji">${emoji}</div><div class="food-name">${name}</div><div class="food-desc">${desc}</div></div>`;
     }).join('');
+  }
+
+  // 旅行タイプ別評価
+  const ratings = ONSEN_RATINGS[id];
+  if (ratings) {
+    const ratingsBlock = document.getElementById('ratings-block');
+    const ratingsTable = document.getElementById('onsen-ratings-table');
+    if (ratingsBlock && ratingsTable) {
+      const criteria = [
+        ['access','アクセスの良さ'],['atmosphere','温泉街の雰囲気'],['photo','写真映え'],
+        ['family','子連れ向き'],['couple','カップル向き'],['solo','一人旅向き'],
+        ['luxury','高級感'],['value','コスパ'],['carfree','車なしOK'],['crowd','混雑しにくさ'],
+      ];
+      ratingsTable.innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:0.82rem">
+        <thead><tr style="background:var(--navy);color:white">
+          <th style="padding:8px 12px;text-align:left;font-weight:600">評価項目</th>
+          <th style="padding:8px 12px;text-align:center;font-weight:600">${d.name}</th>
+        </tr></thead>
+        <tbody>
+          ${criteria.map(([k, label], i) => `<tr style="background:${i%2===0?'var(--card-bg)':'var(--section-alt)'}">
+            <td style="padding:8px 12px;color:var(--navy);font-weight:600">${label}</td>
+            <td style="padding:8px 12px;text-align:center;letter-spacing:2px;color:var(--gold)">${ratings[k]||'—'}</td>
+          </tr>`).join('')}
+        </tbody>
+      </table>`;
+      ratingsBlock.style.display = '';
+    }
+  }
+
+  // 失敗しない選び方のポイント
+  const tips = ONSEN_TIPS[id];
+  if (tips) {
+    const tipsBlock = document.getElementById('tips-block');
+    const tipsEl = document.getElementById('onsen-tips');
+    if (tipsBlock && tipsEl) {
+      tipsEl.innerHTML = tips.map((t,i) => `
+        <div style="display:flex;gap:10px;padding:10px 14px;background:var(--card-bg);border-radius:8px;border-left:3px solid var(--teal)">
+          <span style="font-size:0.9rem;font-weight:800;color:var(--teal);flex-shrink:0">${i+1}</span>
+          <span style="font-size:0.83rem;line-height:1.7;color:var(--text-light)">${t}</span>
+        </div>`).join('');
+      tipsBlock.style.display = '';
+    }
   }
 
   // 基本情報
