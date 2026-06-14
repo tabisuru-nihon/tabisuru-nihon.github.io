@@ -166,6 +166,24 @@
           <div class="souvenirs-list" id="pref-souvenirs"></div>
         </div>
 
+        <!-- 雨の日の過ごし方 -->
+        <div class="content-block fade-in" id="rainy-day-block" style="display:none">
+          <h2 class="block-title"><div class="block-icon icon-blue">☔</div>雨の日でも楽しめる過ごし方</h2>
+          <div id="pref-rainy-day" style="display:flex;flex-direction:column;gap:10px"></div>
+        </div>
+
+        <!-- 車なし旅行情報 -->
+        <div class="content-block fade-in" id="carfree-block" style="display:none">
+          <h2 class="block-title"><div class="block-icon icon-teal">🚃</div>車なしで旅行できる？</h2>
+          <div id="pref-carfree"></div>
+        </div>
+
+        <!-- 初めてならここ -->
+        <div class="content-block fade-in" id="firsttime-block" style="display:none">
+          <h2 class="block-title"><div class="block-icon icon-orange">🗺️</div>初めて行くなら・2回目以降に行きたい</h2>
+          <div id="pref-firsttime" style="display:grid;grid-template-columns:1fr 1fr;gap:14px"></div>
+        </div>
+
         <!-- 情報の注意書き -->
         <div style="margin-top:32px;padding:14px 18px;background:var(--section-alt);border-radius:var(--radius);border-left:3px solid var(--border)">
           <p style="font-size:0.72rem;color:var(--text-muted);line-height:1.7;margin:0">掲載内容は作成時点の情報をもとにしています。観光スポットの営業時間・料金・交通情報・イベント開催状況は変更される場合があります。旅行前に公式サイト等で最新情報をご確認ください。</p>
@@ -395,6 +413,146 @@ document.addEventListener('DOMContentLoaded', () => {
       backTop.classList.toggle('visible', window.scrollY > 400);
     });
     backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+
+  // 雨の日の過ごし方データ（主要都道府県）
+  const PREF_RAINY_DAY = {
+    hokkaido: ['小樽芸術村・北一ガラス館（屋内でガラス工芸を見学）','札幌市内の大型商業施設（ステラプレイス・パセオ等）で北海道グルメをまとめて体験','函館の元町エリアは教会・洋館が立ち並び雨の日でも独特の雰囲気がある','北海道開拓の村（屋内展示も多い）や北海道博物館で北海道の歴史を学ぶ'],
+    tokyo: ['六本木ミュージアムエリア（国立新美術館・森美術館・21_21 DESIGN SIGHT）','浅草・仲見世商店街は屋根付きのアーケードで雨でも快適な食べ歩きができる','東京スカイツリーは雨でも展望台から雲の中の東京が楽しめる','渋谷ヒカリエ・新宿伊勢丹など大型ショッピング施設でウィンドウショッピング'],
+    kyoto: ['京都の美術館・博物館（国立京都博物館・京都市美術館）','二条城・金閣寺・嵐山の竹林は雨の日が逆に幻想的で写真映えする','伏見稲荷大社は傘をさしながら千本鳥居を歩くのも風情がある','錦市場（屋根付きアーケード）で食べ歩き・お土産探し'],
+    osaka: ['道頓堀・心斎橋エリアは屋根付きの商店街が充実して雨でも楽しめる','大阪城天守閣は屋内展示が充実しており雨天に最適な観光地','海遊館（水族館）は雨でも完全屋内で一日中楽しめる','NAMBA PARKSやグランフロント大阪など大型複合施設'],
+    hyogo: ['神戸市立博物館・大阪市立東洋陶磁美術館などミュージアム巡り','神戸ハーバーランドのumie（大型ショッピングモール）','城崎温泉の場合は温泉街の外湯をめぐること自体が傘をさして楽しめる文化体験','有馬温泉の場合は宿でゆっくり過ごすのが最高の過ごし方'],
+    hiroshima: ['原爆ドーム・広島平和記念資料館は雨でも見学できる屋内中心の施設','広島市現代美術館・縮景園の雨の庭園も風情がある','宮島の場合は厳島神社（屋根ありの回廊）と宮島水族館で雨でも楽しめる','フェリーは雨でも運行。厳島神社の雨の日は観光客が少なく幻想的'],
+    aichi: ['名古屋城（天守閣は工事中だが本丸御殿が見学可能）','トヨタ産業技術記念館・リニア・鉄道館など乗り物系屋内施設','大須商店街（名古屋最大のアーケード商店街）での食べ歩き','中部国際空港（セントレア）のスカイデッキは飛行機鑑賞と買い物が楽しめる'],
+    nara: ['奈良国立博物館（東大寺のすぐ近く。特別展が充実）','奈良の鹿は雨でも公園に出ているので鹿せんべいを渡せる','薬師寺・唐招提寺・法隆寺は屋内展示が多く雨天でも見学できる','ならまちの町並みは軒先が続いており傘なしで散策できる箇所も'],
+    kanagawa: ['箱根ガラスの森美術館・ポーラ美術館など屋内美術館','小田原城の天守閣は雨でも見学できる','鎌倉の場合は銭洗弁財天（屋根付きの洞窟）、鶴岡八幡宮の境内は傘で散策','横浜中華街・みなとみらいの屋内施設'],
+    fukuoka: ['博多の屋台（夜）は雨でも屋根付きの屋台でラーメン・もつ鍋・お好み焼きを楽しめる','福岡市博物館・九州国立博物館（太宰府）','キャナルシティ博多（大型ショッピングモール）での食事・映画・ショッピング','大宰府天満宮の参道は雨の日に訪れると人が少なく風情がある'],
+    okinawa: ['沖縄は年間雨が多いが、水族館（美ら海水族館）は雨でも完全に楽しめる','那覇の国際通り・市場本通りは屋根付きアーケードで雨でも快適','首里城は一部屋内施設があり雨でも見学可能','オキナワワールド（玉泉洞）は全天候型のテーマパーク'],
+    nagano: ['松本城（天守閣）は雨でも見学可能','松本市美術館・草間彌生作品も屋内展示','軽井沢は雨の日でもアウトレットや旧軽井沢銀座通りのカフェ巡りが楽しい','長野市内の善光寺は傘をさして参拝できる。周辺の仲見世通りも風情あり'],
+    shizuoka: ['熱海の場合は温泉旅館でゆっくり過ごすのが最高','リニア・鉄道館（浜松）は雨でも充実の屋内展示','富士山は雨の日は雲の中。周辺の富士急ハイランドやアウトレットが代替案','伊豆の場合はシャボテン公園・伊豆テディベアミュージアムなど屋内施設'],
+    ishikawa: ['金沢21世紀美術館は雨でも楽しめる現代アート体験','兼六園の雨は趣があり観光客が減る穴場タイミング','近江町市場の海鮮・グルメは雨でも楽しめる（一部屋外だが施設内が充実）','石川県立博物館・金沢城公園の石川門（屋内）'],
+    miyagi: ['仙台の松島は遊覧船が運航していれば乗船可能。雨の松島も霧がかかって幻想的','瑞鳳殿（伊達政宗の霊廟）は屋内が中心で雨でも見学できる','仙台市博物館・仙台うみの杜水族館（屋内）','杜の都・定禅寺通りのカフェ・仙台PARCO2などショッピング'],
+  };
+
+  // 車なし旅行情報（全都道府県）
+  const PREF_CARFREE = {
+    hokkaido: { level: 'やや難', icon: '🚌', text: '札幌・函館市内は公共交通が充実。ただし富良野・知床など郊外は車がほぼ必須。観光バスツアーの活用がおすすめ。' },
+    aomori: { level: 'やや難', icon: '🚌', text: '青森駅・弘前は電車でアクセス可能。奥入瀬渓流は季節限定の観光バスを使えば車なしで行ける。十和田湖は不便。' },
+    iwate: { level: 'やや難', icon: '🚌', text: '盛岡市内と平泉（世界遺産）は電車OK。それ以外の観光地は車が便利。' },
+    miyagi: { level: '普通', icon: '🚃', text: '仙台市内は地下鉄が充実。松島は電車でアクセス可能。秋保温泉はバスあり。' },
+    akita: { level: 'やや難', icon: '🚌', text: '秋田市内は電車OK。田沢湖・角館は電車でアクセス可能だが、乳頭温泉は路線バス+徒歩が必要。' },
+    yamagata: { level: '普通', icon: '🚃', text: '山形新幹線で山形市へ。銀山温泉・天童温泉は路線バスや送迎で行ける。蔵王は車が便利。' },
+    fukushima: { level: 'やや難', icon: '🚌', text: '郡山・会津若松は電車OK。五色沼（裏磐梯）は車が楽。磐越西線＋バスで行けなくはない。' },
+    ibaraki: { level: 'やや難', icon: '🚌', text: '水戸（偕楽園）は電車でOK。ひたち海浜公園はJR＋バスでアクセス可能。常陸那珂は車が便利。' },
+    tochigi: { level: '普通', icon: '🚃', text: '日光は東武鉄道で直結。那須は電車でアクセス後バスを使う。鬼怒川は浅草から特急1本。' },
+    gunma: { level: 'やや難', icon: '🚌', text: '草津温泉は上野駅から高速バスで約3時間。伊香保温泉は渋川駅からバスあり。電車のみはやや不便。' },
+    saitama: { level: '良好', icon: '✅', text: '川越は東京から電車で約1時間。秩父も西武線でアクセス可能。首都圏の中では電車旅しやすい県。' },
+    chiba: { level: '良好', icon: '✅', text: '成田空港・ディズニーリゾート・鴨川は電車でアクセス可能。南房総は車が便利だが路線バスもある。' },
+    tokyo: { level: '最良', icon: '🌟', text: '東京は電車・地下鉄・バスが世界最高水準。車なしで全ての観光地にアクセス可能。むしろ車は不要。' },
+    kanagawa: { level: '良好', icon: '✅', text: '箱根・鎌倉・横浜はすべて電車でアクセス可能。箱根はフリーパスを使えば電車＋バス＋ロープウェイが一括で乗り放題。' },
+    niigata: { level: '普通', icon: '🚃', text: '新潟市内は電車OK。越後湯沢（スキー）は新幹線直結。佐渡島はフェリー＋レンタル自転車も可。' },
+    toyama: { level: 'やや難', icon: '🚌', text: '立山黒部アルペンルートはケーブルカー・ロープウェイ中心なので車なしOK。富山市内は市電が便利。' },
+    ishikawa: { level: '良好', icon: '✅', text: '金沢市内はバスが充実（1日フリー乗車券あり）。兼六園・ひがし茶屋街・近江町市場すべて徒歩＋バスでOK。' },
+    fukui: { level: 'やや難', icon: '🚌', text: '永平寺は福井駅からバスでアクセス可能。東尋坊はバスあり。若狭・三方は車が便利。' },
+    yamanashi: { level: '普通', icon: '🚃', text: '河口湖・山中湖は新宿からバス直行あり。電車でも富士急でアクセス可能。ブドウ農園は車がラク。' },
+    nagano: { level: '良好', icon: '✅', text: '松本・長野市・軽井沢はすべて電車でOK。上高地は車両通行禁止でバス・タクシーが必須。善光寺は長野駅から徒歩。' },
+    gifu: { level: '普通', icon: '🚃', text: '白川郷は高山・金沢からバスあり。下呂温泉は名古屋から特急直結。飛騨高山も電車でOK。' },
+    shizuoka: { level: '普通', icon: '🚃', text: '熱海は東京から新幹線で40分。伊豆は電車＋バスで主要スポット行ける。富士山周辺は車が便利だが観光バスもある。' },
+    aichi: { level: '良好', icon: '✅', text: '名古屋は地下鉄が充実。名古屋城・栄・大須・熱田神宮はすべて地下鉄で移動可能。豊田・犬山は電車もあり。' },
+    mie: { level: 'やや難', icon: '🚌', text: '伊勢神宮は近鉄特急で名古屋・大阪から直結。熊野古道・志摩半島は車が便利だが観光バスツアーも充実。' },
+    shiga: { level: '良好', icon: '✅', text: '琵琶湖周辺は電車（JR琵琶湖線・湖西線）でアクセス可能。彦根城・近江八幡は電車OK。' },
+    kyoto: { level: '最良', icon: '🌟', text: '京都は観光バス（1日乗り放題500円）で主要寺社をすべて回れる。地下鉄・電車も充実。車は渋滞するので不要。' },
+    osaka: { level: '最良', icon: '🌟', text: '大阪は地下鉄・阪急・阪神・JRが网羅的で車なしで全観光地へ行ける。道頓堀・梅田・天王寺はすべて電車でOK。' },
+    hyogo: { level: '良好', icon: '✅', text: '神戸市内は地下鉄・ポートライナーでOK。有馬温泉は神戸電鉄で直結。城崎温泉はJR特急でアクセス可能。' },
+    nara: { level: '良好', icon: '✅', text: '奈良市内（東大寺・春日大社・奈良公園）はすべて近鉄奈良駅から徒歩。吉野は近鉄・ロープウェイで行ける。' },
+    wakayama: { level: 'やや難', icon: '🚌', text: '和歌山市内・高野山は電車OK。那智・白浜は特急でアクセス後バス。熊野古道は車が便利だが路線バスもある。' },
+    tottori: { level: 'やや難', icon: '🚌', text: '鳥取砂丘は鳥取駅からバスで20分。倉吉・境港も電車でアクセス可能。それ以外は車がラク。' },
+    shimane: { level: 'やや難', icon: '🚌', text: '出雲大社は出雲市駅からバスでアクセス可能。松江城は電車＋路線バス。石見銀山は車が便利。' },
+    okayama: { level: '良好', icon: '✅', text: '岡山市内・倉敷は電車でOK。岡山駅から倉敷まで電車15分。備前・津山は電車でも行ける。' },
+    hiroshima: { level: '最良', icon: '🌟', text: '広島市内は路面電車が充実。宮島は広島駅から路面電車＋フェリーで乗り換えなし。電車旅の旅行者に最もやさしい観光地のひとつ。' },
+    yamaguchi: { level: 'やや難', icon: '🚌', text: '山口市・下関は電車OK。萩・秋吉台・角島大橋は車が便利。観光バスツアーも充実している。' },
+    tokushima: { level: 'やや難', icon: '🚌', text: '鳴門（渦潮）は徳島駅からバスでアクセス可能。祖谷渓（かずら橋）は車が便利。阿波踊り期間中は電車も増便。' },
+    kagawa: { level: '良好', icon: '✅', text: '高松市内・琴平（金刀比羅宮）は電車でOK。父母ヶ浜は車が便利だが路線バスもある。小豆島はフェリー＋レンタル自転車もおすすめ。' },
+    ehime: { level: '良好', icon: '✅', text: '道後温泉は松山市内の路面電車で直結。松山城もロープウェイで行ける。しまなみ海道はサイクリングが有名。' },
+    kochi: { level: 'やや難', icon: '🚌', text: '高知市内（はりまや橋・桂浜）は路面電車＋バスでOK。四万十川・室戸岬は車が便利。' },
+    fukuoka: { level: '最良', icon: '🌟', text: '福岡市内は地下鉄が充実。博多・天神・太宰府（直通電車あり）・海の中道はすべて電車でOK。移動が最も楽な都市のひとつ。' },
+    saga: { level: 'やや難', icon: '🚌', text: '佐賀市内・有田（焼き物）は電車OK。武雄温泉は佐世保線でアクセス可能。呼子（イカ）は車が便利。' },
+    nagasaki: { level: '良好', icon: '✅', text: '長崎市内は路面電車が便利で観光地が集中している。グラバー園・出島・大浦天主堂はすべて路面電車でOK。稲佐山ロープウェイも路面電車から徒歩圏。' },
+    kumamoto: { level: '良好', icon: '✅', text: '熊本市内は路面電車が充実。熊本城は電車＋徒歩でOK。阿蘇は電車（JR豊肥線）でアクセス可能。黒川温泉は車が便利。' },
+    oita: { level: '普通', icon: '🚃', text: '別府は電車でアクセス可能（大分空港から路線バスも充実）。由布院も大分駅から特急あり。国東半島は車が便利。' },
+    miyazaki: { level: 'やや難', icon: '🚌', text: '宮崎市内は電車OK。高千穂峡は路線バスでアクセス可能（ただし時間がかかる）。日南海岸は車が便利。' },
+    kagoshima: { level: '普通', icon: '🚃', text: '鹿児島市内は路面電車が便利。指宿温泉は特急「指宿のたまて箱」で直結。桜島はフェリーで15分。' },
+    okinawa: { level: 'やや難', icon: '🚌', text: '那覇市内（国際通り・首里城）はゆいレール（モノレール）でOK。本部（美ら海水族館）はバスでアクセス可能。沖縄本島北部・離島は車かツアーが便利。' },
+  };
+
+  // 初めて行くなら・2回目以降に行きたい
+  const PREF_FIRST_TIME = {
+    hokkaido: { first: '函館（夜景・朝市・五稜郭）＋小樽（運河・寿司）。新千歳空港からアクセスしやすい定番コース', second: '知床・釧路湿原・礼文島・積丹半島。北海道の大自然を深く知りたい人向け' },
+    tokyo: { first: '浅草（浅草寺・仲見世）＋渋谷・新宿。東京の「古い顔と新しい顔」を両方体験', second: '谷根千（谷中・根津・千駄木）や深川・清澄白河。下町の生活感を感じる穴場エリア' },
+    kyoto: { first: '伏見稲荷・清水寺・金閣寺・嵐山竹林。京都の定番4大スポットで京都の魅力を体感', second: '貴船・鞍馬・美山（茅葺き集落）・伊根（舟屋）。京都の「意外な顔」を発見する旅' },
+    osaka: { first: '道頓堀・心斎橋・大阪城・黒門市場。大阪グルメと観光名所のセット', second: '住吉大社・天王寺（あべのハルカス）・大阪市立美術館。観光客が少ない落ち着いた大阪' },
+    hyogo: { first: '有馬温泉（金泉体験）または城崎温泉（外湯めぐり）。兵庫の温泉を堪能', second: '播磨（姫路城をゆっくり）＋淡路島の食・花・アート体験。兵庫の幅の広さを知る旅' },
+    hiroshima: { first: '宮島（厳島神社・もみじまんじゅう）＋平和記念公園（原爆ドーム・資料館）', second: '尾道・ゆめしま海道・竹原（安芸の小京都）。穏やかな瀬戸内の旅' },
+    aichi: { first: '名古屋城＋大須商店街＋名古屋めし（ひつまぶし・味噌かつ・あんかけスパ）', second: '犬山城・明治村（屋外博物館）・セントレア周辺。名古屋から日帰りで行ける穴場コース' },
+    nara: { first: '奈良公園（大仏・鹿・春日大社）。鹿と触れ合えるのは奈良だけ', second: '吉野（桜の名所）・室生寺（女人高野）・明日香村（飛鳥文明の遺跡）。歴史の深さを再発見' },
+    kanagawa: { first: '鎌倉（大仏・長谷寺）or 箱根（温泉・富士山・美術館）。東京から日帰りでも行ける名所', second: '横浜（中華街・山手・みなとみらい）＋江の島の絶景。都市と海の組み合わせ旅' },
+    fukuoka: { first: '博多ラーメン・もつ鍋・太宰府天満宮。福岡の食と文化を定番で楽しむ', second: '門司港（レトロ建築）・呼子（朝市・イカ）・糸島（インスタ映え海岸）。知られざる福岡の魅力' },
+    okinawa: { first: '那覇（国際通り・首里城）＋美ら海水族館。沖縄の定番で感動体験', second: '離島（石垣島・宮古島・西表島・竹富島）。本島とは全く異なる沖縄の顔を発見' },
+    nagano: { first: '松本城（国宝）＋上高地の散策。長野の代表的な観光資源', second: '白馬（冬スキー・夏ハイキング）・小布施（栗とアート）・野沢温泉。地元ファンが愛する長野の深さ' },
+    ishikawa: { first: '金沢市内（兼六園・ひがし茶屋街・近江町市場）。1日で「加賀百万石の文化」が体験できる', second: '能登半島（輪島の朝市・千枚田・見附島）。独特の文化と日本海の絶景' },
+    oita: { first: '別府地獄めぐり＋由布院のカフェ・散策。大分の「温泉二大巨頭」を比較体験', second: '国東半島（磨崖仏・豊後高田昭和の町）。大分の隠れた仏教文化と昭和レトロの旅' },
+  };
+
+  // 雨の日・車なし・初めての情報を表示
+  const prefId = getPageParam('id');
+
+  const rainyInfo = PREF_RAINY_DAY[prefId];
+  if (rainyInfo) {
+    const block = document.getElementById('rainy-day-block');
+    const el = document.getElementById('pref-rainy-day');
+    if (block && el) {
+      el.innerHTML = rainyInfo.map((tip, i) => `
+        <div style="display:flex;gap:10px;padding:10px 14px;background:var(--card-bg);border-radius:8px;border-left:3px solid #6ab0de">
+          <span style="font-size:1rem;flex-shrink:0">☔</span>
+          <span style="font-size:0.83rem;line-height:1.7;color:var(--text-light)">${tip}</span>
+        </div>`).join('');
+      block.style.display = '';
+    }
+  }
+
+  const carInfo = PREF_CARFREE[prefId];
+  if (carInfo) {
+    const block = document.getElementById('carfree-block');
+    const el = document.getElementById('pref-carfree');
+    if (block && el) {
+      const colors = { '最良': '#22a', '良好': '#2a8', '普通': '#886', 'やや難': '#c74', '難': '#c44' };
+      el.innerHTML = `<div style="display:flex;gap:12px;align-items:flex-start;padding:14px;background:var(--card-bg);border-radius:8px">
+        <span style="font-size:2rem">${carInfo.icon}</span>
+        <div>
+          <span style="display:inline-block;padding:2px 10px;border-radius:20px;background:${colors[carInfo.level]||'#888'}22;color:${colors[carInfo.level]||'#888'};font-size:0.78rem;font-weight:700;border:1px solid currentColor;margin-bottom:6px">車なし旅行：${carInfo.level}</span>
+          <p style="font-size:0.83rem;line-height:1.7;color:var(--text-light);margin:0">${carInfo.text}</p>
+        </div>
+      </div>`;
+      block.style.display = '';
+    }
+  }
+
+  const ftInfo = PREF_FIRST_TIME[prefId];
+  if (ftInfo) {
+    const block = document.getElementById('firsttime-block');
+    const el = document.getElementById('pref-firsttime');
+    if (block && el) {
+      el.innerHTML = `
+        <div style="padding:14px;background:var(--card-bg);border-radius:8px;border-top:3px solid var(--gold)">
+          <div style="font-size:0.78rem;font-weight:700;color:var(--gold);margin-bottom:6px">🌟 初めてならここ</div>
+          <p style="font-size:0.83rem;line-height:1.7;color:var(--text-light);margin:0">${ftInfo.first}</p>
+        </div>
+        <div style="padding:14px;background:var(--card-bg);border-radius:8px;border-top:3px solid var(--teal)">
+          <div style="font-size:0.78rem;font-weight:700;color:var(--teal);margin-bottom:6px">🔁 2回目以降なら</div>
+          <p style="font-size:0.83rem;line-height:1.7;color:var(--text-light);margin:0">${ftInfo.second}</p>
+        </div>`;
+      block.style.display = '';
+    }
   }
 
   // 関連温泉
