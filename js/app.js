@@ -681,7 +681,7 @@ window.renderPrefecturePage = function() {
       hokkaido: '../images/japan/hokkaido/hokkaido-biei-flower-field-01.jpg',
       aomori: '../images/japan/aomori/aomori-oirase-01.jpg',
       iwate: '../images/japan/iwate/iwate-nature-01.jpg',
-      miyagi: '../images/japan/miyagi/miyagi-matsushima-01.jpg',
+      miyagi: '../images/japan/miyagi/miyagi-matsushima-03.jpg',
       akita: '../images/japan/akita/akita-tazawako-01.jpg',
       yamagata: '../images/japan/yamagata/yamagata-zao-02.jpg',
       fukushima: '../images/japan/fukushima/fukushima-goshikinuma-01.jpg',
@@ -750,8 +750,9 @@ window.renderPrefecturePage = function() {
       { src: '../images/japan/iwate/iwate-hiraizumi-01.jpg', alt: '平泉・中尊寺' },
     ],
     miyagi: [
-      { src: '../images/japan/miyagi/miyagi-matsushima-01.jpg', alt: '松島' },
-      // matsushima-02（欧州針葉樹林）は使用禁止
+      { src: '../images/japan/miyagi/miyagi-matsushima-03.jpg', alt: '松島湾の岩島と松' },
+      { src: '../images/japan/miyagi/miyagi-matsushima-04.jpg', alt: '松島の海景色' },
+      // matsushima-01（真っ黒な画像）・matsushima-02（欧州針葉樹林）は使用禁止
     ],
     akita: [
       { src: '../images/japan/akita/akita-tazawako-01.jpg', alt: '田沢湖' },
@@ -815,8 +816,9 @@ window.renderPrefecturePage = function() {
       { src: '../images/japan/yamanashi/yamanashi-fuji-lake-02.jpg', alt: '富士山・湖の夜明け' },
     ],
     nagano: [
+      { src: '../images/japan/nagano/nagano-kamikochi-01.jpg', alt: '上高地' },
       { src: '../images/japan/nagano/nagano-jigokudani-01.jpg', alt: '地獄谷野猿公苑・スノーモンキー' },
-      // nagano-kamikochi-01（汎用登山写真）・nagano-hakuba-01（パスポート写真）は使用禁止
+      // nagano-hakuba-01（パスポート写真）は使用禁止
     ],
     gifu: [
       { src: '../images/japan/gifu/gifu-shirakawago-01.jpg', alt: '白川郷' },
@@ -919,7 +921,8 @@ window.renderPrefecturePage = function() {
       { src: '../images/japan/miyazaki/miyazaki-shrine-02.jpg', alt: '宮崎神宮' },
     ],
     kagoshima: [
-      // kagoshima-nature-01（イタリア・ドロミテ）・kagoshima-sakurajima-02（メイク用品）は使用禁止
+      { src: '../images/japan/kagoshima/kagoshima-sakurajima-02.jpg', alt: '桜島' },
+      // kagoshima-nature-01（イタリア・ドロミテ）は使用禁止
     ],
     kumamoto: [
       { src: '../images/japan/kumamoto/kumamoto-castle-01.jpg', alt: '熊本城' },
