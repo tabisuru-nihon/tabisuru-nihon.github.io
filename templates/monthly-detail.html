@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>月別旅行おすすめ | 旅する日本図鑑</title>
   <meta name="description" content="その月ならではの旅先・お出かけスポットを旅ノアが詳しく解説。天気・おすすめ場所・旅のアドバイスを掲載。">
@@ -225,13 +226,25 @@ document.addEventListener('DOMContentLoaded', () => {
     12: '../images/character/base/noa-snow-kimono-updo.png',
   };
 
-  // h1更新
+  // h1更新・SEOメタ更新
   const m = getPageParam('month');
   if (m) {
+    document.title = `${m}月の旅行おすすめ | 旅する日本図鑑`;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', `${m}月の旅行先・おすすめスポットを旅ノアが解説。天気・見頃・お出かけアドバイスを紹介。`);
+    const ogTitleEl = document.querySelector('meta[property="og:title"]');
+    if (ogTitleEl) ogTitleEl.setAttribute('content', `${m}月の旅行おすすめ | 旅する日本図鑑`);
+    const ogUrlEl = document.querySelector('meta[property="og:url"]');
+    if (ogUrlEl) ogUrlEl.setAttribute('content', `https://tabisuru-nihon.github.io/templates/monthly-detail.html?month=${m}`);
+    let canonEl = document.querySelector('link[rel="canonical"]');
+    if (!canonEl) { canonEl = document.createElement('link'); canonEl.rel = 'canonical'; document.head.appendChild(canonEl); }
+    canonEl.href = `https://tabisuru-nihon.github.io/templates/monthly-detail.html?month=${m}`;
     document.getElementById('month-heading').textContent = `${m}月の旅行おすすめ`;
     document.getElementById('month-num').textContent = `${m}月`;
     const imgSrc = MONTH_HERO_IMGS[parseInt(m)];
     if (imgSrc) {
+      const ogImgEl = document.querySelector('meta[property="og:image"]');
+      if (ogImgEl) ogImgEl.setAttribute('content', 'https://tabisuru-nihon.github.io/' + imgSrc.replace('../', ''));
       const wrap = document.getElementById('month-hero-img-wrap');
       const img  = document.getElementById('month-hero-img');
       img.src = imgSrc;
