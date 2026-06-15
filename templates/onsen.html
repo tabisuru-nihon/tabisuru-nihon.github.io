@@ -291,12 +291,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const d = ONSENS_DATA[id];
   if (!d) return;
 
+  document.title = `${d.name} 旅行ガイド | 旅する日本図鑑`;
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) metaDesc.setAttribute('content', `${d.name}（${d.prefecture}）の旅行情報。${d.tagline}。泉質・アクセス・おすすめ旅館を紹介。`);
+  const ogTitleEl = document.querySelector('meta[property="og:title"]');
+  if (ogTitleEl) ogTitleEl.setAttribute('content', `${d.name} 旅行ガイド | 旅する日本図鑑`);
+  const ogUrlEl = document.querySelector('meta[property="og:url"]');
+  if (ogUrlEl) ogUrlEl.setAttribute('content', `https://tabisuru-nihon.github.io/templates/onsen.html?id=${id}`);
+  let canonEl = document.querySelector('link[rel="canonical"]');
+  if (!canonEl) { canonEl = document.createElement('link'); canonEl.rel = 'canonical'; document.head.appendChild(canonEl); }
+  canonEl.href = `https://tabisuru-nihon.github.io/templates/onsen.html?id=${id}`;
+
   // ヒーロー画像
   const heroImgSrc = ONSEN_HERO_IMGS[id];
   if (heroImgSrc) {
     const wrap = document.getElementById('onsen-hero-img-wrap');
     const img  = document.getElementById('onsen-hero-img');
     if (wrap && img) { img.src = heroImgSrc; wrap.style.display = ''; }
+    const ogImgEl = document.querySelector('meta[property="og:image"]');
+    if (ogImgEl) ogImgEl.setAttribute('content', 'https://tabisuru-nihon.github.io/' + heroImgSrc.replace('../', ''));
   }
 
   // 近隣スポット

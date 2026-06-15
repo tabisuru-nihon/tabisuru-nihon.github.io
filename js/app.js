@@ -729,6 +729,8 @@ window.renderPrefecturePage = function() {
     const heroImg = PREF_HERO_IMGS[id];
     if (heroImg) {
       hero.style.background = `linear-gradient(to bottom, rgba(12,27,53,0.55) 0%, rgba(12,27,53,0.75) 100%), url(${heroImg}) center/cover no-repeat`;
+      const ogImgEl = document.querySelector('meta[property="og:image"]');
+      if (ogImgEl) ogImgEl.setAttribute('content', 'https://tabisuru-nihon.github.io/' + heroImg.replace('../', ''));
     } else {
       hero.style.background = d.gradient || `linear-gradient(135deg, #0c1b35, #1a3060)`;
     }
