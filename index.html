@@ -1159,51 +1159,64 @@ document.addEventListener('DOMContentLoaded', () => {
     }).join('');
   }
 
-  // グルメプレビュー（6件表示）
+  // グルメプレビュー（6件固定表示・フォールバック付き）
   const gourmetPreview = document.getElementById('gourmet-preview');
-  if (gourmetPreview && window.SPECIALTIES_DATA) {
-    const GOURMET_PREF_IMGS = {
+  if (gourmetPreview) {
+    // 固定6品（常に表示されるフォールバックデータ）
+    const GOURMET_FIXED = [
+      { name: '北海道の海鮮', pref: '北海道', emoji: '🦀', color: 'linear-gradient(135deg,#0c4a6e,#0369a1)', desc: '毛ガニ・ウニ・イクラ。日本最高峰の海鮮を漁港直送の新鮮さで味わう', prefId: 'hokkaido' },
+      { name: '仙台牛タン', pref: '宮城県', emoji: '🥩', color: 'linear-gradient(135deg,#7c2d12,#c2410c)', desc: '厚切り牛タン定食は仙台の定番。焦げ目の香ばしさが絶品。テールスープと麦飯とのセットで', prefId: 'miyagi' },
+      { name: '名古屋めし', pref: '愛知県', emoji: '🍱', color: 'linear-gradient(135deg,#713f12,#a16207)', desc: 'ひつまぶし・味噌かつ・あんかけスパ・きしめん。独自のグルメ文化が揃う', prefId: 'aichi' },
+      { name: '大阪たこ焼き', pref: '大阪府', emoji: '🐙', color: 'linear-gradient(135deg,#4c0519,#9f1239)', desc: '外カリ中トロのたこ焼き。道頓堀・心斎橋エリアの老舗から有名チェーンまで食べ比べを', prefId: 'osaka' },
+      { name: '広島お好み焼き', pref: '広島県', emoji: '🫓', color: 'linear-gradient(135deg,#14532d,#166534)', desc: '麺が入ったボリューム満点の広島焼きは大阪とは別物。お好み村・ひろしま横丁で食べ比べ', prefId: 'hiroshima' },
+      { name: '博多ラーメン', pref: '福岡県', emoji: '🍜', color: 'linear-gradient(135deg,#451a03,#92400e)', desc: '濃厚豚骨スープに細麺が絡む博多スタイル。替え玉・紅しょうが・にんにくで仕上げる', prefId: 'fukuoka' },
+    ];
+    const PREF_IMGS_G = {
       hokkaido:  'images/japan/hokkaido/hokkaido-shiretoko-01.jpg',
-      kyoto:     'images/japan/kyoto/kyoto-kinkakuji-01.jpg',
-      osaka:     'images/japan/osaka/osaka-dotonbori-01.jpg',
-      hyogo:     'images/japan/hyogo/hyogo-kobe-port-02.jpg',
-      hiroshima: 'images/japan/hiroshima/hiroshima-miyajima-torii-01.jpg',
-      oita:      'images/japan/oita/oita-beppu-01.jpg',
-      okinawa:   'images/japan/okinawa/okinawa-sea-coast-02.jpg',
-      kagawa:    'images/japan/kagawa/kagawa-chichibugahama-01.jpg',
-      fukuoka:   'images/japan/fukuoka/fukuoka-city-01.jpg',
       miyagi:    'images/japan/miyagi/miyagi-matsushima-01.jpg',
-      nagasaki:  'images/japan/nagasaki/nagasaki-harbor-01.jpg',
-      ishikawa:  'images/japan/ishikawa/ishikawa-kanazawa-01.jpg',
+      aichi:     'images/japan/aichi/aichi-nagoya-castle-01.jpg',
+      osaka:     'images/japan/osaka/osaka-dotonbori-01.jpg',
+      hiroshima: 'images/japan/hiroshima/hiroshima-miyajima-torii-01.jpg',
+      fukuoka:   'images/japan/fukuoka/fukuoka-city-01.jpg',
     };
-    const featured = SPECIALTIES_DATA.slice(0, 6);
-    gourmetPreview.innerHTML = featured.map(s => {
-      const img = GOURMET_PREF_IMGS[s.prefId];
-      return `<a href="pages/specialties.html" style="text-decoration:none">
-        <div class="content-block fade-in" style="margin:0;padding:0;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:transform 0.2s">
+    // SPECIALTIES_DATAがあれば実データ優先、なければフォールバック
+    let gourmetItems = GOURMET_FIXED;
+    if (window.SPECIALTIES_DATA && SPECIALTIES_DATA.length >= 6) {
+      gourmetItems = SPECIALTIES_DATA.slice(0, 6).map(s => ({
+        name: s.name, pref: s.prefecture, emoji: s.emoji,
+        color: 'linear-gradient(135deg,var(--navy),#1a3060)',
+        desc: s.tagline, prefId: s.prefId
+      }));
+    }
+    gourmetPreview.innerHTML = gourmetItems.map(s => {
+      const img = PREF_IMGS_G[s.prefId];
+      return `<a href="pages/specialties.html" style="text-decoration:none;display:block">
+        <div style="border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;cursor:pointer;background:var(--card-bg);border:1.5px solid var(--border);transition:transform 0.2s,box-shadow 0.2s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(12,27,53,0.18)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
           ${img
             ? `<div style="height:130px;overflow:hidden;position:relative">
-                <img src="${img}" alt="${s.prefecture}" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy">
-                <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(12,27,53,0.75),rgba(12,27,53,0.1))"></div>
+                <img src="${img}" alt="${s.pref}" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy">
+                <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(12,27,53,0.82),rgba(12,27,53,0.05))"></div>
                 <div style="position:absolute;bottom:10px;left:12px;display:flex;align-items:center;gap:8px">
-                  <span style="font-size:1.6rem;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.5))">${s.emoji}</span>
+                  <span style="font-size:1.8rem;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.6))">${s.emoji}</span>
                   <div>
-                    <div style="font-size:0.62rem;color:rgba(255,255,255,0.7)">${s.prefecture}</div>
-                    <div style="font-size:0.92rem;font-weight:800;color:white;text-shadow:0 1px 3px rgba(0,0,0,0.4)">${s.name}</div>
+                    <div style="font-size:0.62rem;color:rgba(255,255,255,0.7)">${s.pref}</div>
+                    <div style="font-size:0.95rem;font-weight:800;color:white;text-shadow:0 1px 4px rgba(0,0,0,0.5)">${s.name}</div>
                   </div>
                 </div>
               </div>`
-            : `<div style="background:linear-gradient(135deg,var(--navy),#1a3060);padding:14px 16px 12px;color:white">
-                <div style="display:flex;align-items:center;gap:8px">
-                  <span style="font-size:1.4rem">${s.emoji}</span>
+            : `<div style="background:${s.color};padding:18px 16px 14px;color:white;position:relative;overflow:hidden">
+                <div style="position:absolute;right:10px;top:6px;font-size:2.8rem;opacity:0.15">${s.emoji}</div>
+                <div style="display:flex;align-items:center;gap:10px">
+                  <span style="font-size:1.8rem;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3))">${s.emoji}</span>
                   <div>
-                    <div style="font-size:0.68rem;color:rgba(255,255,255,0.5)">${s.prefecture}</div>
-                    <div style="font-size:0.9rem;font-weight:800">${s.name}</div>
+                    <div style="font-size:0.65rem;color:rgba(255,255,255,0.65)">${s.pref}</div>
+                    <div style="font-size:0.95rem;font-weight:800">${s.name}</div>
                   </div>
                 </div>
               </div>`
           }
-          <div style="padding:10px 14px;font-size:0.78rem;color:var(--text-light);line-height:1.6">${s.tagline}</div>
+          <div style="padding:10px 14px;font-size:0.78rem;color:var(--text-light);line-height:1.6;flex:1">${s.desc}</div>
+          <div style="padding:0 14px 12px;font-size:0.73rem;color:var(--teal);font-weight:700">詳しく見る →</div>
         </div>
       </a>`;
     }).join('');
@@ -1276,6 +1289,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
+
+  // 描画後にfade-inグリッドコンテナを確実に表示（空状態でobserveされてもvisibleにならないバグ対策）
+  requestAnimationFrame(() => {
+    ['onsen-grid','monthly-grid','purpose-grid','booking-grid'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('visible');
+    });
+    // グルメエリア内のfade-in要素も解除（動的生成のためobserverが拾えない）
+    document.querySelectorAll('#gourmet-preview .fade-in').forEach(el => el.classList.add('visible'));
+  });
 });
 </script>
 </body>

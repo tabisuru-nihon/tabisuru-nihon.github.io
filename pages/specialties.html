@@ -186,13 +186,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }).join('');
   }
 
-  renderCards('');
+  function renderAndShow(cat) {
+    renderCards(cat);
+    requestAnimationFrame(() => {
+      document.querySelectorAll('#specialty-grid .fade-in').forEach(el => el.classList.add('visible'));
+    });
+  }
+
+  renderAndShow('');
 
   document.querySelectorAll('#cat-filter-btns .region-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('#cat-filter-btns .region-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      renderCards(btn.dataset.cat);
+      renderAndShow(btn.dataset.cat);
     });
   });
 });
