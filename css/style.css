@@ -1928,10 +1928,22 @@ button { font-family: inherit; cursor: pointer; }
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
+  /* フォールバック：observer未発火時も2.5秒後に確実に表示 */
+  animation: __fade_fallback 0.5s ease 2.5s forwards;
+}
+@keyframes __fade_fallback {
+  to { opacity: 1; transform: translateY(0); }
 }
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+  animation: none;
+}
+
+/* 動的生成カード共通安全クラス：fade-in失敗時でも確実に表示 */
+.js-card {
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 /* ===== CHAT FOLLOWUP SUGGESTIONS ===== */

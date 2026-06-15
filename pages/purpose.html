@@ -14,7 +14,7 @@
   <meta property="og:image" content="https://tabisuru-nihon.github.io/images/japan/hiroshima/hiroshima-miyajima-torii-01.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style.css?v=20260615">
 </head>
 <body>
 
@@ -143,8 +143,8 @@
   </div>
 </footer>
 
-<script src="../data/purposes.js"></script>
-<script src="../js/app.js"></script>
+<script src="../data/purposes.js?v=20260615"></script>
+<script src="../js/app.js?v=20260615"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const backTop = document.getElementById('back-to-top');
@@ -161,7 +161,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const d = PURPOSES_DATA.find(p => p.id === id);
     if (d) {
       document.getElementById('list-mode').style.display = 'none';
-      document.getElementById('detail-mode').style.display = '';
+      const detailEl = document.getElementById('detail-mode');
+      detailEl.style.display = '';
+      // display:none から表示に切り替えた後、fade-inブロックを確実に表示
+      requestAnimationFrame(() => {
+        detailEl.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+      });
       document.title = `${d.name} 旅行おすすめ | 旅する日本図鑑`;
       document.getElementById('page-title').textContent = `${d.emoji} ${d.name}`;
       document.getElementById('page-desc').textContent = d.desc || '';
@@ -351,3 +356,5 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
+
+

@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://tabisuru-nihon.github.io/images/japan/hiroshima/hiroshima-miyajima-torii-01.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=20260615">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -907,14 +907,14 @@
   </div>
 </footer>
 
-<script src="data/prefectures.js"></script>
-<script src="data/onsens.js"></script>
-<script src="data/monthly.js"></script>
-<script src="data/purposes.js"></script>
-<script src="data/booking.js"></script>
-<script src="data/specialties.js"></script>
+<script src="data/prefectures.js?v=20260615"></script>
+<script src="data/onsens.js?v=20260615"></script>
+<script src="data/monthly.js?v=20260615"></script>
+<script src="data/purposes.js?v=20260615"></script>
+<script src="data/booking.js?v=20260615"></script>
+<script src="data/specialties.js?v=20260615"></script>
 <script src="js/chat.js"></script>
-<script src="js/app.js"></script>
+<script src="js/app.js?v=20260615"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -1299,6 +1299,44 @@ document.addEventListener('DOMContentLoaded', () => {
     // グルメエリア内のfade-in要素も解除（動的生成のためobserverが拾えない）
     document.querySelectorAll('#gourmet-preview .fade-in').forEach(el => el.classList.add('visible'));
   });
+
+  // カード枚数自動検証（コンソールから window.__checkCards() で呼び出し可能）
+  window.__checkCards = function() {
+    const checks = [
+      { label: 'トップ温泉カード',   id: 'onsen-grid',      min: 6,  sel: ':scope > div' },
+      { label: 'トップ月別カード',   id: 'monthly-grid',    min: 6,  sel: ':scope > div' },
+      { label: 'トップ目的カード',   id: 'purpose-grid',    min: 8,  sel: ':scope > div' },
+      { label: 'トップグルメカード', id: 'gourmet-preview', min: 6,  sel: ':scope > a' },
+      { label: 'トップ予約カード',   id: 'booking-grid',    min: 5,  sel: ':scope > div' },
+    ];
+    let ok = true;
+    checks.forEach(c => {
+      const el = document.getElementById(c.id);
+      const count = el ? el.querySelectorAll(c.sel).length : 0;
+      const pass = count >= c.min;
+      if (!pass) ok = false;
+      const style = pass ? 'color:green' : 'color:red;font-weight:bold';
+      console.log(`%c${pass?'✅':'❌'} ${c.label}：${count}件（期待値:${c.min}以上）`, style);
+    });
+    // opacity:0のカード検出
+    let hidden = 0;
+    document.querySelectorAll('.onsen-card,.month-card,.purpose-card,.booking-card').forEach(el => {
+      const cs = window.getComputedStyle(el);
+      if (parseFloat(cs.opacity) < 0.1) hidden++;
+    });
+    if (hidden > 0) {
+      console.log(`%c❌ opacity:0のカードが${hidden}件あります`, 'color:red;font-weight:bold');
+      ok = false;
+    } else {
+      console.log('%c✅ opacity:0のカード：なし', 'color:green');
+    }
+    console.log(ok ? '%c✅ 全チェック通過' : '%c❌ 問題あり', ok ? 'color:green;font-size:1.1em' : 'color:red;font-size:1.1em');
+    return ok;
+  };
+  // ページ読み込み後1.5秒で自動実行（コンソールにサマリーを出力）
+  setTimeout(() => {
+    if (typeof window.__checkCards === 'function') window.__checkCards();
+  }, 1500);
 });
 </script>
 </body>
