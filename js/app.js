@@ -761,7 +761,8 @@ window.renderPrefecturePage = function() {
       { src: '../images/japan/akita/akita-nyutou-onsen-01.jpg', alt: '乳頭温泉郷' },
     ],
     yamagata: [
-      { src: '../images/japan/yamagata/yamagata-zao-02.jpg', alt: '蔵王の雪景色' },
+      { src: '../images/japan/yamagata/yamagata-zao-02.jpg', alt: '蔵王の樹氷' },
+      { src: '../images/japan/yamagata/yamagata-ginzan-02.jpg', alt: '銀山温泉の大正ロマン旅館' },
       // yamagata-ginzan-01（実験器具写真）は使用禁止
     ],
     fukushima: [
@@ -832,6 +833,7 @@ window.renderPrefecturePage = function() {
     ],
     aichi: [
       { src: '../images/japan/aichi/aichi-nagoya-02.jpg', alt: '名古屋城' },
+      { src: '../images/japan/aichi/aichi-unagi-01.jpg', alt: '名古屋グルメ・ひつまぶし' },
       // aichi-nagoya-castle-01（アニメキャラ）は使用禁止
     ],
     mie: [
@@ -857,8 +859,8 @@ window.renderPrefecturePage = function() {
       { src: '../images/japan/hyogo/hyogo-kobe-port-02.jpg', alt: '神戸ポートタワー' },
     ],
     nara: [
-      { src: '../images/japan/nara/nara-todaiji-02.jpg', alt: '奈良の鹿' },
-      { src: '../images/japan/nara/nara-todaiji-02.jpg', alt: '東大寺' },
+      { src: '../images/japan/nara/nara-todaiji-02.jpg', alt: '東大寺大仏殿' },
+      { src: '../images/japan/nara/nara-deer-02.jpg', alt: '奈良公園の鹿' },
     ],
     wakayama: [
       { src: '../images/japan/wakayama/wakayama-nachi-01.jpg', alt: '那智の滝' },
@@ -905,6 +907,7 @@ window.renderPrefecturePage = function() {
     ],
     fukuoka: [
       { src: '../images/japan/fukuoka/fukuoka-dazaifu-02.jpg', alt: '太宰府天満宮' },
+      { src: '../images/japan/fukuoka/fukuoka-ramen-01.jpg', alt: '福岡・博多ラーメン' },
       // fukuoka-city-01（目黒川夜桜・東京）は使用禁止
     ],
     saga: [
@@ -917,6 +920,8 @@ window.renderPrefecturePage = function() {
     ],
     oita: [
       { src: '../images/japan/oita/oita-beppu-01.jpg', alt: '別府温泉' },
+      { src: '../images/japan/oita/oita-yufuin-01.jpg', alt: '由布院の風景' },
+      // oita-aso-01（使用禁止）
     ],
     miyazaki: [
       { src: '../images/japan/miyazaki/miyazaki-coast-01.jpg', alt: '宮崎の海岸' },
