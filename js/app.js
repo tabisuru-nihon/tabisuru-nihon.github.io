@@ -815,6 +815,7 @@ window.renderPrefecturePage = function() {
       { src: '../images/japan/yamanashi/yamanashi-fuji-lake-02.jpg', alt: '富士山・湖の夜明け' },
     ],
     nagano: [
+      { src: '../images/japan/nagano/nagano-jigokudani-01.jpg', alt: '地獄谷野猿公苑・スノーモンキー' },
       // nagano-kamikochi-01（汎用登山写真）・nagano-hakuba-01（パスポート写真）は使用禁止
     ],
     gifu: [
