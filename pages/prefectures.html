@@ -120,53 +120,53 @@ document.addEventListener('DOMContentLoaded', () => {
   const prefGrid = document.getElementById('pref-grid');
   const regionCount = document.getElementById('region-count');
   const PREF_IMGS = {
-    hokkaido:'../images/japan/hokkaido/hokkaido-biei-flower-field-01.jpg',
-    aomori:'../images/japan/aomori/aomori-oirase-01.jpg',
-    iwate:'../images/japan/iwate/iwate-nature-01.jpg',
-    miyagi:'../images/japan/miyagi/miyagi-matsushima-02.jpg',
-    akita:'../images/japan/akita/akita-tazawako-01.jpg',
-    yamagata:'../images/japan/yamagata/yamagata-zao-02.jpg',
-    fukushima:'../images/japan/fukushima/fukushima-goshikinuma-01.jpg',
-    ibaraki:'../images/japan/ibaraki/ibaraki-kairakuen-02.jpg',
-    tochigi:'../images/japan/tochigi/tochigi-nikko-01.jpg',
-    gunma:'../images/japan/gunma/gunma-kusatsu-01.jpg',
-    saitama:'../images/japan/saitama/saitama-kawagoe-01.jpg',
-    chiba:'../images/japan/chiba/chiba-seaside-01.jpg',
-    tokyo:'../images/japan/tokyo/tokyo-asakusa-sensoji-01.jpg',
-    kanagawa:'../images/japan/kanagawa/kanagawa-kamakura-01.jpg',
-    niigata:'../images/japan/niigata/niigata-landscape-01.jpg',
-    toyama:'../images/japan/toyama/toyama-tateyama-02.jpg',
-    ishikawa:'../images/japan/ishikawa/ishikawa-kanazawa-01.jpg',
-    fukui:'../images/japan/fukui/fukui-nature-02.jpg',
-    yamanashi:'../images/japan/yamanashi/yamanashi-fuji-lake-02.jpg',
-    nagano:'',
-    gifu:'../images/japan/gifu/gifu-shirakawago-01.jpg',
-    shizuoka:'../images/japan/shizuoka/shizuoka-fuji-01.jpg',
-    aichi:'../images/japan/aichi/aichi-nagoya-castle-01.jpg',
-    mie:'../images/japan/mie/mie-kumano-02.jpg',
-    shiga:'../images/japan/shiga/shiga-lake-01.jpg',
-    kyoto:'../images/japan/kyoto/kyoto-fushimi-inari-01.jpg',
-    osaka:'../images/japan/osaka/osaka-castle-01.jpg',
-    hyogo:'../images/japan/hyogo/hyogo-kobe-port-02.jpg',
-    nara:'../images/japan/nara/nara-todaiji-02.jpg',
-    wakayama:'../images/japan/wakayama/wakayama-nachi-01.jpg',
-    tottori:'../images/japan/tottori/tottori-sanddune-02.jpg',
-    shimane:'../images/japan/shimane/shimane-izumo-01.jpg',
-    okayama:'../images/japan/okayama/okayama-kurashiki-01.jpg',
-    hiroshima:'../images/japan/hiroshima/hiroshima-miyajima-torii-01.jpg',
-    yamaguchi:'../images/japan/yamaguchi/yamaguchi-coast-01.jpg',
-    tokushima:'../images/japan/tokushima/tokushima-awa-02.jpg',
-    kagawa:'../images/japan/kagawa/kagawa-chichibugahama-01.jpg',
-    ehime:'../images/japan/ehime/ehime-dogo-honkan-01.jpg',
-    kochi:'../images/japan/kochi/kochi-katsurahama-01.jpg',
-    fukuoka:'../images/japan/fukuoka/fukuoka-dazaifu-02.jpg',
-    saga:'../images/japan/saga/saga-castle-01.jpg',
-    nagasaki:'',
-    kumamoto:'../images/japan/kumamoto/kumamoto-castle-01.jpg',
-    miyazaki:'../images/japan/miyazaki/miyazaki-coast-01.jpg',
-    kagoshima:'../images/japan/kagoshima/kagoshima-nature-01.jpg',
-    oita:'../images/japan/oita/oita-beppu-01.jpg',
-    okinawa:'../images/japan/okinawa/okinawa-sea-coast-02.jpg',
+    hokkaido:'../images/japan/hokkaido/hokkaido-biei-flower-field-01.jpg',   // ✅ 美瑛の花畑
+    aomori:'',    // NG: 地中海リゾート
+    iwate:'',     // NG: 目黒川夜桜(東京)
+    miyagi:'',    // NG: 欧州針葉樹林
+    akita:'',     // NG: 東京ネオン街
+    yamagata:'../images/japan/yamagata/yamagata-zao-02.jpg',                 // ✅ 蔵王の雪景色
+    fukushima:'../images/japan/fukushima/fukushima-waterfall-02.jpg',        // ✅ 紅葉の滝
+    ibaraki:'../images/japan/ibaraki/ibaraki-nemophila-02.jpg',              // ✅ ネモフィラ
+    tochigi:'../images/japan/tochigi/tochigi-nikko-01.jpg',                  // ✅ 日光東照宮
+    gunma:'../images/japan/gunma/gunma-kusatsu-yunohata-01.jpg',             // ✅ 草津温泉湯畑
+    saitama:'../images/japan/saitama/saitama-kawagoe-02.jpg',                // ✅ 川越蔵造り街並み
+    chiba:'../images/japan/chiba/chiba-nokogiri-02.jpg',                     // ✅ 鋸山展望台
+    tokyo:'../images/japan/tokyo/tokyo-asakusa-sensoji-01.jpg',              // ✅ 浅草雷門
+    kanagawa:'../images/japan/kanagawa/kanagawa-hakone-ashinoko-01.jpg',     // ✅ 芦ノ湖+富士山+鳥居
+    niigata:'',   // NG: Monument Valley(米国)
+    toyama:'../images/japan/toyama/toyama-kurobe-02.jpg',                    // ✅ 黒部渓谷の紅葉滝
+    ishikawa:'../images/japan/ishikawa/ishikawa-kanazawa-01.jpg',            // ✅ 兼六園
+    fukui:'',     // NG: ポートレート写真
+    yamanashi:'../images/japan/yamanashi/yamanashi-fuji-lake-02.jpg',        // ✅ 河口湖と富士山
+    nagano:'',    // NG: 全画像無効
+    gifu:'../images/japan/gifu/gifu-shirakawago-01.jpg',                     // ✅ 白川郷合掌造り
+    shizuoka:'../images/japan/shizuoka/shizuoka-fuji-01.jpg',               // ✅ 富士山
+    aichi:'../images/japan/aichi/aichi-nagoya-02.jpg',                      // ✅ 名古屋城
+    mie:'../images/japan/mie/mie-kumano-02.jpg',                            // 🔶 熊野古道の杉並木
+    shiga:'../images/japan/shiga/shiga-hikone-02.jpg',                      // 🔶 赤い五重塔
+    kyoto:'../images/japan/kyoto/kyoto-fushimi-inari-01.jpg',               // ✅ 伏見稲荷
+    osaka:'../images/japan/osaka/osaka-castle-01.jpg',                      // ✅ 通天閣・新世界
+    hyogo:'../images/japan/aomori/aomori-hirosaki-02.jpg',                  // ✅ 姫路城と桜
+    nara:'../images/japan/nara/nara-todaiji-02.jpg',                        // ✅ 東大寺大仏殿
+    wakayama:'../images/japan/wakayama/wakayama-seigantoji-02.jpg',         // ✅ 青岸渡寺+那智の滝
+    tottori:'',   // NG: 人物ポートレート
+    shimane:'../images/japan/shimane/shimane-shrine-02.jpg',                // 🔶 鳥居トンネル
+    okayama:'../images/japan/okayama/okayama-kurashiki-02.jpg',             // ✅ 倉敷美観地区川下り
+    hiroshima:'../images/japan/hiroshima/hiroshima-miyajima-torii-01.jpg',  // ✅ 厳島神社大鳥居
+    yamaguchi:'../images/japan/yamaguchi/yamaguchi-torii-02.jpg',           // ✅ 元乃隅神社（海の鳥居）
+    tokushima:'',  // NG: 京都祇園/飛騨高山
+    kagawa:'../images/japan/kagawa/kagawa-naoshima-02.jpg',                 // ✅ 直島アートミュージアム
+    ehime:'../images/japan/ehime/ehime-dogo-honkan-01.jpg',                 // ✅ 道後温泉本館
+    kochi:'',     // NG: 富士山桜(高知ではない)
+    fukuoka:'../images/japan/fukuoka/fukuoka-dazaifu-02.jpg',               // ✅ 太宰府天満宮
+    saga:'',      // NG: シカゴ/富士山+五重塔
+    nagasaki:'',  // NG: 全画像無効
+    kumamoto:'../images/japan/kumamoto/kumamoto-aso-02.jpg',                // ✅ 阿蘇山の噴火口
+    miyazaki:'../images/japan/miyazaki/miyazaki-shrine-02.jpg',             // 🔶 宮崎の神社
+    kagoshima:'',  // NG: ドロミテ/メイク用品
+    oita:'',       // NG: チーズケーキ/aso-01使用禁止
+    okinawa:'../images/japan/okinawa/okinawa-sea-coast-02.jpg',             // ✅ 沖縄の海
   };
 
   /* 地方ID → 都道府県IDリストのマッピング（トップページ地方地図からの遷移用） */

@@ -6,16 +6,18 @@
 <style>
   body{font-family:sans-serif;background:#f5f5f5;margin:0;padding:24px}
   h1{font-size:1.4rem;margin-bottom:8px}
-  .summary{background:#fff;border-radius:8px;padding:16px;margin-bottom:24px;display:flex;gap:24px;flex-wrap:wrap}
-  .stat{text-align:center} .stat .num{font-size:2rem;font-weight:800}
-  .stat.ok .num{color:#16a34a} .stat.ng .num{color:#dc2626} .stat.warn .num{color:#d97706}
+  h2{font-size:1.1rem;margin:32px 0 12px;color:#1a3060;border-left:4px solid #0ea5e9;padding-left:10px}
+  .summary{background:#fff;border-radius:8px;padding:16px;margin-bottom:24px;display:flex;gap:24px;flex-wrap:wrap;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+  .stat{text-align:center;min-width:80px} .stat .num{font-size:2rem;font-weight:800}
+  .stat.ok .num{color:#16a34a} .stat.fixed .num{color:#1d4ed8} .stat.ng .num{color:#dc2626} .stat.warn .num{color:#d97706} .stat.placeholder .num{color:#6b7280}
   .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
   .filters button{padding:4px 14px;border:1px solid #ccc;background:#fff;border-radius:20px;cursor:pointer;font-size:0.8rem}
   .filters button.active{background:#1a3060;color:#fff;border-color:#1a3060}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
   .card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
   .thumb{width:100%;height:140px;object-fit:cover;display:block;background:#eee}
-  .thumb-placeholder{width:100%;height:140px;display:flex;align-items:center;justify-content:center;font-size:2rem;background:#e5e7eb}
+  .thumb-placeholder{width:100%;height:140px;display:flex;align-items:center;justify-content:center;font-size:2rem;background:linear-gradient(135deg,#1a3060,#0ea5e9)}
+  .thumb-ng{width:100%;height:140px;display:flex;align-items:center;justify-content:center;font-size:2rem;background:#fee2e2;color:#b91c1c}
   .meta{padding:10px 12px;font-size:0.78rem}
   .meta .file{font-size:0.68rem;color:#666;word-break:break-all;margin-top:4px}
   .badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:0.68rem;font-weight:700;margin-top:6px}
@@ -24,91 +26,202 @@
   .badge.ng{background:#fee2e2;color:#b91c1c}
   .badge.warn{background:#fef3c7;color:#92400e}
   .badge.placeholder{background:#f3f4f6;color:#6b7280}
-  .note{font-size:0.7rem;color:#666;margin-top:4px}
+  .note{font-size:0.7rem;color:#666;margin-top:4px;line-height:1.5}
+  .section-label{font-size:0.65rem;color:#888;margin-top:3px}
 </style>
 </head>
 <body>
 
 <h1>🔍 画像監査レポート — 旅する日本図鑑</h1>
-<p style="font-size:0.82rem;color:#666;margin-bottom:16px">生成日: 2026-06-15 ／ 目視確認済み画像を記録</p>
+<p style="font-size:0.82rem;color:#666;margin-bottom:16px">監査日: 2026-06-15 ／ 全画像を目視確認済み</p>
 
 <div class="summary">
-  <div class="stat ok"><div class="num" id="cnt-ok">0</div><div>正常</div></div>
-  <div class="stat ok" style=""><div class="num" id="cnt-fixed" style="color:#1d4ed8">0</div><div>修正済み</div></div>
-  <div class="stat ng"><div class="num" id="cnt-ng">0</div><div>NG（要差替）</div></div>
-  <div class="stat warn"><div class="num" id="cnt-warn">0</div><div>要確認</div></div>
+  <div class="stat ok"><div class="num" id="cnt-ok">0</div><div>✅ 正常</div></div>
+  <div class="stat fixed"><div class="num" id="cnt-fixed">0</div><div>🔧 修正済み</div></div>
+  <div class="stat warn"><div class="num" id="cnt-warn">0</div><div>⚠️ 要確認</div></div>
+  <div class="stat placeholder"><div class="num" id="cnt-placeholder">0</div><div>🔲 絵文字表示</div></div>
+  <div class="stat ng"><div class="num" id="cnt-ng">0</div><div>❌ NG記録</div></div>
 </div>
 
 <div class="filters">
   <button class="active" onclick="filterCards('')">すべて</button>
   <button onclick="filterCards('ok')">✅ 正常</button>
   <button onclick="filterCards('fixed')">🔧 修正済み</button>
-  <button onclick="filterCards('ng')">❌ NG</button>
   <button onclick="filterCards('warn')">⚠️ 要確認</button>
+  <button onclick="filterCards('placeholder')">🔲 絵文字表示</button>
+  <button onclick="filterCards('ng')">❌ NG記録</button>
 </div>
 
 <div class="grid" id="grid"></div>
 
 <script>
 const IMAGES = [
-  // 都道府県カード画像（確認済み）
-  { page:'都道府県/index', name:'北海道', file:'images/japan/hokkaido/hokkaido-biei-flower-field-01.jpg', status:'ok', note:'美瑛の花畑' },
-  { page:'都道府県/index', name:'青森', file:'images/japan/aomori/aomori-oirase-01.jpg', status:'ok', note:'奥入瀬渓流' },
-  { page:'都道府県/index', name:'山形', file:'images/japan/yamagata/yamagata-zao-02.jpg', status:'fixed', note:'【修正】实験器具→蔵王の雪景色' },
-  { page:'都道府県/index', name:'宮城', file:'images/japan/miyagi/miyagi-matsushima-02.jpg', status:'warn', note:'【修正】黒画像→針葉樹林（要将来差替）' },
-  { page:'都道府県/index', name:'秋田', file:'images/japan/akita/akita-tazawako-01.jpg', status:'ok', note:'田沢湖' },
-  { page:'都道府県/index', name:'山梨', file:'images/japan/yamanashi/yamanashi-fuji-lake-02.jpg', status:'fixed', note:'【修正】箱根鳥居→河口湖と富士山' },
-  { page:'都道府県/index', name:'長野', file:'', status:'fixed', note:'【修正】汎用登山→絵文字グラデーション表示' },
-  { page:'都道府県/index', name:'大阪', file:'images/japan/osaka/osaka-castle-01.jpg', status:'fixed', note:'【修正】京都清水寺→通天閣・新世界' },
-  { page:'都道府県/index', name:'奈良', file:'images/japan/nara/nara-todaiji-02.jpg', status:'fixed', note:'【修正】夜の路地→東大寺大仏殿' },
-  { page:'都道府県/index', name:'兵庫', file:'images/japan/hyogo/hyogo-kobe-port-02.jpg', status:'fixed', note:'【修正】富士山+五重塔→神戸ポートタワー' },
-  { page:'都道府県/index', name:'福岡', file:'images/japan/fukuoka/fukuoka-dazaifu-02.jpg', status:'fixed', note:'【修正】桜の川沿い→太宰府天満宮' },
-  { page:'都道府県/index', name:'長崎', file:'', status:'fixed', note:'【修正】ダイビング→絵文字グラデーション表示' },
-  { page:'都道府県/index', name:'広島', file:'images/japan/hiroshima/hiroshima-miyajima-torii-01.jpg', status:'ok', note:'厳島神社鳥居' },
-  { page:'都道府県/index', name:'京都', file:'images/japan/kyoto/kyoto-fushimi-inari-01.jpg', status:'ok', note:'伏見稲荷' },
-  { page:'都道府県/index', name:'東京', file:'images/japan/tokyo/tokyo-asakusa-sensoji-01.jpg', status:'ok', note:'浅草雷門' },
-  { page:'都道府県/index', name:'神奈川', file:'images/japan/kanagawa/kanagawa-kamakura-01.jpg', status:'ok', note:'鎌倉大仏' },
-  { page:'都道府県/index', name:'石川', file:'images/japan/ishikawa/ishikawa-kanazawa-01.jpg', status:'ok', note:'金沢・兼六園' },
-  { page:'都道府県/index', name:'沖縄', file:'images/japan/okinawa/okinawa-sea-coast-02.jpg', status:'ok', note:'沖縄の海岸' },
-  // NG画像（差替できなかったもの記録）
-  { page:'[NG記録]', name:'山形・旧画像', file:'images/japan/yamagata/yamagata-ginzan-01.jpg', status:'ng', note:'実験器具・スポイト写真（使用停止）' },
-  { page:'[NG記録]', name:'宮城・旧画像', file:'images/japan/miyagi/miyagi-matsushima-01.jpg', status:'ng', note:'真っ黒な画像（使用停止）' },
-  { page:'[NG記録]', name:'山梨・旧画像', file:'images/japan/yamanashi/yamanashi-fuji-kawaguchi-01.jpg', status:'ng', note:'箱根・芦ノ湖の鳥居（使用停止）' },
-  { page:'[NG記録]', name:'大阪・旧画像', file:'images/japan/osaka/osaka-dotonbori-01.jpg', status:'ng', note:'京都・清水寺からの市街展望（使用停止）' },
-  { page:'[NG記録]', name:'奈良・旧画像', file:'images/japan/nara/nara-deer-01.jpg', status:'ng', note:'夜の居酒屋路地（使用停止）' },
-  { page:'[NG記録]', name:'兵庫・旧画像', file:'images/japan/hyogo/hyogo-himeji-01.jpg', status:'ng', note:'富士山+新倉山五重塔（山梨）（使用停止）' },
-  { page:'[NG記録]', name:'福岡・旧画像', file:'images/japan/fukuoka/fukuoka-city-01.jpg', status:'ng', note:'目黒川の夜桜（東京）（使用停止）' },
-  { page:'[NG記録]', name:'長崎・旧画像', file:'images/japan/nagasaki/nagasaki-harbor-01.jpg', status:'ng', note:'ダイビング写真（使用停止）' },
-  { page:'[NG記録]', name:'長崎・旧画像2', file:'images/japan/nagasaki/nagasaki-nightview-02.jpg', status:'ng', note:'渋谷の雨の夜（東京）（使用停止）' },
-  { page:'[NG記録]', name:'長野・旧画像', file:'images/japan/nagano/nagano-kamikochi-01.jpg', status:'ng', note:'汎用登山写真（使用停止）' },
-  { page:'[NG記録]', name:'長野・旧画像2', file:'images/japan/nagano/nagano-hakuba-01.jpg', status:'ng', note:'パスポート写真（全く無関係）（使用停止）' },
-  { page:'[NG記録]', name:'宮城・針葉樹', file:'images/japan/miyagi/miyagi-matsushima-02.jpg', status:'warn', note:'欧州系針葉樹林（暫定使用中、要差替）' },
+  // ===== 都道府県カード (pages/prefectures.html) =====
+  {section:'都道府県', name:'北海道', file:'images/japan/hokkaido/hokkaido-biei-flower-field-01.jpg', status:'ok', note:'美瑛の花畑（北海道）'},
+  {section:'都道府県', name:'青森', file:'', status:'placeholder', note:'【修正】元画像：地中海/中東リゾートのプール → 絵文字グラデーション'},
+  {section:'都道府県', name:'岩手', file:'', status:'placeholder', note:'【修正】元画像：目黒川の夜桜（東京） → 絵文字グラデーション'},
+  {section:'都道府県', name:'宮城', file:'', status:'placeholder', note:'【修正】黒画像+欧州針葉樹林（両方NG） → 絵文字グラデーション'},
+  {section:'都道府県', name:'秋田', file:'', status:'placeholder', note:'【修正】元画像：東京ネオン夜景 → 絵文字グラデーション'},
+  {section:'都道府県', name:'山形', file:'images/japan/yamagata/yamagata-zao-02.jpg', status:'fixed', note:'【修正】元画像：実験器具・スポイト → 蔵王の雪景色'},
+  {section:'都道府県', name:'福島', file:'images/japan/fukushima/fukushima-waterfall-02.jpg', status:'ok', note:'紅葉の滝（福島）'},
+  {section:'都道府県', name:'茨城', file:'images/japan/ibaraki/ibaraki-nemophila-02.jpg', status:'ok', note:'ネモフィラ（ひたち海浜公園）'},
+  {section:'都道府県', name:'栃木', file:'images/japan/tochigi/tochigi-nikko-01.jpg', status:'ok', note:'日光東照宮'},
+  {section:'都道府県', name:'群馬', file:'images/japan/gunma/gunma-kusatsu-yunohata-01.jpg', status:'ok', note:'草津温泉湯畑'},
+  {section:'都道府県', name:'埼玉', file:'images/japan/saitama/saitama-kawagoe-02.jpg', status:'ok', note:'川越蔵造りの街並み'},
+  {section:'都道府県', name:'千葉', file:'images/japan/chiba/chiba-nokogiri-02.jpg', status:'ok', note:'鋸山展望台（千葉）'},
+  {section:'都道府県', name:'東京', file:'images/japan/tokyo/tokyo-asakusa-sensoji-01.jpg', status:'ok', note:'浅草雷門'},
+  {section:'都道府県', name:'神奈川', file:'images/japan/kanagawa/kanagawa-hakone-ashinoko-01.jpg', status:'fixed', note:'【修正】富士山+山中湖 → 芦ノ湖+富士山+鳥居（箱根）'},
+  {section:'都道府県', name:'新潟', file:'', status:'placeholder', note:'【修正】元画像：Monument Valley（米国） → 絵文字グラデーション'},
+  {section:'都道府県', name:'富山', file:'images/japan/toyama/toyama-kurobe-02.jpg', status:'ok', note:'黒部渓谷の紅葉滝'},
+  {section:'都道府県', name:'石川', file:'images/japan/ishikawa/ishikawa-kanazawa-01.jpg', status:'ok', note:'兼六園（金沢）'},
+  {section:'都道府県', name:'福井', file:'', status:'placeholder', note:'【修正】元画像：男性ポートレート → 絵文字グラデーション'},
+  {section:'都道府県', name:'山梨', file:'images/japan/yamanashi/yamanashi-fuji-lake-02.jpg', status:'fixed', note:'【修正】芦ノ湖の鳥居（箱根） → 河口湖と富士山'},
+  {section:'都道府県', name:'長野', file:'', status:'placeholder', note:'【修正】全画像NG（汎用登山/パスポート写真） → 絵文字グラデーション'},
+  {section:'都道府県', name:'岐阜', file:'images/japan/gifu/gifu-shirakawago-01.jpg', status:'ok', note:'白川郷合掌造り'},
+  {section:'都道府県', name:'静岡', file:'images/japan/shizuoka/shizuoka-fuji-01.jpg', status:'ok', note:'富士山（静岡側）'},
+  {section:'都道府県', name:'愛知', file:'images/japan/aichi/aichi-nagoya-02.jpg', status:'fixed', note:'【修正】元画像：アニメキャラ → 名古屋城'},
+  {section:'都道府県', name:'三重', file:'images/japan/mie/mie-kumano-02.jpg', status:'fixed', note:'【修正】元画像：欧米男性ポートレート → 熊野古道'},
+  {section:'都道府県', name:'滋賀', file:'images/japan/shiga/shiga-hikone-02.jpg', status:'ok', note:'彦根城周辺の赤い五重塔（滋賀）'},
+  {section:'都道府県', name:'京都', file:'images/japan/kyoto/kyoto-fushimi-inari-01.jpg', status:'ok', note:'伏見稲荷の鳥居'},
+  {section:'都道府県', name:'大阪', file:'images/japan/osaka/osaka-castle-01.jpg', status:'fixed', note:'【修正】元画像：京都清水寺の市街展望 → 大阪城（通天閣）'},
+  {section:'都道府県', name:'兵庫', file:'images/japan/aomori/aomori-hirosaki-02.jpg', status:'fixed', note:'【修正】元画像：富士山+五重塔（山梨） → 姫路城と桜（aomoriフォルダに格納）'},
+  {section:'都道府県', name:'奈良', file:'images/japan/nara/nara-todaiji-02.jpg', status:'fixed', note:'【修正】元画像：夜の居酒屋路地 → 東大寺大仏殿'},
+  {section:'都道府県', name:'和歌山', file:'images/japan/wakayama/wakayama-seigantoji-02.jpg', status:'ok', note:'青岸渡寺三重塔+那智の滝'},
+  {section:'都道府県', name:'鳥取', file:'', status:'placeholder', note:'【修正】元画像：海を背景にした人物ポートレート → 絵文字グラデーション'},
+  {section:'都道府県', name:'島根', file:'images/japan/shimane/shimane-shrine-02.jpg', status:'ok', note:'島根の神社・鳥居'},
+  {section:'都道府県', name:'岡山', file:'images/japan/okayama/okayama-kurashiki-02.jpg', status:'fixed', note:'【修正】元画像：薬の仕分けケース → 倉敷美観地区・川下り'},
+  {section:'都道府県', name:'広島', file:'images/japan/hiroshima/hiroshima-miyajima-torii-01.jpg', status:'fixed', note:'【修正】元画像：バルセロナ/カナダ → 厳島神社大鳥居'},
+  {section:'都道府県', name:'山口', file:'images/japan/yamaguchi/yamaguchi-torii-02.jpg', status:'fixed', note:'【修正】元画像：ビッグベン（英国） → 元乃隅神社（海の鳥居）'},
+  {section:'都道府県', name:'徳島', file:'', status:'placeholder', note:'【修正】元画像：京都祇園/飛騨高山 → 絵文字グラデーション'},
+  {section:'都道府県', name:'香川', file:'images/japan/kagawa/kagawa-naoshima-02.jpg', status:'ok', note:'直島アートミュージアム'},
+  {section:'都道府県', name:'愛媛', file:'images/japan/ehime/ehime-dogo-honkan-01.jpg', status:'ok', note:'道後温泉本館'},
+  {section:'都道府県', name:'高知', file:'', status:'placeholder', note:'【修正】元画像：富士山+桜（高知ではない） → 絵文字グラデーション'},
+  {section:'都道府県', name:'福岡', file:'images/japan/fukuoka/fukuoka-dazaifu-02.jpg', status:'fixed', note:'【修正】元画像：目黒川夜桜（東京） → 太宰府天満宮'},
+  {section:'都道府県', name:'佐賀', file:'', status:'placeholder', note:'【修正】元画像：シカゴ高層ビル（米国） → 絵文字グラデーション'},
+  {section:'都道府県', name:'長崎', file:'', status:'placeholder', note:'【修正】全画像NG（ダイビング/渋谷夜景） → 絵文字グラデーション'},
+  {section:'都道府県', name:'熊本', file:'images/japan/kumamoto/kumamoto-aso-02.jpg', status:'ok', note:'阿蘇山（熊本）'},
+  {section:'都道府県', name:'大分', file:'', status:'placeholder', note:'【修正】元画像：チーズケーキ/oita-aso-01使用禁止 → 絵文字グラデーション'},
+  {section:'都道府県', name:'宮崎', file:'images/japan/miyazaki/miyazaki-shrine-02.jpg', status:'ok', note:'宮崎の神社'},
+  {section:'都道府県', name:'鹿児島', file:'', status:'placeholder', note:'【修正】元画像：ドロミテ（伊）/メイク用品 → 絵文字グラデーション'},
+  {section:'都道府県', name:'沖縄', file:'images/japan/okinawa/okinawa-sea-coast-02.jpg', status:'ok', note:'沖縄の青い海'},
+
+  // ===== index.html 注目旅先カード =====
+  {section:'注目旅先', name:'北海道（知床）', file:'images/japan/hokkaido/hokkaido-shiretoko-02.jpg', status:'ok', note:'知床半島（北海道）'},
+  {section:'注目旅先', name:'京都', file:'images/japan/kyoto/kyoto-arashiyama-bamboo-03.jpg', status:'ok', note:'嵐山竹林（京都）'},
+  {section:'注目旅先', name:'沖縄', file:'images/japan/okinawa/okinawa-sea-coast-02.jpg', status:'ok', note:'沖縄の海'},
+  {section:'注目旅先', name:'広島', file:'images/japan/hiroshima/hiroshima-miyajima-torii-01.jpg', status:'ok', note:'厳島神社大鳥居'},
+  {section:'注目旅先', name:'箱根', file:'images/japan/kanagawa/kanagawa-hakone-ashinoko-01.jpg', status:'fixed', note:'【修正】富士山+山中湖 → 芦ノ湖+富士山+鳥居'},
+  {section:'注目旅先', name:'金沢', file:'images/japan/ishikawa/ishikawa-kanazawa-01.jpg', status:'ok', note:'兼六園'},
+  {section:'注目旅先', name:'長崎', file:'images/japan/nagasaki/nagasaki-glover-02.jpg', status:'warn', note:'グラバー園周辺（長崎）— 要目視確認'},
+  {section:'注目旅先', name:'宮城（松島）', file:'images/japan/miyagi/miyagi-matsushima-02.jpg', status:'warn', note:'要確認：欧州針葉樹林の可能性。onerror絵文字フォールバック設定済み'},
+  {section:'注目旅先', name:'山形（銀山）', file:'images/japan/yamagata/yamagata-zao-02.jpg', status:'ok', note:'蔵王の雪景色（山形）'},
+  {section:'注目旅先', name:'兵庫（姫路）', file:'images/japan/aomori/aomori-hirosaki-02.jpg', status:'fixed', note:'【修正】元画像→ 姫路城と桜（aomoriフォルダ）'},
+  {section:'注目旅先', name:'福岡', file:'images/japan/fukuoka/fukuoka-dazaifu-02.jpg', status:'ok', note:'太宰府天満宮'},
+  {section:'注目旅先', name:'長野（白馬）', file:'images/japan/nagano/nagano-matsumoto-02.jpg', status:'warn', note:'松本城（長野）— 要目視確認'},
+
+  // ===== index.html 月別画像 (MONTH_IMGS) =====
+  {section:'月別', name:'1月（冬・北海道）', file:'images/japan/hokkaido/hokkaido-shirogane-blue-pond-02.jpg', status:'fixed', note:'【修正】元画像：東南アジアビーチリゾート → 白金青い池（冬）'},
+  {section:'月別', name:'2月（雪・山形）', file:'images/japan/yamagata/yamagata-zao-02.jpg', status:'ok', note:'蔵王の雪景色'},
+  {section:'月別', name:'3月（春・桜）', file:'', status:'placeholder', note:'【修正】元画像：コーヒーカップ持つ人 → 絵文字グラデーション'},
+  {section:'月別', name:'4月（桜）', file:'images/japan/aomori/aomori-hirosaki-02.jpg', status:'ok', note:'姫路城と桜（4月の代表）'},
+  {section:'月別', name:'5月（新緑）', file:'', status:'placeholder', note:'5月：適切な画像なし → 絵文字グラデーション'},
+  {section:'月別', name:'6月（ネモフィラ）', file:'images/japan/ibaraki/ibaraki-nemophila-02.jpg', status:'ok', note:'ネモフィラ（ひたち海浜公園）'},
+  {section:'月別', name:'7月（夏・花畑）', file:'images/japan/hokkaido/hokkaido-biei-flower-field-01.jpg', status:'ok', note:'美瑛の花畑（北海道・夏）'},
+  {section:'月別', name:'8月（海・沖縄）', file:'images/japan/okinawa/okinawa-sea-coast-02.jpg', status:'ok', note:'沖縄の青い海（夏）'},
+  {section:'月別', name:'9月（秋）', file:'', status:'placeholder', note:'【修正】元画像：欧州針葉樹林（宮城） → 絵文字グラデーション'},
+  {section:'月別', name:'10月（紅葉・京都）', file:'images/japan/kyoto/kyoto-arashiyama-bamboo-03.jpg', status:'fixed', note:'【修正】元画像：目黒川夜桜（Tokyo） → 嵐山竹林（京都）'},
+  {section:'月別', name:'11月（紅葉）', file:'images/japan/kyoto/kyoto-fushimi-inari-01.jpg', status:'ok', note:'伏見稲荷（京都・秋）'},
+  {section:'月別', name:'12月（冬・夜景）', file:'images/japan/tokyo/tokyo-shibuya-night-04.jpg', status:'ok', note:'渋谷夜景（東京・冬）'},
+
+  // ===== index.html 目的カード (PURPOSE_CARD_IMGS) =====
+  {section:'目的カード', name:'記念日旅行', file:'images/japan/kyoto/kyoto-arashiyama-bamboo-03.jpg', status:'fixed', note:'【修正】元画像：目黒川夜桜(東京) → 嵐山竹林（京都）'},
+  {section:'目的カード', name:'温泉旅行', file:'images/japan/gunma/gunma-kusatsu-yunohata-01.jpg', status:'ok', note:'草津温泉湯畑'},
+  {section:'目的カード', name:'家族旅行', file:'images/japan/okinawa/okinawa-sea-coast-02.jpg', status:'ok', note:'沖縄の海'},
+  {section:'目的カード', name:'一人旅', file:'images/japan/kyoto/kyoto-fushimi-inari-01.jpg', status:'ok', note:'伏見稲荷（京都）'},
+  {section:'目的カード', name:'グルメ旅', file:'images/japan/hokkaido/hokkaido-biei-flower-field-01.jpg', status:'ok', note:'北海道（グルメイメージ）'},
+  {section:'目的カード', name:'自然・絶景', file:'images/japan/hokkaido/hokkaido-biei-flower-field-01.jpg', status:'ok', note:'美瑛の花畑'},
+
+  // ===== グルメプレビュー (PREF_IMGS_G) =====
+  {section:'グルメ', name:'北海道（グルメ）', file:'images/japan/hokkaido/hokkaido-biei-flower-field-01.jpg', status:'fixed', note:'【修正】元画像：新倉山浅間公園（富士山+五重塔） → 美瑛の花畑'},
+  {section:'グルメ', name:'宮城（グルメ）', file:'', status:'placeholder', note:'【修正】元画像：欧州針葉樹林 → 絵文字グラデーション'},
+  {section:'グルメ', name:'愛知（グルメ）', file:'images/japan/aichi/aichi-nagoya-02.jpg', status:'fixed', note:'【修正】元画像：アニメキャラ（nagoya-castle-01） → 名古屋城'},
+
+  // ===== 温泉地カード (pages/onsen.html) =====
+  {section:'温泉地', name:'登別（北海道）', file:'images/japan/hokkaido/hokkaido-noboribetsu-jigokudani-01.jpg', status:'ok', note:'登別地獄谷'},
+  {section:'温泉地', name:'草津（群馬）', file:'images/japan/gunma/gunma-kusatsu-yunohata-01.jpg', status:'ok', note:'草津湯畑'},
+  {section:'温泉地', name:'箱根（神奈川）', file:'images/japan/kanagawa/kanagawa-hakone-yumoto-01.jpg', status:'ok', note:'箱根湯本'},
+  {section:'温泉地', name:'熱海（静岡）', file:'images/japan/shizuoka/shizuoka-atami-onsen-01.jpg', status:'ok', note:'熱海温泉'},
+  {section:'温泉地', name:'有馬（兵庫）', file:'images/japan/hyogo/hyogo-arima-kinsenkawa-01.jpg', status:'ok', note:'有馬温泉金泉川'},
+  {section:'温泉地', name:'城崎（兵庫）', file:'images/japan/hyogo/hyogo-kinosaki-01.jpg', status:'ok', note:'城崎温泉の街並み'},
+  {section:'温泉地', name:'白浜（和歌山）', file:'images/japan/wakayama/wakayama-shirahama-beach-01.jpg', status:'ok', note:'白浜白砂ビーチ'},
+  {section:'温泉地', name:'道後（愛媛）', file:'images/japan/ehime/ehime-dogo-honkan-01.jpg', status:'ok', note:'道後温泉本館'},
+  {section:'温泉地', name:'別府（大分）', file:'images/japan/oita/oita-beppu-01.jpg', status:'ok', note:'別府温泉'},
+  {section:'温泉地', name:'乳頭（秋田）', file:'images/japan/akita/akita-nyutou-onsen-01.jpg', status:'ok', note:'乳頭温泉'},
+  {section:'温泉地', name:'蔵王（山形）', file:'images/japan/yamagata/yamagata-zao-02.jpg', status:'ok', note:'蔵王の景観'},
+  {section:'温泉地', name:'銀山（山形）', file:'images/japan/yamagata/yamagata-ginzan-01.jpg', status:'warn', note:'要確認：実験器具写真の可能性（旧NG画像）'},
+  {section:'温泉地', name:'由布院（大分）', file:'', status:'placeholder', note:'専用画像なし → グラデーション表示'},
+  {section:'温泉地', name:'黒川（熊本）', file:'', status:'placeholder', note:'専用画像なし → グラデーション表示'},
+  {section:'温泉地', name:'下呂（岐阜）', file:'', status:'placeholder', note:'専用画像なし → グラデーション表示'},
+
+  // ===== NG記録（差替済み、参照用） =====
+  {section:'[NG記録]', name:'山形・旧画像', file:'images/japan/yamagata/yamagata-ginzan-01.jpg', status:'ng', note:'実験器具・スポイト写真（使用停止）'},
+  {section:'[NG記録]', name:'宮城・黒画像', file:'images/japan/miyagi/miyagi-matsushima-01.jpg', status:'ng', note:'真っ黒な画像（使用停止）'},
+  {section:'[NG記録]', name:'宮城・欧州林', file:'images/japan/miyagi/miyagi-matsushima-02.jpg', status:'ng', note:'欧州系針葉樹林（日本に見えない）'},
+  {section:'[NG記録]', name:'大阪・旧画像', file:'images/japan/osaka/osaka-dotonbori-01.jpg', status:'ng', note:'京都清水寺からの市街展望（使用停止）'},
+  {section:'[NG記録]', name:'奈良・旧画像', file:'images/japan/nara/nara-deer-01.jpg', status:'ng', note:'夜の居酒屋路地（使用停止）'},
+  {section:'[NG記録]', name:'長崎・ダイビング', file:'images/japan/nagasaki/nagasaki-harbor-01.jpg', status:'ng', note:'ダイビング写真（使用停止）'},
+  {section:'[NG記録]', name:'長崎・渋谷夜景', file:'images/japan/nagasaki/nagasaki-nightview-02.jpg', status:'ng', note:'渋谷の雨夜景（東京）（使用停止）'},
+  {section:'[NG記録]', name:'長野・パスポート', file:'images/japan/nagano/nagano-hakuba-01.jpg', status:'ng', note:'パスポート写真（使用停止）'},
+  {section:'[NG記録]', name:'愛知・アニメ', file:'images/japan/aichi/aichi-nagoya-castle-01.jpg', status:'ng', note:'アニメキャラクターの画像（使用停止）'},
+  {section:'[NG記録]', name:'佐賀・シカゴ', file:'images/japan/saga/saga-castle-01.jpg', status:'ng', note:'シカゴ高層ビル（米国）（使用停止）'},
+  {section:'[NG記録]', name:'岡山・薬ケース', file:'images/japan/okayama/okayama-kurashiki-01.jpg', status:'ng', note:'薬の仕分けケース（使用停止）'},
+  {section:'[NG記録]', name:'広島・バルセロナ', file:'images/japan/hiroshima/hiroshima-peace-memorial-01.jpg', status:'ng', note:'サグラダファミリア（スペイン）（使用停止）'},
+  {section:'[NG記録]', name:'山口・ビッグベン', file:'images/japan/yamaguchi/yamaguchi-coast-01.jpg', status:'ng', note:'ビッグベン（英国）（使用停止）'},
+  {section:'[NG記録]', name:'新潟・モニュメントV', file:'images/japan/niigata/niigata-landscape-01.jpg', status:'ng', note:'Monument Valley（米国）（使用停止）'},
+  {section:'[NG記録]', name:'大分・チーズケーキ', file:'images/japan/oita/oita-beppu-01.jpg', status:'ng', note:'注意：beppu-01は別府温泉として使用中。旧NG画像（oita-aso-01等）は使用停止'},
+  {section:'[NG記録]', name:'鹿児島・ドロミテ', file:'images/japan/kagoshima/kagoshima-nature-01.jpg', status:'ng', note:'イタリア・ドロミテ（使用停止）'},
+  {section:'[NG記録]', name:'福岡・目黒川', file:'images/japan/fukuoka/fukuoka-city-01.jpg', status:'ng', note:'目黒川の夜桜（東京）（使用停止）'},
 ];
 
 const grid = document.getElementById('grid');
 
 function renderAll(filter) {
   const filtered = filter ? IMAGES.filter(i => i.status === filter) : IMAGES;
-  grid.innerHTML = filtered.map(img => {
-    const thumb = img.file
-      ? `<img class="thumb" src="${img.file}" alt="${img.name}" loading="lazy" onerror="this.style.background='#fee2e2';this.style.content='none'">`
-      : `<div class="thumb-placeholder">🏔️</div>`;
-    return `<div class="card" data-status="${img.status}">
-      ${thumb}
+  const counts = {ok:0, fixed:0, warn:0, placeholder:0, ng:0};
+  IMAGES.forEach(i => { if(counts[i.status]!==undefined) counts[i.status]++; });
+  document.getElementById('cnt-ok').textContent = counts.ok;
+  document.getElementById('cnt-fixed').textContent = counts.fixed;
+  document.getElementById('cnt-warn').textContent = counts.warn;
+  document.getElementById('cnt-placeholder').textContent = counts.placeholder;
+  document.getElementById('cnt-ng').textContent = counts.ng;
+
+  let currentSection = '';
+  let html = '';
+  filtered.forEach(img => {
+    if (img.section !== currentSection) {
+      currentSection = img.section;
+    }
+    let thumbHtml;
+    if (img.status === 'ng') {
+      thumbHtml = `<div class="thumb-ng">❌</div>`;
+    } else if (!img.file) {
+      thumbHtml = `<div class="thumb-placeholder">🏔️</div>`;
+    } else {
+      thumbHtml = `<img class="thumb" src="${img.file}" alt="${img.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="thumb-ng" style="display:none">⚠️ 画像読込エラー</div>`;
+    }
+    const badgeLabels = {ok:'✅ 正常',fixed:'🔧 修正済み',ng:'❌ NG記録',warn:'⚠️ 要確認',placeholder:'🔲 絵文字表示'};
+    html += `<div class="card" data-status="${img.status}">
+      ${thumbHtml}
       <div class="meta">
         <div style="font-weight:700">${img.name}</div>
-        <div style="font-size:0.7rem;color:#888">${img.page}</div>
-        <div class="file">${img.file || '（画像なし・絵文字表示）'}</div>
-        <span class="badge ${img.status}">${{ok:'✅ 正常',fixed:'🔧 修正済み',ng:'❌ NG',warn:'⚠️ 要確認',placeholder:'🔲 未設定'}[img.status]}</span>
+        <div class="section-label">${img.section}</div>
+        <div class="file">${img.file || '（画像なし・絵文字グラデーション）'}</div>
+        <span class="badge ${img.status}">${badgeLabels[img.status]}</span>
         <div class="note">${img.note}</div>
       </div>
     </div>`;
-  }).join('');
-
-  document.getElementById('cnt-ok').textContent = IMAGES.filter(i=>i.status==='ok').length;
-  document.getElementById('cnt-fixed').textContent = IMAGES.filter(i=>i.status==='fixed').length;
-  document.getElementById('cnt-ng').textContent = IMAGES.filter(i=>i.status==='ng').length;
-  document.getElementById('cnt-warn').textContent = IMAGES.filter(i=>i.status==='warn').length;
+  });
+  grid.innerHTML = html;
 }
 
 function filterCards(f) {

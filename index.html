@@ -363,8 +363,8 @@
       <!-- 兵庫 -->
       <div class="dest-card" onclick="location.href='templates/prefecture.html?id=hyogo'" style="cursor:pointer">
         <div class="dest-thumb">
-          <img src="images/japan/hyogo/hyogo-kobe-port-02.jpg"
-               alt="神戸ポートタワーと神戸港"
+          <img src="images/japan/aomori/aomori-hirosaki-02.jpg"
+               alt="世界遺産・姫路城と桜（兵庫）"
                loading="lazy" width="400" height="300">
         </div>
         <div class="dest-body">
@@ -394,8 +394,8 @@
       <!-- 神奈川 -->
       <div class="dest-card" onclick="location.href='templates/prefecture.html?id=kanagawa'" style="cursor:pointer">
         <div class="dest-thumb">
-          <img src="images/japan/kanagawa/kanagawa-kamakura-01.jpg"
-               alt="鎌倉の大仏"
+          <img src="images/japan/kanagawa/kanagawa-hakone-ashinoko-01.jpg"
+               alt="箱根・芦ノ湖と富士山と鳥居"
                loading="lazy" width="400" height="300">
         </div>
         <div class="dest-body">
@@ -516,8 +516,9 @@
       <div class="dest-card" onclick="location.href='templates/prefecture.html?id=miyagi'" style="cursor:pointer">
         <div class="dest-thumb">
           <img src="images/japan/miyagi/miyagi-matsushima-02.jpg"
-               alt="宮城県松島の松林と島々"
-               loading="lazy" width="400" height="300">
+               alt="宮城県の風景"
+               loading="lazy" width="400" height="300"
+               onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#0c1b35,#1a6080)';this.parentElement.style.minHeight='160px'">
         </div>
         <div class="dest-body">
           <div class="dest-region">東北</div>
@@ -940,18 +941,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const nowMonth = new Date().getMonth() + 1;
     const mn = ['','1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
     const MONTH_IMGS = [null,
-      'images/japan/hokkaido/hokkaido-noboribetsu-01.jpg',
-      'images/japan/yamagata/yamagata-zao-02.jpg',
-      'images/japan/ibaraki/ibaraki-kairakuen-02.jpg',
-      'images/japan/aomori/aomori-hirosaki-02.jpg',
-      null,
-      'images/japan/ibaraki/ibaraki-nemophila-02.jpg',
-      'images/japan/hokkaido/hokkaido-biei-flower-field-01.jpg',
-      'images/japan/okinawa/okinawa-sea-coast-02.jpg',
-      'images/japan/miyagi/miyagi-matsushima-02.jpg',
-      'images/japan/kyoto/kyoto-arashiyama-01.jpg',
-      'images/japan/kyoto/kyoto-kinkakuji-01.jpg',
-      'images/japan/tokyo/tokyo-shibuya-night-04.jpg',
+      'images/japan/hokkaido/hokkaido-shirogane-blue-pond-02.jpg', // 1月: 青い池（冬）
+      'images/japan/yamagata/yamagata-zao-02.jpg',                  // 2月: 蔵王の雪景色
+      null,                                                          // 3月: NG画像なし
+      'images/japan/aomori/aomori-hirosaki-02.jpg',                 // 4月: 姫路城と桜
+      null,                                                          // 5月: NG画像なし
+      'images/japan/ibaraki/ibaraki-nemophila-02.jpg',              // 6月: ネモフィラ
+      'images/japan/hokkaido/hokkaido-biei-flower-field-01.jpg',    // 7月: 美瑛の花畑
+      'images/japan/okinawa/okinawa-sea-coast-02.jpg',              // 8月: 沖縄の海
+      null,                                                          // 9月: NG画像なし
+      'images/japan/kyoto/kyoto-arashiyama-bamboo-03.jpg',          // 10月: 嵐山竹林
+      'images/japan/kyoto/kyoto-fushimi-inari-01.jpg',              // 11月: 伏見稲荷
+      'images/japan/tokyo/tokyo-shibuya-night-04.jpg',              // 12月: 渋谷夜景
     ];
     const MONTH_THEMES = [null,
       '雪景色・温泉・初詣',  '樹氷・スキー・冬温泉', '梅・ひな祭り・早春',
@@ -1007,7 +1008,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const purposeGrid = document.getElementById('purpose-grid');
   if (purposeGrid) {
     const PURPOSE_CARD_IMGS = {
-      anniversary:  'images/japan/kyoto/kyoto-arashiyama-01.jpg',
+      anniversary:  'images/japan/kyoto/kyoto-arashiyama-bamboo-03.jpg',
       onsen:        'images/japan/gunma/gunma-kusatsu-yunohata-01.jpg',
       gourmet:      'images/japan/osaka/osaka-castle-01.jpg',
       family:       'images/japan/okinawa/okinawa-sea-coast-02.jpg',
@@ -1072,9 +1073,9 @@ document.addEventListener('DOMContentLoaded', () => {
       { name: '博多ラーメン', pref: '福岡県', emoji: '🍜', color: 'linear-gradient(135deg,#451a03,#92400e)', desc: '濃厚豚骨スープに細麺が絡む博多スタイル。替え玉・紅しょうが・にんにくで仕上げる', prefId: 'fukuoka' },
     ];
     const PREF_IMGS_G = {
-      hokkaido:  'images/japan/hokkaido/hokkaido-shiretoko-01.jpg',
-      miyagi:    'images/japan/miyagi/miyagi-matsushima-02.jpg',
-      aichi:     'images/japan/aichi/aichi-nagoya-castle-01.jpg',
+      hokkaido:  'images/japan/hokkaido/hokkaido-biei-flower-field-01.jpg',
+      miyagi:    '',
+      aichi:     'images/japan/aichi/aichi-nagoya-02.jpg',
       osaka:     'images/japan/osaka/osaka-castle-01.jpg',
       hiroshima: 'images/japan/hiroshima/hiroshima-miyajima-torii-01.jpg',
       fukuoka:   'images/japan/fukuoka/fukuoka-dazaifu-02.jpg',

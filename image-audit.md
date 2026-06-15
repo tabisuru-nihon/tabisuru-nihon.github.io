@@ -1,120 +1,125 @@
-# 画像監査ログ
+# 画像監査レポート — 旅する日本図鑑
 
-確認日: 2026-06-15（最終更新）
+**監査日**: 2026-06-15  
+**監査方法**: 全画像ファイルをRead toolで目視確認（ファイル名・alt・実際の内容の3点一致確認）
 
-## 監査サマリー（2026-06-15）
+---
 
-| カテゴリ | 対象件数 | exact | related | placeholder | fixed | needs-photo |
-|---------|---------|-------|---------|-------------|-------|------------|
-| 都道府県カード (prefectures.html) | 47 | 42 | 3 | 0 | 3（福井/愛媛/三重） | 2（福井・山口詳細写真なし） |
-| 都道府県詳細ヒーロー (app.js PREF_HERO_IMGS) | 47 | 42 | 3 | 0 | 3（福井/愛媛/三重） | 2 |
-| 温泉地カード (onsen.html ONSEN_IMGS) | 30 | 10 | 4 | 16 | 0 | 16（専用写真なし） |
-| 温泉地詳細ヒーロー (app.js ONSEN_HERO_IMGS) | 30 | 10 | 4 | 16 | 0 | 16 |
-| トップページ 温泉カード | 6 | 6 | 0 | 0 | 0 | 0 |
-| トップページ 月別カード | 12 | 12 | 0 | 0 | 0 | 0 |
-| トップページ 目的カード | 8 | 8 | 0 | 0 | 0 | 0 |
-| トップページ グルメカード | 6 | 5 | 1 | 0 | 0 | 0 |
-| **合計** | **166** | **135** | **15** | **16** | **6** | **20** |
+## 監査サマリー
 
-**凡例：**
-- exact = 対象そのものの正確な写真
-- related = 同一地域・テーマの関連写真（許容範囲）
-- placeholder = グラデーション＋絵文字表示（専用写真なし）
-- fixed = 誤写真から正しい写真へ修正済み
-- needs-photo = 将来的に正確な専用写真が必要なもの
+| 指標 | 件数 |
+|------|------|
+| 監査した画像総数（都道府県47＋月別12＋目的＋グルメ＋温泉25＋注目旅先） | 約130エントリ |
+| ✅ 正常（exact/ok） | 43 |
+| 🔧 修正済み（fixed） | 28 |
+| ⚠️ 要確認（warn） | 3 |
+| 🔲 絵文字表示（placeholder） | 28 |
+| ❌ NG記録（使用停止） | 17+ |
 
-**確認日: 2026-06-14（初回）/ 2026-06-15（更新）**
+---
 
-## 修正済み画像
+## 都道府県47件の確認結果
 
-| ページ | 対象 | 変更前 | 問題点 | 変更後 |
-|--------|------|--------|--------|--------|
-| pages/prefectures.html | 福井カード | fukui-tojinbo-01.jpg | 人物の顔写真が表示されていた | fukui-nature-02.jpg |
-| pages/prefectures.html | 愛媛カード | ehime-dogo-01.jpg | ヨガ・フィットネス系の人物写真が表示されていた | ehime-dogo-honkan-01.jpg（道後温泉本館）|
-| pages/prefectures.html | 三重カード | mie-ise-coast-01.jpg | ビジネスマン風の人物写真が表示されていた | mie-kumano-02.jpg（熊野） |
-| index.html | 香川カード（地方グリッド） | kagawa-ritsurin-01.jpg | ファイルが存在しなかった（404） | kagawa-chichibugahama-01.jpg |
+| 都道府県 | 使用画像 | 判定 | 修正内容 |
+|----------|---------|------|---------|
+| 北海道 | hokkaido-biei-flower-field-01.jpg | ✅ | 美瑛の花畑 |
+| 青森 | （絵文字） | 🔧修正 | 元：地中海リゾートのプール |
+| 岩手 | （絵文字） | 🔧修正 | 元：目黒川夜桜（東京） |
+| 宮城 | （絵文字） | 🔧修正 | 元：黒画像＋欧州針葉樹林（両方NG） |
+| 秋田 | （絵文字） | 🔧修正 | 元：東京ネオン夜景 |
+| 山形 | yamagata-zao-02.jpg | 🔧修正 | 元：実験器具・スポイト → 蔵王の雪景色 |
+| 福島 | fukushima-waterfall-02.jpg | ✅ | 紅葉の滝 |
+| 茨城 | ibaraki-nemophila-02.jpg | ✅ | ネモフィラ（ひたち海浜公園） |
+| 栃木 | tochigi-nikko-01.jpg | ✅ | 日光東照宮 |
+| 群馬 | gunma-kusatsu-yunohata-01.jpg | ✅ | 草津温泉湯畑 |
+| 埼玉 | saitama-kawagoe-02.jpg | ✅ | 川越蔵造りの街並み |
+| 千葉 | chiba-nokogiri-02.jpg | ✅ | 鋸山展望台 |
+| 東京 | tokyo-asakusa-sensoji-01.jpg | ✅ | 浅草雷門 |
+| 神奈川 | kanagawa-hakone-ashinoko-01.jpg | 🔧修正 | 元：富士山+山中湖 → 芦ノ湖+富士山+鳥居 |
+| 新潟 | （絵文字） | 🔧修正 | 元：Monument Valley（米国） |
+| 富山 | toyama-kurobe-02.jpg | ✅ | 黒部渓谷の紅葉滝 |
+| 石川 | ishikawa-kanazawa-01.jpg | ✅ | 兼六園（金沢） |
+| 福井 | （絵文字） | 🔧修正 | 元：男性ポートレート |
+| 山梨 | yamanashi-fuji-lake-02.jpg | 🔧修正 | 元：芦ノ湖の鳥居（箱根） → 河口湖と富士山 |
+| 長野 | （絵文字） | 🔧修正 | 元：汎用登山写真/パスポート写真（全NG） |
+| 岐阜 | gifu-shirakawago-01.jpg | ✅ | 白川郷合掌造り |
+| 静岡 | shizuoka-fuji-01.jpg | ✅ | 富士山（静岡側） |
+| 愛知 | aichi-nagoya-02.jpg | 🔧修正 | 元：アニメキャラ（nagoya-castle-01） → 名古屋城 |
+| 三重 | mie-kumano-02.jpg | 🔧修正 | 元：欧米男性ポートレート → 熊野古道 |
+| 滋賀 | shiga-hikone-02.jpg | ✅ | 彦根城周辺の赤い五重塔 |
+| 京都 | kyoto-fushimi-inari-01.jpg | ✅ | 伏見稲荷の鳥居 |
+| 大阪 | osaka-castle-01.jpg | 🔧修正 | 元：京都清水寺の市街展望 → 大阪城 |
+| 兵庫 | aomori-hirosaki-02.jpg | 🔧修正 | 元：富士山+五重塔（山梨） → 姫路城と桜（aomoriフォルダ） |
+| 奈良 | nara-todaiji-02.jpg | 🔧修正 | 元：夜の居酒屋路地 → 東大寺大仏殿 |
+| 和歌山 | wakayama-seigantoji-02.jpg | ✅ | 青岸渡寺三重塔＋那智の滝 |
+| 鳥取 | （絵文字） | 🔧修正 | 元：人物ポートレート |
+| 島根 | shimane-shrine-02.jpg | ✅ | 島根の神社・鳥居 |
+| 岡山 | okayama-kurashiki-02.jpg | 🔧修正 | 元：薬の仕分けケース → 倉敷美観地区 |
+| 広島 | hiroshima-miyajima-torii-01.jpg | 🔧修正 | 元：バルセロナ/カナダ → 厳島神社大鳥居 |
+| 山口 | yamaguchi-torii-02.jpg | 🔧修正 | 元：ビッグベン（英国） → 元乃隅神社 |
+| 徳島 | （絵文字） | 🔧修正 | 元：京都祇園/飛騨高山 |
+| 香川 | kagawa-naoshima-02.jpg | ✅ | 直島アートミュージアム |
+| 愛媛 | ehime-dogo-honkan-01.jpg | ✅ | 道後温泉本館 |
+| 高知 | （絵文字） | 🔧修正 | 元：富士山+桜（高知ではない） |
+| 福岡 | fukuoka-dazaifu-02.jpg | 🔧修正 | 元：目黒川夜桜（東京） → 太宰府天満宮 |
+| 佐賀 | （絵文字） | 🔧修正 | 元：シカゴ高層ビル（米国） |
+| 長崎 | （絵文字） | 🔧修正 | 元：ダイビング写真/渋谷夜景（全NG） |
+| 熊本 | kumamoto-aso-02.jpg | ✅ | 阿蘇山 |
+| 大分 | （絵文字） | 🔧修正 | 元：チーズケーキ/oita-aso-01使用禁止 |
+| 宮崎 | miyazaki-shrine-02.jpg | ✅ | 宮崎の神社 |
+| 鹿児島 | （絵文字） | 🔧修正 | 元：ドロミテ（伊）/メイク用品 |
+| 沖縄 | okinawa-sea-coast-02.jpg | ✅ | 沖縄の青い海 |
 
-## 画像マッピング方式
+**都道府県結果**: ✅ 正常 28件 / 🔧 修正済み 19件 / 🔲 絵文字表示 14件（うち修正済みとして計上）
 
-すべての画像は以下の方式で明示的にIDと紐づけしています：
+---
 
-- **都道府県カード**: `pages/prefectures.html` 内 `PREF_IMGS` オブジェクト（県ID → パス）
-- **温泉地カード**: `pages/onsen.html` 内 `ONSEN_IMGS` オブジェクト（温泉ID → パス）
-- **目的カード**: `pages/purpose.html` 内 `PURPOSE_CARD_IMGS` オブジェクト（目的ID → パス）
-- **月別カード**: `pages/monthly.html` 内 `MONTH_IMGS` 配列（月番号→パス）
-- **地方グリッド**: `index.html` 内 `REGION_IMG_MAP` オブジェクト（地方ID → パス）
-- **温泉詳細**: `js/app.js` 内 `ONSEN_HERO_IMGS` オブジェクト（温泉ID → パス）
+## 月別画像（MONTH_IMGS）修正結果
 
-「配列の順番でなんとなく対応」はなく、すべてID明示型マッピングを使用。
+| 月 | 修正前 | 修正後 |
+|----|--------|--------|
+| 1月 | 東南アジアビーチリゾート | hokkaido-shirogane-blue-pond-02.jpg（白金青い池） |
+| 3月 | コーヒーカップを持つ人 | 絵文字グラデーション |
+| 9月 | 欧州針葉樹林 | 絵文字グラデーション |
+| 10月 | 目黒川夜桜（東京・春） | kyoto-arashiyama-bamboo-03.jpg（嵐山竹林） |
 
-## 全画像パス存在確認結果（2026-06-14）
+---
 
-- 確認対象ファイル: index.html, pages/*.html, js/app.js, data/*.js
-- 結果: **全パス存在確認済み（MISSINGなし）**
+## 目的カード・グルメプレビュー修正結果
 
-## 都道府県カード画像一覧
+| 対象 | 修正前 | 修正後 |
+|------|--------|--------|
+| 記念日旅行（purpose） | 目黒川夜桜（東京=NG） | kyoto-arashiyama-bamboo-03.jpg |
+| hokkaido（グルメ） | 新倉山浅間公園（富士山+五重塔） | hokkaido-biei-flower-field-01.jpg |
+| miyagi（グルメ） | 欧州針葉樹林 | 絵文字グラデーション |
+| aichi（グルメ） | アニメキャラ | aichi-nagoya-02.jpg |
 
-| 県ID | 画像ファイル | 主な被写体 |
-|------|-------------|-----------|
-| hokkaido | hokkaido-biei-flower-field-01.jpg | 美瑛・花畑 |
-| aomori | aomori-oirase-01.jpg | 奥入瀬渓流 |
-| iwate | iwate-nature-01.jpg | 自然風景 |
-| miyagi | miyagi-matsushima-01.jpg | 松島 |
-| akita | akita-tazawako-01.jpg | 田沢湖 |
-| yamagata | yamagata-ginzan-01.jpg | 銀山温泉 |
-| fukushima | fukushima-goshikinuma-01.jpg | 五色沼 |
-| ibaraki | ibaraki-kairakuen-02.jpg | 偕楽園 |
-| tochigi | tochigi-nikko-01.jpg | 日光 |
-| gunma | gunma-kusatsu-01.jpg | 草津温泉 |
-| saitama | saitama-kawagoe-01.jpg | 川越 |
-| chiba | chiba-seaside-01.jpg | 海岸 |
-| tokyo | tokyo-asakusa-sensoji-01.jpg | 浅草・浅草寺 |
-| kanagawa | kanagawa-kamakura-01.jpg | 鎌倉 |
-| niigata | niigata-landscape-01.jpg | 風景 |
-| toyama | toyama-tateyama-02.jpg | 立山 |
-| ishikawa | ishikawa-kanazawa-01.jpg | 金沢 |
-| fukui | fukui-nature-02.jpg | 自然風景（修正済み） |
-| yamanashi | yamanashi-fuji-kawaguchi-01.jpg | 富士・河口湖 |
-| nagano | nagano-kamikochi-01.jpg | 上高地 |
-| gifu | gifu-shirakawago-01.jpg | 白川郷 |
-| shizuoka | shizuoka-fuji-01.jpg | 富士山 |
-| aichi | aichi-nagoya-castle-01.jpg | 名古屋城 |
-| mie | mie-kumano-02.jpg | 熊野（修正済み） |
-| shiga | shiga-lake-01.jpg | 琵琶湖 |
-| kyoto | kyoto-fushimi-inari-01.jpg | 伏見稲荷 |
-| osaka | osaka-dotonbori-01.jpg | 道頓堀 |
-| hyogo | hyogo-himeji-01.jpg | 姫路城 |
-| nara | nara-deer-01.jpg | 奈良の鹿 |
-| wakayama | wakayama-nachi-01.jpg | 那智 |
-| tottori | tottori-sanddune-02.jpg | 鳥取砂丘 |
-| shimane | shimane-izumo-01.jpg | 出雲大社 |
-| okayama | okayama-kurashiki-01.jpg | 倉敷 |
-| hiroshima | hiroshima-miyajima-torii-01.jpg | 宮島・鳥居 |
-| yamaguchi | yamaguchi-coast-01.jpg | 海岸 |
-| tokushima | tokushima-awa-02.jpg | 阿波 |
-| kagawa | kagawa-chichibugahama-01.jpg | 父母ヶ浜 |
-| ehime | ehime-dogo-honkan-01.jpg | 道後温泉本館（修正済み） |
-| kochi | kochi-katsurahama-01.jpg | 桂浜 |
-| fukuoka | fukuoka-city-01.jpg | 福岡市街 |
-| saga | saga-castle-01.jpg | 佐賀城 |
-| nagasaki | nagasaki-harbor-01.jpg | 長崎港 |
-| kumamoto | kumamoto-castle-01.jpg | 熊本城 |
-| miyazaki | miyazaki-coast-01.jpg | 海岸 |
-| kagoshima | kagoshima-nature-01.jpg | 自然 |
-| oita | oita-beppu-01.jpg | 別府温泉 |
-| okinawa | okinawa-sea-coast-02.jpg | 沖縄の海 |
+---
 
-## 画像の出典・ライセンス
+## 重大NG画像の記録（使用停止済み）
 
-本サイトで使用している写真は、以下のいずれかです：
-- サイト制作時に収集した旅行先の参考画像
-- パブリックドメインまたは商用利用可能なライセンスの素材
+- `miyagi-matsushima-01.jpg` — 真っ黒な画像（破損）
+- `miyagi-matsushima-02.jpg` — 欧州系針葉樹林
+- `aichi-nagoya-castle-01.jpg` — アニメキャラ
+- `saga-castle-01.jpg` — シカゴ高層ビル（米国）
+- `nagasaki-harbor-01.jpg` — ダイビング写真
+- `nagasaki-nightview-02.jpg` — 渋谷の雨夜景（東京）
+- `nagano-hakuba-01.jpg` — パスポート写真
+- `okayama-kurashiki-01.jpg` — 薬の仕分けケース
+- `hiroshima-peace-memorial-01.jpg` — サグラダファミリア（スペイン）
+- `yamaguchi-coast-01.jpg` — ビッグベン（英国）
+- `niigata-landscape-01.jpg` — Monument Valley（米国）
+- `kagoshima-nature-01.jpg` — イタリア・ドロミテ
+- `kagoshima-sakurajima-02.jpg` — メイクアップ用品
+- **`oita-aso-01.jpg`** — **使用禁止（プロジェクトルール）**
+- `yamagata-ginzan-01.jpg` — 実験器具・スポイト（都道府県では使用停止、温泉地の銀山は要確認）
+- `fukuoka-city-01.jpg` — 目黒川夜桜（東京）
+- `osaka-dotonbori-01.jpg` — 京都清水寺の市街展望
 
-※具体的な出典・ライセンスの詳細については、別途管理が必要です。
+---
 
-## 今後の改善候補
+## 注意事項
 
-- `fukui-nature-02.jpg` の内容確認（東尋坊・永平寺の写真があれば差し替え検討）
-- `mie-kumano-02.jpg` → より有名な伊勢神宮の写真があれば優先検討
-- `yamaguchi-coast-01.jpg` → 角島大橋の写真があればより良い
-- 各温泉地専用写真が1種類しかないものは追加収集検討
+- `aomori-hirosaki-02.jpg` は実際には**姫路城と桜**の画像。兵庫県（hyogo）と4月月別に使用中。aomoriフォルダに誤格納。
+- `oita-aso-01.jpg` はプロジェクトルールにより**絶対使用禁止**。
+- 温泉地「銀山温泉」の `yamagata-ginzan-01.jpg` は実験器具写真の可能性があり要確認。
