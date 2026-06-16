@@ -190,7 +190,7 @@ const AFF = (() => {
     var d = A8[key];
     if (!d) return '';
     return '<div class="aff-banner-wrap">'
-      + '<a href="' + d.href + '" target="_blank">'
+      + '<a href="' + d.href + '" rel="nofollow" target="_blank">'
       +   '<img border="0" width="300" height="250" alt="' + d.name + '" src="' + d.banner + '">'
       + '</a>'
       + '<img border="0" width="1" height="1" src="' + d.tracker + '" alt="">'
