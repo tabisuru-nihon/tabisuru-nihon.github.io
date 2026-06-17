@@ -2711,6 +2711,69 @@ button { font-family: inherit; cursor: pointer; }
 
 /* ===== アフィリエイト共通スタイル ===== */
 
+/* A8テキスト広告 CTAラッパー（aタグは改変せず、親要素CSSでボタン化）*/
+.a8-text-cta { line-height: 1; }
+.a8-text-cta a {
+  display: block;
+  padding: 11px 16px;
+  background: var(--navy);
+  color: #fff;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.45;
+  transition: opacity 0.18s;
+}
+.a8-text-cta a:hover { opacity: 0.82; }
+/* booking-card内のA8テキストCTA */
+.booking-card .a8-text-cta a {
+  background: linear-gradient(135deg, #0c1b35, #1a3560);
+  margin-top: 2px;
+}
+
+/* A8テキスト広告カード */
+.a8-text-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+.a8-text-card {
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 14px 12px;
+  position: relative;
+}
+.a8-text-card-pr {
+  position: absolute;
+  top: 8px; right: 10px;
+  font-size: 0.55rem;
+  color: var(--text-muted);
+  background: var(--section-alt);
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+.a8-text-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  padding-right: 50px;
+}
+.a8-text-card-emoji { font-size: 1.3rem; flex-shrink: 0; }
+.a8-text-card-name { font-size: 0.88rem; font-weight: 800; color: var(--navy); }
+.a8-text-card-desc {
+  font-size: 0.72rem;
+  color: var(--text-light);
+  margin: 0 0 10px;
+  line-height: 1.4;
+}
+@media (max-width: 640px) {
+  .a8-text-card-grid { grid-template-columns: 1fr; }
+}
+
 /* A8バナーグリッド（公式バナーをそのまま表示） */
 .aff-banner-grid {
   display: flex;

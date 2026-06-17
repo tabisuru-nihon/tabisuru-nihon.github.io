@@ -1399,33 +1399,49 @@ document.addEventListener('DOMContentLoaded', () => {
     }).join('');
   }
 
-  // 予約グリッド（トップ：5件表示 - PR表記・おすすめ使い方追加）
+  // 予約グリッド（トップ：6件 - A8テキスト広告CTAに差し替え）
   const bookingGrid = document.getElementById('booking-grid');
   if (bookingGrid) {
-    const TOP5_BOOKING = ['rakuten', 'jalan', 'ikyu', 'booking', 'agoda'];
+    const TOP6_BOOKING = ['rakuten', 'jalan', 'ikyu', 'yahoo', 'nihon_ryoko', 'agoda'];
     const compatColor = { '◎': '#1a56a0', '○': '#1a8a4a', '△': '#c74000' };
     const BOOKING_TIPS = {
-      rakuten: '0と5のつく日に楽天カードで予約するのが最もお得',
-      jalan:   'じゃらんメルマガ登録でクーポンが届く。温泉宿探しに最適',
-      ikyu:    '1・9のつく日の「一休の日」はセール対象でポイント2倍',
-      booking: '「無料キャンセル可」フィルターで直前変更も柔軟に対応',
-      agoda:   '海外ホテルと比較できる。AgodaCashで次回割引',
+      rakuten:    '0と5のつく日に楽天カードで予約するのが最もお得',
+      jalan:      'じゃらんメルマガ登録でクーポンが届く。温泉宿探しに最適',
+      ikyu:       '1・9のつく日の「一休の日」はセール対象でポイント2倍',
+      yahoo:      'PayPayポイントが貯まる。全国旅行支援対象施設も多数',
+      nihon_ryoko:'新幹線と宿がセットで格安に。出発3日前まで予約OK',
+      agoda:      '海外ホテルとの比較もできる。価格重視の旅に',
     };
+    // A8テキスト広告キーマッピング（A8発行コード、aタグ改変なし）
+    const A8_KEY = { jalan:'jalan_main', ikyu:'ikyu_main', yahoo:'yahoo_main', nihon_ryoko:'nihon_shinkansen', agoda:'agoda_main' };
     // フォールバック（データ未ロード時）
     const BOOKING_FB = [
-      { id:'rakuten', logo:'🔴', name:'楽天トラベル', tagline:'ポイントを貯めたい人・コスパ重視の旅行に', bestFor:['家族旅行','温泉旅行','子連れ'], compat:{onsen:'◎',luxury:'○',family:'◎'}, url:'https://travel.rakuten.co.jp/' },
-      { id:'jalan',   logo:'🟢', name:'じゃらん',     tagline:'温泉宿・近場旅行・クーポン活用に', bestFor:['温泉旅行','近場旅行','女子旅'],   compat:{onsen:'◎',luxury:'○',family:'◎'}, url:'https://www.jalan.net/' },
-      { id:'ikyu',    logo:'🟠', name:'一休.com',     tagline:'記念日・高級旅館・失敗したくない旅行に', bestFor:['記念日旅行','カップル','高級旅館'], compat:{onsen:'○',luxury:'◎',family:'△'}, url:'https://www.ikyu.com/' },
-      { id:'booking', logo:'🌍', name:'Booking.com', tagline:'海外旅行・外資系ホテル・直前予約に', bestFor:['海外旅行','ビジネス','直前割引'],   compat:{onsen:'△',luxury:'○',family:'○'}, url:'https://www.booking.com/' },
-      { id:'agoda',   logo:'✈️', name:'Agoda',        tagline:'アジア旅行・格安ホテル・早割予約に', bestFor:['アジア旅行','格安ホテル','早割'],   compat:{onsen:'△',luxury:'○',family:'○'}, url:'https://www.agoda.com/ja-jp/' },
+      { id:'rakuten',    logo:'🔴', name:'楽天トラベル',  tagline:'ポイントを貯めたい人・コスパ重視の旅行に', bestFor:['家族旅行','温泉旅行','子連れ'],    compat:{onsen:'◎',luxury:'○',family:'◎'}, url:'https://travel.rakuten.co.jp/' },
+      { id:'jalan',      logo:'🟢', name:'じゃらんnet',   tagline:'温泉宿・近場旅行・クーポン活用に',         bestFor:['温泉旅行','近場旅行','女子旅'],    compat:{onsen:'◎',luxury:'○',family:'◎'}, url:'https://www.jalan.net/' },
+      { id:'ikyu',       logo:'🟠', name:'一休.com',      tagline:'記念日・高級旅館・失敗したくない旅行に',   bestFor:['記念日旅行','カップル','高級旅館'], compat:{onsen:'○',luxury:'◎',family:'△'}, url:'https://www.ikyu.com/' },
+      { id:'yahoo',      logo:'🟡', name:'Yahoo!トラベル',tagline:'約17,000施設・PayPayポイント対応',        bestFor:['家族旅行','温泉旅行','一人旅'],    compat:{onsen:'◎',luxury:'○',family:'◎'}, url:'https://travel.yahoo.co.jp/' },
+      { id:'nihon_ryoko',logo:'🗾', name:'日本旅行',      tagline:'新幹線＋宿泊セット・出発3日前まで予約可', bestFor:['新幹線旅行','パック旅行','記念日'],  compat:{onsen:'○',luxury:'○',family:'◎'}, url:'https://www.nta.co.jp/' },
+      { id:'agoda',      logo:'✈️', name:'Agoda',         tagline:'国内・海外ホテルを格安比較',              bestFor:['アジア旅行','格安ホテル','早割'],    compat:{onsen:'△',luxury:'○',family:'○'}, url:'https://www.agoda.com/ja-jp/' },
     ];
     let displayBooking = BOOKING_FB;
     if (window.BOOKING_DATA && BOOKING_DATA.length) {
-      displayBooking = BOOKING_DATA.filter(b => TOP5_BOOKING.includes(b.id));
+      displayBooking = BOOKING_DATA.filter(b => TOP6_BOOKING.includes(b.id));
       if (!displayBooking.length) displayBooking = BOOKING_FB;
     }
     bookingGrid.innerHTML = displayBooking.map(b => {
       const tip = BOOKING_TIPS[b.id] || '';
+      // A8テキスト広告CTA（A8発行コードをそのまま使用、rel="nofollow"維持）
+      let ctaHtml;
+      if (window.AFF) {
+        if (b.id === 'rakuten') {
+          ctaHtml = '<a href="' + window.AFF.rakutenUrl('https://travel.rakuten.co.jp/') + '" rel="nofollow sponsored" target="_blank" class="booking-cta-btn">楽天トラベルで宿を探す →</a>';
+        } else {
+          const a8k = A8_KEY[b.id];
+          ctaHtml = a8k ? window.AFF.textCtaHtml(a8k) : '<a href="' + b.url + '" target="_blank" rel="noopener noreferrer" class="booking-cta-btn">' + b.name + 'で宿を探す →</a>';
+        }
+      } else {
+        ctaHtml = '<a href="' + b.url + '" target="_blank" rel="noopener noreferrer" class="booking-cta-btn">' + b.name + 'で宿を探す →</a>';
+      }
       return `<div class="booking-card js-card" style="position:relative">
         <div style="position:absolute;top:10px;right:10px;font-size:0.58rem;color:var(--text-muted);background:var(--section-alt);padding:2px 6px;border-radius:4px">PR・広告</div>
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
@@ -1444,9 +1460,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>` : ''}
         <div class="booking-bestfor" style="margin-bottom:6px">${(b.bestFor||[]).slice(0,3).map(t=>`<span class="bestfor-tag">${t}</span>`).join('')}</div>
         ${tip ? `<div style="font-size:0.72rem;color:var(--navy);background:rgba(212,170,60,0.08);border-left:3px solid var(--gold);padding:5px 8px;margin-bottom:8px;border-radius:0 5px 5px 0;line-height:1.5">💡 ${tip}</div>` : ''}
-        <a href="${b.url}" target="_blank" rel="noopener noreferrer" class="booking-cta-btn">
-          ${b.name}で宿を探す <span style="font-size:0.9em">→</span>
-        </a>
+        ${ctaHtml}
       </div>`;
     }).join('');
   }

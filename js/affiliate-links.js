@@ -163,6 +163,106 @@ window.AFF = (() => {
 
   };
 
+  /* ===== A8.net テキスト広告データ（A8発行コードをそのまま使用）===== */
+  const A8TEXT = {
+
+    /* ── 宿泊 ── */
+    jalan_main: {
+      name: 'じゃらんnet', emoji: '🏨',
+      desc: '国内25,000軒以上・2%ポイント還元',
+      href: 'https://px.a8.net/svt/ejp?a8mat=4B5R04+6OJ916+14CS+68EPE',
+      text: '【じゃらん】国内25,000軒の宿をネットで予約OK！2％ポイント還元！',
+      tracker: 'https://www19.a8.net/0.gif?a8mat=4B5R04+6OJ916+14CS+68EPE',
+    },
+    jalan_onsen: {
+      name: 'じゃらんnet 温泉', emoji: '♨️',
+      desc: '有名温泉から穴場まで5,000件以上が予約OK',
+      href: 'https://px.a8.net/svt/ejp?a8mat=4B5R04+6OJ916+14CS+63WO2',
+      text: '【じゃらん】有名温泉から穴場まで温泉旅館・ホテル5,000件以上が予約OK!',
+      tracker: 'https://www14.a8.net/0.gif?a8mat=4B5R04+6OJ916+14CS+63WO2',
+    },
+    ikyu_main: {
+      name: '一休.com', emoji: '✨',
+      desc: '厳選された高級ホテル・旅館を格安予約',
+      href: 'https://px.a8.net/svt/ejp?a8mat=4B5OO4+8BH5X6+1OK+5YJRM',
+      text: "国内ホテルの格安予約サイト『一休.com』",
+      tracker: 'https://www10.a8.net/0.gif?a8mat=4B5OO4+8BH5X6+1OK+5YJRM',
+    },
+    ikyu_onsen: {
+      name: '一休.com 温泉', emoji: '♨️',
+      desc: '温泉旅館を格安予約',
+      href: 'https://px.a8.net/svt/ejp?a8mat=4B5OO4+8BH5X6+1OK+5YRHE',
+      text: "温泉旅館の格安予約サイト『一休.com』",
+      tracker: 'https://www12.a8.net/0.gif?a8mat=4B5OO4+8BH5X6+1OK+5YRHE',
+    },
+    ikyu_luxury: {
+      name: '一休.com 高級', emoji: '💎',
+      desc: '高級ホテル・旅館が最大60%OFF',
+      href: 'https://px.a8.net/svt/ejp?a8mat=4B5OO4+8BH5X6+1OK+61JSI',
+      text: '一休高級ホテル・旅館が最大60％OFF！',
+      tracker: 'https://www18.a8.net/0.gif?a8mat=4B5OO4+8BH5X6+1OK+61JSI',
+    },
+    yahoo_main: {
+      name: 'Yahoo!トラベル', emoji: '🏩',
+      desc: '約17,000施設・国内最大級宿泊サイト',
+      href: 'https://px.a8.net/svt/ejp?a8mat=4B5X8H+1U38SA+4ZCO+60OXE',
+      text: '【ヤフートラベル】取り扱い施設数が約17000施設!!国内最大級宿泊予約サイト',
+      tracker: 'https://www19.a8.net/0.gif?a8mat=4B5X8H+1U38SA+4ZCO+60OXE',
+    },
+    nihon_shinkansen: {
+      name: '日本旅行', emoji: '🚄',
+      desc: '新幹線＋宿泊セットプラン',
+      href: 'https://px.a8.net/svt/ejp?a8mat=3N46E9+CHIED6+Z9G+NZ4J6',
+      text: 'セットでお得！日本旅行の「新幹線+宿泊」セットプラン',
+      tracker: 'https://www10.a8.net/0.gif?a8mat=3N46E9+CHIED6+Z9G+NZ4J6',
+    },
+    agoda_main: {
+      name: 'Agoda', emoji: '🌍',
+      desc: '世界250万件以上・海外ホテルも格安比較',
+      href: 'https://px.a8.net/svt/ejp?a8mat=4B5OO4+7SFAKA+4X1W+5YRHE',
+      text: '国内・海外ホテル格安予約のアゴダ',
+      tracker: 'https://www15.a8.net/0.gif?a8mat=4B5OO4+7SFAKA+4X1W+5YRHE',
+    },
+    ozmall_onsen: {
+      name: 'OZmall 温泉', emoji: '💐',
+      desc: 'OZ限定・女子に人気の温泉プラン',
+      href: 'https://px.a8.net/svt/ejp?a8mat=4B5X8G+GC8EBE+3UQG+601S2',
+      text: '女子人気の温泉だけ！OZ限定1泊2食付13800円〜',
+      tracker: 'https://www14.a8.net/0.gif?a8mat=4B5X8G+GC8EBE+3UQG+601S2',
+    },
+    yukimado_text: {
+      name: 'ゆめやど', emoji: '🌙',
+      desc: '平日限定のお得な温泉宿・旅館',
+      href: 'https://px.a8.net/svt/ejp?a8mat=4B5OO4+9T24TM+44YI+HV7V6',
+      text: '平日の宿・ホテル予約が圧倒的お得! [ゆめやど]',
+      tracker: 'https://www13.a8.net/0.gif?a8mat=4B5OO4+9T24TM+44YI+HV7V6',
+    },
+
+    /* ── J-TRIP 地域別（A8発行テキストリンク）── */
+    jtrip_hokkaido: {
+      name: 'J-TRIP 北海道', emoji: '✈️',
+      desc: 'JALで行く北海道格安旅行',
+      href: 'https://px.a8.net/svt/ejp?a8mat=3N46E9+CAD38Y+40T2+6C9LE',
+      text: '北海道旅行ならJALで行く格安旅行のJ-TRIP（ジェイトリップ）',
+      tracker: 'https://www14.a8.net/0.gif?a8mat=3N46E9+CAD38Y+40T2+6C9LE',
+    },
+    jtrip_kansai: {
+      name: 'J-TRIP 関西', emoji: '✈️',
+      desc: 'JALで行く関西格安旅行',
+      href: 'https://px.a8.net/svt/ejp?a8mat=3N46E9+CAD38Y+40T2+6CP0Y',
+      text: '関西旅行ならJALで行く格安旅行のJ-TRIP（ジェイトリップ）',
+      tracker: 'https://www14.a8.net/0.gif?a8mat=3N46E9+CAD38Y+40T2+6CP0Y',
+    },
+    jtrip_chushikoku: {
+      name: 'J-TRIP 中四国', emoji: '✈️',
+      desc: 'JALで行く中四国格安旅行',
+      href: 'https://px.a8.net/svt/ejp?a8mat=3N46E9+CAD38Y+40T2+6DJW2',
+      text: '中四国への旅行ならJALで行く格安旅行のJ-TRIP（ジェイトリップ）',
+      tracker: 'https://www15.a8.net/0.gif?a8mat=3N46E9+CAD38Y+40T2+6DJW2',
+    },
+
+  };
+
   /* ===== ページ別デフォルト広告セット ===== */
   const PAGE_SETS = {
     top:        ['jalan', 'yahoo_travel', 'ikyu', 'nihon_ryoko'],
@@ -175,9 +275,9 @@ window.AFF = (() => {
 
   /* ===== 楽天アフィリエイト テスト対象県データ ===== */
   const RAKUTEN_PREFS = {
-    hokkaido:  { name: '北海道', kenCode: '1' },
-    kyoto:     { name: '京都',   kenCode: '26' },
-    hiroshima: { name: '広島',   kenCode: '34' },
+    hokkaido:  { name: '北海道', kenCode: '1',  jtrip: 'jtrip_hokkaido' },
+    kyoto:     { name: '京都',   kenCode: '26', jtrip: 'jtrip_kansai' },
+    hiroshima: { name: '広島',   kenCode: '34', jtrip: 'jtrip_chushikoku' },
   };
 
   /* ===== 楽天URL生成 ===== */
@@ -203,6 +303,28 @@ window.AFF = (() => {
       + '<span class="aff-btn-emoji" aria-hidden="true">' + emoji + '</span>'
       + '<span>' + label + '</span>'
       + '</a>';
+  }
+
+  /* ===== A8テキスト広告HTML生成（A8発行コードをそのまま使用）===== */
+  function _a8TextCta(d) {
+    return '<div class="a8-text-cta">'
+      + '<a href="' + d.href + '" rel="nofollow">' + d.text + '</a>'
+      + '<img border="0" width="1" height="1" src="' + d.tracker + '" alt="">'
+      + '</div>';
+  }
+
+  function _a8TextCard(key) {
+    var d = A8TEXT[key];
+    if (!d) return '';
+    return '<div class="a8-text-card">'
+      + '<div class="a8-text-card-pr">PR・広告</div>'
+      + '<div class="a8-text-card-header">'
+      +   '<span class="a8-text-card-emoji" aria-hidden="true">' + d.emoji + '</span>'
+      +   '<strong class="a8-text-card-name">' + d.name + '</strong>'
+      + '</div>'
+      + '<p class="a8-text-card-desc">' + d.desc + '</p>'
+      + _a8TextCta(d)
+      + '</div>';
   }
 
   /* ===== 公開API ===== */
@@ -239,15 +361,45 @@ window.AFF = (() => {
       + _rakutenBtn('🎁', pref.name + 'のお土産を楽天市場で探す', rUrl2)
       + _rakutenBtn('🗾', pref.name + 'のふるさと納税返礼品を探す', rUrl3);
 
-    var a8Html = PAGE_SETS.prefecture.map(_a8Banner).join('');
-
     el.innerHTML
       = '<div class="aff-subsection-label">楽天で探す</div>'
       + '<div class="aff-rakuten-btns">' + rakutenHtml + '</div>'
-      + '<div class="aff-subsection-label" style="margin-top:16px">宿・交通を比較する</div>'
-      + '<div class="aff-banner-grid">' + a8Html + '</div>';
+      + '<div class="aff-subsection-label" style="margin-top:16px">宿・フライトを比較する</div>'
+      + '<div class="a8-text-card-grid">'
+      +   _a8TextCard('jalan_main')
+      +   _a8TextCard('yahoo_main')
+      +   (pref.jtrip ? _a8TextCard(pref.jtrip) : '')
+      + '</div>';
   }
 
-  return { renderA8Grid, renderPrefAff, A8, PAGE_SETS, RAKUTEN_PREFS };
+  /**
+   * A8テキスト広告カードグリッドをレンダリング
+   * @param {string[]} keys  A8TEXT案件キー配列
+   * @param {string}   containerId  描画先要素のid
+   */
+  function renderA8TextCards(keys, containerId) {
+    var el = document.getElementById(containerId);
+    if (!el) return;
+    el.innerHTML = '<div class="a8-text-card-grid">' + keys.map(_a8TextCard).join('') + '</div>';
+  }
+
+  /**
+   * A8テキストCTA HTML（単一）を返す - booking sectionなどから利用
+   * @param {string} key  A8TEXT案件キー
+   */
+  function textCtaHtml(key) {
+    var d = A8TEXT[key];
+    return d ? _a8TextCta(d) : '';
+  }
+
+  /**
+   * 楽天URL生成（公開）
+   * @param {string} dest  遷移先URL
+   */
+  function rakutenUrl(dest) {
+    return _rakutenUrl(dest);
+  }
+
+  return { renderA8Grid, renderPrefAff, renderA8TextCards, textCtaHtml, rakutenUrl, A8, A8TEXT, PAGE_SETS, RAKUTEN_PREFS };
 
 })();
