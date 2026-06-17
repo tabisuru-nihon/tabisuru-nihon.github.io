@@ -4,7 +4,7 @@
    JTB (brandsafe.js) は動作確認後に実装予定
 ===================================================== */
 
-const AFF = (() => {
+window.AFF = (() => {
 
   const RAKUTEN_ID = '13d6d4ee.28199bf3.13d6d4ef.2c83be2d';
 
