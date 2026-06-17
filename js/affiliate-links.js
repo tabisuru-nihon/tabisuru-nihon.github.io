@@ -260,6 +260,34 @@ window.AFF = (() => {
       text: '中四国への旅行ならJALで行く格安旅行のJ-TRIP（ジェイトリップ）',
       tracker: 'https://www15.a8.net/0.gif?a8mat=3N46E9+CAD38Y+40T2+6DJW2',
     },
+    jtrip_kyushu: {
+      name: 'J-TRIP 九州', emoji: '✈️',
+      desc: 'JALで行く九州格安旅行',
+      href: 'https://px.a8.net/svt/ejp?a8mat=3N46E9+CAD38Y+40T2+6CWQQ',
+      text: '九州旅行ならJALで行く格安旅行のJ-TRIP（ジェイトリップ）',
+      tracker: 'https://www16.a8.net/0.gif?a8mat=3N46E9+CAD38Y+40T2+6CWQQ',
+    },
+    jtrip_okinawa: {
+      name: 'J-TRIP 沖縄', emoji: '✈️',
+      desc: 'JALで行く沖縄格安旅行',
+      href: 'https://px.a8.net/svt/ejp?a8mat=3N46E9+CAD38Y+40T2+5YRHE',
+      text: '沖縄旅行ならJALで行く格安旅行のJ-TRIP（ジェイトリップ）',
+      tracker: 'https://www15.a8.net/0.gif?a8mat=3N46E9+CAD38Y+40T2+5YRHE',
+    },
+    jtrip_tokyo: {
+      name: 'J-TRIP 東京', emoji: '✈️',
+      desc: 'JALで行く東京格安旅行',
+      href: 'https://px.a8.net/svt/ejp?a8mat=3N46E9+CAD38Y+40T2+6CHB6',
+      text: '東京旅行ならJALで行く格安旅行のJ-TRIP（ジェイトリップ）',
+      tracker: 'https://www11.a8.net/0.gif?a8mat=3N46E9+CAD38Y+40T2+6CHB6',
+    },
+    jtrip_tohoku: {
+      name: 'J-TRIP 東北', emoji: '✈️',
+      desc: 'JALで行く東北格安旅行',
+      href: 'https://px.a8.net/svt/ejp?a8mat=3N46E9+CAD38Y+40T2+6DC6A',
+      text: '東北旅行ならJALで行く格安旅行のJ-TRIP（ジェイトリップ）',
+      tracker: 'https://www13.a8.net/0.gif?a8mat=3N46E9+CAD38Y+40T2+6DC6A',
+    },
 
   };
 
@@ -273,11 +301,55 @@ window.AFF = (() => {
     okinawa:    ['okinawa_tourist', 'tabirai_activity', 'airtri_flight'],
   };
 
-  /* ===== 楽天アフィリエイト テスト対象県データ ===== */
+  /* ===== 楽天アフィリエイト 47都道府県データ ===== */
   const RAKUTEN_PREFS = {
     hokkaido:  { name: '北海道', kenCode: '1',  jtrip: 'jtrip_hokkaido' },
+    aomori:    { name: '青森',   kenCode: '2',  jtrip: 'jtrip_tohoku' },
+    iwate:     { name: '岩手',   kenCode: '3',  jtrip: 'jtrip_tohoku' },
+    miyagi:    { name: '宮城',   kenCode: '4',  jtrip: 'jtrip_tohoku' },
+    akita:     { name: '秋田',   kenCode: '5',  jtrip: 'jtrip_tohoku' },
+    yamagata:  { name: '山形',   kenCode: '6',  jtrip: 'jtrip_tohoku' },
+    fukushima: { name: '福島',   kenCode: '7',  jtrip: 'jtrip_tohoku' },
+    ibaraki:   { name: '茨城',   kenCode: '8',  jtrip: null },
+    tochigi:   { name: '栃木',   kenCode: '9',  jtrip: null },
+    gunma:     { name: '群馬',   kenCode: '10', jtrip: null },
+    saitama:   { name: '埼玉',   kenCode: '11', jtrip: null },
+    chiba:     { name: '千葉',   kenCode: '12', jtrip: null },
+    tokyo:     { name: '東京',   kenCode: '13', jtrip: 'jtrip_tokyo' },
+    kanagawa:  { name: '神奈川', kenCode: '14', jtrip: null },
+    niigata:   { name: '新潟',   kenCode: '15', jtrip: null },
+    toyama:    { name: '富山',   kenCode: '16', jtrip: null },
+    ishikawa:  { name: '石川',   kenCode: '17', jtrip: null },
+    fukui:     { name: '福井',   kenCode: '18', jtrip: null },
+    yamanashi: { name: '山梨',   kenCode: '19', jtrip: null },
+    nagano:    { name: '長野',   kenCode: '20', jtrip: null },
+    gifu:      { name: '岐阜',   kenCode: '21', jtrip: null },
+    shizuoka:  { name: '静岡',   kenCode: '22', jtrip: null },
+    aichi:     { name: '愛知',   kenCode: '23', jtrip: null },
+    mie:       { name: '三重',   kenCode: '24', jtrip: null },
+    shiga:     { name: '滋賀',   kenCode: '25', jtrip: 'jtrip_kansai' },
     kyoto:     { name: '京都',   kenCode: '26', jtrip: 'jtrip_kansai' },
+    osaka:     { name: '大阪',   kenCode: '27', jtrip: 'jtrip_kansai' },
+    hyogo:     { name: '兵庫',   kenCode: '28', jtrip: 'jtrip_kansai' },
+    nara:      { name: '奈良',   kenCode: '29', jtrip: 'jtrip_kansai' },
+    wakayama:  { name: '和歌山', kenCode: '30', jtrip: 'jtrip_kansai' },
+    tottori:   { name: '鳥取',   kenCode: '31', jtrip: 'jtrip_chushikoku' },
+    shimane:   { name: '島根',   kenCode: '32', jtrip: 'jtrip_chushikoku' },
+    okayama:   { name: '岡山',   kenCode: '33', jtrip: 'jtrip_chushikoku' },
     hiroshima: { name: '広島',   kenCode: '34', jtrip: 'jtrip_chushikoku' },
+    yamaguchi: { name: '山口',   kenCode: '35', jtrip: 'jtrip_chushikoku' },
+    tokushima: { name: '徳島',   kenCode: '36', jtrip: 'jtrip_chushikoku' },
+    kagawa:    { name: '香川',   kenCode: '37', jtrip: 'jtrip_chushikoku' },
+    ehime:     { name: '愛媛',   kenCode: '38', jtrip: 'jtrip_chushikoku' },
+    kochi:     { name: '高知',   kenCode: '39', jtrip: 'jtrip_chushikoku' },
+    fukuoka:   { name: '福岡',   kenCode: '40', jtrip: 'jtrip_kyushu' },
+    saga:      { name: '佐賀',   kenCode: '41', jtrip: 'jtrip_kyushu' },
+    nagasaki:  { name: '長崎',   kenCode: '42', jtrip: 'jtrip_kyushu' },
+    kumamoto:  { name: '熊本',   kenCode: '43', jtrip: 'jtrip_kyushu' },
+    oita:      { name: '大分',   kenCode: '44', jtrip: 'jtrip_kyushu' },
+    miyazaki:  { name: '宮崎',   kenCode: '45', jtrip: 'jtrip_kyushu' },
+    kagoshima: { name: '鹿児島', kenCode: '46', jtrip: 'jtrip_kyushu' },
+    okinawa:   { name: '沖縄',   kenCode: '47', jtrip: 'jtrip_okinawa' },
   };
 
   /* ===== 楽天URL生成 ===== */
@@ -341,8 +413,7 @@ window.AFF = (() => {
   }
 
   /**
-   * 都道府県アフィリエイトセクションをレンダリング
-   * テスト対象（hokkaido/kyoto/hiroshima）のみ表示
+   * 都道府県アフィリエイトセクションをレンダリング（47都道府県対応）
    * @param {string} prefId   getPageParam('id') の値
    * @param {string} containerId  描画先要素のid
    */
@@ -358,13 +429,13 @@ window.AFF = (() => {
 
     var rakutenHtml
       = _rakutenBtn('🏨', pref.name + 'の宿を楽天トラベルで探す', rUrl1)
-      + _rakutenBtn('🎁', pref.name + 'のお土産を楽天市場で探す', rUrl2)
-      + _rakutenBtn('🗾', pref.name + 'のふるさと納税返礼品を探す', rUrl3);
+      + _rakutenBtn('🎁', pref.name + 'のお土産を楽天市場で見る', rUrl2)
+      + _rakutenBtn('🗾', pref.name + 'のふるさと納税を探す', rUrl3);
 
     el.innerHTML
-      = '<div class="aff-subsection-label">楽天で探す</div>'
+      = '<div class="aff-subsection-label">' + pref.name + 'の宿を探す</div>'
       + '<div class="aff-rakuten-btns">' + rakutenHtml + '</div>'
-      + '<div class="aff-subsection-label" style="margin-top:16px">宿・フライトを比較する</div>'
+      + '<div class="aff-subsection-label" style="margin-top:16px">他の予約サービスと比較する</div>'
       + '<div class="a8-text-card-grid">'
       +   _a8TextCard('jalan_main')
       +   _a8TextCard('yahoo_main')
