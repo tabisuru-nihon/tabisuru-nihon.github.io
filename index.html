@@ -187,10 +187,10 @@
 
     <div class="explore-layout fade-in">
 
-      <!-- 左：キーワード検索 -->
+      <!-- 左：目的・キーワードから探す -->
       <div class="explore-col explore-search-col">
-        <div class="explore-card">
-          <h3 class="explore-card-title">🔍 キーワードから探す</h3>
+        <div class="explore-card" style="display:flex;flex-direction:column">
+          <h3 class="explore-card-title">🎯 目的・キーワードから探す</h3>
           <div class="esearch-form">
             <input type="text" class="esearch-input" id="keyword-search-input"
                    placeholder="温泉地名・都道府県名・観光地名など" autocomplete="off">
@@ -208,7 +208,10 @@
             <button class="esearch-chip" data-kw="海・ビーチ">🌊 海・ビーチ</button>
             <button class="esearch-chip" data-kw="夏休み">☀️ 夏休み</button>
           </div>
-          <a href="pages/prefectures.html" class="explore-all-link">47都道府県一覧を見る →</a>
+          <div style="margin-top:auto;padding-top:16px;display:flex;flex-direction:column;gap:8px">
+            <a href="pages/purpose.html" class="explore-all-link">目的別の旅を見る →</a>
+            <a href="javascript:void(0)" id="explore-noa-btn" class="explore-all-link" style="color:var(--text-muted);font-size:0.78rem">💬 迷ったら旅ノアに相談する</a>
+          </div>
         </div>
       </div>
 
@@ -1479,6 +1482,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // トップCTAからパネルを開く
     var ctaBtn = document.getElementById('fh-open-noa');
     if (ctaBtn) ctaBtn.addEventListener('click', function(e) { e.preventDefault(); openPanel(); });
+
+    var exploreNoaBtn = document.getElementById('explore-noa-btn');
+    if (exploreNoaBtn) exploreNoaBtn.addEventListener('click', function(e) { e.preventDefault(); openPanel(); });
   })();
 
   // トップへ戻るボタン
