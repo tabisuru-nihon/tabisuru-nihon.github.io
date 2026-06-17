@@ -70,6 +70,12 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ===== 注目の旅先（日替わりランダム5件） ===== */
   renderFeaturedDest();
 
+  /* ===== 温泉トップ（日替わりランダム5件） ===== */
+  renderTopOnsen();
+
+  /* ===== グルメトップ（日替わりランダム5件） ===== */
+  renderTopGourmet();
+
   /* ===== 地方地図レンダリング（トップ） ===== */
   renderRegionMap();
 
@@ -229,6 +235,93 @@ function renderFeaturedDest() {
     '<div class="dest-small-grid" style="grid-template-columns:repeat(2,1fr);margin-top:16px">' +
       smallCard(five[3]) + smallCard(five[4]) +
     '</div>';
+}
+
+/* ===== 温泉トップ プール（画像確認済み） ===== */
+const ONSEN_TOP_POOL = [
+  { id: 'kusatsu',   name: '草津温泉',     pref: '群馬県',  tagline: '日本三名泉。強酸性の湯と湯畑の湯けむりが幻想的。',         tags: ['三名泉', '電車OK'],     img: 'images/japan/gunma/gunma-kusatsu-yunohata-01.jpg',       alt: '草津温泉・湯畑',           manualBoost: 500 },
+  { id: 'hakone',    name: '箱根温泉',     pref: '神奈川県', tagline: '東京から90分。富士山ビューの露天風呂と芦ノ湖の絶景。',     tags: ['東京近い', '富士山'],   img: 'images/japan/kanagawa/kanagawa-hakone-yumoto-01.jpg',    alt: '箱根温泉',                 manualBoost: 300 },
+  { id: 'arima',     name: '有馬温泉',     pref: '兵庫県',  tagline: '日本三古湯。金泉・銀泉の二種。大阪・神戸から日帰りも。', tags: ['三古湯', '大阪近い'],   img: 'images/japan/hyogo/hyogo-arima-kinsenkawa-01.jpg',       alt: '有馬温泉',                 manualBoost: 300 },
+  { id: 'beppu',     name: '別府温泉',     pref: '大分県',  tagline: '日本最多の源泉数。地獄めぐりと7種の泉質が楽しめる。',     tags: ['地獄めぐり', 'コスパ良'], img: 'images/japan/oita/oita-beppu-01.jpg',                  alt: '別府温泉・地獄めぐり',     manualBoost: 200 },
+  { id: 'kinosaki',  name: '城崎温泉',     pref: '兵庫県',  tagline: '柳並木と外湯めぐり。浴衣で7つの外湯を巡る風情ある温泉街。', tags: ['外湯めぐり', '電車OK'], img: 'images/japan/hyogo/hyogo-kinosaki-01.jpg',              alt: '城崎温泉・柳並木',         manualBoost: 200 },
+  { id: 'dogo',      name: '道後温泉',     pref: '愛媛県',  tagline: '日本最古の温泉。明治建築の本館と宮内庁御用達の名湯。',     tags: ['日本最古', '歴史的建築'], img: 'images/japan/ehime/ehime-dogo-honkan-01.jpg',           alt: '道後温泉・本館',           manualBoost: 200 },
+  { id: 'yufuin',    name: '湯布院温泉',   pref: '大分県',  tagline: '由布岳を背景に広がる盆地の温泉郷。おしゃれなカフェと。',   tags: ['女子旅', '絶景'],       img: 'images/japan/oita/oita-yufuin-01.jpg',                   alt: '湯布院温泉・由布岳',       manualBoost: 200 },
+  { id: 'nyuto',     name: '乳頭温泉郷',   pref: '秋田県',  tagline: '秘湯ムード満点の一軒宿。白濁の露天風呂が絶景。',           tags: ['秘湯', '白濁'],         img: 'images/japan/akita/akita-nyutou-onsen-01.jpg',           alt: '乳頭温泉郷・秘湯',         manualBoost: 100 },
+  { id: 'gero',      name: '下呂温泉',     pref: '岐阜県',  tagline: '日本三名泉。アルカリ性単純泉でお肌すべすべ。',             tags: ['三名泉', '美肌'],       img: 'images/japan/gifu/gifu-onsen-01.jpg',                    alt: '下呂温泉',                 manualBoost: 100 },
+  { id: 'atami',     name: '熱海温泉',     pref: '静岡県',  tagline: '東京から新幹線で35分。レトロ×モダンで再注目の温泉リゾート。', tags: ['東京近い', 'リゾート'], img: 'images/japan/shizuoka/shizuoka-atami-onsen-01.jpg',      alt: '熱海温泉・リゾート',       manualBoost: 100 },
+];
+
+/* ===== グルメトップ プール（画像確認済み） ===== */
+const GOURMET_TOP_POOL = [
+  { id: 'hokkaido-seafood',        name: '北海道の海鮮丼',   cat: '🦞 海鮮・魚介 ／ 北海道', desc: 'ウニ・イクラ・カニが豪快に乗る究極の海鮮丼。函館朝市が有名。', places: '函館・小樽・札幌', img: 'images/japan/hokkaido/hokkaido-kaisen-01.jpg',          alt: '北海道・函館の海鮮丼',   manualBoost: 200 },
+  { id: 'miyagi-beef-tongue',      name: '仙台の牛タン',     cat: '🥩 肉料理 ／ 宮城県',     desc: '厚切りの牛タン焼きと麦飯・テールスープのセット。仙台駅周辺で。', places: '仙台・宮城',     img: 'images/japan/miyagi/miyagi-gyutan-01.jpg',               alt: '仙台の牛タン焼き',       manualBoost: 100 },
+  { id: 'osaka-takoyaki',          name: '大阪のたこ焼き',   cat: '🐙 B級グルメ ／ 大阪府',  desc: '外カリ・中トロの本場たこ焼き。道頓堀・新世界エリアの名店へ。', places: '道頓堀・新世界', img: 'images/japan/osaka/osaka-takoyaki-01.jpg',               alt: '大阪のたこ焼き',         manualBoost: 200 },
+  { id: 'fukuoka-ramen',           name: '博多ラーメン',     cat: '🍜 郷土料理 ／ 福岡県',   desc: '豚骨スープの白濁した一杯。替え玉文化が根付く博多・長浜の名店で。', places: '博多・長浜・天神', img: 'images/japan/fukuoka/fukuoka-ramen-01.jpg',             alt: '博多ラーメン・豚骨スープ', manualBoost: 200 },
+  { id: 'kagawa-udon',             name: '讃岐うどん',       cat: '🍵 郷土料理 ／ 香川県',   desc: 'コシの強い讃岐うどん。製麺所めぐりは香川旅行の必須アクティビティ。', places: '高松・丸亀・坂出', img: 'images/japan/kagawa/kagawa-udon-01.jpg',               alt: '讃岐うどん',             manualBoost: 100 },
+  { id: 'okinawa-soba',            name: '沖縄そば',         cat: '🍜 郷土料理 ／ 沖縄県',   desc: '豚骨・鰹だしのスープに太麺。ソーキそば・三枚肉そばを堪能。', places: '那覇・首里・宮古島', img: 'images/japan/okinawa/okinawa-soba-01.jpg',             alt: '沖縄そば',               manualBoost: 100 },
+  { id: 'hiroshima-okonomiyaki',   name: '広島のお好み焼き', cat: '🍳 郷土料理 ／ 広島県',   desc: '麺・キャベツ・肉を重ねて蒸し焼きにする広島スタイル。お好み村が有名。', places: '広島・宮島',   img: 'images/japan/hiroshima/hiroshima-okonomiyaki-01.jpg',    alt: '広島のお好み焼き',       manualBoost: 200 },
+  { id: 'ishikawa-sushi',          name: '金沢の海鮮・寿司', cat: '🦐 海鮮・魚介 ／ 石川県', desc: '日本海の新鮮な魚介。近江町市場のカニ・のどぐろ・甘エビが絶品。', places: '近江町市場・金沢', img: 'images/japan/ishikawa/ishikawa-sushi-01.jpg',           alt: '金沢の海鮮・寿司',       manualBoost: 100 },
+  { id: 'kyoto-kaiseki',           name: '京都の懐石料理',   cat: '🍱 和食 ／ 京都府',       desc: '季節の食材を丁寧に使った日本料理の最高峰。祇園・木屋町エリアに名店多数。', places: '祇園・木屋町',  img: 'images/japan/kyoto/kyoto-kaiseki-01.jpg',               alt: '京都の懐石料理',         manualBoost: 100 },
+];
+
+/* ===== 温泉トップ レンダリング（日替わりランダム5件） ===== */
+function renderTopOnsen() {
+  const container = document.getElementById('onsen-top-dest');
+  if (!container) return;
+
+  const t = new Date();
+  const seed = t.getFullYear() * 10000 + (t.getMonth() + 1) * 100 + t.getDate() + 37;
+  const rng = seededRNG(seed);
+
+  const pool = ONSEN_TOP_POOL.slice();
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    const tmp = pool[i]; pool[i] = pool[j]; pool[j] = tmp;
+  }
+  const five = pool.slice(0, 5);
+
+  container.innerHTML = five.map(d => (
+    '<a class="onsen-top-card" href="' + ROOT + 'pages/onsen.html?id=' + d.id + '"' +
+    ' data-track-category="onsen" data-track-id="' + d.id + '" data-track-title="' + d.name + '" data-track-type="card">' +
+    '<img src="' + ROOT + d.img + '" alt="' + d.alt + '" loading="lazy"' +
+    ' onerror="this.style.display=\'none\';this.parentElement.style.background=\'linear-gradient(135deg,#1a3060,#374151)\'">' +
+    '<div class="onsen-top-overlay">' +
+      '<div class="oto-pref">' + d.pref + '</div>' +
+      '<div class="oto-name">' + d.name + '</div>' +
+      '<div class="oto-tagline">' + d.tagline + '</div>' +
+      '<div class="oto-tags">' + d.tags.map(t => '<span class="oto-tag">' + t + '</span>').join('') + '</div>' +
+    '</div></a>'
+  )).join('');
+}
+
+/* ===== グルメトップ レンダリング（日替わりランダム5件） ===== */
+function renderTopGourmet() {
+  const container = document.getElementById('gourmet-top-dest');
+  if (!container) return;
+
+  const t = new Date();
+  const seed = t.getFullYear() * 10000 + (t.getMonth() + 1) * 100 + t.getDate() + 71;
+  const rng = seededRNG(seed);
+
+  const pool = GOURMET_TOP_POOL.slice();
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    const tmp = pool[i]; pool[i] = pool[j]; pool[j] = tmp;
+  }
+  const five = pool.slice(0, 5);
+
+  container.innerHTML = five.map(d => (
+    '<a class="gourmet-photo-card" href="' + ROOT + 'pages/specialties.html"' +
+    ' data-track-category="gourmet" data-track-id="' + d.id + '" data-track-title="' + d.name + '" data-track-type="card">' +
+    '<img src="' + ROOT + d.img + '" alt="' + d.alt + '" loading="lazy"' +
+    ' onerror="this.style.display=\'none\';this.parentElement.style.background=\'linear-gradient(135deg,#1a3060,#374151)\'">' +
+    '<div class="gourmet-photo-overlay">' +
+      '<div class="gpo-cat">' + d.cat + '</div>' +
+      '<div class="gpo-name">' + d.name + '</div>' +
+      '<div class="gpo-desc">' + d.desc + '</div>' +
+      '<div class="gpo-places">' + d.places + '</div>' +
+    '</div></a>'
+  )).join('');
 }
 
 /* ===== 地域アコーディオン（トップページ用） ===== */
