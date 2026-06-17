@@ -76,6 +76,28 @@ window.BOOKING_DATA = [
   },
 
   {
+    id: 'yahoo',
+    name: 'Yahoo!トラベル',
+    logo: '💳',
+    tagline: 'PayPayユーザー・SoftBankユーザーに特におすすめ',
+    bestFor: ['PayPayユーザー', 'SoftBankユーザー', 'Yahoo!プレミアム会員', 'ポイント重視'],
+    features: [
+      'PayPayポイント還元が強力',
+      'Yahoo!プレミアムで割引多数',
+      '「5のつく日」「ゾロ目の日」でポイント還元率UP',
+      'じゃらんと同じ在庫を扱う場合が多く選択肢が豊富',
+    ],
+    tips: [
+      '5のつく日・ゾロ目の日にPayPayで支払うと還元率が最大化',
+      'Yahoo!プレミアム会員はさらにお得になるキャンペーンあり',
+    ],
+    compat: { onsen: '○', luxury: '○', family: '○' },
+    notSuitableFor: ['PayPay非ユーザー（メリットが少ない）', '海外旅行（国内特化）'],
+    url: 'https://travel.yahoo.co.jp/',
+    affiliateNote: 'A8.net対応',
+  },
+
+  {
     id: 'jtb',
     name: 'JTB',
     logo: '🔵',
