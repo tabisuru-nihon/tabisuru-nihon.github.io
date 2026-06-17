@@ -125,93 +125,56 @@ function renderRegionMap() {
   const accordion = document.getElementById('region-accordion');
   if (!accordion) return;
 
-  /* 地方データ定義 */
+  /* 地方データ定義（7グループ） */
   const REGIONS = [
     {
-      id: 'hokkaido', name: '北海道', emoji: '🦀',
+      id: 'hokkaido-tohoku', name: '北海道・東北', emoji: '⛄',
       color: '#dbeafe', stroke: '#60a5fa',
-      prefs: ['北海道'],
-      prefIds: ['hokkaido'],
-      // SVGポリゴン座標 (viewBox 0 0 420 520)
-      poly: '218,14 375,14 400,28 388,86 330,106 256,100 218,72',
+      countLabel: '7県',
+      prefs: ['北海道','青森','岩手','宮城','秋田','山形','福島'],
+      prefIds: ['hokkaido','aomori','iwate','miyagi','akita','yamagata','fukushima'],
     },
     {
-      id: 'tohoku', name: '東北', emoji: '⛄',
-      color: '#dcfce7', stroke: '#4ade80',
-      prefs: ['青森','岩手','宮城','秋田','山形','福島'],
-      prefIds: ['aomori','iwate','miyagi','akita','yamagata','fukushima'],
-      poly: '260,100 322,96 360,110 368,175 345,208 298,220 262,204 248,155',
-    },
-    {
-      id: 'kitakanto', name: '北関東', emoji: '🌾',
-      color: '#fefce8', stroke: '#facc15',
-      prefs: ['茨城','栃木','群馬'],
-      prefIds: ['ibaraki','tochigi','gunma'],
-      poly: '296,214 360,207 376,232 356,256 296,260 276,240 280,220',
-    },
-    {
-      id: 'shuto', name: '首都圏', emoji: '🗼',
+      id: 'kanto', name: '関東', emoji: '🗼',
       color: '#fef3c7', stroke: '#f59e0b',
-      prefs: ['東京','神奈川','千葉','埼玉'],
-      prefIds: ['tokyo','kanagawa','chiba','saitama'],
-      poly: '330,253 396,244 410,265 404,300 360,310 316,298 317,270',
+      countLabel: '7県',
+      prefs: ['茨城','栃木','群馬','埼玉','千葉','東京','神奈川'],
+      prefIds: ['ibaraki','tochigi','gunma','saitama','chiba','tokyo','kanagawa'],
     },
     {
-      id: 'koshinetsu', name: '甲信越', emoji: '🏔️',
+      id: 'koshinetsu-hokuriku', name: '甲信越・北陸', emoji: '🏔️',
       color: '#e0f2fe', stroke: '#38bdf8',
-      prefs: ['新潟','山梨','長野'],
-      prefIds: ['niigata','yamanashi','nagano'],
-      poly: '246,200 298,202 302,245 280,265 242,260 226,232 237,206',
-    },
-    {
-      id: 'hokuriku', name: '北陸', emoji: '🦀',
-      color: '#f0fdf4', stroke: '#86efac',
-      prefs: ['富山','石川','福井'],
-      prefIds: ['toyama','ishikawa','fukui'],
-      poly: '188,180 256,167 268,190 258,210 212,220 180,213 178,193',
+      countLabel: '6県',
+      prefs: ['新潟','富山','石川','福井','山梨','長野'],
+      prefIds: ['niigata','toyama','ishikawa','fukui','yamanashi','nagano'],
     },
     {
       id: 'tokai', name: '東海', emoji: '🍵',
       color: '#fff7ed', stroke: '#fb923c',
-      prefs: ['静岡','愛知','岐阜','三重'],
-      prefIds: ['shizuoka','aichi','gifu','mie'],
-      poly: '238,260 300,254 318,285 300,318 258,324 226,303 228,272',
+      countLabel: '4県',
+      prefs: ['岐阜','静岡','愛知','三重'],
+      prefIds: ['gifu','shizuoka','aichi','mie'],
     },
     {
       id: 'kinki', name: '近畿', emoji: '⛩️',
       color: '#fce7f3', stroke: '#f472b6',
-      prefs: ['大阪','京都','兵庫','滋賀','奈良','和歌山'],
-      prefIds: ['osaka','kyoto','hyogo','shiga','nara','wakayama'],
-      poly: '178,240 248,232 256,270 238,308 198,322 162,300 160,264',
+      countLabel: '6府県',
+      prefs: ['滋賀','京都','大阪','兵庫','奈良','和歌山'],
+      prefIds: ['shiga','kyoto','osaka','hyogo','nara','wakayama'],
     },
     {
-      id: 'chugoku', name: '山陰・山陽', emoji: '⛩️',
+      id: 'chugoku-shikoku', name: '中国・四国', emoji: '🍊',
       color: '#ede9fe', stroke: '#a78bfa',
-      prefs: ['鳥取','島根','岡山','広島','山口'],
-      prefIds: ['tottori','shimane','okayama','hiroshima','yamaguchi'],
-      poly: '108,252 196,242 205,274 190,300 132,304 103,282 106,260',
+      countLabel: '9県',
+      prefs: ['鳥取','島根','岡山','広島','山口','徳島','香川','愛媛','高知'],
+      prefIds: ['tottori','shimane','okayama','hiroshima','yamaguchi','tokushima','kagawa','ehime','kochi'],
     },
     {
-      id: 'shikoku', name: '四国', emoji: '🍊',
-      color: '#ccfbf1', stroke: '#2dd4bf',
-      prefs: ['徳島','香川','愛媛','高知'],
-      prefIds: ['tokushima','kagawa','ehime','kochi'],
-      poly: '150,312 222,304 236,334 218,362 163,366 136,345 136,318',
-    },
-    {
-      id: 'kyushu', name: '九州', emoji: '🌸',
+      id: 'kyushu-okinawa', name: '九州・沖縄', emoji: '🌺',
       color: '#fee2e2', stroke: '#f87171',
-      prefs: ['福岡','佐賀','長崎','熊本','大分','宮崎','鹿児島'],
-      prefIds: ['fukuoka','saga','nagasaki','kumamoto','oita','miyazaki','kagoshima'],
-      poly: '64,282 134,268 153,286 160,356 128,382 85,376 53,346 46,308',
-    },
-    {
-      id: 'okinawa', name: '沖縄', emoji: '🌺',
-      color: '#fff1f2', stroke: '#fb7185',
-      prefs: ['沖縄'],
-      prefIds: ['okinawa'],
-      poly: '26,444 124,444 124,474 26,474',
-      isInset: true,
+      countLabel: '8県',
+      prefs: ['福岡','佐賀','長崎','熊本','大分','宮崎','鹿児島','沖縄'],
+      prefIds: ['fukuoka','saga','nagasaki','kumamoto','oita','miyazaki','kagoshima','okinawa'],
     },
   ];
 
@@ -242,7 +205,7 @@ function renderRegionMap() {
       <span class="racc-label">
         <span class="racc-emoji">${region.emoji}</span>
         <span class="racc-name">${region.name}</span>
-        <span class="racc-count">${region.prefs.length}県</span>
+        <span class="racc-count">${region.countLabel || region.prefs.length + '県'}</span>
       </span>
       <span class="racc-arrow" aria-hidden="true">▼</span>
     `;
