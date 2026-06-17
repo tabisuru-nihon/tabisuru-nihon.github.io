@@ -386,79 +386,106 @@
   </div>
 </footer>
 
-<script src="../js/affiliate-links.js"></script>
-<script src="../data/booking.js?v=20260616"></script>
-<script src="../js/app.js?v=20260616"></script>
+<script src="../js/affiliate-links.js?v=20260617-2"></script>
+<script src="../data/booking.js?v=20260617"></script>
+<script src="../js/app.js?v=20260617"></script>
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const backTop = document.getElementById('back-to-top');
+// アフィリエイトCTA生成（window.AFF非依存・A8コードを直接保持）
+var BOOKING_AFF_CTA = {
+  rakuten: function() {
+    var rid = '13d6d4ee.28199bf3.13d6d4ef.2c83be2d';
+    var dest = 'https://travel.rakuten.co.jp/';
+    var url = 'https://hb.afl.rakuten.co.jp/hgc/' + rid + '/?pc=' + encodeURIComponent(dest) + '&m=' + encodeURIComponent(dest);
+    return '<div class="a8-text-cta"><a href="' + url + '" rel="nofollow sponsored" target="_blank">楽天トラベルで宿を探す →</a></div>';
+  },
+  jalan: function() {
+    return '<div class="a8-text-cta"><a href="https://px.a8.net/svt/ejp?a8mat=4B5R04+6OJ916+14CS+68EPE" rel="nofollow" target="_blank">【じゃらん】国内25,000軒の宿をネットで予約OK！2％ポイント還元！</a><img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=4B5R04+6OJ916+14CS+68EPE" alt=""></div>';
+  },
+  ikyu: function() {
+    return '<div class="a8-text-cta"><a href="https://px.a8.net/svt/ejp?a8mat=4B5OO4+8BH5X6+1OK+5YJRM" rel="nofollow" target="_blank">国内ホテルの格安予約サイト『一休.com』</a><img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4B5OO4+8BH5X6+1OK+5YJRM" alt=""></div>';
+  },
+  yahoo: function() {
+    return '<div class="a8-text-cta"><a href="https://px.a8.net/svt/ejp?a8mat=4B5X8H+1U38SA+4ZCO+60OXE" rel="nofollow" target="_blank">【ヤフートラベル】取り扱い施設数が約17000施設!!国内最大級宿泊予約サイト</a><img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=4B5X8H+1U38SA+4ZCO+60OXE" alt=""></div>';
+  },
+  agoda: function() {
+    return '<div class="a8-text-cta"><a href="https://px.a8.net/svt/ejp?a8mat=4B5OO4+7SFAKA+4X1W+5YRHE" rel="nofollow" target="_blank">国内・海外ホテル格安予約のアゴダ</a><img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4B5OO4+7SFAKA+4X1W+5YRHE" alt=""></div>';
+  }
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+  var backTop = document.getElementById('back-to-top');
   if (backTop) {
-    window.addEventListener('scroll', () => { backTop.classList.toggle('visible', window.scrollY > 400); });
-    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    window.addEventListener('scroll', function() { backTop.classList.toggle('visible', window.scrollY > 400); });
+    backTop.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
   }
 
   // シーン別ガイド
-  const guideGrid = document.getElementById('guide-grid');
+  var guideGrid = document.getElementById('guide-grid');
   if (guideGrid && window.BOOKING_GUIDE) {
-    guideGrid.innerHTML = BOOKING_GUIDE.map(g => `
-      <div style="background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:18px">
-        <div style="font-size:0.88rem;font-weight:800;color:var(--navy);margin-bottom:6px">🎯 ${g.scenario}</div>
-        <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px">
-          ${g.recommended.map(id => {
-            const site = window.BOOKING_DATA && BOOKING_DATA.find(b => b.id === id);
-            return site ? `<span style="background:var(--gold-pale);color:var(--navy);font-size:0.72rem;font-weight:700;padding:2px 10px;border-radius:999px;border:1px solid var(--gold)">${site.logo} ${site.name}</span>` : '';
-          }).join('')}
-        </div>
-        <div style="font-size:0.78rem;color:var(--text-muted)">${g.reason}</div>
-      </div>`).join('');
+    guideGrid.innerHTML = BOOKING_GUIDE.map(function(g) {
+      return '<div style="background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:18px">'
+        + '<div style="font-size:0.88rem;font-weight:800;color:var(--navy);margin-bottom:6px">🎯 ' + g.scenario + '</div>'
+        + '<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px">'
+        + g.recommended.map(function(id) {
+            var site = window.BOOKING_DATA && BOOKING_DATA.find(function(b) { return b.id === id; });
+            return site ? '<span style="background:var(--gold-pale);color:var(--navy);font-size:0.72rem;font-weight:700;padding:2px 10px;border-radius:999px;border:1px solid var(--gold)">' + site.logo + ' ' + site.name + '</span>' : '';
+          }).join('')
+        + '</div>'
+        + '<div style="font-size:0.78rem;color:var(--text-muted)">' + g.reason + '</div>'
+        + '</div>';
+    }).join('');
   }
 
-  // 各サイト詳細
-  const grid = document.getElementById('booking-grid');
+  // 各サイト詳細カード
+  var grid = document.getElementById('booking-grid');
   if (grid && window.BOOKING_DATA) {
-    // A8アフィリエイト対応サービスのキーマップ
-    const A8MAP = { ikyu: 'ikyu_main', jalan: 'jalan_main', agoda: 'agoda_main', yahoo: 'yahoo_main' };
-    const compatColor = { '◎': '#22a', '○': '#2a8', '△': '#c74' };
-    grid.innerHTML = BOOKING_DATA.map(b => {
-      let ctaHtml, prNote;
-      if (window.AFF) {
-        if (b.id === 'rakuten') {
-          const rUrl = AFF.rakutenUrl('https://travel.rakuten.co.jp/');
-          ctaHtml = '<div class="a8-text-cta"><a href="' + rUrl + '" rel="nofollow sponsored" target="_blank">楽天トラベルで宿を探す →</a></div>';
-          prNote = '<div style="font-size:0.67rem;color:var(--text-muted);margin-bottom:6px">※PR・アフィリエイトリンクを含みます</div>';
-        } else if (A8MAP[b.id]) {
-          ctaHtml = AFF.textCtaHtml(A8MAP[b.id]);
-          prNote = '<div style="font-size:0.67rem;color:var(--text-muted);margin-bottom:6px">※PR・アフィリエイトリンクを含みます</div>';
-        } else {
-          // アフィリエイトコードなし → PR表記なし・公式リンクのみ
-          ctaHtml = '<a href="' + b.url + '" target="_blank" rel="noopener" style="display:block;text-align:center;border:1.5px solid var(--border);color:var(--navy);padding:9px;border-radius:6px;font-size:0.8rem;font-weight:700;text-decoration:none">' + b.name + 'の公式サイトを見る →</a>';
-          prNote = '';
-        }
+    var compatColor = { '◎': '#22a', '○': '#2a8', '△': '#c74' };
+    var prLabel = '<div style="font-size:0.67rem;color:var(--text-muted);margin-bottom:6px">※PR・アフィリエイトリンクを含みます</div>';
+
+    grid.innerHTML = BOOKING_DATA.map(function(b) {
+      // アフィリエイトCTA生成（BOOKING_AFF_CTAで管理、非対応は公式リンクのみ）
+      var ctaHtml, prNote;
+      if (BOOKING_AFF_CTA[b.id]) {
+        ctaHtml = BOOKING_AFF_CTA[b.id]();
+        prNote  = prLabel;
       } else {
-        ctaHtml = '<a href="' + b.url + '" target="_blank" rel="noopener" style="display:block;text-align:center;background:var(--navy);color:white;padding:10px;border-radius:8px;font-size:0.85rem;font-weight:700;text-decoration:none">' + b.name + 'で探す →</a>';
-        prNote = '';
+        // アフィリエイト未取得 → PR表記なし・公式サイトリンクのみ
+        ctaHtml = '<a href="' + b.url + '" target="_blank" rel="noopener" style="display:block;text-align:center;border:1.5px solid var(--border);color:var(--navy);padding:9px;border-radius:6px;font-size:0.8rem;font-weight:700;text-decoration:none">' + b.name + 'の公式サイトを見る →</a>';
+        prNote  = '';
       }
-      return `<div class="booking-card" style="padding:0;overflow:hidden;display:flex;flex-direction:column;border-radius:var(--radius-lg);background:var(--card-bg);box-shadow:var(--shadow-sm);border:1.5px solid var(--border)">
-        <div style="padding:16px 18px 0">
-          <div style="font-size:1.05rem;font-weight:900;color:var(--navy);margin-bottom:4px">${b.logo} ${b.name}</div>
-          <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:8px">${b.tagline}</div>
-          ${b.compat ? `<div style="display:flex;gap:8px;margin:8px 0;flex-wrap:wrap">
-            ${[['温泉旅行', b.compat.onsen],['高級宿', b.compat.luxury],['家族旅行', b.compat.family]].map(([label,v])=>`
-              <div style="display:flex;align-items:center;gap:4px;background:var(--section-alt);border-radius:6px;padding:4px 10px">
-                <span style="font-size:0.68rem;color:var(--text-muted)">${label}</span>
-                <span style="font-size:0.88rem;font-weight:800;color:${compatColor[v]||'#888'}">${v||'—'}</span>
-              </div>`).join('')}
-          </div>` : ''}
-          <div style="font-size:0.77rem;color:var(--text-muted);font-weight:700;margin:8px 0 4px">向いている人</div>
-          <div style="font-size:0.8rem;color:var(--text-light);line-height:1.6;margin-bottom:8px">${(b.bestFor||[]).join('・')}</div>
-          <div style="margin:10px 0">${(b.features||[]).map(f=>`<div style="font-size:0.78rem;color:var(--text-light);line-height:1.6;padding:2px 0">・${f}</div>`).join('')}</div>
-          ${b.tips && b.tips.length ? `<div style="background:var(--gold-pale);border-radius:8px;padding:10px;margin-bottom:14px">
-            <div style="font-size:0.72rem;font-weight:700;color:var(--gold);margin-bottom:4px">💡 お得に使うコツ</div>
-            ${b.tips.map(t=>`<div style="font-size:0.78rem;color:var(--navy);line-height:1.6">・${t}</div>`).join('')}
-          </div>` : ''}
-        </div>
-        <div style="padding:0 18px 16px;margin-top:auto">${prNote}${ctaHtml}</div>
-      </div>`;
+
+      var compatHtml = '';
+      if (b.compat) {
+        compatHtml = '<div style="display:flex;gap:8px;margin:8px 0;flex-wrap:wrap">'
+          + [['温泉旅行', b.compat.onsen],['高級宿', b.compat.luxury],['家族旅行', b.compat.family]].map(function(pair) {
+              return '<div style="display:flex;align-items:center;gap:4px;background:var(--section-alt);border-radius:6px;padding:4px 10px">'
+                + '<span style="font-size:0.68rem;color:var(--text-muted)">' + pair[0] + '</span>'
+                + '<span style="font-size:0.88rem;font-weight:800;color:' + (compatColor[pair[1]] || '#888') + '">' + (pair[1] || '—') + '</span>'
+                + '</div>';
+            }).join('')
+          + '</div>';
+      }
+
+      var tipsHtml = '';
+      if (b.tips && b.tips.length) {
+        tipsHtml = '<div style="background:var(--gold-pale);border-radius:8px;padding:10px;margin-bottom:14px">'
+          + '<div style="font-size:0.72rem;font-weight:700;color:var(--gold);margin-bottom:4px">💡 お得に使うコツ</div>'
+          + b.tips.map(function(t) { return '<div style="font-size:0.78rem;color:var(--navy);line-height:1.6">・' + t + '</div>'; }).join('')
+          + '</div>';
+      }
+
+      return '<div class="booking-card" style="padding:0;overflow:hidden;display:flex;flex-direction:column;border-radius:var(--radius-lg);background:var(--card-bg);box-shadow:var(--shadow-sm);border:1.5px solid var(--border)">'
+        + '<div style="padding:16px 18px 0">'
+        +   '<div style="font-size:1.05rem;font-weight:900;color:var(--navy);margin-bottom:4px">' + b.logo + ' ' + b.name + '</div>'
+        +   '<div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:8px">' + b.tagline + '</div>'
+        +   compatHtml
+        +   '<div style="font-size:0.77rem;color:var(--text-muted);font-weight:700;margin:8px 0 4px">向いている人</div>'
+        +   '<div style="font-size:0.8rem;color:var(--text-light);line-height:1.6;margin-bottom:8px">' + (b.bestFor || []).join('・') + '</div>'
+        +   '<div style="margin:10px 0">' + (b.features || []).map(function(f) { return '<div style="font-size:0.78rem;color:var(--text-light);line-height:1.6;padding:2px 0">・' + f + '</div>'; }).join('') + '</div>'
+        +   tipsHtml
+        + '</div>'
+        + '<div style="padding:0 18px 16px;margin-top:auto">' + prNote + ctaHtml + '</div>'
+        + '</div>';
     }).join('');
   }
 });
