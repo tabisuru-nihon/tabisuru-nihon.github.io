@@ -77,6 +77,42 @@
           <p id="onsen-why" style="font-size:0.92rem;line-height:1.8;color:var(--text-light)"></p>
         </div>
 
+        <!-- 泉質・源泉の特徴 -->
+        <div class="content-block fade-in" id="spring-block" style="display:none">
+          <h2 class="block-title"><div class="block-icon icon-teal">💧</div>泉質・源泉の特徴</h2>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="background:var(--card-bg);border-radius:var(--radius);padding:14px 16px;border-left:3px solid var(--teal)">
+              <div style="font-size:0.72rem;font-weight:700;color:var(--teal);margin-bottom:4px">代表的な泉質</div>
+              <div id="onsen-spring-quality" style="font-size:0.88rem;color:var(--navy);font-weight:600"></div>
+            </div>
+            <div style="background:var(--section-alt);border-radius:var(--radius);padding:14px 16px">
+              <div style="font-size:0.72rem;font-weight:700;color:var(--text-muted);margin-bottom:4px">源泉・湧出の特徴</div>
+              <div id="onsen-source-feature" style="font-size:0.84rem;color:var(--text-light);line-height:1.7"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 効能キャッチ・うれしいポイント -->
+        <div class="content-block fade-in" id="benefit-block" style="display:none">
+          <h2 class="block-title"><div class="block-icon icon-gold">✨</div>この温泉に入ると、どんな良さがある？</h2>
+          <div style="background:linear-gradient(135deg,#fff8e1,#fff3cd);border:2px solid #f8d56a;border-radius:var(--radius-lg);padding:18px 20px;margin-bottom:14px">
+            <div style="font-size:0.72rem;font-weight:700;color:#856400;margin-bottom:6px">泉質から見たキャッチコピー</div>
+            <div id="onsen-benefit-catch" style="font-size:1.02rem;font-weight:800;color:var(--navy);line-height:1.5"></div>
+          </div>
+          <p id="onsen-benefit-point" style="font-size:0.88rem;line-height:1.8;color:var(--text-light)"></p>
+          <div id="onsen-benefits-list" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px"></div>
+          <p style="font-size:0.7rem;color:var(--text-muted);margin-top:10px;line-height:1.6">※医療的な効果を保証するものではありません。効能は一般的な泉質の特徴をもとにしており、個人差・施設差があります。</p>
+        </div>
+
+        <!-- 温泉ソムリエひとこと -->
+        <div class="content-block fade-in" id="sommelier-block" style="display:none">
+          <h2 class="block-title"><div class="block-icon icon-purple">🧖</div>温泉ソムリエ的ひとこと</h2>
+          <div style="background:linear-gradient(135deg,#f0f6ff,#e8f4e8);border:2px solid #aad4ff;border-radius:var(--radius-lg);padding:18px 20px;display:flex;gap:14px;align-items:flex-start">
+            <div style="flex-shrink:0;font-size:1.8rem">♨️</div>
+            <p id="onsen-sommelier-note" style="font-size:0.88rem;line-height:1.8;color:var(--navy);margin:0"></p>
+          </div>
+        </div>
+
         <!-- 見どころ・施設 -->
         <div class="content-block fade-in" id="features-block" style="display:none">
           <h2 class="block-title"><div class="block-icon icon-orange">📍</div>見どころ・主な施設</h2>
@@ -124,6 +160,21 @@
         <div class="content-block fade-in" id="tips-block" style="display:none">
           <h2 class="block-title"><div class="block-icon icon-teal">💡</div>失敗しない宿選びのポイント</h2>
           <div id="onsen-tips" style="display:flex;flex-direction:column;gap:10px"></div>
+        </div>
+
+        <!-- おすすめの入り方 -->
+        <div class="content-block fade-in" id="bathing-tips-block" style="display:none">
+          <h2 class="block-title"><div class="block-icon icon-blue">🛁</div>おすすめの入り方</h2>
+          <div id="onsen-bathing-tips" style="display:flex;flex-direction:column;gap:8px"></div>
+        </div>
+
+        <!-- 注意事項 -->
+        <div class="content-block fade-in" id="caution-block" style="display:none">
+          <h2 class="block-title"><div class="block-icon icon-orange">⚠️</div>注意事項</h2>
+          <div style="background:#fff8f0;border:1.5px solid #fdba74;border-radius:var(--radius);padding:14px 18px">
+            <p id="onsen-caution" style="font-size:0.82rem;line-height:1.8;color:var(--text-light);margin:0"></p>
+            <p style="font-size:0.76rem;color:var(--text-muted);margin-top:10px;line-height:1.7">持病がある方・妊娠中の方・体調に不安がある方は、入浴前に医師や施設にご相談ください。掲載情報は代表的な情報であり、最新情報は各施設・観光協会の公式情報をご確認ください。医療的な効果を保証するものではありません。</p>
+          </div>
         </div>
 
         <!-- 情報の注意書き -->
@@ -322,6 +373,48 @@ document.addEventListener('DOMContentLoaded', () => {
     if (wrap && img) { img.src = heroImgSrc; wrap.style.display = ''; }
     const ogImgEl = document.querySelector('meta[property="og:image"]');
     if (ogImgEl) ogImgEl.setAttribute('content', 'https://tabisuru-nihon.github.io/' + heroImgSrc.replace('../', ''));
+  }
+
+  // 泉質・源泉の特徴
+  if (d.springQuality || d.sourceFeature) {
+    document.getElementById('spring-block').style.display = '';
+    if (d.springQuality) document.getElementById('onsen-spring-quality').textContent = d.springQuality;
+    if (d.sourceFeature) document.getElementById('onsen-source-feature').textContent = d.sourceFeature;
+  }
+
+  // 効能キャッチ・うれしいポイント
+  if (d.benefitCatch || d.benefitPoint || (d.benefits && d.benefits.length)) {
+    document.getElementById('benefit-block').style.display = '';
+    if (d.benefitCatch) document.getElementById('onsen-benefit-catch').textContent = d.benefitCatch;
+    if (d.benefitPoint) document.getElementById('onsen-benefit-point').textContent = d.benefitPoint;
+    if (d.benefits && d.benefits.length) {
+      document.getElementById('onsen-benefits-list').innerHTML = d.benefits.map(b =>
+        `<span style="display:inline-flex;align-items:center;gap:5px;padding:5px 12px;background:rgba(12,27,53,0.07);border-radius:999px;font-size:0.75rem;color:var(--navy);font-weight:600">✓ ${b}</span>`
+      ).join('');
+    }
+  }
+
+  // 温泉ソムリエひとこと
+  if (d.sommelierNote) {
+    document.getElementById('sommelier-block').style.display = '';
+    document.getElementById('onsen-sommelier-note').textContent = d.sommelierNote;
+  }
+
+  // おすすめの入り方
+  if (d.bathingTips && d.bathingTips.length) {
+    document.getElementById('bathing-tips-block').style.display = '';
+    document.getElementById('onsen-bathing-tips').innerHTML = d.bathingTips.map((t, i) =>
+      `<div style="display:flex;gap:10px;padding:10px 14px;background:var(--card-bg);border-radius:8px;border-left:3px solid var(--teal)">
+        <span style="font-size:0.9rem;font-weight:800;color:var(--teal);flex-shrink:0">${i + 1}</span>
+        <span style="font-size:0.83rem;line-height:1.7;color:var(--text-light)">${t}</span>
+      </div>`
+    ).join('');
+  }
+
+  // 注意事項
+  if (d.caution) {
+    document.getElementById('caution-block').style.display = '';
+    document.getElementById('onsen-caution').textContent = d.caution;
   }
 
   // 近隣スポット

@@ -379,10 +379,10 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="onsen-name">${o.name}</div>
           <div class="onsen-pref">${o.prefecture}</div>
           <div class="onsen-why" style="font-size:0.78rem;line-height:1.5;color:var(--text-light);margin:6px 0">${o.tagline}</div>
+          ${o.benefitCatch ? `<div style="font-size:0.72rem;color:var(--gold);font-weight:700;margin:4px 0 0;line-height:1.4">✨ ${o.benefitCatch}</div>` : ''}
           <div style="display:flex;flex-wrap:wrap;gap:4px;margin:6px 0 0">
             ${(ONSEN_TAGS[o.id]||[]).map(t=>`<span style="font-size:0.67rem;padding:2px 7px;border-radius:999px;background:rgba(12,27,53,0.07);color:var(--navy);font-weight:600">${t}</span>`).join('')}
           </div>
-          <div class="onsen-suits">${(o.suits?.perfect||[]).slice(0,2).map(s=>`<span class="suit-tag">${s}</span>`).join('')}</div>
           <div style="margin-top:auto;padding-top:8px;font-size:0.75rem;color:var(--teal);font-weight:700">詳しく見る →</div>
         </div>
       </div>`;
