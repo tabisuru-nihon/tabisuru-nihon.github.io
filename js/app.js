@@ -264,7 +264,7 @@ const GOURMET_TOP_POOL = [
   { id: 'kyoto-kaiseki',           name: '京都の懐石料理',   cat: '🍱 和食 ／ 京都府',       desc: '季節の食材を丁寧に使った日本料理の最高峰。祇園・木屋町エリアに名店多数。', places: '祇園・木屋町',  img: 'images/japan/kyoto/kyoto-kaiseki-01.jpg',               alt: '京都の懐石料理',         manualBoost: 100 },
 ];
 
-/* ===== 温泉トップ レンダリング（日替わりランダム5件） ===== */
+/* ===== 温泉トップ レンダリング（日替わりランダム5件 / big×1 + normal×4） ===== */
 function renderTopOnsen() {
   const container = document.getElementById('onsen-top-dest');
   if (!container) return;
@@ -280,21 +280,48 @@ function renderTopOnsen() {
   }
   const five = pool.slice(0, 5);
 
-  container.innerHTML = five.map((d, i) => (
-    '<a class="onsen-top-card' + (i === 0 ? ' big' : '') + '" href="' + ROOT + 'pages/onsen.html?id=' + d.id + '"' +
-    ' data-track-category="onsen" data-track-id="' + d.id + '" data-track-title="' + d.name + '" data-track-type="card">' +
-    '<img src="' + ROOT + d.img + '" alt="' + d.alt + '" loading="lazy"' +
-    ' onerror="this.style.display=\'none\';this.parentElement.style.background=\'linear-gradient(135deg,#1a3060,#374151)\'">' +
-    '<div class="onsen-top-overlay">' +
+  function oTrack(d) {
+    return ' data-track-category="onsen" data-track-id="' + d.id + '" data-track-title="' + d.name + '" data-track-type="card"';
+  }
+  function oOverlay(d) {
+    return '<div class="onsen-top-overlay">' +
       '<div class="oto-pref">' + d.pref + '</div>' +
       '<div class="oto-name">' + d.name + '</div>' +
       '<div class="oto-tagline">' + d.tagline + '</div>' +
-      '<div class="oto-tags">' + d.tags.map(t => '<span class="oto-tag">' + t + '</span>').join('') + '</div>' +
-    '</div></a>'
-  )).join('');
+      '<div class="oto-tags">' + d.tags.map(function(t){ return '<span class="oto-tag">' + t + '</span>'; }).join('') + '</div>' +
+    '</div>';
+  }
+  function oImg(d) {
+    return '<img src="' + ROOT + d.img + '" alt="' + d.alt + '" loading="lazy"' +
+      ' onerror="this.style.display=\'none\';this.parentElement.style.background=\'linear-gradient(135deg,#1a3060,#374151)\'">';
+  }
+  const href = function(d){ return ROOT + 'pages/onsen.html?id=' + d.id; };
+
+  container.innerHTML =
+    '<div class="feat-editorial">' +
+      '<a class="feat-big" href="' + href(five[0]) + '"' + oTrack(five[0]) + '>' +
+        oImg(five[0]) + oOverlay(five[0]) +
+      '</a>' +
+      '<div class="feat-med-col">' +
+        '<a class="feat-med" href="' + href(five[1]) + '"' + oTrack(five[1]) + '>' +
+          oImg(five[1]) + oOverlay(five[1]) +
+        '</a>' +
+        '<a class="feat-med" href="' + href(five[2]) + '"' + oTrack(five[2]) + '>' +
+          oImg(five[2]) + oOverlay(five[2]) +
+        '</a>' +
+      '</div>' +
+    '</div>' +
+    '<div class="onsen-top-small-grid">' +
+      '<a class="onsen-top-card" href="' + href(five[3]) + '"' + oTrack(five[3]) + '>' +
+        oImg(five[3]) + oOverlay(five[3]) +
+      '</a>' +
+      '<a class="onsen-top-card" href="' + href(five[4]) + '"' + oTrack(five[4]) + '>' +
+        oImg(five[4]) + oOverlay(five[4]) +
+      '</a>' +
+    '</div>';
 }
 
-/* ===== グルメトップ レンダリング（日替わりランダム5件） ===== */
+/* ===== グルメトップ レンダリング（日替わりランダム5件 / big×1 + normal×4） ===== */
 function renderTopGourmet() {
   const container = document.getElementById('gourmet-top-dest');
   if (!container) return;
@@ -310,18 +337,45 @@ function renderTopGourmet() {
   }
   const five = pool.slice(0, 5);
 
-  container.innerHTML = five.map((d, i) => (
-    '<a class="gourmet-photo-card' + (i === 0 ? ' big' : '') + '" href="' + ROOT + 'pages/specialties.html"' +
-    ' data-track-category="gourmet" data-track-id="' + d.id + '" data-track-title="' + d.name + '" data-track-type="card">' +
-    '<img src="' + ROOT + d.img + '" alt="' + d.alt + '" loading="lazy"' +
-    ' onerror="this.style.display=\'none\';this.parentElement.style.background=\'linear-gradient(135deg,#1a3060,#374151)\'">' +
-    '<div class="gourmet-photo-overlay">' +
+  function gTrack(d) {
+    return ' data-track-category="gourmet" data-track-id="' + d.id + '" data-track-title="' + d.name + '" data-track-type="card"';
+  }
+  function gOverlay(d) {
+    return '<div class="gourmet-photo-overlay">' +
       '<div class="gpo-cat">' + d.cat + '</div>' +
       '<div class="gpo-name">' + d.name + '</div>' +
       '<div class="gpo-desc">' + d.desc + '</div>' +
       '<div class="gpo-places">' + d.places + '</div>' +
-    '</div></a>'
-  )).join('');
+    '</div>';
+  }
+  function gImg(d) {
+    return '<img src="' + ROOT + d.img + '" alt="' + d.alt + '" loading="lazy"' +
+      ' onerror="this.style.display=\'none\';this.parentElement.style.background=\'linear-gradient(135deg,#1a3060,#374151)\'">';
+  }
+  const ghref = ROOT + 'pages/specialties.html';
+
+  container.innerHTML =
+    '<div class="feat-editorial">' +
+      '<a class="feat-big" href="' + ghref + '"' + gTrack(five[0]) + '>' +
+        gImg(five[0]) + gOverlay(five[0]) +
+      '</a>' +
+      '<div class="feat-med-col">' +
+        '<a class="feat-med" href="' + ghref + '"' + gTrack(five[1]) + '>' +
+          gImg(five[1]) + gOverlay(five[1]) +
+        '</a>' +
+        '<a class="feat-med" href="' + ghref + '"' + gTrack(five[2]) + '>' +
+          gImg(five[2]) + gOverlay(five[2]) +
+        '</a>' +
+      '</div>' +
+    '</div>' +
+    '<div class="gourmet-small-grid">' +
+      '<a class="gourmet-photo-card" href="' + ghref + '"' + gTrack(five[3]) + '>' +
+        gImg(five[3]) + gOverlay(five[3]) +
+      '</a>' +
+      '<a class="gourmet-photo-card" href="' + ghref + '"' + gTrack(five[4]) + '>' +
+        gImg(five[4]) + gOverlay(five[4]) +
+      '</a>' +
+    '</div>';
 }
 
 /* ===== 地域アコーディオン（トップページ用） ===== */
