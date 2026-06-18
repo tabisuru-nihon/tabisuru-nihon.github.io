@@ -280,8 +280,8 @@ function renderTopOnsen() {
   }
   const five = pool.slice(0, 5);
 
-  container.innerHTML = five.map(d => (
-    '<a class="onsen-top-card" href="' + ROOT + 'pages/onsen.html?id=' + d.id + '"' +
+  container.innerHTML = five.map((d, i) => (
+    '<a class="onsen-top-card' + (i === 0 ? ' big' : '') + '" href="' + ROOT + 'pages/onsen.html?id=' + d.id + '"' +
     ' data-track-category="onsen" data-track-id="' + d.id + '" data-track-title="' + d.name + '" data-track-type="card">' +
     '<img src="' + ROOT + d.img + '" alt="' + d.alt + '" loading="lazy"' +
     ' onerror="this.style.display=\'none\';this.parentElement.style.background=\'linear-gradient(135deg,#1a3060,#374151)\'">' +
@@ -310,8 +310,8 @@ function renderTopGourmet() {
   }
   const five = pool.slice(0, 5);
 
-  container.innerHTML = five.map(d => (
-    '<a class="gourmet-photo-card" href="' + ROOT + 'pages/specialties.html"' +
+  container.innerHTML = five.map((d, i) => (
+    '<a class="gourmet-photo-card' + (i === 0 ? ' big' : '') + '" href="' + ROOT + 'pages/specialties.html"' +
     ' data-track-category="gourmet" data-track-id="' + d.id + '" data-track-title="' + d.name + '" data-track-type="card">' +
     '<img src="' + ROOT + d.img + '" alt="' + d.alt + '" loading="lazy"' +
     ' onerror="this.style.display=\'none\';this.parentElement.style.background=\'linear-gradient(135deg,#1a3060,#374151)\'">' +
