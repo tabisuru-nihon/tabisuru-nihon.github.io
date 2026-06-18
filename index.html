@@ -1062,7 +1062,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const a8k = A8_KEY[b.id];
           const d = a8k && window.AFF.A8TEXT[a8k];
           if (d) {
-            ctaHtml = '<a href="' + d.href + '" rel="nofollow" target="_blank" class="booking-cta-btn" data-track-category="booking" data-track-id="' + b.id + '-cta" data-track-title="' + b.name + '" data-track-type="cta">' + b.name + 'で宿を探す →</a>'
+            ctaHtml = '<a href="' + d.href + '" rel="nofollow" target="_blank" class="booking-cta-btn" data-track-category="booking" data-track-id="' + b.id + '-cta" data-track-title="' + b.name + '" data-track-type="cta">' + d.text + '</a>'
                     + '<img border="0" width="1" height="1" src="' + d.tracker + '" alt="">';
           } else {
             ctaHtml = '';
