@@ -2635,17 +2635,19 @@ button { font-family: inherit; cursor: pointer; }
   width: clamp(200px, 18vw, 300px);
   height: auto;
   display: block;
-  filter: drop-shadow(0 24px 36px rgba(0,0,0,0.38));
+  filter: drop-shadow(0 20px 32px rgba(0,0,0,0.55)) drop-shadow(0 4px 8px rgba(0,0,0,0.3));
   flex-shrink: 0;
 }
 .hero-noa-bubble {
   max-width: 260px;
   padding: 16px 18px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.92);
-  color: #0f1e33;
-  box-shadow: 0 18px 44px rgba(0,0,0,0.22);
-  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  background: rgba(22, 14, 8, 0.62);
+  border: 1px solid rgba(214, 170, 70, 0.32);
+  color: #f7ead0;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.28);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -2661,17 +2663,18 @@ button { font-family: inherit; cursor: pointer; }
   height: 0;
   border-style: solid;
   border-width: 8px 0 8px 12px;
-  border-color: transparent transparent transparent rgba(255,255,255,0.92);
+  border-color: transparent transparent transparent rgba(22, 14, 8, 0.62);
 }
 .hero-noa-name {
   font-size: 14px;
   font-weight: 800;
-  color: #0f1e33;
+  color: #f2c75c;
   display: block;
+  letter-spacing: 0.03em;
 }
 .hero-noa-text {
   font-size: 13px;
-  color: #333;
+  color: rgba(247, 234, 208, 0.88);
   line-height: 1.6;
   display: block;
 }
@@ -2681,17 +2684,17 @@ button { font-family: inherit; cursor: pointer; }
   justify-content: center;
   margin-top: 4px;
   padding: 8px 16px;
-  background: #d49a00;
-  color: #fff;
+  background: linear-gradient(135deg, #d6a83f, #f2c75c);
+  color: #1b120c;
   font-size: 13px;
   font-weight: 700;
   border: none;
   border-radius: 999px;
   cursor: pointer;
   white-space: nowrap;
-  transition: opacity 0.2s;
+  transition: filter 0.2s;
 }
-.hero-noa-cta:hover { opacity: 0.86; }
+.hero-noa-cta:hover { filter: brightness(1.08); }
 
 /* スマホ */
 @media (max-width: 768px) {
