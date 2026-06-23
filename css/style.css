@@ -2621,21 +2621,99 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* ===== 旅ノア フロートウィジェット ===== */
-.noa-float-btn {
+.noa-floating {
   position: fixed;
-  bottom: 88px;
-  right: 24px;
   z-index: 9000;
+  transition: right 0.35s ease, bottom 0.35s ease, opacity 0.35s ease;
+}
+.noa-float-btn {
+  border: none;
+  background: none;
+  padding: 0;
   cursor: pointer;
+  display: block;
+}
+
+/* ヒーローモード */
+.noa-hero-mode {
+  right: clamp(16px, 4vw, 72px);
+  bottom: clamp(56px, 10vh, 96px);
+}
+.noa-hero-mode .nf-hero-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px 14px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.93);
+  box-shadow: 0 18px 48px rgba(0,0,0,0.22);
+  backdrop-filter: blur(12px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.noa-hero-mode .noa-float-btn:hover .nf-hero-card,
+.noa-hero-mode .noa-float-btn.active .nf-hero-card {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 56px rgba(0,0,0,0.28);
+}
+.noa-hero-mode .nf-avatar-wrap {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #f5f0e8;
+  border: 3px solid var(--gold, #d49a00);
+}
+.noa-hero-mode .nf-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+.noa-hero-mode .nf-bubble {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: left;
+}
+.noa-hero-mode .nf-name {
+  font-size: 13px;
+  font-weight: 800;
+  color: #0f1e33;
+}
+.noa-hero-mode .nf-text {
+  font-size: 12px;
+  color: #444;
+  line-height: 1.5;
+}
+.noa-hero-mode .nf-cta-label {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 6px;
+  padding: 6px 14px;
+  background: #d49a00;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.noa-hero-mode .nf-compact-card { display: none; }
+
+/* コンパクトモード */
+.noa-compact-mode {
+  right: 22px;
+  bottom: 88px;
+}
+.noa-compact-mode .nf-hero-card { display: none; }
+.noa-compact-mode .nf-compact-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  border: none;
-  background: none;
-  padding: 0;
 }
-.noa-float-icon {
+.noa-compact-mode .nf-compact-icon {
   width: 64px;
   height: 64px;
   border-radius: 50%;
@@ -2644,19 +2722,19 @@ button { font-family: inherit; cursor: pointer; }
   background: var(--navy);
   transition: transform 0.2s, box-shadow 0.2s;
 }
-.noa-float-btn:hover .noa-float-icon,
-.noa-float-btn.active .noa-float-icon {
+.noa-compact-mode .noa-float-btn:hover .nf-compact-icon,
+.noa-compact-mode .noa-float-btn.active .nf-compact-icon {
   transform: scale(1.08);
   box-shadow: 0 6px 28px rgba(12,27,53,0.4), 0 0 0 3px var(--gold-light);
 }
-.noa-float-icon img {
+.noa-compact-mode .nf-compact-icon img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top center;
   display: block;
 }
-.noa-float-balloon {
+.noa-compact-mode .nf-compact-label {
   background: var(--navy);
   color: var(--gold-light);
   font-size: 0.72rem;
@@ -2666,6 +2744,32 @@ button { font-family: inherit; cursor: pointer; }
   white-space: nowrap;
   box-shadow: var(--shadow-sm);
   pointer-events: none;
+}
+
+/* スマホ調整 */
+@media (max-width: 768px) {
+  .noa-hero-mode {
+    right: 10px;
+    bottom: 18px;
+  }
+  .noa-hero-mode .nf-hero-card {
+    padding: 10px 12px 10px 8px;
+    gap: 8px;
+    max-width: 200px;
+  }
+  .noa-hero-mode .nf-avatar-wrap {
+    width: 64px;
+    height: 64px;
+  }
+  .noa-hero-mode .nf-name { font-size: 12px; }
+  .noa-hero-mode .nf-text { font-size: 11px; }
+  .noa-hero-mode .nf-cta-label { font-size: 11px; padding: 5px 10px; margin-top: 4px; }
+  .noa-compact-mode { right: 16px; bottom: 80px; }
+}
+
+/* モーション軽減 */
+@media (prefers-reduced-motion: reduce) {
+  .noa-floating, .nf-hero-card { transition: none !important; }
 }
 
 .noa-float-panel {
