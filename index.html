@@ -530,8 +530,18 @@
   var _cat = 'all';
   function shortTitle(t){ return t.replace(/【[^】]*】/g,'').split(/[　 ]/)[0].slice(0,24); }
   function imgSrc(imgHtml){
-    var m = imgHtml.match(/src="([^"]+)"/);
-    return m ? m[1] : '';
+    if(!imgHtml) return '';
+    var patterns = [
+      /src=["']([^"']+)["']/i,
+      /data-src=["']([^"']+)["']/i,
+      /data-original=["']([^"']+)["']/i,
+      /data-lazy=["']([^"']+)["']/i
+    ];
+    for(var i=0;i<patterns.length;i++){
+      var m = imgHtml.match(patterns[i]);
+      if(m && m[1]) return m[1];
+    }
+    return '';
   }
   function renderGoods(){
     var data = window.TRAVEL_GOODS_DATA;
