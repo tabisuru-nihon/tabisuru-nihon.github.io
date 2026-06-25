@@ -799,7 +799,7 @@
 <script src="data/monthly.js?v=20260616"></script>
 <script src="data/purposes.js?v=20260616"></script>
 <script src="data/booking.js?v=20260616"></script>
-<script src="data/specialties.js?v=20260616"></script>
+<script src="data/specialties.js?v=20260625-1"></script>
 <script src="js/chat.js"></script>
 <script src="data/travel-goods.js?v=20260623-1"></script>
 <script src="js/affiliate-links.js?v=20260619-1"></script>
@@ -1080,28 +1080,21 @@ document.addEventListener('DOMContentLoaded', () => {
   if (gourmetPreview) {
     // 固定6品（常に表示されるフォールバックデータ）
     const GOURMET_FIXED = [
-      { name: '北海道の海鮮', pref: '北海道', emoji: '🦀', color: 'linear-gradient(135deg,#0c4a6e,#0369a1)', desc: '毛ガニ・ウニ・イクラ。日本最高峰の海鮮を漁港直送の新鮮さで味わう', prefId: 'hokkaido' },
-      { name: '仙台牛タン', pref: '宮城県', emoji: '🥩', color: 'linear-gradient(135deg,#7c2d12,#c2410c)', desc: '厚切り牛タン定食は仙台の定番。焦げ目の香ばしさが絶品。テールスープと麦飯とのセットで', prefId: 'miyagi' },
-      { name: '名古屋めし', pref: '愛知県', emoji: '🍱', color: 'linear-gradient(135deg,#713f12,#a16207)', desc: 'ひつまぶし・味噌かつ・あんかけスパ・きしめん。独自のグルメ文化が揃う', prefId: 'aichi' },
-      { name: '大阪たこ焼き', pref: '大阪府', emoji: '🐙', color: 'linear-gradient(135deg,#4c0519,#9f1239)', desc: '外カリ中トロのたこ焼き。道頓堀・心斎橋エリアの老舗から有名チェーンまで食べ比べを', prefId: 'osaka' },
-      { name: '広島お好み焼き', pref: '広島県', emoji: '🫓', color: 'linear-gradient(135deg,#14532d,#166534)', desc: '麺が入ったボリューム満点の広島焼きは大阪とは別物。お好み村・ひろしま横丁で食べ比べ', prefId: 'hiroshima' },
-      { name: '博多ラーメン', pref: '福岡県', emoji: '🍜', color: 'linear-gradient(135deg,#451a03,#92400e)', desc: '濃厚豚骨スープに細麺が絡む博多スタイル。替え玉・紅しょうが・にんにくで仕上げる', prefId: 'fukuoka' },
+      { name: '北海道の海鮮', pref: '北海道', emoji: '🦀', color: 'linear-gradient(135deg,#0c4a6e,#0369a1)', desc: '毛ガニ・ウニ・イクラ。日本最高峰の海鮮を漁港直送の新鮮さで味わう', prefId: 'hokkaido', image: 'images/japan/hokkaido/hokkaido-kaisen-01.jpg', imageAlt: '北海道の海鮮丼' },
+      { name: '仙台牛タン', pref: '宮城県', emoji: '🥩', color: 'linear-gradient(135deg,#7c2d12,#c2410c)', desc: '厚切り牛タン定食は仙台の定番。焦げ目の香ばしさが絶品。テールスープと麦飯とのセットで', prefId: 'miyagi', image: 'images/japan/miyagi/miyagi-gyutan-01.jpg', imageAlt: '仙台牛タン焼き' },
+      { name: '名古屋めし', pref: '愛知県', emoji: '🍱', color: 'linear-gradient(135deg,#713f12,#a16207)', desc: 'ひつまぶし・味噌かつ・あんかけスパ・きしめん。独自のグルメ文化が揃う', prefId: 'aichi', image: 'images/japan/aichi/aichi-unagi-01.jpg', imageAlt: '名古屋めし・ひつまぶし' },
+      { name: '大阪たこ焼き', pref: '大阪府', emoji: '🐙', color: 'linear-gradient(135deg,#4c0519,#9f1239)', desc: '外カリ中トロのたこ焼き。道頓堀・心斎橋エリアの老舗から有名チェーンまで食べ比べを', prefId: 'osaka', image: 'images/japan/osaka/osaka-takoyaki-01.jpg', imageAlt: '大阪のたこ焼き' },
+      { name: '広島お好み焼き', pref: '広島県', emoji: '🫓', color: 'linear-gradient(135deg,#14532d,#166534)', desc: '麺が入ったボリューム満点の広島焼きは大阪とは別物。お好み村・ひろしま横丁で食べ比べ', prefId: 'hiroshima', image: 'images/japan/hiroshima/hiroshima-okonomiyaki-01.jpg', imageAlt: '広島のお好み焼き' },
+      { name: '博多ラーメン', pref: '福岡県', emoji: '🍜', color: 'linear-gradient(135deg,#451a03,#92400e)', desc: '濃厚豚骨スープに細麺が絡む博多スタイル。替え玉・紅しょうが・にんにくで仕上げる', prefId: 'fukuoka', image: 'images/japan/fukuoka/fukuoka-ramen-01.jpg', imageAlt: '博多ラーメン・豚骨スープ' },
     ];
-    const PREF_IMGS_G = {
-      hokkaido:  'images/japan/hokkaido/hokkaido-biei-flower-field-01.jpg',
-      miyagi:    '',
-      aichi:     'images/japan/aichi/aichi-nagoya-02.jpg',
-      osaka:     'images/japan/osaka/osaka-castle-01.jpg',
-      hiroshima: 'images/japan/hiroshima/hiroshima-miyajima-torii-01.jpg',
-      fukuoka:   'images/japan/fukuoka/fukuoka-dazaifu-02.jpg',
-    };
     // SPECIALTIES_DATAがあれば実データ優先、なければフォールバック
     let gourmetItems = GOURMET_FIXED;
     if (window.SPECIALTIES_DATA && SPECIALTIES_DATA.length >= 6) {
       gourmetItems = SPECIALTIES_DATA.slice(0, 6).map(s => ({
         name: s.name, pref: s.prefecture, emoji: s.emoji,
         color: 'linear-gradient(135deg,var(--navy),#1a3060)',
-        desc: s.tagline, prefId: s.prefId
+        desc: s.tagline, prefId: s.prefId,
+        image: s.image || '', imageAlt: s.imageAlt || s.name
       }));
     }
     // 一緒に楽しみたい観光地（固定）
@@ -1114,7 +1107,7 @@ document.addEventListener('DOMContentLoaded', () => {
       fukuoka:   '太宰府天満宮・門司港・糸島',
     };
     gourmetPreview.innerHTML = gourmetItems.map(s => {
-      const img = PREF_IMGS_G[s.prefId];
+      const img = s.image || '';
       const spot = GOURMET_SPOTS[s.prefId] || '';
       return `<a href="pages/specialties.html" style="text-decoration:none;display:block">
         <div class="js-card" style="border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;cursor:pointer;background:var(--card-bg);border:1.5px solid var(--border);transition:transform 0.2s,box-shadow 0.2s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(12,27,53,0.18)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
