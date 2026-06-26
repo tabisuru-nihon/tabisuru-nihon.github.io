@@ -1234,6 +1234,97 @@ var NoaChat = (function() {
     return null;
   }
 
+  /* ---------- パーソナライズ推薦データ ---------- */
+  var ONSEN_REC = {
+    '東京': {
+      solo:    ['草津温泉（群馬）— 新宿からバス直行3h。湯畑×一人宿×時間湯体験', '乳頭温泉郷（秋田）— 秘湯の静寂を独り占め。混浴もあり茅葺きの風景が唯一無二', '道後温泉（愛媛）— 日本最古の湯。一人旅歓迎の宿が多い'],
+      couple:  ['城崎温泉（兵庫）— 浴衣で7つの外湯をめぐる。夜の石畳が最高にロマンチック', '草津温泉（群馬）— 湯畑の夜景×高級旅館。記念日にも人気', '箱根（神奈川）— 富士山ビュー×温泉×美術館。東京から最短1.5時間'],
+      family:  ['伊豆・修善寺（静岡）— 東京から近い。貸切風呂のある宿が多く子連れ安心', '那須温泉（栃木）— 高原+牧場+温泉で子供が大喜び', '鬼怒川温泉（栃木）— 日光観光とセットで2泊3日が定番'],
+      friends: ['草津温泉— 大型旅館が多くグループ歓迎。共同湯でにぎやかに', '熱海（静岡）— 東海道新幹線40分。温泉+グルメ+花火（夏）で盛り上がれる'],
+    },
+    '大阪': {
+      solo:    ['有馬温泉（兵庫）— 三ノ宮から電車30分。金泉・銀泉を一人でじっくり体験', '城崎温泉（兵庫）— 外湯は一人でも気軽。特急こうのとり2.5h', '道後温泉（愛媛）— 本州西端の名湯。一人旅文化が根付いている'],
+      couple:  ['城崎温泉（兵庫）— 関西カップルの定番。浴衣×外湯×カニが揃う', '有馬温泉（兵庫）— 大阪から30分で非日常。金泉（赤い温泉）が珍しく記念になる', '白浜温泉（和歌山）— 海+温泉のコラボ。崎の湯の絶景露天が圧巻'],
+      family:  ['城崎温泉— 子連れ向け旅館充実。外湯めぐりを家族で楽しめる', '白浜（和歌山）— アドベンチャーワールド（パンダ15頭！）と温泉のセットが最強'],
+      friends: ['城崎温泉— グループで外湯めぐりが大盛り上がり', '有馬温泉— 神戸観光とセットの1泊コースが人気'],
+    },
+    '名古屋': {
+      solo:    ['下呂温泉（岐阜）— 特急で1時間20分。日本三名泉のひとつ。美肌の湯でひとり癒し', '湯の山温泉（三重）— 近場で静か。御在所岳の山景色も良い'],
+      couple:  ['下呂温泉（岐阜）— 飛騨川沿いの旅館が情緒満点。名古屋発で一番人気', '伊勢志摩（三重）— 伊勢神宮参拝+海鮮+温泉の欲張りプラン', '平湯・新穂高温泉（岐阜）— 北アルプスの絶景と露天風呂の組み合わせ'],
+      family:  ['下呂温泉— ファミリー向け宿が多い。川沿い散策も子供が喜ぶ', '伊勢志摩— 鳥羽水族館+伊勢神宮+温泉でコンテンツが豊富'],
+      friends: ['下呂温泉— グループ旅行向け大部屋あり', '伊勢志摩— 食べ歩き（伊勢えび・牡蠣）+温泉でにぎやか'],
+    },
+    '福岡': {
+      solo:    ['別府（大分）— 地獄めぐり+8種の泉質。一人旅向け宿が豊富', '由布院（大分）— 特急ゆふいんの森で90分。一人散策が気持ちいい温泉街'],
+      couple:  ['由布院（大分）— 九州カップル旅の最定番。散策×グルメ×温泉のバランスが最高', '黒川温泉（熊本）— 山の中の秘湯感。入湯手形で3つの露天をめぐれる', '嬉野温泉（佐賀）— とろっとした美肌の湯。佐賀牛グルメも絶品'],
+      family:  ['由布院— ファミリー向け宿あり。温泉街の散策も子連れで楽しい', '指宿温泉（鹿児島）— 砂むし温泉が子供に大人気。スリル満点'],
+      friends: ['別府— 地獄めぐりがグループで盛り上がる。宿も多様', '由布院— おしゃれカフェ×温泉×雑貨で女子グループに最高'],
+    },
+  };
+  var DEFAULT_ONSEN = {
+    solo:    ['草津温泉（群馬）— 日本一の湯量。一人でじっくり湯治', '乳頭温泉郷（秋田）— 秘湯の代名詞。静かに過ごせる', '道後温泉（愛媛）— 日本最古の温泉でゆっくり'],
+    couple:  ['由布院（大分）— 温泉×グルメ×散策の黄金バランス', '城崎温泉（兵庫）— 浴衣で外湯めぐり。二人旅の定番', '黒川温泉（熊本）— 山里の秘湯で非日常感'],
+    family:  ['伊豆（静岡）— 貸切風呂+海+グルメ', '城崎温泉— 子連れOK、外湯めぐりを家族で', '別府— 地獄めぐりが子供に大人気'],
+    friends: ['草津温泉— 大型旅館が多くグループ向き', '別府— 観光+温泉で盛り上がれる'],
+  };
+
+  var COUPLE_REC = {
+    spring: {
+      '東京': ['京都（桜×古都）— 4月上旬が最高。哲学の道・嵐山・岡崎の桜を二人で', '伊豆（静岡）— 春の海+温泉。河津桜は2月下旬〜3月が絶景', '角館（秋田）— 武家屋敷×枝垂れ桜の組み合わせが唯一無二'],
+      '大阪': ['京都（桜×古都）— 30分で行けて桜スポットがNo.1', '吉野山（奈良）— 山一面の山桜は日本随一の絶景', '城崎温泉（兵庫）— 春の城崎は桜+温泉で情緒満点'],
+      '名古屋': ['京都（桜）— 新幹線35分。二人で古都の春を満喫', '飛騨高山（岐阜）— 春の古い町並み+白川郷への旅', '伊勢志摩（三重）— 春の海+伊勢神宮参拝'],
+      '福岡': ['長崎— 春の異国情緒。グラバー園の桜も美しい', '熊本城（復興の桜）— 桜+熊本城の歴史的景観', '阿蘇（熊本）— 野焼き後の緑と春の外輪山ドライブ'],
+    },
+    summer: {
+      '東京': ['石垣島・宮古島（沖縄）— 飛行機2.5h。本島より透明度が高く、ふたりで海を満喫', '北海道・富良野（ラベンダー）— 涼しい+絶景+美食グルメ', '伊豆（静岡）— 東京から近い海リゾート。BBQのある宿も'],
+      '大阪': ['沖縄（那覇）— 飛行機2h。青い海+琉球料理', '石垣島— さらに透明度が高い海。ダイビングが最高', '淡路島（兵庫）— 海+リゾートホテル。アクセス抜群'],
+      '名古屋': ['沖縄— 飛行機2h', '伊勢志摩（三重）— 夏の海+カキ+伊勢参拝', '石垣島— 飛行機2.5h。南国リゾート'],
+      '福岡': ['石垣島— 飛行機2h。最高の海。ダイビング+ビーチ', '宮古島（沖縄）— ミヤコブルーの海は世界レベル', '宮崎— マンゴー+サーフィン+地鶏炭火焼でアクティブな夏旅'],
+    },
+    autumn: {
+      '東京': ['京都（紅葉）— 11月中旬〜下旬が絶頂。東福寺・永観堂・嵐山が圧巻', '日光（栃木）— 10月下旬〜11月上旬。日本三大名瀑×紅葉', '城崎温泉（兵庫）— 11月カニ解禁直前でお得。秋の外湯めぐり'],
+      '大阪': ['京都（紅葉）— 30分で行けて紅葉名所がNo.1。二人で古寺めぐり', '城崎温泉（兵庫）— 11月〜カニ解禁！カニ+外湯が秋冬の最高体験', '有馬温泉（兵庫）— 秋の有馬は紅葉+温泉が最高'],
+      '名古屋': ['京都（紅葉）— 新幹線35分で行ける紅葉の都', '飛騨高山（岐阜）— 秋の古い町並みが一番美しいシーズン', '下呂温泉（岐阜）— 秋の飛騨川沿いの紅葉を眺めながら温泉'],
+      '福岡': ['由布院（大分）— 秋が一番美しい温泉地。紅葉×温泉×グルメ', '阿蘇（熊本）— 秋の外輪山と草原の絶景ドライブ', '長崎— 秋の異国情緒と歴史めぐり'],
+    },
+    winter: {
+      '東京': ['草津温泉（群馬）— 雪景色×湯畑×高級旅館。冬こそ温泉が最高', '蔵王温泉（山形）— 樹氷（スノーモンスター）が圧巻。スキーも一緒に', '沖縄（避寒）— 本土の寒さを逃れ20度の楽園で非日常体験'],
+      '大阪': ['城崎温泉（兵庫）— カニシーズン最盛期！カニ+外湯が冬の最高体験', '有馬温泉（兵庫）— 雪の有馬でゆっくり。金泉の赤い湯が冬に映える', '草津温泉（群馬）— 遠くても冬の草津に行く価値は必ずある'],
+      '名古屋': ['下呂温泉（岐阜）— 雪の飛騨川沿い旅館が情緒満点', '伊勢志摩（三重）— 冬は伊勢えび・的矢カキの旬。海の幸+温泉', '草津温泉（群馬）— 冬の温泉なら日本一'],
+      '福岡': ['由布院（大分）— 冬の由布院は雪景色×温泉でロマンチック度MAX', '黒川温泉（熊本）— 冬の山里+「湯あかり」イベントが幻想的', '雲仙温泉（長崎）— 雪と地獄の湯気が織り成す幻想的な景観'],
+    },
+  };
+
+  function genOnsenFinal(slots) {
+    var origin = slots.origin;
+    var who = slots.who || 'couple';
+    var originData = ONSEN_REC[origin];
+    var spots = originData ? (originData[who] || originData['couple']) : (DEFAULT_ONSEN[who] || DEFAULT_ONSEN['couple']);
+    var whoLabel = { solo: '一人旅', couple: 'カップル旅行', family: '家族旅行', friends: '友達旅行' }[who] || '旅行';
+    return {
+      text: (origin ? '**' + origin + '発**・' : '') + '**' + whoLabel + '**の温泉おすすめです♨️\n\n' +
+        spots.map(function(s, i) { return (i+1) + '. ' + s; }).join('\n') +
+        '\n\n宿は楽天・じゃらん・一休をまとめて比較できます。\n※予約リンクにはPR・アフィリエイトリンクを含みます。',
+      buttons: ['温泉地一覧を見る|' + R() + 'pages/onsen.html', '宿を比較する|' + R() + 'pages/booking.html', '↩ 別の旅を相談する']
+    };
+  }
+
+  function genCoupleFinal(slots) {
+    var season = slots.season || 'autumn';
+    var origin = slots.origin;
+    var seasonData = COUPLE_REC[season];
+    var spots = [];
+    if (seasonData) spots = seasonData[origin] || seasonData['東京'];
+    if (!spots || !spots.length) spots = ['由布院（大分）— 温泉×グルメ×散策で二人の思い出に', '城崎温泉（兵庫）— 浴衣で外湯めぐり。夜の情緒が最高', '京都— 日本の美を二人でゆっくり体験'];
+    var seasonLabel = { spring: '春', summer: '夏', autumn: '秋', winter: '冬' }[season] || '';
+    return {
+      text: (origin ? '**' + origin + '発**・' : '') + (seasonLabel ? '**' + seasonLabel + '**の' : '') + '**カップル旅行**おすすめです💑\n\n' +
+        spots.map(function(s, i) { return (i+1) + '. ' + s; }).join('\n') +
+        '\n\n宿は楽天・じゃらん・一休をまとめて比較できます。\n※予約リンクにはPR・アフィリエイトリンクを含みます。',
+      buttons: ['宿を比較する|' + R() + 'pages/booking.html', '都道府県から探す|' + R() + 'pages/prefectures.html', '↩ 別の旅を相談する']
+    };
+  }
+
   /* ---------- セッション応答 ---------- */
   function sessionRespond(query) {
     var q = query.trim();
@@ -1241,6 +1332,15 @@ var NoaChat = (function() {
     for (var k in slots) { SESSION.slots[k] = slots[k]; }
     SESSION.turnCount++;
     if (SESSION.chatState === 'initial') SESSION.chatState = 'idle';
+
+    // リセット処理
+    if (/↩|別の旅を相談|最初に戻る|リセット|もう一度|やり直し/.test(q)) {
+      resetSession();
+      return {
+        text: 'わかりました！また一緒に考えましょう😊\n\nどんな旅を相談しますか？',
+        buttons: ['温泉旅行がしたい', 'グルメを楽しむ旅', '絶景を見に行きたい', '子連れ旅行のおすすめ', 'カップルにおすすめは？', '一人旅でどこ行く？', '予算から相談したい', 'まだ決まっていない']
+      };
+    }
 
     // chatState: 予算フローの順序確認
     if (SESSION.chatState === 'budget_origin') {
@@ -1333,21 +1433,55 @@ var NoaChat = (function() {
       else if (/家族|子連れ/.test(q)) SESSION.slots.who = 'family';
       else if (/友達|グループ/.test(q)) SESSION.slots.who = 'friends';
       SESSION.chatState = 'idle';
-      SESSION.intent = 'onsen';
+      return genOnsenFinal(SESSION.slots);
     }
 
     if (SESSION.chatState === 'gourmet_region') {
-      var gr = null;
-      var gSpots = [];
-      if (/北海道|東北/.test(q)) { gr = '北海道・東北'; gSpots = ['北海道（海鮮丼・ジンギスカン・スープカレー）', '宮城・仙台（牛タン・はらこ飯）', '秋田（きりたんぽ鍋・稲庭うどん）']; }
-      else if (/関東|中部/.test(q)) { gr = '関東・中部'; gSpots = ['名古屋（ひつまぶし・味噌カツ・手羽先）', '長野（信州そば・馬刺し）', '富山（白エビ・ます寿し・ホタルイカ）']; }
-      else if (/関西|四国/.test(q)) { gr = '関西・四国'; gSpots = ['大阪（たこ焼き・串カツ・食い倒れ）', '京都（懐石・湯豆腐・抹茶スイーツ）', '香川（讃岐うどん・骨付き鳥）']; }
-      else if (/九州|沖縄/.test(q)) { gr = '九州・沖縄'; gSpots = ['福岡（博多ラーメン・もつ鍋・屋台）', '宮崎（チキン南蛮・地鶏炭火焼）', '鹿児島（黒豚・さつま揚げ）', '沖縄（沖縄そば・タコライス）']; }
-      SESSION.chatState = 'idle';
-      if (gr) {
-        return { text: '**' + gr + '**のグルメですね🍜\n\nおすすめはこちら！\n\n' + gSpots.map(function(s, i) { return (i+1) + '. ' + s; }).join('\n') + '\n\n25品すべてグルメ一覧ページで紹介しています！', buttons: ['グルメ一覧を見る|' + R() + 'pages/specialties.html', '都道府県から探す|' + R() + 'pages/prefectures.html'] };
+      if (/北海道|東北/.test(q)) SESSION.slots._gRegion = '北海道・東北';
+      else if (/関東|中部/.test(q)) SESSION.slots._gRegion = '関東・中部';
+      else if (/関西|四国/.test(q)) SESSION.slots._gRegion = '関西・四国';
+      else if (/九州|沖縄/.test(q)) SESSION.slots._gRegion = '九州・沖縄';
+      SESSION.chatState = 'gourmet_type';
+      return {
+        text: '**' + (SESSION.slots._gRegion || 'そのエリア') + '**ですね🍜\n\nどんなジャンルが気になりますか？',
+        buttons: ['海鮮・魚介', '麺料理（ラーメン・うどん・そば）', '肉料理（和牛・焼き肉・鍋）', '郷土料理・B級グルメ']
+      };
+    }
+
+    if (SESSION.chatState === 'gourmet_type') {
+      var reg = SESSION.slots._gRegion || '';
+      var type = '';
+      var gFinalSpots = [];
+      if (/海鮮|魚介/.test(q)) {
+        type = '海鮮・魚介';
+        if (/北海道|東北/.test(reg)) gFinalSpots = ['北海道・小樽や函館の海鮮丼（ウニ・イクラ・ホタテ）', '宮城・松島の牡蠣（日本三景と合わせて）', '富山・白エビの刺身や丼（富山湾の宝石と呼ばれる）'];
+        else if (/関東|中部/.test(reg)) gFinalSpots = ['富山・白エビ（富山湾の宝石）とブリしゃぶ', '石川・金沢近江町市場ののど黒・香箱ガニ', '三重・的矢カキと伊勢えびの産地'];
+        else if (/関西|四国/.test(reg)) gFinalSpots = ['兵庫・城崎の松葉ガニ（冬）と明石のタコ', '高知・かつおのたたき（わら焼き）', '愛媛・宇和島の鯛めし（ぶっかけ＆炊き込みの2スタイル）'];
+        else gFinalSpots = ['福岡・長浜の新鮮な海産物と唐泊えびす（博多区）', '長崎・対馬のアナゴ・壱岐のイカ', '沖縄・石垣島の地元鮮魚（マグロが安い）'];
+      } else if (/麺|ラーメン|うどん|そば/.test(q)) {
+        type = '麺料理';
+        if (/北海道|東北/.test(reg)) gFinalSpots = ['札幌・味噌ラーメン（一幻・すすきの屋台も）', '函館・塩ラーメン（あっさりスープが絶品）', '盛岡・冷麺（じゃじゃ麺との「じゃじゃ麺セット」も）'];
+        else if (/関東|中部/.test(reg)) gFinalSpots = ['長野・戸隠そば（信州の名水と蕎麦の聖地）', '富山・富山ブラックラーメン（醤油+白ネギの独特スタイル）', '愛知・名古屋の味噌煮込みうどん（山本屋が老舗）'];
+        else if (/関西|四国/.test(reg)) gFinalSpots = ['香川・讃岐うどん（はしごうどんで1日3〜5軒が地元流）', '京都・にしん蕎麦（出汁が別格）', '兵庫・神戸のそば・播州ラーメン（甘いスープが特徴）'];
+        else gFinalSpots = ['福岡・博多ラーメン（中洲屋台で深夜に食べるのが最高）', '長崎・ちゃんぽん（皿うどんとの食べ比べがおすすめ）', '鹿児島・鹿児島ラーメン（豚骨+甘めのタレ）'];
+      } else if (/肉|和牛|焼き肉|鍋/.test(q)) {
+        type = '肉料理';
+        if (/北海道|東北/.test(reg)) gFinalSpots = ['北海道・ジンギスカン（サッポロビール園か地元の羊肉店）', '宮城・仙台牛タン（厚切り×炭火×麦飯セット）', '秋田・比内地鶏（きりたんぽ鍋の主役）'];
+        else if (/関東|中部/.test(reg)) gFinalSpots = ['三重・松阪牛（日本三大和牛のひとつ。コロッケから本格すき焼きまで）', '名古屋・手羽先唐揚げ（風来坊・世界の山ちゃん）', '長野・馬刺し（ユッケ風・赤身・コウネが三種の神器）'];
+        else if (/関西|四国/.test(reg)) gFinalSpots = ['兵庫・神戸牛（日本三大和牛のひとつ。ランチ鉄板焼きで7,000円〜）', '滋賀・近江牛（まろやかな脂が特徴。琵琶湖周辺）', '高知・土佐あかうし（レアな幻の和牛）'];
+        else gFinalSpots = ['鹿児島・黒豚しゃぶしゃぶ（バークシャー種。甘みが強い）', '宮崎・宮崎牛と地鶏炭火焼（同じ県でW和牛体験）', '熊本・あか牛（阿蘇の草原育ち、くせのない赤身）'];
+      } else {
+        type = '郷土料理';
+        if (/北海道|東北/.test(reg)) gFinalSpots = ['北海道・スープカレー（札幌で必食。具だくさんで満足度高）', '秋田・きりたんぽ鍋（比内地鶏+きりたんぽ+セリが三位一体）', '山形・芋煮（里芋+牛肉+醤油。河原での野外芋煮が本場）'];
+        else if (/関東|中部/.test(reg)) gFinalSpots = ['愛知・名古屋めし（ひつまぶし+味噌カツ+あんかけスパのフルコース）', '岐阜・飛騨牛の朴葉味噌焼き（石の上で焼く独特スタイル）', '山梨・ほうとう（かぼちゃ入り太麺味噌鍋。ほうとう不動が有名）'];
+        else if (/関西|四国/.test(reg)) gFinalSpots = ['大阪・お好み焼き×たこ焼き（広島風との食べ比べも楽しい）', '奈良・柿の葉寿司（吉野に行くなら必食の保存食文化）', '高知・皿鉢料理（宴会の席に豪快に盛られる土佐の食文化）'];
+        else gFinalSpots = ['福岡・博多もつ鍋（コラーゲンたっぷり。〆はちゃんぽん麺）', '宮崎・チキン南蛮（発祥の店「おぐら」が本店）', '沖縄・ゴーヤーチャンプルー（家庭料理を那覇の食堂で）'];
       }
-      SESSION.intent = 'gourmet';
+      SESSION.chatState = 'idle';
+      return {
+        text: '**' + (reg || '') + '**の**' + type + '**ですね🍴\n\n特におすすめの行き先はこちら！\n\n' + gFinalSpots.map(function(s, i) { return (i+1) + '. ' + s; }).join('\n') + '\n\n25品すべてグルメ一覧ページで紹介しています！',
+        buttons: ['グルメ一覧を見る|' + R() + 'pages/specialties.html', '都道府県から探す|' + R() + 'pages/prefectures.html', '↩ 別の旅を相談する']
+      };
     }
 
     if (SESSION.chatState === 'scenic_season') {
@@ -1391,7 +1525,7 @@ var NoaChat = (function() {
       else if (/名古屋|東海/.test(q)) SESSION.slots.origin = '名古屋';
       else if (/福岡|九州/.test(q)) SESSION.slots.origin = '福岡';
       SESSION.chatState = 'idle';
-      SESSION.intent = 'couple';
+      return genCoupleFinal(SESSION.slots);
     }
 
     if (SESSION.chatState === 'solo_purpose') {
@@ -1405,11 +1539,29 @@ var NoaChat = (function() {
     }
 
     if (SESSION.chatState === 'nodecide_who') {
-      if (/一人|ひとり|ソロ/.test(q)) { SESSION.slots.who = 'solo'; SESSION.intent = 'solo'; }
-      else if (/カップル|二人|夫婦/.test(q)) { SESSION.slots.who = 'couple'; SESSION.intent = 'couple'; }
-      else if (/家族|子連れ|子供|ファミリー/.test(q)) { SESSION.slots.who = 'family'; SESSION.intent = 'family'; }
-      else if (/友達|友人|グループ/.test(q)) { SESSION.slots.who = 'friends'; SESSION.intent = 'nodecide'; }
+      if (/一人|ひとり|ソロ/.test(q)) SESSION.slots.who = 'solo';
+      else if (/カップル|二人|夫婦/.test(q)) SESSION.slots.who = 'couple';
+      else if (/家族|子連れ|子供|ファミリー/.test(q)) SESSION.slots.who = 'family';
+      else if (/友達|友人|グループ/.test(q)) SESSION.slots.who = 'friends';
+      SESSION.chatState = 'nodecide_season';
+      var whoStr = { solo: '一人旅', couple: 'カップル旅行', family: '家族旅行', friends: '友達旅行' }[SESSION.slots.who] || '旅行';
+      return {
+        text: '**' + whoStr + '**ですね！\n\nいつ頃行く予定ですか？',
+        buttons: ['春（3〜5月）', '夏（6〜8月）', '秋（9〜11月）', '冬（12〜2月）', 'まだ決まってない']
+      };
+    }
+
+    if (SESSION.chatState === 'nodecide_season') {
+      if (/春|3月|4月|5月/.test(q)) SESSION.slots.season = 'spring';
+      else if (/夏|6月|7月|8月/.test(q)) SESSION.slots.season = 'summer';
+      else if (/秋|9月|10月|11月/.test(q)) SESSION.slots.season = 'autumn';
+      else if (/冬|12月|1月|2月/.test(q)) SESSION.slots.season = 'winter';
+      var who = SESSION.slots.who;
       SESSION.chatState = 'idle';
+      if (who === 'couple') return genCoupleFinal(SESSION.slots);
+      if (who === 'solo') { SESSION.intent = 'solo'; }
+      else if (who === 'family') { SESSION.intent = 'family'; }
+      else { SESSION.intent = 'nodecide'; }
     }
 
     // スロット待ち状態の処理（ボタン選択への返答）
