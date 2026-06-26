@@ -4,7 +4,7 @@
 =================================================== */
 
 /* ---------- GAS エンドポイント（デプロイ後に更新） ---------- */
-var NOA_UNANSWERED_ENDPOINT = 'ここにGASのWebアプリURLを入れる';
+var NOA_UNANSWERED_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxh6m-krRDCqFRIhcjmIGst_JEiMlXC-wlSieY2wLNavoJCTsP1BUg11W4mideOMzrsew/exec';
 
 /* ---------- ユーティリティ ---------- */
 function getNoaSessionId() {
