@@ -1693,6 +1693,10 @@ window.PREFECTURES_DATA = {
     gourmet:[{name:'あんこう鍋',desc:'冬の珍味。脂肪分が多くコクのある高級魚のあんこう',emoji:'🐟'},{name:'納豆',desc:'水戸は日本屈指の納豆産地。本場の風味は格別',emoji:'🫘'}],
     specialties:[{name:'西陣織（結城紬）',desc:'ユネスコ無形文化遺産の絹織物',emoji:'🎋'}],
     seasonal:{spring:'2〜3月：偕楽園梅まつり',summer:'7〜8月：ひたち海浜公園のひまわり',autumn:'10月：コキア（秋の紅葉）',winter:'12月：袋田の滝の氷結'},
+    seasonalImages:{
+      spring:'../images/japan/ibaraki/ibaraki-nemophila-02.jpg',
+      autumn:'../images/japan/ibaraki/ibaraki-hitachi-01.jpg',
+    },
     hiddenGems: [
       { name: 'ひたち海浜公園・ネモフィラ（春）', desc: '4〜5月に450万本の青いネモフィラが丘を覆う絶景。コキアの紅葉（10月）も同様に圧巻', type: '自然', emoji: '🌸' },
       { name: '神磯の鳥居（大洗磯前神社）', desc: '太平洋に突き出た岩場に立つ赤い鳥居。初日の出スポットとしても有名', type: '絶景', emoji: '⛩️' },
