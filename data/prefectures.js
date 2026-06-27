@@ -1504,14 +1504,19 @@ window.PREFECTURES_DATA = {
     suitableFor:['歴史好き','一人旅','温泉好き'],
     notIdealFor:['アクセス重視'],
     highlights:[
-      {name:'角館（武家屋敷）',type:'文化',desc:'黒塀と枝垂れ桜が美しい武家屋敷通り。東北の小京都',bestSeason:'春',emoji:'🌸'},
-      {name:'田沢湖',type:'自然',desc:'日本最深の湖（423m）。たつこ姫伝説と宝石のような青さ',bestSeason:'夏',emoji:'💎'},
+      {name:'角館（武家屋敷）',type:'文化',desc:'黒塀と枝垂れ桜が美しい武家屋敷通り。東北の小京都',bestSeason:'春',emoji:'🌸',img:'../images/japan/akita/akita-kakunodate-01.jpg'},
+      {name:'田沢湖',type:'自然',desc:'日本最深の湖（423m）。たつこ姫伝説と宝石のような青さ',bestSeason:'夏',emoji:'💎',img:'../images/japan/akita/akita-tazawa-lake-01.jpg'},
       {name:'男鹿半島・なまはげ',type:'文化',desc:'ユネスコ無形文化遺産。なまはげ館で体験も可能',bestSeason:'冬',emoji:'👹'},
     ],
     onsens:[{name:'乳頭温泉郷',desc:'鶴の湯・黒湯など7つの秘湯が集まる。乳白色の湯が有名',suits:['温泉マニア','一人旅']},{name:'玉川温泉',desc:'日本一の強酸性（pH1.05）の療養泉',suits:['温泉マニア']}],
     gourmet:[{name:'きりたんぽ鍋',desc:'焼きたんぽ・比内地鶏・セリの鍋。秋冬の郷土料理',emoji:'🍲'},{name:'稲庭うどん',desc:'細くしなやかな乾麺。日本三大うどんの一つ',emoji:'🍜'}],
     specialties:[{name:'秋田杉工芸品',desc:'曲げわっぱ弁当箱が有名。軽くて丈夫で美しい',emoji:'🎋'}],
     seasonal:{spring:'4月末：角館の桜（枝垂れ桜）',summer:'8月3〜6日：秋田竿燈まつり（東北三大祭）',autumn:'10月：紅葉と乳頭温泉',winter:'2月：なまはげ柴灯まつり（真山神社）・12月31日なまはげ訪問'},
+    seasonalImages:{
+      spring:'../images/japan/akita/akita-spring-sakura-01.jpg',
+      autumn:'../images/japan/iwate/iwate-autumn-temple-01.jpg',
+      winter:'../images/japan/akita/akita-nyutou-onsen-01.jpg',
+    },
     access:{fromTokyo:'新幹線（こまち）で約4時間（秋田）',fromOsaka:'新幹線乗り継ぎで約5時間',tip:'乳頭温泉は田沢湖駅からバス。冬季は要確認'},
     booking:{recommended:['じゃらん','楽天トラベル'],tip:'乳頭温泉の鶴の湯は数ヶ月前に満室になることも'},
     hiddenGems: [
