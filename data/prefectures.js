@@ -747,11 +747,11 @@ window.PREFECTURES_DATA = {
       { type: 'アクセス重視', reason: '東京から3時間程度かかるが、最近は新幹線で便利になった' },
     ],
     highlights: [
-      { name: '奥入瀬渓流', type: '自然', desc: '14kmの遊歩道と滝・苔の絶景。秋の紅葉は格別', bestSeason: '秋', emoji: '🌿' },
-      { name: '十和田湖', type: '自然', desc: '火山活動で生まれた二重カルデラ湖。コバルトブルーの湖面', bestSeason: '夏・秋', emoji: '🏔️' },
-      { name: '弘前城', type: '文化', desc: '日本最古級の現存天守と日本一の桜（4月下旬）', bestSeason: '春', emoji: '🌸' },
+      { name: '奥入瀬渓流', type: '自然', desc: '14kmの遊歩道と滝・苔の絶景。秋の紅葉は格別', bestSeason: '秋', emoji: '🌿', img: '../images/japan/aomori/aomori-oirase-01.jpg' },
+      { name: '十和田湖', type: '自然', desc: '火山活動で生まれた二重カルデラ湖。コバルトブルーの湖面', bestSeason: '夏・秋', emoji: '🏔️', img: '../images/japan/aomori/aomori-towada-lake-01.jpg' },
+      { name: '弘前城', type: '文化', desc: '日本最古級の現存天守と日本一の桜（4月下旬）', bestSeason: '春', emoji: '🌸', img: '../images/japan/aomori/aomori-hirosaki-castle-01.jpg' },
       { name: '三内丸山遺跡', type: '世界遺産', desc: '縄文時代の大規模集落跡。2021年世界遺産登録', bestSeason: '通年', emoji: '🏺' },
-      { name: '青森ねぶた祭', type: 'イベント', desc: '8月2〜7日。巨大な山車と跳人（はねと）の熱狂', bestSeason: '夏', emoji: '🎏' },
+      { name: '青森ねぶた祭', type: 'イベント', desc: '8月2〜7日。巨大な山車と跳人（はねと）の熱狂', bestSeason: '夏', emoji: '🎏', img: '../images/japan/aomori/aomori-nebuta-01.jpg' },
       { name: '恐山', type: 'パワースポット', desc: '日本三大霊場の一つ。宇曽利山湖と硫黄の景観', bestSeason: '夏', emoji: '⛰️' },
     ],
     onsens: [
@@ -759,10 +759,10 @@ window.PREFECTURES_DATA = {
       { name: '浅虫温泉', desc: '陸奥湾を一望できる温泉。「津軽の奥座敷」と呼ばれる', suits: ['カップル', '家族'] },
     ],
     gourmet: [
-      { name: 'りんご', desc: '全国生産量の約60%。ふじ・ジョナゴールド・シナノゴールド', emoji: '🍎' },
+      { name: 'りんご', desc: '全国生産量の約60%。ふじ・ジョナゴールド・シナノゴールド', emoji: '🍎', img: '../images/japan/aomori/aomori-apple-01.jpg' },
       { name: 'せんべい汁', desc: '南部地方の郷土料理。鶏ガラスープと南部せんべい', emoji: '🍲' },
-      { name: 'ホタテ（陸奥湾産）', desc: '陸奥湾で育った肉厚のホタテ。刺身・バター焼きが絶品', emoji: '🐚' },
-      { name: 'イカ料理（津軽海峡）', desc: 'ヤリイカ・スルメイカ。下北半島が特に有名', emoji: '🦑' },
+      { name: 'ホタテ（陸奥湾産）', desc: '陸奥湾で育った肉厚のホタテ。刺身・バター焼きが絶品', emoji: '🐚', img: '../images/japan/aomori/aomori-hotate-01.jpg' },
+      { name: 'イカ料理（津軽海峡）', desc: 'ヤリイカ・スルメイカ。下北半島が特に有名', emoji: '🦑', img: '../images/japan/aomori/aomori-ika-01.jpg' },
     ],
     specialties: [
       { name: 'ねぶた漬け', desc: 'スルメ・数の子・昆布の醤油漬け。青森土産の定番', emoji: '🎁' },
@@ -773,6 +773,12 @@ window.PREFECTURES_DATA = {
       summer: '8月：青森ねぶた祭・弘前ねぷた祭',
       autumn: '10月：奥入瀬渓流の紅葉（10月中旬〜下旬）',
       winter: '2月：十和田湖冬物語・雪見温泉',
+    },
+    seasonalImages: {
+      spring: '../images/japan/aomori/aomori-hirosaki-castle-01.jpg',
+      summer: '../images/japan/aomori/aomori-nebuta-01.jpg',
+      autumn: '../images/japan/aomori/aomori-towada-lake-01.jpg',
+      winter: '../images/japan/aomori/aomori-winter-01.jpg',
     },
     hiddenGems: [
       { name: '白神山地（十二湖）', desc: '世界遺産の原生林の中に点在する33の湖沼群。「青池」の透明な青色が神秘的', type: '秘境', emoji: '🏞️' },
