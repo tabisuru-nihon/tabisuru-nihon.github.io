@@ -935,16 +935,16 @@ window.PREFECTURES_DATA = {
     highlights: [
       { name: '鎌倉大仏・高徳院', type: '文化', desc: '高さ11.3mの国宝銅像大仏。鎌倉の象徴', bestSeason: '通年', emoji: '🪷' },
       { name: '鶴岡八幡宮', type: '神社', desc: '鎌倉の総鎮守。源頼朝ゆかりの社', bestSeason: '通年', emoji: '⛩️' },
-      { name: '横浜中華街', type: 'グルメ', desc: '日本最大の中華街。本格中国料理と食べ歩き', bestSeason: '通年', emoji: '🥟' },
-      { name: '箱根（温泉・富士山）', type: '温泉・絶景', desc: '様々な泉質・美術館・富士山ビューが揃う', bestSeason: '春・秋', emoji: '♨️' },
-      { name: '江ノ島', type: '絶景', desc: '湘南の海に浮かぶ島。江嶋神社と岩屋洞窟', bestSeason: '夏・秋', emoji: '🏝️' },
+      { name: '横浜中華街', type: 'グルメ', desc: '日本最大の中華街。本格中国料理と食べ歩き', bestSeason: '通年', emoji: '🥟', img: '../images/japan/kanagawa/kanagawa-yokohama-chinatown-01.jpg' },
+      { name: '箱根（温泉・富士山）', type: '温泉・絶景', desc: '様々な泉質・美術館・富士山ビューが揃う', bestSeason: '春・秋', emoji: '♨️', img: '../images/japan/kanagawa/kanagawa-hakone-ashinoko-01.jpg' },
+      { name: '江ノ島', type: '絶景', desc: '湘南の海に浮かぶ島。江嶋神社と岩屋洞窟', bestSeason: '夏・秋', emoji: '🏝️', img: '../images/japan/kanagawa/kanagawa-enoshima-01.jpg' },
     ],
     onsens: [
       { name: '箱根温泉郷', desc: '強羅・湯本・宮ノ下など多様な温泉エリアを持つ', suits: ['カップル', '家族', '記念日'] },
     ],
     gourmet: [
       { name: '崎陽軒シウマイ', desc: '横浜駅で必ず買う人気の冷凍しゅうまい', emoji: '🥟' },
-      { name: 'マグロ丼（三崎港）', desc: '三崎港のマグロは肉厚で新鮮。中トロが絶品', emoji: '🐟' },
+      { name: 'マグロ丼（三崎港）', desc: '三崎港のマグロは肉厚で新鮮。中トロが絶品', emoji: '🐟', img: '../images/japan/kanagawa/kanagawa-kamakura-01.jpg' },
       { name: '湘南しらす丼', desc: '江ノ島・鎌倉で定番。釜揚げしらすをどっさり', emoji: '🍚' },
       { name: '箱根の黒卵', desc: '大涌谷の温泉で茹でた黒い卵。1個食べると7年長生き（伝説）', emoji: '🥚' },
     ],
@@ -956,6 +956,10 @@ window.PREFECTURES_DATA = {
       summer: '7〜8月：江ノ島・湘南の海水浴',
       autumn: '11〜12月：鎌倉の紅葉（円覚寺・東慶寺）',
       winter: '1〜2月：箱根の雪見風呂・鎌倉の寒紅梅',
+    },
+    seasonalImages: {
+      spring: '../images/japan/kanagawa/kanagawa-hakone-yumoto-01.jpg',
+      winter: '../images/japan/kanagawa/kanagawa-hakone-01.jpg',
     },
     hiddenGems: [
       { name: '銭洗弁財天（鎌倉）', desc: '洞窟の中の泉でお金を洗うと増えるとされる縁起スポット。源頼朝ゆかりの秘境感ある神社', type: '文化', emoji: '💰' },
