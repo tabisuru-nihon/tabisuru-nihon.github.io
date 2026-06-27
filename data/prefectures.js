@@ -134,12 +134,12 @@ window.PREFECTURES_DATA = {
       { type: '自然の中でゆっくりしたい人', reason: '近郊の日光・奥多摩・鎌倉への1泊旅がおすすめ' },
     ],
     highlights: [
-      { name: '浅草・浅草寺', type: '文化', desc: '東京最古の寺院と仲見世通りの下町', bestSeason: '通年', emoji: '⛩️' },
+      { name: '浅草・浅草寺', type: '文化', desc: '東京最古の寺院と仲見世通りの下町', bestSeason: '通年', emoji: '⛩️', img: '../images/japan/tokyo/tokyo-asakusa-sensoji-01.jpg' },
       { name: '東京スカイツリー', type: '絶景', desc: '高さ634m。展望台から東京全域が一望', bestSeason: '通年', emoji: '🗼' },
-      { name: '新宿・渋谷', type: '繁華街', desc: '世界最大の繁華街。ネオンと人混みを楽しむ', bestSeason: '通年', emoji: '🌃' },
+      { name: '新宿・渋谷', type: '繁華街', desc: '世界最大の繁華街。ネオンと人混みを楽しむ', bestSeason: '通年', emoji: '🌃', img: '../images/japan/tokyo/tokyo-shinjuku-neon-01.jpg' },
       { name: '上野公園', type: '文化・自然', desc: '博物館・動物園・花見の名所', bestSeason: '春', emoji: '🌸' },
       { name: '谷根千（谷中・根津・千駄木）', type: '穴場', desc: '昭和の路地裏が残る下町の散歩コース', bestSeason: '通年', emoji: '🏘️' },
-      { name: '秋葉原', type: 'サブカル', desc: '電気・アニメ・サブカルの世界的聖地', bestSeason: '通年', emoji: '🎮' },
+      { name: '秋葉原', type: 'サブカル', desc: '電気・アニメ・サブカルの世界的聖地', bestSeason: '通年', emoji: '🎮', img: '../images/japan/tokyo/tokyo-akihabara-01.jpg' },
     ],
     onsens: [
       { name: '箱根温泉（神奈川）', desc: '新宿から90分。富士山眺望の旅館が並ぶ', suits: ['カップル', '記念日'] },
@@ -147,7 +147,7 @@ window.PREFECTURES_DATA = {
       { name: '草津温泉（群馬）', desc: '日本三名泉。湯畑と時間湯が有名', suits: ['温泉マニア', '大人旅'] },
     ],
     gourmet: [
-      { name: '江戸前寿司', desc: '江戸時代発祥。東京が本場', emoji: '🍣' },
+      { name: '江戸前寿司', desc: '江戸時代発祥。東京が本場', emoji: '🍣', img: '../images/japan/tokyo/tokyo-sushi-01.jpg' },
       { name: '東京ラーメン（醤油）', desc: 'あっさり醤油スープが元祖スタイル', emoji: '🍜' },
       { name: 'もんじゃ焼き', desc: '月島が発祥の下町B級グルメ', emoji: '🥞' },
       { name: '深川めし', desc: 'アサリの炊き込みご飯。江戸の味', emoji: '🍱' },
@@ -162,6 +162,10 @@ window.PREFECTURES_DATA = {
       summer: '7〜8月：隅田川花火大会・浅草三社祭。暑いが祭り文化が楽しい',
       autumn: '10〜11月：明治神宮外苑のイチョウ並木。東京の紅葉スポット',
       winter: '12〜1月：六本木ヒルズ・丸の内などのイルミネーションが華やか',
+    },
+    seasonalImages: {
+      spring: '../images/japan/tokyo/tokyo-meguro-sakura-01.jpg',
+      summer: '../images/japan/tokyo/tokyo-shibuya-crossing-03.jpg',
     },
     hiddenGems: [
       { name: '谷中銀座・谷中霊園', desc: '昭和の商店街と都内最大の霊園が隣接。猫が多く散策が楽しい下町の原風景', type: '文化', emoji: '🐱' },
