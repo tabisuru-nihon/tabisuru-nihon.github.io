@@ -2492,7 +2492,7 @@ window.PREFECTURES_DATA = {
     suitableFor:['グルメ好き','友人グループ','アート好き'],
     notIdealFor:['自然アドベンチャー派'],
     highlights:[
-      {name:'直島',type:'文化',desc:'草間彌生・安藤忠雄などの現代アートが点在する島',bestSeason:'通年',emoji:'🎨'},
+      {name:'直島',type:'文化',desc:'草間彌生・安藤忠雄などの現代アートが点在する島',bestSeason:'通年',emoji:'🎨',img:'../images/japan/kagawa/kagawa-naoshima-01.jpg'},
       {name:'金刀比羅宮',type:'文化',desc:'785段の石段を登った先にある「こんぴらさん」',bestSeason:'春',emoji:'⛩️'},
       {name:'小豆島',type:'自然',desc:'オリーブ・そうめん・24の瞳で知られる絵本のような島',bestSeason:'秋',emoji:'🫒'},
     ],
@@ -2500,6 +2500,9 @@ window.PREFECTURES_DATA = {
     gourmet:[{name:'讃岐うどん',desc:'コシの強さと出汁の澄んだ旨みが特徴。製麺所で直接食べる体験も',emoji:'🍜'},{name:'骨付鳥',desc:'丸亀のスパイシーな鶏もも肉の焼き料理',emoji:'🍗'}],
     specialties:[{name:'うちわ（丸亀）',desc:'全国生産の約9割を占める讃岐うちわ',emoji:'🪭'}],
     seasonal:{spring:'4月：金刀比羅宮の桜',summer:'8月：直島・豊島・女木島のアート鑑賞',autumn:'10〜11月：小豆島のオリーブ収穫祭',winter:'濃霧の朝うどん'},
+    seasonalImages:{
+      summer:'../images/japan/kagawa/kagawa-naoshima-01.jpg',
+    },
     hiddenGems: [
       { name: '製麺所うどん（セルフ製麺所）', desc: '高松市内の地元民が通うセルフの製麺所でうどんを注文・トッピング・会計を自己流に。1杯200〜350円の格安体験', type: 'グルメ', emoji: '🍜' },
       { name: '豊島・豊島美術館', desc: '安藤忠雄設計の建物の中に棚田の湧水がアート作品として流れる。直島とは違う自然との融合が美しい', type: '文化', emoji: '🎨' },
