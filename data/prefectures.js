@@ -1847,9 +1847,13 @@ window.PREFECTURES_DATA = {
       {name:'越後湯沢',type:'スキー',desc:'「雪国」川端康成の舞台。日本有数のスキー場群',bestSeason:'冬',emoji:'⛷️'},
     ],
     onsens:[{name:'月岡温泉',desc:'エメラルドグリーンの硫黄泉が名物。美肌の湯として有名',suits:['カップル','女性']},{name:'岩室温泉',desc:'弥彦神社参拝と合わせて訪れる老舗温泉郷',suits:['歴史好き']}],
-    gourmet:[{name:'へぎそば',desc:'フノリで練った新潟独特のそば。のどごしが良い',emoji:'🍜'},{name:'のどぐろ料理',desc:'脂の乗ったノドグロは新潟・日本海の最高級魚',emoji:'🐟'},{name:'日本酒',desc:'久保田・八海山・越乃寒梅など全国屈指の銘酒産地',emoji:'🍶'}],
+    gourmet:[{name:'へぎそば',desc:'フノリで練った新潟独特のそば。のどごしが良い',emoji:'🍜',img:'../images/japan/niigata/niigata-soba-01.jpg'},{name:'のどぐろ料理',desc:'脂の乗ったノドグロは新潟・日本海の最高級魚',emoji:'🐟'},{name:'日本酒',desc:'久保田・八海山・越乃寒梅など全国屈指の銘酒産地',emoji:'🍶'}],
     specialties:[{name:'燕三条のステンレス製品',desc:'食器・キッチン用品。産地見学ツアーも人気',emoji:'🍴'}],
     seasonal:{spring:'4月：弥彦公園の桜',summer:'8月：新潟まつり・佐渡おけさ',autumn:'10月：清津峡の紅葉',winter:'12〜3月：スキー（越後湯沢・苗場）'},
+    seasonalImages:{
+      summer:'../images/japan/niigata/niigata-tanada-01.jpg',
+      winter:'../images/japan/niigata/niigata-shrine-01.jpg',
+    },
     hiddenGems: [
       { name: '清津峡・パノラマステーション', desc: 'SNSで大人気の水鏡スポット。トンネルの先に水盤があり、渓谷が足元に映り込む幻想的な絶景', type: '絶景', emoji: '🌊' },
       { name: '佐渡島・たらい舟', desc: '佐渡の伝統的な丸い舟に乗る体験。海女の漁法を体験しながら透明な海を漂う独特のアクティビティ', type: '体験', emoji: '⛵' },
