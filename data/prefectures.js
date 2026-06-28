@@ -323,7 +323,7 @@ window.PREFECTURES_DATA = {
       { type: '静かにゆっくりしたい人', reason: '大阪はとにかく賑やか。温泉でのんびりなら有馬へ' },
     ],
     highlights: [
-      { name: '道頓堀', type: '繁華街', desc: 'グリコサインと派手な看板。大阪の象徴的な夜景', bestSeason: '通年', emoji: '🌃' },
+      { name: '道頓堀', type: '繁華街', desc: 'グリコサインと派手な看板。大阪の象徴的な夜景', bestSeason: '通年', emoji: '🌃', img: '../images/japan/osaka/osaka-dotonbori-01.jpg' },
       { name: '大阪城', type: '歴史', desc: '豊臣秀吉が建てた天下の城。桜の名所', bestSeason: '春', emoji: '🏯' },
       { name: 'USJ', type: 'テーマパーク', desc: 'ユニバーサル・スタジオ。年間1500万人が訪れる', bestSeason: '通年', emoji: '🎡' },
       { name: '新世界・通天閣', type: 'レトロ', desc: '昭和レトロと串カツの聖地', bestSeason: '通年', emoji: '🗼' },
@@ -335,7 +335,7 @@ window.PREFECTURES_DATA = {
       { name: '白浜温泉（和歌山）', desc: '白良浜の海水浴と温泉がセット', suits: ['家族', 'カップル'] },
     ],
     gourmet: [
-      { name: 'たこ焼き', desc: '大阪発祥のソウルフード。外カリ中トロが本場', emoji: '🐙' },
+      { name: 'たこ焼き', desc: '大阪発祥のソウルフード。外カリ中トロが本場', emoji: '🐙', img: '../images/japan/osaka/osaka-takoyaki-01.jpg' },
       { name: 'お好み焼き', desc: '具材を混ぜる関西流。広島風とは別物', emoji: '🥞' },
       { name: '串カツ', desc: '二度漬け禁止！新世界発祥の揚げ物', emoji: '🍢' },
       { name: '551の豚まん', desc: '大阪土産No.1。行列必至の肉まん', emoji: '🥮' },
@@ -351,6 +351,9 @@ window.PREFECTURES_DATA = {
       summer: '7〜8月：天神祭（日本三大祭のひとつ）・PL花火大会',
       autumn: '10〜11月：万博記念公園のコスモス・大阪城公園の紅葉',
       winter: '12月：御堂筋のイルミネーション・USJのクリスマスイベント',
+    },
+    seasonalImages: {
+      summer: '../images/japan/osaka/osaka-dotonbori-01.jpg',
     },
     hiddenGems: [
       { name: '中崎町（梅田北）', desc: '大正〜昭和の長屋をリノベしたカフェ・雑貨・古着屋が密集。地元アーティストが集まる梅田の隠れ里', type: '文化', emoji: '🎨' },
