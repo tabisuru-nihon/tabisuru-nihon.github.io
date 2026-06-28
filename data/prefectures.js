@@ -1176,8 +1176,8 @@ window.PREFECTURES_DATA = {
       { type: '夜の賑わいを楽しみたい', reason: '奈良市内は繁華街が少ない。大阪・京都が近いのでそちらも検討を' },
     ],
     highlights: [
-      { name: '奈良公園と鹿', type: '自然・体験', desc: '約1000頭の野生の鹿が自由に歩く世界的な絶景', bestSeason: '通年', emoji: '🦌' },
-      { name: '東大寺・大仏', type: '世界遺産', desc: '高さ15mの盧舎那仏（奈良の大仏）は圧巻の大きさ', bestSeason: '通年', emoji: '🪷' },
+      { name: '奈良公園と鹿', type: '自然・体験', desc: '約1000頭の野生の鹿が自由に歩く世界的な絶景', bestSeason: '通年', emoji: '🦌', img: '../images/japan/nara/nara-deer-01.jpg' },
+      { name: '東大寺・大仏', type: '世界遺産', desc: '高さ15mの盧舎那仏（奈良の大仏）は圧巻の大きさ', bestSeason: '通年', emoji: '🪷', img: '../images/japan/nara/nara-todaiji-01.jpg' },
       { name: '春日大社', type: '世界遺産', desc: '768年創建。国宝・重文の社殿と3000基以上の燈籠', bestSeason: '通年', emoji: '⛩️' },
       { name: '法隆寺', type: '世界遺産', desc: '607年創建。世界最古の木造建築。聖徳太子ゆかり', bestSeason: '通年', emoji: '🏛️' },
       { name: '吉野山', type: '絶景・自然', desc: '3万本の桜が山全体を染める日本最大級の桜の名所', bestSeason: '春', emoji: '🌸' },
@@ -1201,6 +1201,10 @@ window.PREFECTURES_DATA = {
       summer: '8月15日：東大寺万灯供養会（大仏のライトアップ）',
       autumn: '11月〜12月初旬：春日大社・東大寺の紅葉',
       winter: '2月：若草山山焼き（奈良の風物詩）',
+    },
+    seasonalImages: {
+      autumn: '../images/japan/nara/nara-deer-01.jpg',
+      summer: '../images/japan/nara/nara-todaiji-01.jpg',
     },
     hiddenGems: [
       { name: '室生寺（むろうじ）', desc: '山深い渓谷にたたずむ「女人高野」。五重塔は屋外の五重塔として日本最小。シャクナゲが美しい春に訪れたい', type: '文化', emoji: '🌸' },
