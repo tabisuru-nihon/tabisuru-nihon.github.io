@@ -228,10 +228,10 @@ window.PREFECTURES_DATA = {
       { type: '混雑が苦手な人', reason: '観光シーズンは人出が多い。平日・オフシーズン推奨' },
     ],
     highlights: [
-      { name: '伏見稲荷大社', type: '神社', desc: '千本鳥居が連なる幻想的な稲荷山', bestSeason: '通年（早朝推奨）', emoji: '⛩️' },
+      { name: '伏見稲荷大社', type: '神社', desc: '千本鳥居が連なる幻想的な稲荷山', bestSeason: '通年（早朝推奨）', emoji: '⛩️', img: '../images/japan/kyoto/kyoto-fushimi-01.jpg' },
       { name: '清水寺', type: '寺院', desc: '「清水の舞台から飛び降りる」で有名な舞台と絶景', bestSeason: '春・秋', emoji: '🏯' },
-      { name: '嵐山・竹林の道', type: '自然・観光', desc: '竹林・渡月橋・天龍寺が集まる人気エリア', bestSeason: '秋', emoji: '🎋' },
-      { name: '金閣寺', type: '寺院', desc: '黄金に輝く舎利殿が池に映る絶景', bestSeason: '冬（雪景色）・秋', emoji: '✨' },
+      { name: '嵐山・竹林の道', type: '自然・観光', desc: '竹林・渡月橋・天龍寺が集まる人気エリア', bestSeason: '秋', emoji: '🎋', img: '../images/japan/kyoto/kyoto-arashiyama-01.jpg' },
+      { name: '金閣寺', type: '寺院', desc: '黄金に輝く舎利殿が池に映る絶景', bestSeason: '冬（雪景色）・秋', emoji: '✨', img: '../images/japan/kyoto/kyoto-kinkakuji-01.jpg' },
       { name: '祇園・花見小路', type: '文化', desc: '舞妓さんが歩く江戸情緒の残る花街', bestSeason: '通年', emoji: '💃' },
       { name: '哲学の道', type: '散歩', desc: '疏水沿いの桜並木。哲学者が思索した道', bestSeason: '春', emoji: '🌸' },
     ],
@@ -257,6 +257,11 @@ window.PREFECTURES_DATA = {
       summer: '7〜8月：祇園祭（7月）・大文字送り火（8月）。鴨川の川床料理が夏の風物詩',
       autumn: '11月：東福寺・嵐山・永観堂の紅葉は日本屈指の絶景。1年で最も美しい季節',
       winter: '12〜2月：雪の金閣寺・竜安寺の石庭は幻想的。観光客が少なく穴場シーズン',
+    },
+    seasonalImages: {
+      summer: '../images/japan/kyoto/kyoto-fushimi-01.jpg',
+      autumn: '../images/japan/kyoto/kyoto-arashiyama-01.jpg',
+      winter: '../images/japan/kyoto/kyoto-kinkakuji-01.jpg',
     },
     hiddenGems: [
       { name: '貴船神社（夏の川床）', desc: '鞍馬山の麓にある水の神様の神社。夏の川床料理は京都随一のロマンティックな体験。紅葉シーズンもライトアップが美しい', type: '文化', emoji: '🌊' },
