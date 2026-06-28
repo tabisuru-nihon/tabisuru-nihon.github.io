@@ -414,7 +414,7 @@ window.PREFECTURES_DATA = {
     highlights: [
       { name: '城崎温泉', type: '温泉', desc: '浴衣で歩ける温泉街と7つの外湯めぐりが有名', bestSeason: '冬（松葉ガニ）', emoji: '♨️' },
       { name: '有馬温泉', type: '温泉', desc: '日本三古湯。金泉（赤褐色）と銀泉の2種が楽しめる', bestSeason: '通年', emoji: '🏯' },
-      { name: '姫路城', type: '世界遺産', desc: '白鷺城の愛称を持つ日本一美しいとされる城', bestSeason: '春（桜）', emoji: '🏰' },
+      { name: '姫路城', type: '世界遺産', desc: '白鷺城の愛称を持つ日本一美しいとされる城', bestSeason: '春（桜）', emoji: '🏰', img: '../images/japan/hyogo/hyogo-himeji-01.jpg' },
       { name: '神戸市街', type: '都市', desc: '異人館・南京町・メリケンパークの港町', bestSeason: '通年', emoji: '⛵' },
       { name: '淡路島', type: '自然・食', desc: '玉ねぎ・淡路牛・たこが名産の瀬戸内の島', bestSeason: '春〜秋', emoji: '🌸' },
     ],
@@ -439,6 +439,9 @@ window.PREFECTURES_DATA = {
       summer: '6〜8月：淡路島の海水浴・花畑。城崎近くの竹野海岸も人気',
       autumn: '11〜12月：松葉ガニ解禁！城崎温泉は11月に一気に予約が集まる',
       winter: '1〜3月：有馬温泉の雪景色。松葉ガニを食べながら温泉三昧',
+    },
+    seasonalImages: {
+      spring: '../images/japan/hyogo/hyogo-himeji-01.jpg',
     },
     hiddenGems: [
       { name: '玄武洞（豊岡市）', desc: '160万年前の火山活動が生んだ柱状節理の絶壁。国の天然記念物で、独特の几何学模様が幻想的', type: '自然', emoji: '🪨' },
