@@ -1089,7 +1089,7 @@ window.PREFECTURES_DATA = {
       { type: '自然派', reason: '愛知は都市型観光がメイン。自然なら近隣の飛騨高山や伊勢志摩へ' },
     ],
     highlights: [
-      { name: '名古屋城', type: '文化', desc: '金のシャチホコで有名。江戸時代の大型城郭', bestSeason: '春（桜）', emoji: '🏯' },
+      { name: '名古屋城', type: '文化', desc: '金のシャチホコで有名。江戸時代の大型城郭', bestSeason: '春（桜）', emoji: '🏯', img: '../images/japan/aichi/aichi-nagoya-castle-01.jpg' },
       { name: '熱田神宮', type: '神社', desc: '三種の神器「草薙剣」を祀る格式最高峰の神社', bestSeason: '通年', emoji: '⛩️' },
       { name: '犬山城', type: '文化', desc: '国宝・現存天守。木曽川沿いの天守から川が望める', bestSeason: '春・秋', emoji: '🏯' },
       { name: '明治村（博物館明治村）', type: '歴史', desc: '60棟以上の明治建築が集まる野外博物館', bestSeason: '春・秋', emoji: '🏛️' },
@@ -1114,6 +1114,9 @@ window.PREFECTURES_DATA = {
       summer: '7〜8月：熱田神宮の薪能、各地の花火大会',
       autumn: '10〜11月：明治村の紅葉・犬山城の紅葉',
       winter: '12〜2月：イルミネーション（クリスマス市等）',
+    },
+    seasonalImages: {
+      spring: '../images/japan/aichi/aichi-nagoya-castle-01.jpg',
     },
     hiddenGems: [
       { name: '常滑・やきもの散歩道', desc: '江戸〜大正時代の登窯・煙突・廃窯が続く散歩道。インスタ映えする赤茶色の路地と現役陶芸家の工房が混在', type: '文化', emoji: '🏺' },
