@@ -1790,14 +1790,17 @@ window.PREFECTURES_DATA = {
     suitableFor:['カップル','温泉好き','一人旅'],
     notIdealFor:['都市観光派'],
     highlights:[
-      {name:'草津温泉',type:'温泉',desc:'日本三大名湯の一つ。湯畑と時間湯が有名',bestSeason:'通年',emoji:'♨️'},
+      {name:'草津温泉',type:'温泉',desc:'日本三大名湯の一つ。湯畑と時間湯が有名',bestSeason:'通年',emoji:'♨️',img:'../images/japan/gunma/gunma-kusatsu-yunohata-01.jpg'},
       {name:'尾瀬',type:'自然',desc:'日本最大の高層湿原。水芭蕉の群生地（5〜6月）',bestSeason:'春・夏',emoji:'🌿'},
-      {name:'伊香保温泉',type:'温泉',desc:'石段街が風情ある温泉地。竹久夢二ゆかりの地',bestSeason:'通年',emoji:'🏯'},
+      {name:'伊香保温泉',type:'温泉',desc:'石段街が風情ある温泉地。竹久夢二ゆかりの地',bestSeason:'通年',emoji:'🏯',img:'../images/japan/gunma/gunma-kusatsu-01.jpg'},
     ],
     onsens:[{name:'草津温泉',desc:'pH1.7〜2.1の強酸性泉。殺菌力が高く「病が湯」とも',suits:['温泉マニア','カップル']},{name:'四万温泉',desc:'千と千尋の神隠しのモデルとも言われる湯の宿',suits:['カップル','写真好き']}],
-    gourmet:[{name:'峠の釜めし',desc:'群馬・横川駅の名物駅弁。土釜に入った炊き込みご飯',emoji:'🍱'},{name:'水沢うどん',desc:'伊香保温泉近くのうどんの里。コシが強くのどごし抜群',emoji:'🍜'}],
+    gourmet:[{name:'峠の釜めし',desc:'群馬・横川駅の名物駅弁。土釜に入った炊き込みご飯',emoji:'🍱'},{name:'水沢うどん',desc:'伊香保温泉近くのうどんの里。コシが強くのどごし抜群',emoji:'🍜',img:'../images/japan/gunma/gunma-mizusawa-udon-01.jpg'}],
     specialties:[{name:'こんにゃく',desc:'全国生産量の9割以上が群馬産',emoji:'🫘'}],
     seasonal:{spring:'5〜6月：尾瀬の水芭蕉',summer:'7〜8月：谷川岳登山',autumn:'11月：草津温泉の紅葉',winter:'スキーリゾート（万座・草津国際）'},
+    seasonalImages:{
+      winter:'../images/japan/gunma/gunma-kusatsu-02.jpg',
+    },
     hiddenGems: [
       { name: '四万温泉・積善館', desc: '「千と千尋の神隠し」のモデルとも言われる大正ロマンの温泉旅館。橋の上から見るランプの灯りが幻想的', type: '温泉', emoji: '♨️' },
       { name: '富岡製糸場（世界遺産）', desc: '明治時代の近代産業遺産。世界遺産に登録された製糸場で日本の近代化の歴史を体感', type: '文化', emoji: '🏭' },
@@ -2723,7 +2726,7 @@ window.PREFECTURES_DATA = {
     suitableFor:['家族','カップル','日帰り旅行'],
     notIdealFor:['温泉リゾート志向'],
     highlights:[
-      {name:'川越（小江戸）',type:'文化',desc:'江戸時代の蔵造り商家が並ぶ観光地。時の鐘が有名',bestSeason:'春・秋',emoji:'🏯'},
+      {name:'川越（小江戸）',type:'文化',desc:'江戸時代の蔵造り商家が並ぶ観光地。時の鐘が有名',bestSeason:'春・秋',emoji:'🏯',img:'../images/japan/saitama/saitama-kawagoe-01.jpg'},
       {name:'長瀞ライン下り',type:'自然',desc:'荒川の清流を船で下るアクティビティ。春の桜も絶景',bestSeason:'春・秋',emoji:'🌊'},
       {name:'秩父三社',type:'文化',desc:'三峯神社・秩父神社・宝登山神社。パワースポットとして人気',bestSeason:'通年',emoji:'⛩️'},
     ],
@@ -2731,6 +2734,9 @@ window.PREFECTURES_DATA = {
     gourmet:[{name:'わらじかつ丼',desc:'大きなかつが二枚乗った秩父名物のソースかつ丼',emoji:'🍱'},{name:'川越芋スイーツ',desc:'さつまいもを使ったモンブラン・ソフトなど',emoji:'🍠'}],
     specialties:[{name:'川越唐桟',desc:'縞模様の江戸時代から続く綿織物',emoji:'🎋'}],
     seasonal:{spring:'3月：長瀞の桜＋ライン下り',summer:'7月：七夕まつり（川越）',autumn:'10月：川越まつり（重要無形民俗文化財）',winter:'1月：三峯神社の初詣'},
+    seasonalImages:{
+      spring:'../images/japan/saitama/saitama-kawagoe-sakura-01.jpg',
+    },
     hiddenGems: [
       { name: '三峯神社（秩父市）', desc: '秩父連山の山頂に鎮座する白狼信仰の古社。毎月1日の白い氣守が有名で入手困難。山深い霧の中の参拝が神秘的', type: '文化', emoji: '⛩️' },
       { name: '長瀞・岩畳（荒川）', desc: '荒川が削り出した100m幅・500m長さの巨大な岩畳。地質の教科書に載るほど特異な地形', type: '自然', emoji: '🪨' },
@@ -2772,7 +2778,7 @@ window.PREFECTURES_DATA = {
     suitableFor:['家族','カップル','日帰り旅行'],
     notIdealFor:['山岳アドベンチャー派'],
     highlights:[
-      {name:'成田山新勝寺',type:'文化',desc:'年間1000万人が参拝する関東屈指の大寺院。表参道の鰻も絶品',bestSeason:'通年',emoji:'⛩️'},
+      {name:'成田山新勝寺',type:'文化',desc:'年間1000万人が参拝する関東屈指の大寺院。表参道の鰻も絶品',bestSeason:'通年',emoji:'⛩️',img:'../images/japan/chiba/chiba-naritasan-01.jpg'},
       {name:'鴨川シーワールド',type:'自然',desc:'シャチのショーで有名な水族館',bestSeason:'通年',emoji:'🐋'},
       {name:'房総半島南部',type:'自然',desc:'南房総の花畑・マザー牧場・白浜海岸',bestSeason:'春（菜の花）',emoji:'🌸'},
     ],
@@ -2780,6 +2786,9 @@ window.PREFECTURES_DATA = {
     gourmet:[{name:'銚子のさんま・いわし',desc:'日本一の水揚げ港・銚子の新鮮な魚介',emoji:'🐟'},{name:'落花生',desc:'千葉産は全国一位。炒りたて・茹で落花生が最高',emoji:'🥜'}],
     specialties:[{name:'木更津のアサリ',desc:'東京湾最大の漁場。春のアサリが絶品',emoji:'🐚'}],
     seasonal:{spring:'2〜3月：南房総の菜の花畑',summer:'7〜8月：海水浴（御宿・勝浦）',autumn:'10月：銚子の秋刀魚漁',winter:'成田山の初詣（元旦〜3日に300万人）'},
+    seasonalImages:{
+      summer:'../images/japan/chiba/chiba-nokogiri-02.jpg',
+    },
     hiddenGems: [
       { name: '佐原（さわら）の古い町並み（香取市）', desc: '江戸の商家が残る水郷の街。「北総の小江戸」と呼ばれ川沿いに蔵造りが続く。知名度低く空いている', type: '歴史', emoji: '🏘️' },
       { name: '銚子・地球の丸く見える丘展望館', desc: '犬吠埼の高台から360度の視界に太平洋が広がり、地球の丸さが実感できる展望台', type: '絶景', emoji: '🌏' },
