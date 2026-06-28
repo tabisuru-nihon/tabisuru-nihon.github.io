@@ -2057,7 +2057,7 @@ window.PREFECTURES_DATA = {
     suitableFor:['歴史好き','カップル','家族'],
     notIdealFor:['アクセス重視（一部地域）'],
     highlights:[
-      {name:'伊勢神宮',type:'文化',desc:'日本最高位の神社。内宮（皇大神宮）・外宮（豊受大神宮）',bestSeason:'通年',emoji:'⛩️'},
+      {name:'伊勢神宮',type:'文化',desc:'日本最高位の神社。内宮（皇大神宮）・外宮（豊受大神宮）',bestSeason:'通年',emoji:'⛩️',img:'../images/japan/mie/mie-ise-01.jpg'},
       {name:'熊野古道（三重区間）',type:'世界遺産',desc:'世界遺産の巡礼道。伊勢路は最も原始的な古道',bestSeason:'秋・春',emoji:'🌿'},
       {name:'志摩半島・英虞湾',type:'自然',desc:'真珠養殖の海と入り組んだリアス式湾。ミキモト真珠島',bestSeason:'夏・秋',emoji:'🌊'},
     ],
@@ -2065,6 +2065,9 @@ window.PREFECTURES_DATA = {
     gourmet:[{name:'松阪牛',desc:'日本三大和牛の一つ。きめ細かい霜降りと甘い香り',emoji:'🥩'},{name:'伊勢海老',desc:'志摩の海から揚がった本場の伊勢海老。刺身・焼きが最高',emoji:'🦞'},{name:'赤福餅',desc:'伊勢神宮のお土産として有名な和菓子',emoji:'🍡'}],
     specialties:[{name:'ミキモト真珠',desc:'御木本幸吉が養殖に成功した世界初の真珠',emoji:'💎'}],
     seasonal:{spring:'4月：二見浦の夫婦岩',summer:'7月：伊勢神宮の観月祭',autumn:'10〜11月：熊野古道の紅葉',winter:'12月：年末の伊勢神宮参拝'},
+    seasonalImages:{
+      winter:'../images/japan/mie/mie-ise-01.jpg',
+    },
     hiddenGems: [
       { name: 'おかげ横丁（伊勢市）', desc: '江戸・明治の建物を移築した伊勢神宮参道の横丁。赤福・伊勢うどん・てこね寿司などの食べ歩きと土産が揃う', type: 'グルメ', emoji: '⛩️' },
       { name: '鬼ヶ城（熊野市）', desc: '太平洋の波が削り出した自然の要塞。世界遺産の海岸線に続く絶壁の遊歩道が続く。夕日の絶景', type: '自然', emoji: '🌊' },
