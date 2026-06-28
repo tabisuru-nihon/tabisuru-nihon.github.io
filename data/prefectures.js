@@ -1009,11 +1009,11 @@ window.PREFECTURES_DATA = {
       { type: '海派', reason: '完全な内陸県。海は全くない' },
     ],
     highlights: [
-      { name: '上高地', type: '絶景・自然', desc: '梓川と穂高連峰の絶景。日本で最も美しい山岳リゾート', bestSeason: '夏', emoji: '🏔️' },
-      { name: '松本城', type: '文化', desc: '国宝の現存天守。黒漆の外壁が美しい「烏城」', bestSeason: '通年', emoji: '🏯' },
+      { name: '上高地', type: '絶景・自然', desc: '梓川と穂高連峰の絶景。日本で最も美しい山岳リゾート', bestSeason: '夏', emoji: '🏔️', img: '../images/japan/nagano/nagano-kamikochi-01.jpg' },
+      { name: '松本城', type: '文化', desc: '国宝の現存天守。黒漆の外壁が美しい「烏城」', bestSeason: '通年', emoji: '🏯', img: '../images/japan/nagano/nagano-matsumoto-01.jpg' },
       { name: '善光寺', type: '神社仏閣', desc: '約1400年の歴史。無宗派の寺として全国から参拝者', bestSeason: '通年', emoji: '⛩️' },
       { name: '軽井沢', type: '避暑・リゾート', desc: '標高1000m。ショッピング・別荘・アウトレット', bestSeason: '夏', emoji: '🌿' },
-      { name: '地獄谷野猿公苑', type: '自然・体験', desc: '温泉に入る野生のニホンザル。世界唯一の光景', bestSeason: '冬', emoji: '🐒' },
+      { name: '地獄谷野猿公苑', type: '自然・体験', desc: '温泉に入る野生のニホンザル。世界唯一の光景', bestSeason: '冬', emoji: '🐒', img: '../images/japan/nagano/nagano-snowmonkey-01.jpg' },
       { name: '白馬', type: 'スキー・絶景', desc: '北アルプスを背景にしたスキーリゾート。夏は絶景ハイキング', bestSeason: '冬・夏', emoji: '⛷️' },
     ],
     onsens: [
@@ -1037,6 +1037,10 @@ window.PREFECTURES_DATA = {
       summer: '7〜8月：上高地・軽井沢・白馬の避暑。ラフティングも',
       autumn: '10〜11月：上高地の紅葉（10月が見頃）・松本城の紅葉',
       winter: '12〜3月：野沢温泉・白馬・志賀高原のスキー・地獄谷の猿',
+    },
+    seasonalImages: {
+      summer: '../images/japan/nagano/nagano-kamikochi-01.jpg',
+      winter: '../images/japan/nagano/nagano-snowmonkey-01.jpg',
     },
     hiddenGems: [
       { name: '戸隠高原・奥社参道', desc: '樹齢400年超の杉並木が続く2kmの参道。戸隠神社五社巡りと戸隠そばがセットで楽しめる', type: '文化・自然', emoji: '⛩️' },
